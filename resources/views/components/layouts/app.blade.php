@@ -13,9 +13,22 @@
     <link href="{{ url('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
 </head>
 <body id="body" @guest class="auth-page" style="background-image: url('/assets/images/p-1.png'); background-size: cover; background-position: center center;" @endguest>
-    <!-- Start Content -->
+    @auth
+    <livewire:partials.sidebar />
+    <livewire:partials.navbar />
+    @endauth
+
+    @guest
     {{ $slot }}
-    <!-- End Content -->
+    @endguest
+
+    @auth
+    <div class="page-wrapper">
+    <!-- Page Content-->
+    {{ $slot }}
+    <!-- end page content -->
+    </div>
+    @endauth
     
     <!-- Javascript -->
     <script src="{{ url('assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

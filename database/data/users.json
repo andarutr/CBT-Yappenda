@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Administrator",
+        "email": "admin@domain.com",
+        "roleId": "1"
+    },
+    {
+        "name": "Guru Tester",
+        "email": "guru@domain.com",
+        "roleId": "2"
+    },
+    {
+        "name": "User Tester",
+        "email": "user@domain.com",
+        "roleId": "3"
+    }
+]

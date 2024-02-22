@@ -12,13 +12,20 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
+            $table->uuid('id')->primary();
+            $table->string('name', 128);
+            $table->string('email', 128)->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('picture', 128)->default('user.png');
+            $table->unsignedBigInteger('roleId');
             $table->rememberToken();
             $table->timestamps();
+
+            $table->foreign('roleId')
+                    ->references('id')
+                    ->on('roles')
+                    ->onDelete('cascade');
         });
     }
 
