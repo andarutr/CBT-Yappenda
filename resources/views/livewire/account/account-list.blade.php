@@ -1,9 +1,12 @@
+@section('title', 'Account')
+
 <div class="page-content-tab">
     <div class="container-fluid">
         <livewire:partials.breadcrumb />
         <div class="row">
             <div class="col-lg-12">
-                <div class="card shadow mt-5">
+                <a href="{{ url('/admin/account/create') }}" class="btn btn-primary mt-3" wire:navigate>Tambah data</a>
+                <div class="card shadow mt-2">
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table mb-0 table-centered">
@@ -35,7 +38,6 @@
                                         </td>
                                         <td>{{ \Carbon\Carbon::parse($account->created_at)->format('d F Y') }}</td>
                                         <td>
-                                            <button class="btn btn-sm btn-primary">show</button>
                                             <button class="btn btn-sm btn-success">edit</button>
                                             <button class="btn btn-sm btn-danger">delete</button>
                                         </td>

@@ -5,10 +5,10 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">Dashboard</a>
                     </li>
-                    <li class="breadcrumb-item active">{{ $title ?? 'Judul' }}</li>
+                    <li class="breadcrumb-item active">@yield('title')</li>
                 </ol>
             </div>
-            <h4 class="page-title">{{ $title ?? 'Judul' }}</h4>
+            <h4 class="page-title">@yield('title')</h4>
         </div><!--end page-title-box-->
     </div><!--end col-->
 </div>

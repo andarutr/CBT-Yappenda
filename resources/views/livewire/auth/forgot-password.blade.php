@@ -6,7 +6,7 @@
             <div class="col-12 align-self-center">
                 <center>
                     <img src="{{ url('assets/images/yappenda.png') }}" width="100" alt="logo" class="auth-logo mb-3">
-                    <h3>Reset Password</h3>
+                    <h3>Lupa Password</h3>
                 </center>
                 <div class="card-body">
                     <div class="row">

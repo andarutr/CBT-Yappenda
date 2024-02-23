@@ -3,6 +3,7 @@
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\ForgotPassword;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ResetPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,5 +20,9 @@ Route::redirect('/', '/login');
 
 Route::get('/login', Login::class);
 Route::get('/lupa-password', ForgotPassword::class);
+Route::get('/reset-password/{tokens}', [ResetPasswordController::class, 'index']);
+Route::post('/reset-password/{tokens}', [ResetPasswordController::class, 'update']);
 
 require __DIR__.'/admin.php';
+require __DIR__.'/guru.php';
+require __DIR__.'/user.php';
