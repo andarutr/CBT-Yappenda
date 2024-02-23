@@ -19,7 +19,8 @@ class Login extends Component
         if(auth()->attempt(['email' => $this->email, 'password' => $this->password])){
             return redirect()->to('/admin/dashboard');
         }else{
-            return redirect()->to('/login');
+            $this->reset();
+            return session()->flash('failed','Email dan password salah!');
         }
     }
 

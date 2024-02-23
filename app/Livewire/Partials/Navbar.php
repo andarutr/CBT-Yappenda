@@ -10,7 +10,7 @@ class Navbar extends Component
     public function logout()
     {
         Auth::logout();
-        return redirect()->to('/login');
+        return redirect('/login')->with('success','Berhasil logout!');
     }
 
     public function render()

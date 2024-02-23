@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\Auth\Login;
+use App\Livewire\Auth\ForgotPassword;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,5 +18,6 @@ use Illuminate\Support\Facades\Route;
 Route::redirect('/', '/login');
 
 Route::get('/login', Login::class);
+Route::get('/lupa-password', ForgotPassword::class);
 
 require __DIR__.'/admin.php';
