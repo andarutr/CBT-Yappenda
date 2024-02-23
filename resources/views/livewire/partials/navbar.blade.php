@@ -92,17 +92,17 @@
                 <a class="nav-link dropdown-toggle nav-user" data-bs-toggle="dropdown" href="#" role="button"
                     aria-haspopup="false" aria-expanded="false">
                     <div class="d-flex align-items-center">
-                        <img src="/assets/images/users/user-4.jpg" alt="profile-user" class="rounded-circle me-2 thumb-sm" />
+                        <img src="/assets/images/users/{{ Auth::user()->picture }}" alt="profile-user" class="rounded-circle me-2 thumb-sm" />
                         <div>
-                            <small class="d-none d-md-block font-11">Admin</small>
-                            <span class="d-none d-md-block fw-semibold font-12">Maria Gibson <i
+                            <small class="d-none d-md-block font-11">{{ Auth::user()->roleId }}</small>
+                            <span class="d-none d-md-block fw-semibold font-12">{{ Auth::user()->name }} <i
                                     class="mdi mdi-chevron-down"></i></span>
                         </div>
                     </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
-                    <a class="dropdown-item" href="#"><i class="ti ti-user font-16 me-1 align-text-bottom"></i> Profile</a>
-                    <a class="dropdown-item" href="#"><i class="ti ti-settings font-16 me-1 align-text-bottom"></i> Settings</a>
+                    <a class="dropdown-item" href="/{{ Request::segment(1) }}/profile" wire:navigate><i class="ti ti-user font-16 me-1 align-text-bottom"></i> Profile</a>
+                    <a class="dropdown-item" href="/{{ Request::segment(1) }}/ganti-password" wire:navigate><i class="ti ti-settings font-16 me-1 align-text-bottom"></i> Ganti Password</a>
                     <div class="dropdown-divider mb-0"></div>
                     <a class="dropdown-item" wire:click="logout" wire:confirm="Yakin ingin logout?"><i class="ti ti-power font-16 me-1 align-text-bottom"></i> Logout</a>
                 </div>

@@ -1,7 +1,6 @@
 <?php
 
 use App\Livewire\Auth\Login;
-use App\Livewire\Admin\Dashboard;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,4 +18,4 @@ Route::redirect('/', '/login');
 
 Route::get('/login', Login::class);
 
-Route::get('/admin/dashboard', Dashboard::class);
+require __DIR__.'/admin.php';
