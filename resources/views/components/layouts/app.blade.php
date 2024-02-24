@@ -35,6 +35,8 @@
     <script src="{{ url('assets/libs/simplebar/simplebar.min.js') }}"></script>
     <script src="{{ url('assets/libs/feather-icons/feather.min.js') }}"></script>
     <!-- App js -->
+    <script src="{{ url('assets/libs/simple-datatables/umd/simple-datatables.js') }}"></script>
+    <script src="{{ url('assets/js/pages/datatable.init.js') }}"></script>
     <script src="{{ url('assets/js/app.js') }}"></script>
 </body>
 </html>

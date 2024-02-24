@@ -4,20 +4,23 @@
     <div class="container-fluid">
         <livewire:partials.breadcrumb />
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-12">
                 <a href="{{ url('/admin/account/create') }}" class="btn btn-primary mt-3" wire:navigate>Tambah data</a>
-                <div class="card shadow mt-2">
+                <div class="card mt-3">
+                    <div class="card-header">
+                        <h4 class="card-title">Account Details </h4>
+                    </div><!--end card-header-->
                     <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table mb-0 table-centered">
-                                <thead>
-                                    <tr>
-                                        <th>Nama</th>
-                                        <th>Email</th>
-                                        <th>Jenis Akun</th>
-                                        <th>Bergabung</th>
-                                        <th width="20%">Action</th>
-                                    </tr>
+                        <div class="table-responsive mt-3">
+                            <table class="table" id="datatable_1">
+                                <thead class="thead-light">
+                                  <tr>
+                                    <th>Nama</th>
+                                    <th>Email</th>
+                                    <th>Jenis Akun</th>
+                                    <th>Bergabung</th>
+                                    <th>Action</th>
+                                  </tr>
                                 </thead>
                                 <tbody>
                                     @foreach($accounts as $account)
@@ -38,19 +41,19 @@
                                         </td>
                                         <td>{{ \Carbon\Carbon::parse($account->created_at)->format('d F Y') }}</td>
                                         <td>
-                                            <button class="btn btn-sm btn-success">edit</button>
-                                            <button class="btn btn-sm btn-danger">delete</button>
+                                            <button class="btn btn-success"><i class="fas fa-edit"></i></button>&nbsp;
+                                            <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
                                         </td>
                                     </tr>
                                     @endif
-                                    @endforeach
+                                    @endforeach                      
                                 </tbody>
-                            </table><!--end /table-->
-                        </div><!--end /tableresponsive-->
-                    </div><!--end card-body-->
-                </div><!--end card-->
-            </div> 
-        </div>
+                              </table>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- end col -->
+        </div> <!-- end row -->
     </div>
     <livewire:partials.footer />             
 </div>
