@@ -24,13 +24,13 @@
                                     <form class="my-4" wire:submit="login">            
                                         <div class="form-group mb-2">
                                             <label class="form-label" for="email">Email</label>
-                                            <input type="text" class="form-control" id="email" name="email" placeholder="Masukkan Email" wire:model.blur="email" autocomplete="off">
+                                            <input type="text" class="form-control" id="email" placeholder="Masukkan Email" wire:model.live="email" autocomplete="off">
                                             @error('email')<p class="text-danger">{{ $message }}</p>@enderror                               
                                         </div> 
             
                                         <div class="form-group">
-                                            <label class="form-label" for="userpassword">Password</label>                                            
-                                            <input type="password" class="form-control" name="password" id="userpassword" placeholder="Enter password" wire:model.blur="password">    
+                                            <label class="form-label" for="userpassword">Password</label>
+                                            <input type="password" class="form-control" id="userpassword" placeholder="Enter password" wire:model.live="password">    
                                             @error('password')<p class="text-danger">{{ $message }}</p>@enderror                           
                                         </div>
             

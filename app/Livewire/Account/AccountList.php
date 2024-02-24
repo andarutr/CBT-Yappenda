@@ -4,24 +4,25 @@ namespace App\Livewire\Account;
 
 use App\Models\User;
 use Livewire\Component;
-use Livewire\WithPagination;
 use Illuminate\Support\Facades\Auth;
 
 class AccountList extends Component
 {
-    use WithPagination;
+    public $accounts;
 
-    public $search;
+    public function mount()
+    {
+        $this->accounts = User::all();
+    }
+
+    public function destroy($uuid)
+    {
+        User::where('uuid', $uuid)->delete();
+        return redirect('/admin/account')->with('success', 'Berhasil menghapus akun!');
+    }
 
     public function render()
     {
-        $accounts = User::all();
-        $search = User::where('name','like','%'.$this->search.'%')
-                        ->orwhere('email','like','%'.$this->search.'%')
-                        ->get();
-
-        return view('livewire.account.account-list', [
-            'accounts' => $this->search === null ? $accounts : $search
-        ]);
+        return view('livewire.account.account-list');
     }
 }

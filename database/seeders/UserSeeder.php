@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
 
         foreach($users as $user){
             User::create([
-                "id" => Uuid::uuid4(),
+                "uuid" => Uuid::uuid4()->toString(),
                 "name" => $user->name,
                 "email" => $user->email,
                 "password" => \Hash::make('test1234'),

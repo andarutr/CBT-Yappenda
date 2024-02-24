@@ -14,11 +14,6 @@
                             <i class="ti ti-smart-home menu-icon"></i>
                         </a><!--end nav-link-->
                     </li><!--end nav-item-->
-                    <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Account" data-bs-trigger="hover">
-                        <a href="#CBTAccount" id="account-tab" class="nav-link">
-                            <i class="ti ti-user menu-icon"></i>
-                        </a><!--end nav-link-->
-                    </li><!--end nav-item-->
                 </ul><!--end nav-->
             </div><!--end /div-->
         </div><!--end main-icon-menu-body-->
@@ -48,10 +43,6 @@
                         <a class="nav-link" href="/{{ Request::segment(1) }}/dashboard" wire:navigate>Dashboard</a>
                     </li>
                 </ul><!--end nav-->
-            </div>
-
-            <div id="CBTAccount" class="main-icon-menu-pane tab-pane" role="tabpanel"
-                aria-labelledby="account-tab">
                 <div class="title-box">
                     <h6 class="menu-title">Account Management</h6>
                 </div>

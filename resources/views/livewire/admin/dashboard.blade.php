@@ -1,5 +1,6 @@
-<div class="page-content-tab">
+@section('title','Dashboard')
 
+<div class="page-content-tab">
     <div class="container-fluid">
         <livewire:partials.breadcrumb />
         <div class="row">

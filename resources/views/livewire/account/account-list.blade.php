@@ -41,8 +41,8 @@
                                         </td>
                                         <td>{{ \Carbon\Carbon::parse($account->created_at)->format('d F Y') }}</td>
                                         <td>
-                                            <button class="btn btn-success"><i class="fas fa-edit"></i></button>&nbsp;
-                                            <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                                            <a href="{{ url('/admin/account/edit/'.$account->uuid) }}" class="btn btn-success" wire:navigate><i class="fas fa-edit"></i></a>&nbsp;
+                                            <button type="submit" class="btn btn-danger" wire:click="destroy('{{ $account->uuid }}')"><i class="fas fa-trash"></i></button>
                                         </td>
                                     </tr>
                                     @endif
@@ -57,3 +57,30 @@
     </div>
     <livewire:partials.footer />             
 </div>
+
+@assets
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link href="
+https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css
+" rel="stylesheet">
+@endassets
+
+@if(session('failed'))
+    @script
+        <script>
+            Swal.fire({
+              title: "{{ session('failed') }}",
+              icon: "error"
+            });
+        </script>
+    @endscript
+@elseif(session('success'))
+    @script
+        <script>
+            Swal.fire({
+              title: "{{ session('success') }}",
+              icon: "success"
+            });
+        </script>
+    @endscript
+@endif
