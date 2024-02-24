@@ -39,7 +39,7 @@
                                         <td>{{ \Carbon\Carbon::parse($account->created_at)->format('d F Y') }}</td>
                                         <td>
                                             <a href="{{ url('/admin/account/edit/'.$account->uuid) }}" class="btn btn-success" wire:navigate><i class="fas fa-edit"></i></a>&nbsp;
-                                            <button type="submit" class="btn btn-danger" wire:click="destroy('{{ $account->uuid }}')"><i class="fas fa-trash"></i></button>
+                                            <a class="btn btn-danger" wire:click="destroy('{{ $account->uuid }}')" wire:confirm="Yakin ingin menghapus akun?"><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
                                     @endif

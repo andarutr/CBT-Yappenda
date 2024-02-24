@@ -2,16 +2,16 @@
     {
         "name": "Administrator",
         "email": "admin@domain.com",
-        "roleId": "1"
+        "role_id": "1"
     },
     {
         "name": "Guru Tester",
         "email": "guru@domain.com",
-        "roleId": "2"
+        "role_id": "2"
     },
     {
         "name": "User Tester",
         "email": "user@domain.com",
-        "roleId": "3"
+        "role_id": "3"
     }
 ]

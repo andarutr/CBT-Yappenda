@@ -20,7 +20,7 @@ class RoleSeeder extends Seeder
         foreach($roles as $role){
             Role::create([
                 "id" => $role->id,
-                "roles" => $role->roles,
+                "role" => $role->role,
             ]);
         }
     }

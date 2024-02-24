@@ -24,7 +24,7 @@ class UserSeeder extends Seeder
                 "name" => $user->name,
                 "email" => $user->email,
                 "password" => \Hash::make('test1234'),
-                "roleId" => $user->roleId
+                "role_id" => $user->role_id
             ]);
         }
     }
