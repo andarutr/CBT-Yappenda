@@ -10,6 +10,7 @@
     <!-- App css -->
     <link href="{{ url('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ url('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ url('assets/libs/simple-datatables/style.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ url('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
 </head>
 <body id="body" @guest class="auth-page" style="background-image: url('/assets/images/p-1.png'); background-size: cover; background-position: center center;" @endguest>

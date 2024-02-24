@@ -23,6 +23,8 @@ class Login extends Component
                 return redirect()->to('/guru/dashboard');
             }elseif(auth()->user()->roleId === 3){
                 return redirect()->to('/user/dashboard');
+            }else{
+                abort(403);
             }
         }else{
             $this->reset();

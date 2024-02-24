@@ -48,16 +48,16 @@
                 </div>
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/account" wire:navigate>Account</a>
+                        <a class="nav-link" href="{{ url('/admin/account') }}" wire:navigate>Account</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Reset Password Account</a>
+                        <a class="nav-link" href="{{ url('/admin/account/reset-password') }}" wire:navigate>Reset Password</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Ganti Role Account</a>
+                        <a class="nav-link" href="{{ url('/admin/account/role') }}" wire:navigate>Ganti Role</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Suspend Account</a>
+                        <a class="nav-link" href="{{ url('/admin/account/suspend') }}" wire:navigate>Suspend</a>
                     </li>
                 </ul><!--end nav-->
             </div>

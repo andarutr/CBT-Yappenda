@@ -1,11 +1,10 @@
-@section('title', 'Account')
+@section('title', 'Suspend Account')
 
 <div class="page-content-tab">
     <div class="container-fluid">
         <livewire:partials.breadcrumb />
         <div class="row">
             <div class="col-12">
-                <a href="{{ url('/admin/account/create') }}" class="btn btn-primary mt-3" wire:navigate>Tambah data</a>
                 <div class="card shadow mt-3">
                     <div class="card-body">
                         <div class="table-responsive mt-3">
@@ -14,7 +13,7 @@
                                   <tr>
                                     <th>Nama</th>
                                     <th>Email</th>
-                                    <th>Jenis Akun</th>
+                                    <th>Status Akun</th>
                                     <th>Bergabung</th>
                                     <th>Action</th>
                                   </tr>
@@ -28,18 +27,19 @@
                                         </td>
                                         <td>{{ $account->email }}</td>
                                         <td>
-                                        @if($account->roleId === 1)
-                                        <span class="badge bg-primary">Admin</span>
-                                        @elseif($account->roleId === 2)
-                                        <span class="badge bg-success">Guru</span>
+                                        @if($account->roleId !== 13)
+                                        <span class="badge bg-primary">Active</span>
                                         @else
-                                        <span class="badge bg-info">User</span>
+                                        <span class="badge bg-danger">Suspend</span>
                                         @endif
                                         </td>
                                         <td>{{ \Carbon\Carbon::parse($account->created_at)->format('d F Y') }}</td>
                                         <td>
-                                            <a href="{{ url('/admin/account/edit/'.$account->uuid) }}" class="btn btn-success" wire:navigate><i class="fas fa-edit"></i></a>&nbsp;
-                                            <button type="submit" class="btn btn-danger" wire:click="destroy('{{ $account->uuid }}')"><i class="fas fa-trash"></i></button>
+                                            @if($account->roleId !== 13)
+                                            <button type="button" class="btn btn-danger" wire:click="suspend('{{ $account->uuid }}')" title="suspend"><i class="fas fa-times"></i></a>
+                                            @else
+                                            <button type="button" class="btn btn-primary" wire:click="un_suspend('{{ $account->uuid }}')"><i class="fas fa-check"></i></a>
+                                            @endif
                                         </td>
                                     </tr>
                                     @endif
