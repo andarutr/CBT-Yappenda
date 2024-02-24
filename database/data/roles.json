@@ -1,18 +1,18 @@
 [
     {
         "id": "1",
-        "roles": "Admin"
+        "role": "Admin"
     },
     {
         "id": "2",
-        "roles": "Guru"
+        "role": "Guru"
     },
     {
         "id": "3",
-        "roles": "User"
+        "role": "User"
     },
     {
         "id": "13",
-        "roles": "Suspend"
+        "role": "Suspend"
     }
 ]

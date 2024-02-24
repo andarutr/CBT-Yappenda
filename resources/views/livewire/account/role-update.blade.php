@@ -1,4 +1,4 @@
-@section('title', 'Reset Password Akun')
+@section('title', 'Ganti Role Akun')
 
 <div class="page-content-tab">
     <div class="container-fluid">
@@ -14,12 +14,12 @@
                             </div>
                             <div class="mt-3">
                                 <label>Role</label>
-                                <select class="form-control border border-3 rounded-3" wire:model="roleId">
+                                <select class="form-control border border-3 rounded-3" wire:model="role_id">
                                     @foreach($roles as $role)                    
-                                    <option value="{{ $role->id }}">{{ $role->roles }}</option>       
+                                    <option value="{{ $role->id }}">{{ $role->role }}</option>       
                                     @endforeach                             
                                 </select>
-                                @error('roleId')<p class="text-danger">{{ $message }}</p>@enderror
+                                @error('role_id')<p class="text-danger">{{ $message }}</p>@enderror
                             </div>
                             <div class="mt-3">
                                 <button type="submit" class="btn btn-success">Reset</button>

@@ -18,7 +18,7 @@ class SuspendList extends Component
     {
         User::where('uuid', $uuid)
                 ->update([
-                    'roleId' => 13
+                    'role_id' => 13
                 ]);
 
         $user = User::where('uuid', $uuid)->first();
@@ -30,7 +30,7 @@ class SuspendList extends Component
     {
         User::where('uuid', $uuid)
                 ->update([
-                    'roleId' => 3
+                    'role_id' => 3
                 ]);
                 
         $user = User::where('uuid', $uuid)->first();

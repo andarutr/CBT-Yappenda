@@ -20,13 +20,13 @@
                             </div>
                             <div class="mt-3">
                                 <label>Role</label>
-                                <select class="form-control border border-3 rounded-3" wire:model.live="roleId">
+                                <select class="form-control border border-3 rounded-3" wire:model.live="role_id">
                                     <option value="">Pilih</option>                
                                     @foreach($roles as $role)                    
-                                    <option value="{{ $role->id }}">{{ $role->roles }}</option>       
+                                    <option value="{{ $role->id }}">{{ $role->role }}</option>       
                                     @endforeach                             
                                 </select>
-                                @error('roleId')<p class="text-danger">{{ $message }}</p>@enderror
+                                @error('role_id')<p class="text-danger">{{ $message }}</p>@enderror
                             </div>
                             <div class="mt-3">
                                 <button type="submit" class="btn btn-primary">Submit</button>

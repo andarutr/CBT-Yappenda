@@ -12,3 +12,6 @@
 2. Livewire 3
 3. Bootstrap 5
 4. MySQL
+## Policies
+1. Account(can:admin)
+2. Setting(can:all)

@@ -17,7 +17,13 @@ class AccountCreate extends Component
     public $email;
 
     #[Validate('required')]
-    public $roleId;
+    public $role_id;
+    public $roles;
+
+    public function mount()
+    {
+        $this->roles = Role::all();
+    }
 
     public function store()
     {
@@ -29,7 +35,7 @@ class AccountCreate extends Component
             'name' => $this->name,
             'email' => $this->email,
             'password' => \Hash::make('test1234'),
-            'roleId' => $this->roleId,
+            'role_id' => $this->role_id,
         ]);
 
         return redirect('/admin/account')->with('success','Berhasil menambah akun!');
@@ -37,9 +43,6 @@ class AccountCreate extends Component
 
     public function render()
     {
-        $roles = Role::all();
-        return view('livewire.account.account-create')->with([
-            'roles' => $roles
-        ]);
+        return view('livewire.account.account-create');
     }
 }

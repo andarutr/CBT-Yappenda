@@ -20,7 +20,7 @@ class isGuru
         {
             return redirect('/login');
         }else{
-            if(Auth::user()->roleId !== 2){
+            if(Auth::user()->role->role !== 'Guru'){
                 echo "Kamu bukan guru!"; die;
             }
 

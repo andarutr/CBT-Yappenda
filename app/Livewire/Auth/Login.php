@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Auth;
 
+use App\Models\User;
 use Livewire\Component;
 use Livewire\Attributes\Validate;
 
@@ -11,17 +12,23 @@ class Login extends Component
     public $email;
     #[Validate('required')]
     public $password;
+    public $users;
+
+    public function mount()
+    {
+        $this->users = User::all();
+    }
 
     public function login()
     {
         $this->validate();
 
         if(auth()->attempt(['email' => $this->email, 'password' => $this->password])){
-            if(auth()->user()->roleId === 1){
+            if(auth()->user()->role->role === 'Admin'){
                 return redirect()->to('/admin/dashboard');
-            }elseif(auth()->user()->roleId === 2){
+            }elseif(auth()->user()->role->role === 'Guru'){
                 return redirect()->to('/guru/dashboard');
-            }elseif(auth()->user()->roleId === 3){
+            }elseif(auth()->user()->role->role === 'User'){
                 return redirect()->to('/user/dashboard');
             }else{
                 abort(403);

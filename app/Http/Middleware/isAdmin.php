@@ -20,7 +20,7 @@ class isAdmin
         {
             return redirect('/login');
         }else{
-            if(Auth::user()->roleId !== 1){
+            if(Auth::user()->role->role !== 'Admin'){
                 echo "Kamu bukan admin!"; die;
             }
 

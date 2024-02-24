@@ -12,7 +12,7 @@ class RoleUpdate extends Component
     public $uuid;
     public $roles;
     public $name;
-    public $roleId;
+    public $role_id;
 
     public function mount()
     {
@@ -22,14 +22,14 @@ class RoleUpdate extends Component
         $user = User::where('uuid', $this->uuid)->first();
 
         $this->name = $user->name;
-        $this->roleId = $user->roleId;
+        $this->role_id = $user->role_id;
     }
 
     public function update()
     {
         User::where('uuid', $this->uuid)
                 ->update([
-                    'roleId' => $this->roleId
+                    'role_id' => $this->role_id
                 ]);
 
         return session()->flash('success','Berhasil memperbarui role!');

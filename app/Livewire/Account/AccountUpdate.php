@@ -20,7 +20,7 @@ class AccountUpdate extends Component
     #[Validate('required')]
     public $email;
     #[Validate('required')]
-    public $roleId;
+    public $role_id;
 
     public function mount()
     {
@@ -31,7 +31,7 @@ class AccountUpdate extends Component
 
         $this->name = $account->name;
         $this->email = $account->email;
-        $this->roleId = $account->roleId;
+        $this->role_id = $account->role_id;
     }
     public function update()
     {
@@ -40,7 +40,7 @@ class AccountUpdate extends Component
         User::where('uuid', $this->uuid)->update([
             'name' => $this->name,
             'email' => $this->email,
-            'roleId' => $this->roleId,
+            'role_id' => $this->role_id,
         ]);
         return redirect('/admin/account')->with('success', 'Berhasil memperbarui akun!');
     }

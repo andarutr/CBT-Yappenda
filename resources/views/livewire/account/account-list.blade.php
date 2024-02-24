@@ -28,12 +28,12 @@
                                         </td>
                                         <td>{{ $account->email }}</td>
                                         <td>
-                                        @if($account->roleId === 1)
+                                        @if($account->role->role === 'Admin')
                                         <span class="badge bg-primary">Admin</span>
-                                        @elseif($account->roleId === 2)
+                                        @elseif($account->role->role === 'Guru')
                                         <span class="badge bg-success">Guru</span>
                                         @else
-                                        <span class="badge bg-info">User</span>
+                                        <span class="badge bg-warning">User</span>
                                         @endif
                                         </td>
                                         <td>{{ \Carbon\Carbon::parse($account->created_at)->format('d F Y') }}</td>

@@ -20,7 +20,7 @@ class isUser
         {
             return redirect('/login');
         }else{
-            if(Auth::user()->roleId !== 3){
+            if(Auth::user()->role->role !== 'User'){
                 echo "Kamu bukan user!"; die;
             }
 

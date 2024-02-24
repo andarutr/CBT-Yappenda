@@ -94,7 +94,7 @@
                     <div class="d-flex align-items-center">
                         <img src="/assets/images/users/{{ Auth::user()->picture }}" alt="profile-user" class="rounded-circle me-2 thumb-sm" />
                         <div>
-                            <small class="d-none d-md-block font-11">{{ Auth::user()->roleId }}</small>
+                            <small class="d-none d-md-block font-11">{{ Auth::user()->role->role }}</small>
                             <span class="d-none d-md-block fw-semibold font-12">{{ Auth::user()->name }} <i
                                     class="mdi mdi-chevron-down"></i></span>
                         </div>
