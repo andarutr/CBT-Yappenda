@@ -17,4 +17,9 @@ class EssayQuestion extends Model
     {
         $this->belongsTo(Exam::class);
     }
+
+    public function esAnswer()
+    {
+        $this->hasMany(EssayAnswer::class);
+    }
 }

@@ -17,4 +17,9 @@ class PGQuestion extends Model
     {
         $this->belongsTo(Exam::class);
     }
+
+    public function pgAnswer()
+    {
+        $this->hasMany(PGAnswer::class);
+    }
 }

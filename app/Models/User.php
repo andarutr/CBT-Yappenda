@@ -23,4 +23,14 @@ class User extends Authenticatable
     {
         $this->hasMany(ExamResult::class);
     }
+
+    public function pgAnswer()
+    {
+        $this->hasMany(PGAnswer::class);
+    }
+
+    public function esAnswer()
+    {
+        $this->hasMany(EssayAnswer::class);
+    }
 }
