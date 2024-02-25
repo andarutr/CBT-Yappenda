@@ -1,0 +1,8 @@
+[
+    {
+        "exam_id": "1",
+        "question": "Mana dibawah ini yang termasuk angka prima?",
+        "option": ["A. 2, 3, 5, 7, 11","B. 1, 4, 6, 7, 8","C. 1, 2, 3, 4, 5","D. 5, 6, 7, 8, 9, 10","E. 3, 4, 5, 6, 7"],
+        "correct": "A. 2, 3, 5, 7, 11"
+    }
+]
