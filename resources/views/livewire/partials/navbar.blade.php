@@ -92,7 +92,7 @@
                 <a class="nav-link dropdown-toggle nav-user" data-bs-toggle="dropdown" href="#" role="button"
                     aria-haspopup="false" aria-expanded="false">
                     <div class="d-flex align-items-center">
-                        <img src="/assets/images/users/{{ Auth::user()->picture }}" alt="profile-user" class="rounded-circle me-2 thumb-sm" />
+                        <img src="{{ asset('storage/assets/images/users/'.Auth::user()->picture) }}" alt="profile-user" class="rounded-circle me-2 thumb-sm" />
                         <div>
                             <small class="d-none d-md-block font-11">{{ Auth::user()->role->role }}</small>
                             <span class="d-none d-md-block fw-semibold font-12">{{ Auth::user()->name }} <i

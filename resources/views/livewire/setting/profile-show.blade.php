@@ -12,9 +12,11 @@
                                 <div class="col-lg-4 align-self-center mb-3 mb-lg-0">
                                     <div class="met-profile-main">
                                         <div class="met-profile-main-pic">
-                                            <img src="{{ url('assets/images/users/'.Auth::user()->picture) }}" alt="" height="110" class="rounded-circle">
+                                            <img src="{{ asset('storage/assets/images/users/'.Auth::user()->picture) }}" alt="" width="120" height="120" class="rounded-circle">
                                             <span class="met-profile_main-pic-change">
-                                                <i class="fas fa-camera"></i>
+                                                <a href="#updPicture">
+                                                    <i class="fas fa-camera"></i>
+                                                </a>
                                             </span>
                                         </div>
                                         <div class="met-profile_user-detail">
@@ -89,11 +91,16 @@
                                                 <h4 class="card-title">Upload Foto</h4>
                                             </div><!--end card-header-->
                                             <div class="card-body"> 
-                                                <form wire:submit="update_picture">
+                                                @if ($picture) 
+                                                <center>
+                                                    <img src="{{ $picture->temporaryUrl() }}" class="img-fluid rounded mb-3" width="150">
+                                                </center>
+                                                @endif
+                                                <form wire:submit="upload_picture">
                                                 <div class="form-group mb-3 row">
                                                     <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Foto</label>
                                                     <div class="col-lg-9 col-xl-8">
-                                                        <input type="file" class="form-control border border-3 rounded-3" type="password" wire:model="picture">
+                                                        <input type="file" class="form-control border border-3 rounded-3" wire:model="picture" id="updPicture">
                                                         @error('picture')<p class="text-danger">{{ $message }}</p>@enderror
                                                     </div>
                                                 </div>
