@@ -2,10 +2,13 @@
 
 use App\Livewire\Admin\Dashboard;
 use App\Livewire\Account\RoleList;
+use App\Livewire\Lesson\LessonList;
 use App\Livewire\Account\RoleUpdate;
-use App\Livewire\Setting\ProfileShow;
-use App\Livewire\Account\SuspendList;
 use App\Livewire\Account\AccountList;
+use App\Livewire\Account\SuspendList;
+use App\Livewire\Lesson\LessonCreate;
+use App\Livewire\Lesson\LessonUpdate;
+use App\Livewire\Setting\ProfileShow;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Account\AccountCreate;
 use App\Livewire\Account\AccountUpdate;
@@ -27,4 +30,8 @@ Route::middleware('isAdmin')->group(function(){
     Route::get('/admin/account/role', RoleList::class);
     Route::get('/admin/account/role/{uuid}', RoleUpdate::class);
     Route::get('/admin/account/suspend', SuspendList::class);
+
+    Route::get('/admin/mata-pelajaran', LessonList::class);
+    Route::get('/admin/mata-pelajaran/create', LessonCreate::class);
+    Route::get('/admin/mata-pelajaran/edit/{uuid}', LessonUpdate::class);
 });

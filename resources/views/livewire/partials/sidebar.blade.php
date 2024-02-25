@@ -43,6 +43,31 @@
                         <a class="nav-link" href="/{{ Request::segment(1) }}/dashboard" wire:navigate>Dashboard</a>
                     </li>
                 </ul><!--end nav-->
+                @if(Auth::user()->role->role === 'Guru' | Auth::user()->role->role === 'Admin')
+                <div class="title-box">
+                    <h6 class="menu-title">Assets</h6>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/'.Request::segment(1).'/mata-pelajaran') }}" wire:navigate>Mata Pelajaran</a>
+                        </li>
+                    </ul>
+                    <h6 class="menu-title">Assessment</h6>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/'.Request::segment(1).'/assessment/ash') }}" wire:navigate>Harian (ASH)</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/'.Request::segment(1).'/assessment/asts') }}" wire:navigate>Tengah Semester (ASTS)</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/'.Request::segment(1).'/assessment/asas') }}" wire:navigate>Akhir Semester (ASAS)</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/'.Request::segment(1).'/assessment/pas') }}" wire:navigate>Penilaian Akhir (PAS)</a>
+                        </li>
+                    </ul>
+                </div>
+                @endif
                 @if(Auth::user()->role->role === 'Admin')
                 <div class="title-box">
                     <h6 class="menu-title">Account Management</h6>
