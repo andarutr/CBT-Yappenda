@@ -21,6 +21,7 @@ class ExamSeeder extends Seeder
         foreach($exams as $exam){
             Exam::create([
                 'uuid' => Uuid::uuid4()->toString(),
+                'user_id' => $exam->user_id,
                 'lesson_id' => $exam->lesson_id,
                 'exam_type' => $exam->exam_type,
                 'grade' => $exam->grade,

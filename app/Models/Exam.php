@@ -11,6 +11,11 @@ class Exam extends Model
     
     protected $guarded = [];
 
+    public function user()
+    {
+        $this->belongsTo(User::class);
+    }
+    
     public function lesson()
     {
         $this->belongsTo(Lesson::class);

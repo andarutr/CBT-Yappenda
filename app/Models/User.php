@@ -19,6 +19,11 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
+    public function exam()
+    {
+        return $this->hasMany(Exam::class);
+    }
+
     public function exResult()
     {
         $this->hasMany(ExamResult::class);

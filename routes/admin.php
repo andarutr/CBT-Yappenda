@@ -34,4 +34,14 @@ Route::middleware('isAdmin')->group(function(){
     Route::get('/admin/mata-pelajaran', LessonList::class);
     Route::get('/admin/mata-pelajaran/create', LessonCreate::class);
     Route::get('/admin/mata-pelajaran/edit/{uuid}', LessonUpdate::class);
+
+    Route::get('/admin/assessment/asts', function(){
+        abort(503);
+    });
+    Route::get('/admin/assessment/asas', function(){
+        abort(503);
+    });
+    Route::get('/admin/assessment/pas', function(){
+        abort(503);
+    });
 });
