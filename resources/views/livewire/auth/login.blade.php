@@ -11,7 +11,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-lg-4 mx-auto">
-                            <div class="card">
+                            <div class="card shadow">
                                 <div class="card-body p-0 auth-header-box">
                                     <div class="text-center p-3">
                                         <a href="#" class="logo logo-admin">

@@ -9,6 +9,7 @@ use App\Livewire\Account\AccountList;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Account\AccountCreate;
 use App\Livewire\Account\AccountUpdate;
+use App\Livewire\Setting\ChangePassword;
 use App\Livewire\Account\PasswordAccountList;
 use App\Livewire\Account\PasswordAccountUpdate;
 
@@ -16,9 +17,7 @@ use App\Livewire\Account\PasswordAccountUpdate;
 Route::middleware('isAdmin')->group(function(){
     Route::get('/admin/dashboard', Dashboard::class);
     Route::get('/admin/profile', ProfileShow::class);
-    Route::get('/admin/ganti-password', function(){
-        return "admin ganti-password";
-    });
+    Route::get('/admin/ganti-password', ChangePassword::class);
 
     Route::get('/admin/account', AccountList::class);
     Route::get('/admin/account/create', AccountCreate::class);

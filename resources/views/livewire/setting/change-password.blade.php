@@ -1,4 +1,4 @@
-@section('title','Profile')
+@section('title','Ganti Password')
 
 <div class="page-content-tab">
     <div class="container-fluid">
@@ -38,68 +38,41 @@
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" data-bs-toggle="tab" href="#Profiles" role="tab" aria-selected="false">Profile</a>
+                                <a class="nav-link" href="{{ url('/'.Request::segment(1).'/profile') }}" wire:navigate>Profile</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/'.Request::segment(1).'/ganti-password') }}" wire:navigate>Ganti Password</a>
+                                <a class="nav-link active" data-bs-toggle="tab" href="#GantiPass" role="tab" aria-selected="false">Ganti Password</a>
                             </li>
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div class="tab-pane p-3 active" id="Profiles" role="tabpanel">
+                            <div class="tab-pane p-3 active" id="GantiPass" role="tabpanel">
                                 <div class="row">
                                     <div class="col-lg-6 col-xl-6">
                                         <div class="card shadow">
                                             <div class="card-header">
-                                                <div class="row align-items-center">
-                                                    <div class="col">                      
-                                                        <h4 class="card-title">Edit Profile</h4>
-                                                    </div>                        
-                                                </div>                           
-                                            </div>
-                                            <div class="card-body">   
-                                                <form wire:submit="update_profile">                    
-                                                <div class="form-group mb-3 row">
-                                                    <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Nama</label>
-                                                    <div class="col-lg-9 col-xl-8">
-                                                        <input class="form-control border border-3 rounded-3" type="text" wire:model.live="name">
-                                                        @error('name')<p class="text-danger">{{ $message }}</p>@enderror
-                                                    </div>
-                                                </div>
-                                                <div class="form-group mb-3 row">
-                                                    <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Email</label>
-                                                    <div class="col-lg-9 col-xl-8">
-                                                        <input class="form-control border border-3 rounded-3" type="text" wire:model.live="email">
-                                                        @error('email')<p class="text-danger">{{ $message }}</p>@enderror
-                                                    </div>
-                                                </div>
-                                                <div class="form-group mb-3 row">
-                                                    <div class="col-lg-9 col-xl-8 offset-lg-3">
-                                                        <button type="submit" class="btn btn-success">Update</button>
-                                                    </div>
-                                                </div>        
-                                                </form>                                            
-                                            </div>                                            
-                                        </div>
-                                    </div> <!--end col--> 
-                                    <div class="col-lg-6 col-xl-6">
-                                        <div class="card shadow">
-                                            <div class="card-header">
-                                                <h4 class="card-title">Upload Foto</h4>
+                                                <h4 class="card-title">Ganti Password</h4>
                                             </div><!--end card-header-->
                                             <div class="card-body"> 
-                                                <form wire:submit="update_picture">
+                                                <form wire:submit="update_password">
                                                 <div class="form-group mb-3 row">
-                                                    <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Foto</label>
+                                                    <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Password Lama</label>
                                                     <div class="col-lg-9 col-xl-8">
-                                                        <input type="file" class="form-control border border-3 rounded-3" type="password" wire:model="picture">
-                                                        @error('picture')<p class="text-danger">{{ $message }}</p>@enderror
+                                                        <input class="form-control border border-3 rounded-3" type="password" wire:model.live="old_password">
+                                                        @error('old_password')<p class="text-danger">{{ $message }}</p>@enderror
+                                                    </div>
+                                                </div>
+                                                <div class="form-group mb-3 row">
+                                                    <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Password Baru</label>
+                                                    <div class="col-lg-9 col-xl-8">
+                                                        <input class="form-control border border-3 rounded-3" type="password" wire:model.live="new_password">
+                                                        @error('new_password')<p class="text-danger">{{ $message }}</p>@enderror
                                                     </div>
                                                 </div>
                                                 <div class="form-group mb-3 row">
                                                     <div class="col-lg-9 col-xl-8 offset-lg-3">
-                                                        <button type="submit" class="btn btn-primary">Update</button>
+                                                        <button type="submit" class="btn btn-primary">Ganti Password</button>
                                                     </div>
                                                 </div> 
                                                 </form>  
@@ -139,9 +112,6 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css
             Swal.fire({
               title: "{{ session('success') }}",
               icon: "success"
-            })
-            .then((result) => {
-              location.reload();
             });
         </script>
     @endscript
