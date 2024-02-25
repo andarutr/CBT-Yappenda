@@ -12,7 +12,7 @@
                                 <div class="col-lg-4 align-self-center mb-3 mb-lg-0">
                                     <div class="met-profile-main">
                                         <div class="met-profile-main-pic">
-                                            <img src="{{ url('assets/images/users/'.Auth::user()->picture) }}" alt="" height="110" class="rounded-circle">
+                                            <img src="{{ asset('storage/assets/images/users/'.Auth::user()->picture) }}" alt="" width="120" height="120" class="rounded-circle">
                                             <span class="met-profile_main-pic-change">
                                                 <i class="fas fa-camera"></i>
                                             </span>

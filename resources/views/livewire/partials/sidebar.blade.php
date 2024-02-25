@@ -43,6 +43,7 @@
                         <a class="nav-link" href="/{{ Request::segment(1) }}/dashboard" wire:navigate>Dashboard</a>
                     </li>
                 </ul><!--end nav-->
+                @if(Auth::user()->role->role === 'Admin')
                 <div class="title-box">
                     <h6 class="menu-title">Account Management</h6>
                 </div>
@@ -60,6 +61,7 @@
                         <a class="nav-link" href="{{ url('/admin/account/suspend') }}" wire:navigate>Suspend</a>
                     </li>
                 </ul><!--end nav-->
+                @endif
             </div>
         </div>
         <!--end menu-body-->

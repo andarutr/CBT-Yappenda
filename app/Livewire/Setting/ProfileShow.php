@@ -17,7 +17,6 @@ class ProfileShow extends Component
     public $name;
     #[Validate('required')]
     public $email;
-    #[Validate('image|max:1024')] 
     public $picture;
 
     public function mount()
