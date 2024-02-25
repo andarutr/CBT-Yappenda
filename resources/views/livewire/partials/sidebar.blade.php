@@ -67,6 +67,37 @@
                         </li>
                     </ul>
                 </div>
+                @else
+                <h6 class="menu-title">Ujian</h6>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/user/ujian/ash') }}" wire:navigate>Harian (ASH)</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/user/ujian/asts') }}" wire:navigate>Tengah Semester (ASTS)</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/user/ujian/asas') }}" wire:navigate>Akhir Semester (ASAS)</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/user/ujian/pas') }}" wire:navigate>Penilaian Akhir (PAS)</a>
+                    </li>
+                </ul>
+                <h6 class="menu-title">Hasil Ujian</h6>
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/user/hasil-ujian/ash') }}" wire:navigate>Harian (ASH)</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/user/hasil-ujian/asts') }}" wire:navigate>Tengah Semester (ASTS)</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/user/hasil-ujian/asas') }}" wire:navigate>Akhir Semester (ASAS)</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/user/hasil-ujian/pas') }}" wire:navigate>Penilaian Akhir (PAS)</a>
+                    </li>
+                </ul>
                 @endif
                 @if(Auth::user()->role->role === 'Admin')
                 <div class="title-box">

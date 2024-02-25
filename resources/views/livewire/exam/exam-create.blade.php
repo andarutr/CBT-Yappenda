@@ -12,8 +12,10 @@
                                 <div class="col-lg-4 align-self-center mb-3 mb-lg-0">
                                     <div class="met-profile-main">
                                         <div class="met-profile_user-detail">
+                                            <h5>Nama Murid (X IPA)</h5>                                                        
                                             <h5 class="met-user-name">Bahasa Indonesia (X IPA)</h5>                                                        
                                             <p class="mb-0 met-user-name-post">Nama Guru</p>                                                        
+                                            <p class="mb-0 met-user-name-post">Sisa Waktu : 40:00</p>                                                        
                                         </div>
                                     </div>                                                
                                 </div><!--end col-->
@@ -57,52 +59,52 @@
                                                 <div class="form-group mb-3 row">
                                                     <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Soal</label>
                                                     <div class="col-lg-9 col-xl-8">
-                                                        <textarea class="form-control border border-3 rounded-3" type="text"></textarea>
+                                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Suscipit quaerat iure eligendi impedit consequatur ipsam molestiae itaque vero similique accusamus, pariatur totam facere veritatis ab optio, ducimus a architecto! Aspernatur.
                                                     </div>
                                                 </div>
                                                 <div class="form-group mb-3 row">
-                                                    <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">A</label>
+                                                    <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label"><input type="radio"> A</label>
                                                     <div class="col-lg-9 col-xl-8">
-                                                        <input class="form-control border border-3 rounded-3" type="text">
+                                                        .....
                                                     </div>
                                                 </div>
                                                 <div class="form-group mb-3 row">
-                                                    <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">B</label>
+                                                    <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label"><input type="radio"> B</label>
                                                     <div class="col-lg-9 col-xl-8">
-                                                        <input class="form-control border border-3 rounded-3" type="text">
+                                                        .....
                                                     </div>
                                                 </div>
                                                 <div class="form-group mb-3 row">
-                                                    <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">C</label>
+                                                    <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label"><input type="radio"> C</label>
                                                     <div class="col-lg-9 col-xl-8">
-                                                        <input class="form-control border border-3 rounded-3" type="text">
+                                                        .....
                                                     </div>
                                                 </div>
                                                 <div class="form-group mb-3 row">
-                                                    <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">D</label>
+                                                    <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label"><input type="radio"> D</label>
                                                     <div class="col-lg-9 col-xl-8">
-                                                        <input class="form-control border border-3 rounded-3" type="text">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group mb-3 row">
-                                                    <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Jawaban Benar</label>
-                                                    <div class="col-lg-9 col-xl-8">
-                                                        <input type="radio"> A
-                                                        <input type="radio"> B
-                                                        <input type="radio"> C
-                                                        <input type="radio"> D
+                                                        .....
                                                     </div>
                                                 </div>
                                                 <div class="form-group mb-3 row">
                                                     <div class="col-lg-9 col-xl-8 offset-lg-3">
-                                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                                        <button type="submit" class="btn btn-primary">Simpan</button>
                                                     </div>
                                                 </div> 
                                                 </form>  
                                             </div><!--end card-body-->
                                         </div><!--end card-->
-                                    </div> <!-- end col -->                                          
-                                </div><!--end row-->
+                                    </div> 
+                                    <div class="col-lg-4 col-xl-4">
+                                        <button class="form-control btn btn-success mb-3">Selesai</button>
+                                        <p>Note : </p>
+                                        <ul>
+                                            <li>Data akan tersimpan setelah klik tombol simpan</li>
+                                            <li>Untuk melihat dan mengedit jawaban, klik menu preview</li>
+                                            <li>Pastikan soal sudah terjawab semua ketika klik tombol selesai</li>
+                                        </ul>
+                                    </div> 
+                                </div>
                             </div>
                             <div class="tab-pane p-3" id="SoalEssay" role="tabpanel">
                                 <div class="row">
@@ -116,24 +118,33 @@
                                                 <div class="form-group mb-3 row">
                                                     <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Soal</label>
                                                     <div class="col-lg-9 col-xl-8">
+                                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis dolore blanditiis fugiat delectus? Veritatis, et? Sunt id numquam amet, alias repellendus adipisci officia corporis eaque excepturi a dignissimos molestias ullam!
+                                                    </div>
+                                                </div>
+                                                <div class="form-group mb-3 row">
+                                                    <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Jawaban</label>
+                                                    <div class="col-lg-9 col-xl-8">
                                                         <textarea class="form-control border border-3 rounded-3" type="text"></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="form-group mb-3 row">
-                                                    <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Bobot</label>
-                                                    <div class="col-lg-9 col-xl-8">
-                                                        <input class="form-control border border-3 rounded-3" type="text">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group mb-3 row">
                                                     <div class="col-lg-9 col-xl-8 offset-lg-3">
-                                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                                        <button type="submit" class="btn btn-primary">Simpan</button>
                                                     </div>
                                                 </div> 
                                                 </form>  
                                             </div><!--end card-body-->
                                         </div><!--end card-->
-                                    </div> <!-- end col -->                                          
+                                    </div>
+                                    <div class="col-lg-4 col-xl-4">
+                                        <button class="form-control btn btn-success mb-3">Selesai</button>
+                                        <p>Note : </p>
+                                        <ul>
+                                            <li>Data akan tersimpan setelah klik tombol simpan</li>
+                                            <li>Untuk melihat dan mengedit jawaban, klik menu preview</li>
+                                            <li>Pastikan soal sudah terjawab semua ketika klik tombol selesai</li>
+                                        </ul>
+                                    </div>                         
                                 </div><!--end row-->
                             </div>
                             <div class="tab-pane p-3" id="Preview" role="tabpanel">
@@ -148,17 +159,14 @@
                                                 <div class="form-group mb-3 row">
                                                     <div class="col-lg-12 col-xl-12">
                                                         <p>1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia at tempora accusantium consequatur sequi error nobis eaque enim molestias tempore est quaerat, voluptates rem. Dolor aut pariatur officia dicta repellat.</p>
-                                                        <ul>
-                                                            <li>A .......</li>
-                                                            <li>B .......</li>
-                                                            <li>C .......</li>
-                                                            <li>D .......</li>
-                                                        </ul>
-                                                        <p>Jawaban Benar : A .....</p>
+                                                        <p>Jawaban : A .....</p>
                                                     </div>
                                                 </div>
                                                 </form>  
                                             </div><!--end card-body-->
+                                            <div class="align-self-right">
+                                                <a href="#" class="btn btn-sm btn-success form-control"><i class="fas fa-edit"></i></a>
+                                            </div>
                                         </div><!--end card-->
                                     </div> <!-- end col -->
                                     <div class="col-lg-6 col-xl-6">
@@ -171,13 +179,16 @@
                                                 <div class="form-group mb-3 row">
                                                     <div class="col-lg-12 col-xl-12">
                                                         <p>1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia at tempora accusantium consequatur sequi error nobis eaque enim molestias tempore est quaerat, voluptates rem. Dolor aut pariatur officia dicta repellat.</p>
-                                                        <p>Bobot : 10</p>
+                                                        <p>Jawaban : ...</p>
                                                     </div>
                                                 </div>
                                                 </form>  
                                             </div><!--end card-body-->
+                                            <div class="align-self-right">
+                                                <a href="#" class="btn btn-sm btn-success form-control"><i class="fas fa-edit"></i></a>
+                                            </div>                           
                                         </div><!--end card-->
-                                    </div> <!-- end col -->                                          
+                                    </div> <!-- end col -->               
                                 </div><!--end row-->
                             </div>
                         </div>        
