@@ -12,13 +12,7 @@ class ASHList extends Component
 
     public function mount()
     {
-        $exams = \DB::table('exams')
-                    ->join('lessons','lessons.id','=','exams.lesson_id')
-                    ->join('users','users.id','=','exams.user_id')
-                    ->select('users.name as guru','exams.*','lessons.name as mata_pelajaran')
-                    ->get();
-
-        $this->assessment = $exams;
+        $this->assessment = Exam::orderByDesc('id')->get();
     }
 
     public function destroy($uuid)

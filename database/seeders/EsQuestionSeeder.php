@@ -22,9 +22,7 @@ class EsQuestionSeeder extends Seeder
             EssayQuestion::create([
                 'uuid' => Uuid::uuid4()->toString(),
                 'exam_id' => $quest->exam_id,
-                'question' => $quest->question,
-                'answer' => $quest->answer,
-                'correct' => $quest->correct
+                'question' => $quest->question
             ]);
         }
         

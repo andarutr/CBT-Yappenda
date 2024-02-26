@@ -13,6 +13,6 @@ class Lesson extends Model
 
     public function exam()
     {
-        $this->hasMany(Exam::class);
+        return $this->hasMany(Exam::class);
     }
 }

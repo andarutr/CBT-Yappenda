@@ -13,26 +13,26 @@ class Exam extends Model
 
     public function user()
     {
-        $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
     
     public function lesson()
     {
-        $this->belongsTo(Lesson::class);
+        return $this->belongsTo(Lesson::class);
     }
 
     public function essayQuestion()
     {
-        $this->hasMany(EssayQuestion::class);
+        return $this->hasMany(EssayQuestion::class);
     }
 
     public function pgQuestion()
     {
-        $this->hasMany(PGQuestion::class);
+        return $this->hasMany(PGQuestion::class);
     }
 
     public function exResult()
     {
-        $this->hasMany(ExamResult::class);
+        return $this->hasMany(ExamResult::class);
     }
 }

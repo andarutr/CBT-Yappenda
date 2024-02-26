@@ -15,11 +15,11 @@ class EssayQuestion extends Model
 
     public function exam()
     {
-        $this->belongsTo(Exam::class);
+        return $this->belongsTo(Exam::class);
     }
 
     public function esAnswer()
     {
-        $this->hasMany(EssayAnswer::class);
+        return $this->hasMany(EssayAnswer::class);
     }
 }

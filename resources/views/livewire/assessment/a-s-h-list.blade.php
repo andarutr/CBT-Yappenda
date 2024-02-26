@@ -16,7 +16,7 @@
                     <div class="card-body">
                         <div class="blog-card">
                             <h4 class="my-3">
-                                <a href="" class="">{{ $ass->mata_pelajaran }}</a>
+                                <a href="" class="">{{ $ass->lesson->name }}</a>
                                 <p>{{ $ass->grade.' '.$ass->major }}</p>
                                 <p>Waktu Mulai : {{ \Carbon\Carbon::parse($ass->start_time)->format('d F Y H:i') }}</p>
                                 <p>Waktu Selesai : {{ \Carbon\Carbon::parse($ass->end_time)->format('d F Y H:i') }}</p>

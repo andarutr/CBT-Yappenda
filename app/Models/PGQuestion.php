@@ -15,11 +15,11 @@ class PGQuestion extends Model
 
     public function exam()
     {
-        $this->belongsTo(Exam::class);
+        return $this->belongsTo(Exam::class);
     }
 
     public function pgAnswer()
     {
-        $this->hasMany(PGAnswer::class);
+        return $this->hasMany(PGAnswer::class);
     }
 }

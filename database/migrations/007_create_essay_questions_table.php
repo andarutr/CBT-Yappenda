@@ -16,8 +16,6 @@ return new class extends Migration
             $table->uuid('uuid')->index();
             $table->unsignedBigInteger('exam_id');
             $table->text('question');
-            $table->text('answer')->nullable();
-            $table->boolean('correct');
             $table->timestamps();
 
             $table->foreign('exam_id')

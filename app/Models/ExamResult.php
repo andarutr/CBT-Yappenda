@@ -15,11 +15,11 @@ class ExamResult extends Model
 
     public function exam()
     {
-        $this->belongsTo(Exam::class);
+        return $this->belongsTo(Exam::class);
     }
 
     public function user()
     {
-        $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
 }

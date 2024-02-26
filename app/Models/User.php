@@ -26,16 +26,16 @@ class User extends Authenticatable
 
     public function exResult()
     {
-        $this->hasMany(ExamResult::class);
+        return $this->hasMany(ExamResult::class);
     }
 
     public function pgAnswer()
     {
-        $this->hasMany(PGAnswer::class);
+        return $this->hasMany(PGAnswer::class);
     }
 
     public function esAnswer()
     {
-        $this->hasMany(EssayAnswer::class);
+        return $this->hasMany(EssayAnswer::class);
     }
 }
