@@ -9,25 +9,26 @@ use App\Livewire\Setting\ChangePassword;
 
 // Route
 Route::middleware('isUser')->group(function(){
-	Route::get('/user/dashboard', Dashboard::class);
-	Route::get('/user/profile', ProfileShow::class);
-	Route::get('/user/ganti-password', ChangePassword::class);
-	
-	Route::get('/user/ujian/ash', ExamList::class);
-	Route::get('/user/ujian/{lesson}/{uuid}', ExamCreate::class);
+	Route::prefix('/user')->group(function(){
+		Route::get('/dashboard', Dashboard::class);
+		Route::get('/profile', ProfileShow::class);
+		Route::get('/ganti-password', ChangePassword::class);
+		
+		Route::get('/ujian/ash', ExamList::class);
+		Route::get('/ujian/{lesson}/{uuid}', ExamCreate::class);
 
+		Route::get('/ujian/asts', function(){
+			abort(503);
+		});
+		Route::get('/ujian/asas', function(){
+			abort(503);
+		});
+		Route::get('/ujian/pas', function(){
+			abort(503);
+		});
 
-	Route::get('/user/ujian/asts', function(){
-		abort(503);
-	});
-	Route::get('/user/ujian/asas', function(){
-		abort(503);
-	});
-	Route::get('/user/ujian/pas', function(){
-		abort(503);
-	});
-
-	Route::get('/user/hasil-ujian/{name}', function(){
-		abort(503);
+		Route::get('/hasil-ujian/{name}', function(){
+			abort(503);
+		});
 	});
 });

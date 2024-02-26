@@ -1,11 +1,10 @@
 @section('title', 'Mata Pelajaran')
-
 <div class="page-content-tab">
     <div class="container-fluid">
         <livewire:partials.breadcrumb />
         <div class="row">
             @foreach($lessons as $lesson)
-            <div class="col-lg-4">
+            <div class="col-lg-4" wire:poll.keep-alive>
                 <div class="card shadow">
                     <div class="card-body">
                         <div class="blog-card">
@@ -16,8 +15,7 @@
                             <div class="d-flex justify-content-between">
                                 <div class="meta-box">
                                     <div class="media">
-                                        <img src="/assets/images/users/user.png" alt=""
-                                            class="thumb-sm rounded-circle me-2">
+                                        <img src="/assets/images/users/user.png" alt="" class="thumb-sm rounded-circle me-2">
                                         <div class="media-body align-self-center text-truncate">
                                             <h6 class="m-0 text-dark">Admin</h6>
                                             <ul class="p-0 list-inline mb-0">
@@ -29,8 +27,7 @@
                                 </div>
                                 <!--end meta-box-->
                                 <div class="align-self-center">
-                                    <a href="#" class="text-dark">Read more <i
-                                            class="fas fa-long-arrow-alt-right"></i></a>
+                                    <a href="#" class="text-dark">Read more <i class="fas fa-long-arrow-alt-right"></i></a>
                                 </div>
                             </div>
                         </div>

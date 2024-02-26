@@ -11,23 +11,27 @@ use App\Livewire\Setting\ChangePassword;
 
 // Route
 Route::middleware('isGuru')->group(function(){
-	Route::get('/guru/dashboard', Dashboard::class);
-	Route::get('/guru/profile', ProfileShow::class);
-	Route::get('/guru/ganti-password', ChangePassword::class);
-	
-	Route::get('/guru/mata-pelajaran', LessonList::class);
+    Route::prefix('/guru')->group(function(){
+        Route::get('/dashboard', Dashboard::class);
+        Route::get('/profile', ProfileShow::class);
+        Route::get('/ganti-password', ChangePassword::class);
 
-	Route::get('/guru/assessment/ash', ASHList::class);
-	Route::get('/guru/assessment/ash/create', ASHCreate::class);
-	Route::get('/guru/assessment/ash/input-soal/{uuid}', ASHQuestion::class);
+        Route::get('/mata-pelajaran', LessonList::class);
+        
+        Route::prefix('/assessment')->group(function(){
+            Route::get('/ash', ASHList::class);
+            Route::get('/ash/create', ASHCreate::class);
+            Route::get('/ash/input-soal/{uuid}', ASHQuestion::class);
 
-	Route::get('/guru/assessment/asts', function(){
-        abort(503);
-    });
-    Route::get('/guru/assessment/asas', function(){
-        abort(503);
-    });
-    Route::get('/guru/assessment/pas', function(){
-        abort(503);
+            Route::get('/asts', function(){
+                abort(503);
+            });
+            Route::get('/asas', function(){
+                abort(503);
+            });
+            Route::get('/pas', function(){
+                abort(503);
+            });
+        });
     });
 });
