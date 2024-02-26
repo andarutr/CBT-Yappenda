@@ -4,11 +4,6 @@
     <div class="container-fluid">
         <livewire:partials.breadcrumb />
         <div class="row">
-            <div class="col-lg-2">
-                <a href="/{{ Request::segment(1) }}/assessment/ash/create" class="btn btn-primary" wire:navigate>Tambah data</a>
-            </div>
-        </div>
-        <div class="row">
             <div class="col-lg-4">
                 <div class="card shadow mt-3">
                     <div class="card-body">
