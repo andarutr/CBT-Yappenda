@@ -54,6 +54,8 @@ class ASHQuestionpg extends Component
             'correct' => $this->correct,
         ]);
 
+        $this->reset(['pgquestion','option.A','option.B','option.C','option.D','option.E']);
+
         return redirect()->back()->with('success', 'Berhasil membuat soal PG!');
     }
 

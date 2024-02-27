@@ -48,6 +48,14 @@
                             <div class="tab-pane p-3 active" id="SoalPG" role="tabpanel">
                                 <div class="row">
                                     <div class="col-lg-8 col-xl-8">
+                                        @if(session('success'))
+                                        <div wire:transition>
+                                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                              {{ session('success') }}
+                                              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                            </div>
+                                        </div>
+                                        @endif
                                         <div class="card shadow">
                                             <div class="card-header">
                                                 <h4 class="card-title">Soal PG</h4>

@@ -10,6 +10,8 @@ use App\Livewire\Setting\ChangePassword;
 use App\Livewire\Assessment\ASHQuestionpg;
 use App\Livewire\Assessment\ASHQuestionpr;
 use App\Livewire\Assessment\ASHQuestionessay;
+use App\Livewire\Assessment\ASHEditQuestionpg;
+use App\Livewire\Assessment\ASHEditQuestionessay;
 
 // Route
 Route::middleware('isGuru')->group(function(){
@@ -26,6 +28,9 @@ Route::middleware('isGuru')->group(function(){
             Route::get('/ash/input-soal/pg/{uuid}', ASHQuestionpg::class);
             Route::get('/ash/input-soal/essay/{uuid}', ASHQuestionessay::class);
             Route::get('/ash/input-soal/preview/{uuid}', ASHQuestionpr::class);
+
+            Route::get('/ash/edit-soal/pg/{uuid}', ASHEditQuestionpg::class);
+            Route::get('/ash/edit-soal/essay/{uuid}', ASHEditQuestionessay::class);
 
             Route::get('/asts', function(){
                 abort(503);

@@ -5,7 +5,7 @@
         <livewire:partials.breadcrumb />
         <div class="row">
             <div class="col-12">
-                <div class="card">
+                <div class="card shadow">
                     <div class="card-body">
                         <div class="met-profile">
                             <div class="row">
@@ -47,7 +47,7 @@
                         <div class="tab-content">
                             <div class="tab-pane p-3 active" id="Preview" role="tabpanel">
                                 <div class="row">
-                                    <div class="col-lg-6 col-xl-6">
+                                    <div class="col-lg-12 col-xl-12">
                                         <div class="card shadow">
                                             <div class="card-header">
                                                 <h4 class="card-title">Soal PG</h4>
@@ -56,20 +56,21 @@
                                                 <div class="form-group mb-3 row">
                                                     <div class="col-lg-12 col-xl-12">
                                                         @foreach($pg_question as $key => $pg)
-                                                            <p>{{ $key + 1 }} {{ $pg->pgquestion }}</p>
+                                                            <p>{{ $key + 1 }} {{ $pg->pgquestion }} <a href="{{ url('/guru/assessment/ash/edit-soal/pg/'.$pg->uuid) }}" class="badge bg-success"><i class="fas fa-edit"></i></a></p>
                                                             @foreach(json_decode($pg->option) as $key => $value)
                                                             <ul>
                                                                 <li>{{ $key }}. {{ $value }}</li>
                                                             </ul>
                                                             @endforeach
                                                             <p>Jawaban Benar : <b>{{ $pg->correct }}</b></p>
+                                                            <hr>
                                                         @endforeach
                                                     </div>
                                                 </div>
                                             </div><!--end card-body-->
                                         </div><!--end card-->
                                     </div> <!-- end col -->
-                                    <div class="col-lg-6 col-xl-6">
+                                    <div class="col-lg-12 col-xl-12">
                                         <div class="card shadow">
                                             <div class="card-header">
                                                 <h4 class="card-title">Soal Essay</h4>
@@ -78,7 +79,7 @@
                                                 <div class="form-group mb-3 row">
                                                     <div class="col-lg-12 col-xl-12">
                                                         @foreach($essay_question as $key => $essay)
-                                                        <p>{{ $key + 1 }}.{{ $essay->question }}</p>
+                                                        <p>{{ $key + 1 }}.{{ $essay->question }} <a href="" class="badge bg-success"><i class="fas fa-edit"></i></a></p>
                                                         @endforeach
                                                     </div>
                                                 </div>
