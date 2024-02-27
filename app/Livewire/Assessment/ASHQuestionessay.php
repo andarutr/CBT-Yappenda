@@ -9,26 +9,21 @@ use Livewire\Component;
 use App\Models\EssayQuestion;
 use Livewire\Attributes\Validate;
 
-class ASHQuestion extends Component
+class ASHQuestionessay extends Component
 {
     public $uuid;
     public $exam;
-    public $essay_question;
     #[Validate('required')]
     public $question;
 
-    public $status_panel = 'pg';
-
     public function mount()
     {
-        $this->uuid = Request::segment(5);
+        $this->uuid = Request::segment(6);
         $this->exam = Exam::where('uuid', $this->uuid)->first();
-        $this->essay_question = EssayQuestion::where('exam_id', $this->exam->id)->get();
     }
 
     public function store_essay()
     {
-        $this->status_panel = 'essay';
         $this->validate();
 
         EssayQuestion::create([
@@ -43,6 +38,6 @@ class ASHQuestion extends Component
     }
     public function render()
     {
-        return view('livewire.assessment.a-s-h-question');
+        return view('livewire.assessment.a-s-h-questionessay');
     }
 }

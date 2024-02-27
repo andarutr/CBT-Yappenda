@@ -47,7 +47,7 @@ class ASHCreate extends Component
             'end_time' => $this->end_time,
         ]);
         
-        return redirect('/'.Request::segment(1).'/assessment/ash')->with('success', 'Berhasil menambah ASH');
+        return redirect('/guru/assessment/ash')->with('success', 'Berhasil menambah ASH');
     }
     public function render()
     {

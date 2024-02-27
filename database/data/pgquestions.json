@@ -1,8 +1,8 @@
 [
     {
         "exam_id": "1",
-        "question": "Mana dibawah ini yang termasuk angka prima?",
-        "option": ["A. 2, 3, 5, 7, 11","B. 1, 4, 6, 7, 8","C. 1, 2, 3, 4, 5","D. 5, 6, 7, 8, 9, 10","E. 3, 4, 5, 6, 7"],
-        "correct": "A. 2, 3, 5, 7, 11"
+        "pgquestion": "Yang bukan merupakan contoh kalimat deskripsi adalah...",
+        "option": {"A":"Tubuh mereka berwarna putih dengan aksen merah muda lembut atau cerah","B":"Sayap depan berfungsi melindungi sayap belakang sehingga teksturnya lebih keras","C":"Rongga itu memperkuat suara yang dihasilkan oleh getaran tymbal","D":"Saat bertelur tonggeret betina menempelkan telur-telurnya di cabang atau batang pohon dan rerumputan","E":"Tonggeret adalah jenis dari serangga"},
+        "correct": "E"
     }
 ]

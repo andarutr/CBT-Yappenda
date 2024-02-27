@@ -22,7 +22,7 @@ class PgQuestionSeeder extends Seeder
             PGQuestion::create([
                 'uuid' => Uuid::uuid4()->toString(),
                 'exam_id' => $quest->exam_id,
-                'question' => $quest->question,
+                'pgquestion' => $quest->pgquestion,
                 'option' => json_encode($quest->option),
                 'correct' => $quest->correct
             ]);
