@@ -12,19 +12,23 @@
                                 <div class="col-lg-4 align-self-center mb-3 mb-lg-0">
                                     <div class="met-profile-main">
                                         <div class="met-profile_user-detail">
-                                            <h5>Nama Murid (X IPA)</h5>                                                        
-                                            <h5 class="met-user-name">Bahasa Indonesia (X IPA)</h5>                                                        
-                                            <p class="mb-0 met-user-name-post">Nama Guru</p>                                                        
-                                            <p class="mb-0 met-user-name-post">Sisa Waktu : 40:00</p>                                                        
+                                            <h5>Goodluck {{ Auth::user()->name }}</h5>                                                        
+                                            <h5 class="met-user-name">{{ $exam->lesson->name }} ({{ $exam->grade.' '.$exam->major }})</h5>                                                        
+                                            <p class="mb-0 met-user-name-post">{{ $exam->user->name }}</p> 
+                                            @php
+                                            $now = \Carbon\Carbon::now();
+                                            $end = \Carbon\Carbon::parse($exam->end_time);
+                                            @endphp                                                       
+                                            <p class="mb-0 met-user-name-post" wire:poll.keep-alive>Sisa Waktu : {{ $end->diffInMinutes($now) }} menit</p>                                                        
                                         </div>
                                     </div>                                                
                                 </div><!--end col-->
                                 
                                 <div class="col-lg-4 ms-auto align-self-center">
                                     <ul class="list-unstyled personal-detail mb-0">
-                                        <li class="mt-2"><i class="fas fa-calendar text-secondary font-22 align-middle mr-2"></i> <b> Durasi </b> : 60 menit</li>
-                                        <li class="mt-2"><i class="fas fa-calendar text-secondary font-22 align-middle mr-2"></i> <b> Mulai </b> : 26 February 2024 08:00</li>
-                                        <li class="mt-2"><i class="fas fa-calendar text-secondary font-22 align-middle mr-2"></i> <b> Selesai </b> : 26 February 2024 09:00</li>
+                                        <li class="mt-2"><i class="fas fa-calendar text-secondary font-22 align-middle mr-2"></i> <b> Durasi </b> : {{ $exam->duration/60 }} menit</li>
+                                        <li class="mt-2"><i class="fas fa-calendar text-secondary font-22 align-middle mr-2"></i> <b> Mulai </b> : {{ \Carbon\Carbon::parse($exam->start_time)->format('d F Y, H:i') }}</li>
+                                        <li class="mt-2"><i class="fas fa-calendar text-secondary font-22 align-middle mr-2"></i> <b> Selesai </b> : {{ \Carbon\Carbon::parse($exam->end_time)->format('d F Y, H:i') }}</li>
                                     </ul>
                                    
                                 </div>
@@ -200,9 +204,24 @@
     <livewire:partials.footer />             
 </div>
 
-@assets
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<link href="
-https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css
-" rel="stylesheet">
-@endassets
+<script>
+// Fungsi untuk memperbarui jam digital
+function updateClock() {
+    // Buat objek tanggal dan waktu saat ini di sisi client
+    var now = new Date();
+
+    // Format waktu dalam bentuk HH:MM:SS
+    var timeString = now.getHours().toString().padStart(2, '0') + ':' +
+                        now.getMinutes().toString().padStart(2, '0') + ':' +
+                        now.getSeconds().toString().padStart(2, '0');
+
+    // Perbarui elemen clock dengan waktu saat ini
+    document.getElementById('clock').innerText = timeString;
+}
+
+// Panggil fungsi updateClock setiap detik
+setInterval(updateClock, 1000);
+
+// Panggil fungsi untuk pertama kali saat halaman dimuat
+updateClock();
+</script>

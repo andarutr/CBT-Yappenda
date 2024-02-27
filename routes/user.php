@@ -15,7 +15,7 @@ Route::middleware('isUser')->group(function(){
 		Route::get('/ganti-password', ChangePassword::class);
 		
 		Route::get('/ujian/ash', ExamList::class);
-		Route::get('/ujian/{lesson}/{uuid}', ExamCreate::class);
+		Route::get('/ujian/{uuid}', ExamCreate::class);
 
 		Route::get('/ujian/asts', function(){
 			abort(503);
