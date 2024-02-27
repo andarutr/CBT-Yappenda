@@ -54,7 +54,7 @@
                         </div>
                         <div class="form-group mb-3 row">
                             <div class="col-lg-9 col-xl-8 offset-lg-3">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-success">Update</button>
                             </div>
                         </div> 
                         </form>  

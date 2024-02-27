@@ -79,7 +79,7 @@
                                                 <div class="form-group mb-3 row">
                                                     <div class="col-lg-12 col-xl-12">
                                                         @foreach($essay_question as $key => $essay)
-                                                        <p>{{ $key + 1 }}.{{ $essay->question }} <a href="" class="badge bg-success"><i class="fas fa-edit"></i></a></p>
+                                                        <p>{{ $key + 1 }}.{{ $essay->question }} <a href="{{ url('/guru/assessment/ash/edit-soal/essay/'.$essay->uuid) }}" class="badge bg-success"><i class="fas fa-edit"></i></a></p>
                                                         @endforeach
                                                     </div>
                                                 </div>
