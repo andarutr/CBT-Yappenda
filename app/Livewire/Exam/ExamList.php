@@ -16,7 +16,7 @@ class ExamList extends Component
 
     public function toExam($uuid)
     {
-        return redirect('/user/ujian/'.$uuid);
+        return redirect('/user/ujian/pg/'.$uuid);
     }
     public function render()
     {
