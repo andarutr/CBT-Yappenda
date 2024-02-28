@@ -61,8 +61,16 @@
                                                     <div class="col-lg-12 col-xl-12">
                                                         @foreach($pg_question as $key => $value)
                                                         <p>{{ $key+1 }}. {{ $value->pgquestion }}</p>
-                                                        
+                                                        <ul>
+                                                            @foreach(json_decode($value->option) as $huruf => $opsi)
+                                                            <li>{{ $huruf }}. {{ $opsi }}</li>
+                                                            @endforeach
+                                                        </ul>
+                                                            @foreach($value->pgAnswer as $val)
+                                                            <p>Jawaban : <b>{{ $val->answer }}</b></p>
+                                                            @endforeach
                                                         @endforeach
+
                                                     </div>
                                                 </div>
                                                 </form>  

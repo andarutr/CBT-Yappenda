@@ -20,6 +20,6 @@ class PGQuestion extends Model
 
     public function pgAnswer()
     {
-        return $this->hasMany(PGAnswer::class);
+        return $this->hasMany(PGAnswer::class, 'pg_question_id');
     }
 }
