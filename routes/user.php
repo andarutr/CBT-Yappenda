@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\Exam\PgExam;
+use App\Livewire\Exam\PgExamId;
 use App\Livewire\Exam\ExamList;
 use App\Livewire\User\Dashboard;
 use App\Livewire\Exam\EssayExam;
@@ -18,6 +19,7 @@ Route::middleware('isUser')->group(function(){
 		
 		Route::get('/ujian/ash', ExamList::class);
 		Route::get('/ujian/pg/{uuid}', PgExam::class);
+		Route::get('/ujian/pg/{id}/{uuid}', PgExamId::class);
 		Route::get('/ujian/essay/{uuid}', EssayExam::class);
 		Route::get('/ujian/preview/{uuid}', PreviewExam::class);
 

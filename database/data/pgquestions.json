@@ -4,5 +4,29 @@
         "pgquestion": "Yang bukan merupakan contoh kalimat deskripsi adalah...",
         "option": {"A":"Tubuh mereka berwarna putih dengan aksen merah muda lembut atau cerah","B":"Sayap depan berfungsi melindungi sayap belakang sehingga teksturnya lebih keras","C":"Rongga itu memperkuat suara yang dihasilkan oleh getaran tymbal","D":"Saat bertelur tonggeret betina menempelkan telur-telurnya di cabang atau batang pohon dan rerumputan","E":"Tonggeret adalah jenis dari serangga"},
         "correct": "E"
+    },
+    {
+        "exam_id": "1",
+        "pgquestion": "Diksi yang tepat untuk menggambarkan suasana cerita yang mencekam adalah...",
+        "option": {"A":"ceria","B":"mendayu-dayu","C":"mencekam","D":"teduh","E":"hujan"},
+        "correct": "C"
+    },
+    {
+        "exam_id": "1",
+        "pgquestion": "Manakah yang merupakan jenis karangan prosa?",
+        "option": {"A":"pantun","B":"puisi","C":"drama","D":"cerpen","E":"musik"},
+        "correct": "D"
+    },
+    {
+        "exam_id": "1",
+        "pgquestion": "Berikut ini yang termasuk unsur intrinsik dalam sebuah cerpen adalah...",
+        "option": {"A":"latar","B":"tema","C":"sudut pandang","D":"tokoh","E":"belakang"},
+        "correct": "B"
+    },
+    {
+        "exam_id": "1",
+        "pgquestion": "Kalimat yang menggunakan majas metafora adalah...",
+        "option": {"A":"Dia adalah bunga di taman hatiku.","B":"Wajahnya seperti bulan purnama.","C":"Angin itu menderu seperti harimau lapar.","D":"Air mata yang jatuh seperti mutiara.","E":"mutiara hatiku."},
+        "correct": "A"
     }
 ]

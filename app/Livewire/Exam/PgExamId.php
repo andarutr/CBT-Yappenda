@@ -3,36 +3,31 @@
 namespace App\Livewire\Exam;
 
 use Request;
-use Carbon\Carbon;
 use App\Models\Exam;
 use Livewire\Component;
 use App\Models\PGQuestion;
-use Illuminate\Support\Collection;
-class PgExam extends Component
+
+class PgExamId extends Component
 {
     public $uuid;
     public $exam;
+    public $id_quest;
     public $question;
     public $answer;
     public $box_question;
 
     public function mount()
     {
-        $this->uuid = Request::segment(4);
+        $this->id_quest = Request::segment(4); 
+        $this->uuid = Request::segment(5);
         $this->exam = Exam::where('uuid', $this->uuid)->first();
-        $this->question = PGQuestion::where('exam_id', $this->exam->id)->first();
+        $this->question = PGQuestion::where(['exam_id' => $this->exam->id, 'id' => $this->id_quest])->first();
 
         $this->box_question = PGQuestion::where('exam_id', $this->exam->id)->get();
     }
 
     public function render()
     {
-        $now = Carbon::now();
-        $end = Carbon::parse($this->exam->end_time);  
-        if($now > $end){
-            dd('Waktu Habis!');
-        }else{
-            return view('livewire.exam.pg-exam');
-        }
+        return view('livewire.exam.pg-exam-id');
     }
 }

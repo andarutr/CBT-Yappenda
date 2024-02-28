@@ -115,7 +115,7 @@
                                             <div class="row p-2">
                                                 @foreach($box_question as $key => $value)
                                                 <div class="col-lg-2">
-                                                    <a href="{{ url('/user/ujian/pg/'.$value->id.'/'.$uuid) }}" class="bg-primary text-white p-3 mb-4">{{ $key+1 }}</a>
+                                                    <a href="{{ url('/user/ujian/pg/'.$value->id.'/'.$uuid) }}" class="bg-primary text-white p-3 mb-4" wire:navigate>{{ $key+1 }}</a>
                                                 </div>
                                                 @endforeach
 
