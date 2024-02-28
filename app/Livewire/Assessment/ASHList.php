@@ -12,7 +12,7 @@ class ASHList extends Component
 
     public function mount()
     {
-        $this->assessment = Exam::orderByDesc('id')->get();
+        $this->assessment = Exam::where('exam_type','ASH')->orderByDesc('id')->get();
     }
 
     public function destroy($uuid)

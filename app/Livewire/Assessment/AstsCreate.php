@@ -10,7 +10,7 @@ use Livewire\Component;
 use Livewire\Attributes\Validate;
 use Illuminate\Support\Facades\Auth;
 
-class ASHCreate extends Component
+class AstsCreate extends Component
 {
     public $lessons;
     #[Validate('required')]
@@ -39,7 +39,7 @@ class ASHCreate extends Component
             'uuid' => Uuid::uuid4()->toString(),
             'user_id' => Auth::user()->id,
             'lesson_id' => $this->lesson_id,
-            'exam_type' => 'ASH',
+            'exam_type' => 'ASTS',
             'grade' => $this->grade,
             'major' => $this->major,
             'duration' => $this->duration*60,
@@ -47,11 +47,11 @@ class ASHCreate extends Component
             'end_time' => $this->end_time,
         ]);
         
-        return redirect('/guru/assessment/ash')->with('success', 'Berhasil menambah ASH');
+        return redirect('/guru/assessment/asts')->with('success', 'Berhasil menambah ASTS');
     }
-    
+
     public function render()
     {
-        return view('livewire.assessment.a-s-h-create');
+        return view('livewire.assessment.asts-create');
     }
 }

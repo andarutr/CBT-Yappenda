@@ -9,7 +9,7 @@ use Livewire\Component;
 use App\Models\EssayQuestion;
 use Livewire\Attributes\Validate;
 
-class ASHQuestionessay extends Component
+class AstsQuestionessay extends Component
 {
     public $uuid;
     public $exam;
@@ -39,6 +39,6 @@ class ASHQuestionessay extends Component
     
     public function render()
     {
-        return view('livewire.assessment.a-s-h-questionessay');
+        return view('livewire.assessment.asts-questionessay');
     }
 }
