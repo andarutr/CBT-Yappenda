@@ -3,22 +3,29 @@
 use App\Livewire\Guru\Dashboard;
 use App\Livewire\Guru\LessonList;
 use App\Livewire\Assessment\ASHList;
-use Illuminate\Support\Facades\Route;
 use App\Livewire\Assessment\AstsList;
+use App\Livewire\Assessment\AsasList;
 use App\Livewire\Setting\ProfileShow;
 use App\Livewire\Assessment\ASHCreate;
 use App\Livewire\Assessment\AstsCreate;
+use App\Livewire\Assessment\AsasCreate;
 use App\Livewire\Setting\ChangePassword;
 use App\Livewire\Assessment\ASHQuestionpg;
 use App\Livewire\Assessment\ASHQuestionpr;
 use App\Livewire\Assessment\AstsQuestionpg;
+use App\Livewire\Assessment\AsasQuestionpg;
 use App\Livewire\Assessment\AstsQuestionpr;
+use App\Livewire\Assessment\AsasQuestionpr;
 use App\Livewire\Assessment\ASHQuestionessay;
+use App\Livewire\Assessment\AsasQuestionessay;
 use App\Livewire\Assessment\AstsQuestionessay;
 use App\Livewire\Assessment\ASHEditQuestionpg;
+use App\Livewire\Assessment\AsasEditQuestionpg;
 use App\Livewire\Assessment\AstsEditQuestionpg;
 use App\Livewire\Assessment\ASHEditQuestionessay;
 use App\Livewire\Assessment\AstsEditQuestionessay;
+use App\Livewire\Assessment\AsasEditQuestionessay;
+use Illuminate\Support\Facades\Route;
 
 // Route
 Route::middleware('isGuru')->group(function(){
@@ -54,8 +61,15 @@ Route::middleware('isGuru')->group(function(){
                 Route::get('/edit-soal/essay/{uuid}', AstsEditQuestionessay::class);
             });
 
-            Route::get('/asas', function(){
-                abort(503);
+            Route::prefix('/asas')->group(function(){
+                Route::get('/', AsasList::class);
+                Route::get('/create', AsasCreate::class);
+                Route::get('/input-soal/pg/{uuid}', AsasQuestionpg::class);
+                Route::get('/input-soal/essay/{uuid}', AsasQuestionessay::class);
+                Route::get('/input-soal/preview/{uuid}', AsasQuestionpr::class);
+
+                Route::get('/edit-soal/pg/{uuid}', AsasEditQuestionpg::class);
+                Route::get('/edit-soal/essay/{uuid}', AsasEditQuestionessay::class);
             });
             Route::get('/pas', function(){
                 abort(503);
