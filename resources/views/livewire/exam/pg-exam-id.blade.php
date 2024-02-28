@@ -59,7 +59,7 @@
                                                 <h4 class="card-title">No. </h4>
                                             </div><!--end card-header-->
                                             <div class="card-body"> 
-                                                <form wire:submit="">
+                                                <form wire:submit="store">
                                                 <div class="form-group mb-3 row">
                                                     <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Soal</label>
                                                     <div class="col-lg-9 col-xl-8">
