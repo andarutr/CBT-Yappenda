@@ -61,6 +61,7 @@ Route::middleware('isGuru')->group(function(){
                 Route::get('/edit-soal/essay/{uuid}', AstsEditQuestionessay::class);
             });
 
+            // Assessment Sumatif Akhir Semester
             Route::prefix('/asas')->group(function(){
                 Route::get('/', AsasList::class);
                 Route::get('/create', AsasCreate::class);
@@ -71,6 +72,7 @@ Route::middleware('isGuru')->group(function(){
                 Route::get('/edit-soal/pg/{uuid}', AsasEditQuestionpg::class);
                 Route::get('/edit-soal/essay/{uuid}', AsasEditQuestionessay::class);
             });
+
             Route::get('/pas', function(){
                 abort(503);
             });
