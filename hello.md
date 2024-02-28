@@ -15,3 +15,5 @@
 ## Policies
 1. Account(can:admin)
 2. Setting(can:all)
+## Bugs
+1. Admin belum bisa memperbarui soal pilihan ganda >,<

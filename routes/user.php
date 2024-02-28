@@ -31,7 +31,7 @@ Route::middleware('isUser')->group(function(){
 			abort(503);
 		});
 
-		Route::get('/hasil-ujian/{name}', function(){
+		Route::get('/hasil-ujian/{uuid}', function(){
 			abort(503);
 		});
 	});
