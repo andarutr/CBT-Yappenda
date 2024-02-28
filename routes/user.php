@@ -25,15 +25,9 @@ Route::middleware('isUser')->group(function(){
 		Route::get('/ujian/essay/{id}/{uuid}', EssayExamId::class);
 		Route::get('/ujian/preview/{uuid}', PreviewExam::class);
 
-		Route::get('/ujian/asts', function(){
-			abort(503);
-		});
-		Route::get('/ujian/asas', function(){
-			abort(503);
-		});
-		Route::get('/ujian/pas', function(){
-			abort(503);
-		});
+		Route::get('/ujian/asts', ExamList::class);
+		Route::get('/ujian/asas', ExamList::class);
+		Route::get('/ujian/pas', ExamList::class);
 
 		Route::get('/hasil-ujian/{uuid}', function(){
 			abort(503);

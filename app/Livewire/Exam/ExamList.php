@@ -2,17 +2,14 @@
 
 namespace App\Livewire\Exam;
 
+use Request;
+use Carbon\Carbon;
 use App\Models\Exam;
 use Livewire\Component;
 
 class ExamList extends Component
 {
-    public $exams;
-
-    public function mount()
-    {
-        $this->exams = Exam::all();
-    }
+    public $search;
 
     public function toExam($uuid)
     {
@@ -20,6 +17,18 @@ class ExamList extends Component
     }
     public function render()
     {
-        return view('livewire.exam.exam-list');
+        $exams = Exam::where('exam_type', Request::segment(3))->get();
+        $results = Exam::where('exam_type', Request::segment(3))
+                            ->orWhereHas('lesson', function($query){
+                                $query->where('name','like','%'.$this->search.'%');
+                            })
+                            ->orWhereHas('user', function($query){
+                                $query->where('name','like','%'.$this->search.'%');
+                            })
+                            ->get();
+        
+        return view('livewire.exam.exam-list', [
+            'exams' => $this->search ? $results : $exams
+        ]);
     }
 }

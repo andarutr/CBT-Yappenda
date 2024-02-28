@@ -49,10 +49,10 @@
 [GET][Component] '/user/profile' = Menampilkan halaman profile => update_profile(), upload_picture()
 [GET][Component] '/user/ganti-password' = Menampilkan halaman ganti password => update_password()
 [GET][Component] '/user/ujian/ash' = Menampilkan halaman ujian yg sedang dimulai atau sudah selesai
-[GET][Component] '/user/ujian/pg/{uuid}' = Menampilkan halaman mengerjakan soal pilihan ganda => Masih Kosong
-[GET][Component] '/user/ujian/essay/{uuid}' = Menampilkan halaman mengerjakan soal essay => store() 
+[GET][Component] '/user/ujian/pg/{id}/{uuid}' = Menampilkan halaman mengerjakan soal pilihan ganda => Masih Kosong
+[GET][Component] '/user/ujian/essay/{id}/{uuid}' = Menampilkan halaman mengerjakan soal essay => store() 
 [GET][Component] '/user/ujian/preview/{uuid}' = Menampilkan halaman preview soal dan jawaban yg sudah dikerjakan => Masih Kosong
-[GET][Component] '/user/ujian/asts' = Dalam pembuatan => abort(503)
-[GET][Component] '/user/ujian/asas' = Dalam pembuatan => abort(503)
-[GET][Component] '/user/ujian/pas' = Dalam pembuatan => abort(503)
+[GET][Component] '/user/ujian/asts' = Menampilkan halaman ujian yg sedang dimulai atau sudah selesai
+[GET][Component] '/user/ujian/asas' = Menampilkan halaman ujian yg sedang dimulai atau sudah selesai
+[GET][Component] '/user/ujian/pas' = Menampilkan halaman ujian yg sedang dimulai atau sudah selesai
 [GET][Component] '/user/hasil-ujian/{uuid}' = Dalam pembuatan => abort(503)

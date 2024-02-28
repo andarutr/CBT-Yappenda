@@ -1,8 +1,13 @@
-@section('title', 'Assessment Sumatif Harian')
+@section('title', strtoupper(Request::segment(3)))
 
 <div class="page-content-tab">
     <div class="container-fluid">
         <livewire:partials.breadcrumb />
+        <div class="row">
+            <div class="col-lg-2">
+                <input type="text" class="form-control shadow" wire:model.live="search" placeholder="Cari disini...">
+            </div>
+        </div>
         <div class="row">
             @foreach($exams as $exam)
             <div class="col-lg-4">
