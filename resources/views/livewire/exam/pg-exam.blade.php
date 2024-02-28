@@ -39,10 +39,7 @@
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" data-bs-toggle="tab" href="#SoalPG" role="tab" aria-selected="false">Soal PG</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('/user/ujian/essay/'.$exam->uuid) }}" class="nav-link" wire:navigate>Soal Essay</a>
+                                <a class="nav-link active" data-bs-toggle="tab" href="#SoalPG" role="tab" aria-selected="false">Soal</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ url('/user/ujian/preview/'.$exam->uuid) }}" class="nav-link" wire:navigate>Preview</a>
@@ -56,56 +53,12 @@
                                     <div class="col-lg-8 col-xl-8">
                                         <div class="card shadow">
                                             <div class="card-header">
-                                                <h4 class="card-title">No. </h4>
+                                                <h4 class="card-title">Doa Sebelum Belajar </h4>
                                             </div><!--end card-header-->
                                             <div class="card-body"> 
-                                                <form wire:submit="">
-                                                <div class="form-group mb-3 row">
-                                                    <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Soal</label>
-                                                    <div class="col-lg-9 col-xl-8">
-                                                        {!! $question->pgquestion !!}
-                                                    </div>
-                                                </div>
-                                                @foreach(json_decode($question->option) as $key => $value)
-                                                <div class="form-group mb-3 row">
-                                                    <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label"></label>
-                                                    <div class="col-lg-9 col-xl-8">
-                                                        {{ $key }}. {{ $value }}
-                                                    </div>
-                                                </div>
-                                                @endforeach
-                                                <div class="form-group mb-3 row">
-                                                    <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Jawaban</label>
-                                                    <div class="col-lg-9 col-xl-8">
-                                                        <table class="table table-bordered">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>
-                                                                        <input type="radio" wire:model="answer" value="A"> A
-                                                                    </th>
-                                                                    <th>
-                                                                        <input type="radio" wire:model="answer" value="B"> B
-                                                                    </th>
-                                                                    <th>
-                                                                        <input type="radio" wire:model="answer" value="C"> C
-                                                                    </th>
-                                                                    <th>
-                                                                        <input type="radio" wire:model="answer" value="D"> D
-                                                                    </th>
-                                                                    <th>
-                                                                        <input type="radio" wire:model="answer" value="E"> E
-                                                                    </th>
-                                                                </tr>
-                                                            </thead>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group mb-3 row">
-                                                    <div class="col-lg-9 col-xl-8 offset-lg-3">
-                                                        <button type="submit" class="btn btn-primary">Simpan</button>
-                                                    </div>
-                                                </div> 
-                                                </form>  
+                                                 <p>اللَّهُمَّ ارْزُقْنَا فَهْمَ النَّبِيِّيْنَ وَحِفْظَ اْلمَرْسَلِيْنَ وَإِلْهَامَ الْمَلَائِكَةِ الْمُقَرَّبِيْنَ، بِرَحْمَتِكَ يَاأَرْحَمَ الرَّاحِمِيْنَ</p>
+                                                <p>Allâhummarzuqnâ fahman nabiyyîna wa hifdhal mursalîna wa ilhâmal malâikatil muqarrabîn birahmatika yâ arhamar râhimîna.</p>
+                                                <p>Artinya: "Ya Allah, anugerahilah kami pemahaman para nabi, hafalan para rasul, dan ilhamnya para malaikat yang dekat (dengan-Mu), sebab kasih sayang-Mu, wahai Zat yang Maha Pengasih."</p>
                                             </div><!--end card-body-->
                                         </div><!--end card-->
                                     </div> 
@@ -113,22 +66,25 @@
                                         <div class="card shadow">
                                             <div class="card-body">
                                             <div class="row p-2">
+                                                <p>
+                                                    <b>Pilihan Ganda</b>
+                                                </p>
                                                 @foreach($box_question as $key => $value)
                                                 <div class="col-lg-2">
-                                                    <a href="{{ url('/user/ujian/pg/'.$value->id.'/'.$uuid) }}" class="bg-primary text-white p-3 mb-4">{{ $key+1 }}</a>
+                                                    <a href="{{ url('/user/ujian/pg/'.$value->id.'/'.$uuid) }}" class="bg-primary text-white p-3 mb-4" wire:navigate>{{ $key+1 }}</a>
                                                 </div>
                                                 @endforeach
-
+                                                <p class="mt-4">
+                                                    <b>Essay</b>
+                                                </p>
+                                                @foreach($box_question_essay as $key => $value)
+                                                <div class="col-lg-2">
+                                                    <a href="{{ url('/user/ujian/essay/'.$value->id.'/'.$uuid) }}" class="bg-warning text-white p-3 mb-4" wire:navigate>{{ $key+1 }}</a>
+                                                </div>
+                                                @endforeach
                                             </div>
                                             </div>
                                         </div>
-                                        <button class="form-control btn btn-success mb-3">Selesai</button>
-                                        <p>Note : </p>
-                                        <ul>
-                                            <li>Data akan tersimpan setelah klik tombol simpan</li>
-                                            <li>Untuk melihat dan mengedit jawaban, klik menu preview</li>
-                                            <li>Pastikan soal sudah terjawab semua ketika klik tombol selesai</li>
-                                        </ul>
                                     </div> 
                                 </div>
                             </div>

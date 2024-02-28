@@ -39,10 +39,7 @@
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
-                                <a href="{{ url('/user/ujian/pg/'.$pgid->id.'/'.$exam->uuid) }}" class="nav-link" wire:navigate>Soal PG</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" data-bs-toggle="tab" href="#SoalEssay" role="tab" aria-selected="false">Soal Essay</a>
+                                <a class="nav-link active" data-bs-toggle="tab" href="#SoalEssay" role="tab" aria-selected="false">Soal</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ url('/user/ujian/preview/'.$exam->uuid) }}" class="nav-link" wire:navigate>Preview</a>
@@ -71,14 +68,13 @@
                                                 <div class="form-group mb-3 row">
                                                     <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Soal</label>
                                                     <div class="col-lg-9 col-xl-8">
-                                                        <p>{{ $question }}</p>
+                                                        <p>{{ $question->question }}</p>
                                                     </div>
                                                 </div>
                                                 <div class="form-group mb-3 row">
                                                     <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Jawaban</label>
                                                     <div class="col-lg-9 col-xl-8">
-                                                        <textarea class="form-control border border-3 rounded-3" type="text" wire:model="answer"></textarea>
-                                                        @error('answer')<p class="text-danger">{{ $message }}</p>@enderror
+                                                        <textarea class="form-control border border-3 rounded-3" type="text" wire:model="answer" rows="8"></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="form-group mb-3 row">
@@ -91,6 +87,28 @@
                                         </div><!--end card-->
                                     </div>
                                     <div class="col-lg-4 col-xl-4">
+                                        <div class="card shadow">
+                                            <div class="card-body">
+                                            <div class="row p-2">
+                                                <p>
+                                                    <b>Pilihan Ganda</b>
+                                                </p>
+                                                @foreach($box_question as $key => $value)
+                                                <div class="col-lg-2">
+                                                    <a href="{{ url('/user/ujian/pg/'.$value->id.'/'.$uuid) }}" class="bg-primary text-white p-3 mb-4" wire:navigate>{{ $key+1 }}</a>
+                                                </div>
+                                                @endforeach
+                                                <p class="mt-4">
+                                                    <b>Essay</b>
+                                                </p>
+                                                @foreach($box_question_essay as $key => $value)
+                                                <div class="col-lg-2">
+                                                    <a href="{{ url('/user/ujian/essay/'.$value->id.'/'.$uuid) }}" class="bg-warning text-white p-3 mb-4" wire:navigate>{{ $key+1 }}</a>
+                                                </div>
+                                                @endforeach
+                                            </div>
+                                            </div>
+                                        </div>
                                         <button class="form-control btn btn-success mb-3">Selesai</button>
                                         <p>Note : </p>
                                         <ul>

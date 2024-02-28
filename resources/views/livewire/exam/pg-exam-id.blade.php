@@ -39,10 +39,7 @@
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" data-bs-toggle="tab" href="#SoalPG" role="tab" aria-selected="false">Soal PG</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('/user/ujian/essay/'.$exam->uuid) }}" class="nav-link" wire:navigate>Soal Essay</a>
+                                <a class="nav-link active" data-bs-toggle="tab" href="#SoalPG" role="tab" aria-selected="false">Soal</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ url('/user/ujian/preview/'.$exam->uuid) }}" class="nav-link" wire:navigate>Preview</a>
@@ -56,7 +53,7 @@
                                     <div class="col-lg-8 col-xl-8">
                                         <div class="card shadow">
                                             <div class="card-header">
-                                                <h4 class="card-title">No. </h4>
+                                                <h4 class="card-title">Soal PG</h4>
                                             </div><!--end card-header-->
                                             <div class="card-body"> 
                                                 <form wire:submit="store">
@@ -113,12 +110,22 @@
                                         <div class="card shadow">
                                             <div class="card-body">
                                             <div class="row p-2">
+                                                <p>
+                                                    <b>Pilihan Ganda</b>
+                                                </p>
                                                 @foreach($box_question as $key => $value)
                                                 <div class="col-lg-2">
                                                     <a href="{{ url('/user/ujian/pg/'.$value->id.'/'.$uuid) }}" class="bg-primary text-white p-3 mb-4" wire:navigate>{{ $key+1 }}</a>
                                                 </div>
                                                 @endforeach
-
+                                                <p class="mt-4">
+                                                    <b>Essay</b>
+                                                </p>
+                                                @foreach($box_question_essay as $key => $value)
+                                                <div class="col-lg-2">
+                                                    <a href="{{ url('/user/ujian/essay/'.$value->id.'/'.$uuid) }}" class="bg-warning text-white p-3 mb-4" wire:navigate>{{ $key+1 }}</a>
+                                                </div>
+                                                @endforeach
                                             </div>
                                             </div>
                                         </div>

@@ -7,13 +7,16 @@
             @foreach($exams as $exam)
             <div class="col-lg-4">
                 <div class="card shadow mt-3">
+                    <div class="card-header text-center">
+                        <b>{{ \Carbon\Carbon::parse($exam->start_time)->format('d F Y') }}</b>
+                    </div>
                     <div class="card-body">
                         <div class="blog-card">
                             <h4 class="my-3">
                                 <a href="" class="">{{ $exam->lesson->name }}</a>
                                 <p>{{ $exam->grade.' '.$exam->major }}</p>
-                                <p>Waktu Mulai : {{ \Carbon\Carbon::parse($exam->start_time)->format('d F Y, H:i') }}</p>
-                                <p>Waktu Selesai : {{ \Carbon\Carbon::parse($exam->end_time)->format('d F Y, H:i') }}</p>
+                                <p>Waktu Mulai : {{ \Carbon\Carbon::parse($exam->start_time)->format('H:i') }}</p>
+                                <p>Waktu Selesai : {{ \Carbon\Carbon::parse($exam->end_time)->format('H:i') }}</p>
                                 <p>Durasi : {{ $exam->duration/60 }} Menit</p>
                             </h4>
                             <hr class="hr-dashed">

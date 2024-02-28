@@ -39,10 +39,7 @@
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
-                                <a href="{{ url('/user/ujian/pg/'.$exam->uuid) }}" class="nav-link" wire:navigate>Soal PG</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('/user/ujian/essay/'.$exam->uuid) }}" class="nav-link" wire:navigate>Soal Essay</a>
+                                <a href="{{ url('/user/ujian/pg/'.$exam->uuid) }}" class="nav-link" wire:navigate>Soal</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" data-bs-toggle="tab" href="#Preview" role="tab" aria-selected="false">Preview</a>
@@ -62,15 +59,14 @@
                                                 <form wire:submit="">
                                                 <div class="form-group mb-3 row">
                                                     <div class="col-lg-12 col-xl-12">
-                                                        <p>1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia at tempora accusantium consequatur sequi error nobis eaque enim molestias tempore est quaerat, voluptates rem. Dolor aut pariatur officia dicta repellat.</p>
-                                                        <p>Jawaban : A .....</p>
+                                                        @foreach($pg_question as $key => $value)
+                                                        <p>{{ $key+1 }}. {{ $value->pgquestion }}</p>
+                                                        
+                                                        @endforeach
                                                     </div>
                                                 </div>
                                                 </form>  
                                             </div><!--end card-body-->
-                                            <div class="align-self-right">
-                                                <a href="#" class="btn btn-sm btn-success form-control"><i class="fas fa-edit"></i></a>
-                                            </div>
                                         </div><!--end card-->
                                     </div> <!-- end col -->
                                     <div class="col-lg-6 col-xl-6">
@@ -82,15 +78,17 @@
                                                 <form wire:submit="">
                                                 <div class="form-group mb-3 row">
                                                     <div class="col-lg-12 col-xl-12">
-                                                        <p>1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia at tempora accusantium consequatur sequi error nobis eaque enim molestias tempore est quaerat, voluptates rem. Dolor aut pariatur officia dicta repellat.</p>
-                                                        <p>Jawaban : ...</p>
+                                                        @foreach($essay_question as $key => $value)
+                                                        <p>{{ $key+1 }}. {{ $value->question }}</p>
+                                                            @foreach($value->esAnswer as $v)
+                                                            <p>Jawaban : <b>{{ $v->answer }}</b></p>
+                                                            @endforeach
+                                                        @endforeach
+                                                        <p>
                                                     </div>
                                                 </div>
                                                 </form>  
                                             </div><!--end card-body-->
-                                            <div class="align-self-right">
-                                                <a href="#" class="btn btn-sm btn-success form-control"><i class="fas fa-edit"></i></a>
-                                            </div>                           
                                         </div><!--end card-->
                                     </div> <!-- end col -->               
                                 </div><!--end row-->

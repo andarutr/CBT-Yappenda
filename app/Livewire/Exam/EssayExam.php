@@ -7,6 +7,7 @@ use Request;
 use App\Models\Exam;
 use Ramsey\Uuid\Uuid;
 use Livewire\Component;
+use App\Models\PGQuestion;
 use App\Models\EssayAnswer;
 use App\Models\EssayQuestion;
 use Livewire\Attributes\Validate;
@@ -18,7 +19,7 @@ class EssayExam extends Component
     public $question;
     #[Validate('required')] 
     public $answer;
-
+    
     public function mount()
     {
         $this->uuid = Request::segment(4);
