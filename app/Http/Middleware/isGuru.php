@@ -20,11 +20,11 @@ class isGuru
         {
             return redirect('/login');
         }else{
-            if(Auth::user()->role->role !== 'Guru'){
-                echo "Kamu bukan guru!"; die;
+            if(Auth::user()->role->role == 'Guru' OR Auth::user()->role->role == 'Admin'){
+                return $next($request);
             }
 
-            return $next($request);
+            echo "Kamu bukan guru!"; die;
         }
     }
 }

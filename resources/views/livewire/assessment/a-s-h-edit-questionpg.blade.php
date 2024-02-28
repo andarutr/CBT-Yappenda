@@ -6,12 +6,20 @@
         <div class="row">
             <div class="col-lg-8 col-xl-8">
                 <a href="{{ url($redirect_url) }}" class="btn btn-success mb-3">Kembali</a>
+                @if(session('success'))
+                <div wire:transition>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('success') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </div>
+                @endif
                 <div class="card shadow">
                     <div class="card-header">
                         <h4 class="card-title">Soal PG</h4>
                     </div><!--end card-header-->
                     <div class="card-body"> 
-                        <form wire:submit="store_pg">
+                        <form wire:submit="update_pg">
                         <div class="form-group mb-3 row">
                             <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Soal</label>
                             <div class="col-lg-9 col-xl-8">
@@ -22,7 +30,7 @@
                         <div class="form-group mb-3 row">
                             <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">{{ $key }}</label>
                             <div class="col-lg-9 col-xl-8">
-                                <input class="form-control border border-3 rounded-3" type="text" value="{{ $value }}">
+                                <input class="form-control border border-3 rounded-3" wire:model="option.{{ $key }}" type="text" value="{{ $value }}">
                             </div>
                         </div>
                         @endforeach     

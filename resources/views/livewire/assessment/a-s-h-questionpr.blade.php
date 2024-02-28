@@ -52,11 +52,22 @@
                                             <div class="card-header">
                                                 <h4 class="card-title">Soal PG</h4>
                                             </div><!--end card-header-->
+                                            @if(session('success'))
+                                            <div wire:transition>
+                                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                                {{ session('success') }}
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                </div>
+                                            </div>
+                                            @endif
                                             <div class="card-body"> 
                                                 <div class="form-group mb-3 row">
                                                     <div class="col-lg-12 col-xl-12">
                                                         @foreach($pg_question as $key => $pg)
-                                                            <p>{{ $key + 1 }} {{ $pg->pgquestion }} <a href="{{ url('/guru/assessment/ash/edit-soal/pg/'.$pg->uuid) }}" class="badge bg-success"><i class="fas fa-edit"></i></a></p>
+                                                            <p>{{ $key + 1 }} {{ $pg->pgquestion }} 
+                                                                <a href="{{ url('/guru/assessment/ash/edit-soal/pg/'.$pg->uuid) }}" class="badge bg-success"><i class="fas fa-edit"></i></a>
+                                                                <button class="badge bg-danger" wire:click="destroy_pg('{{ $pg->id }}')" wire:confirm="Yakin ingin menghapus data?"><i class="fas fa-trash"></i></button>
+                                                            </p>
                                                             @foreach(json_decode($pg->option) as $key => $value)
                                                             <ul>
                                                                 <li>{{ $key }}. {{ $value }}</li>
@@ -79,7 +90,10 @@
                                                 <div class="form-group mb-3 row">
                                                     <div class="col-lg-12 col-xl-12">
                                                         @foreach($essay_question as $key => $essay)
-                                                        <p>{{ $key + 1 }}.{{ $essay->question }} <a href="{{ url('/guru/assessment/ash/edit-soal/essay/'.$essay->uuid) }}" class="badge bg-success"><i class="fas fa-edit"></i></a></p>
+                                                        <p>{{ $key + 1 }}.{{ $essay->question }} 
+                                                            <a href="{{ url('/guru/assessment/ash/edit-soal/essay/'.$essay->uuid) }}" class="badge bg-success"><i class="fas fa-edit"></i></a>
+                                                            <button class="badge bg-danger" wire:click="destroy_essay('{{ $essay->id }}')" wire:confirm="Yakin ingin menghapus data?"><i class="fas fa-trash"></i></button>
+                                                        </p>
                                                         @endforeach
                                                     </div>
                                                 </div>

@@ -10,13 +10,16 @@
         </div>
         <div class="row">
             @foreach($assessment as $ass)
-            @if($ass->user_id == Auth::user()->id && $ass->exam_type === 'ASH')
+            @if($ass->user_id == Auth::user()->id || Auth::user()->role->role === 'Admin')
             <div class="col-lg-4">
                 <div class="card shadow mt-3">
+                    <div class="card-header text-center">
+                        <b>{{ \Carbon\Carbon::parse($ass->start_time)->format('d F Y') }}</b>
+                    </div>
                     <div class="card-body">
                         <div class="blog-card">
                             <h4 class="my-3">
-                                <a href="" class="">{{ $ass->lesson->name }}</a>
+                                <a>{{ $ass->lesson->name }}</a>
                                 <p>{{ $ass->grade.' '.$ass->major }}</p>
                                 <p>Waktu Mulai : {{ \Carbon\Carbon::parse($ass->start_time)->format('d F Y H:i') }}</p>
                                 <p>Waktu Selesai : {{ \Carbon\Carbon::parse($ass->end_time)->format('d F Y H:i') }}</p>
@@ -26,10 +29,10 @@
                             <div class="d-flex justify-content-between">
                                 <div class="meta-box">
                                     <div class="media">
-                                        <img src="/assets/images/users/user.png" alt=""
-                                            class="thumb-sm rounded-circle me-2">
+                                        <img src="{{ asset('assets/images/users/'.$ass->user->picture) }}" alt=""
+                                            class="thumb-sm rounded-circle me-2" width="50" height="50">
                                         <div class="media-body align-self-center text-truncate">
-                                            <h6 class="m-0 text-dark">{{ $ass->guru }}</h6>
+                                            <h6 class="m-0 text-dark">{{ $ass->user->name }}</h6>
                                             <ul class="p-0 list-inline mb-0">
                                             </ul>
                                         </div>

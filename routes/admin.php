@@ -4,6 +4,13 @@ use App\Livewire\Admin\Dashboard;
 use App\Livewire\Account\RoleList;
 use App\Livewire\Lesson\LessonList;
 use App\Livewire\Account\RoleUpdate;
+use App\Livewire\Assessment\ASHList;
+use App\Livewire\Assessment\ASHCreate;
+use App\Livewire\Assessment\ASHQuestionpg;
+use App\Livewire\Assessment\ASHQuestionessay;
+use App\Livewire\Assessment\ASHQuestionpr;
+use App\Livewire\Assessment\ASHEditQuestionpg;
+use App\Livewire\Assessment\ASHEditQuestionessay;
 use App\Livewire\Account\AccountList;
 use App\Livewire\Account\SuspendList;
 use App\Livewire\Lesson\LessonCreate;
@@ -41,6 +48,14 @@ Route::middleware('isAdmin')->group(function(){
         });
 
         Route::prefix('/assessment')->group(function(){
+            Route::get('/ash', ASHList::class);
+            Route::get('/ash/create', ASHCreate::class);
+            Route::get('/ash/input-soal/pg/{uuid}', ASHQuestionpg::class);
+            Route::get('/ash/input-soal/essay/{uuid}', ASHQuestionessay::class);
+            Route::get('/ash/input-soal/preview/{uuid}', ASHQuestionpr::class);
+
+            Route::get('/ash/edit-soal/pg/{uuid}', ASHEditQuestionpg::class);
+            Route::get('/ash/edit-soal/essay/{uuid}', ASHEditQuestionessay::class);
             Route::get('/asts', function(){
                 abort(503);
             });

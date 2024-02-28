@@ -23,6 +23,24 @@ class ASHQuestionpr extends Component
         $this->pg_question = PGQuestion::where('exam_id', $this->exam->id)->get();
     }
 
+    public function destroy_pg($id_quest)
+    {
+        PGQuestion::where('id', $id_quest)->delete();
+
+        session()->flash('success', 'Berhasil menghapus soal PG!');
+
+        return url()->current();
+    }
+
+    public function destroy_essay($id_quest)
+    {
+        EssayQuestion::where('id', $id_quest)->delete();
+
+        session()->flash('success', 'Berhasil menghapus soal Essay!');
+
+        return url()->current();
+    }
+
     public function render()
     {
         return view('livewire.assessment.a-s-h-questionpr');

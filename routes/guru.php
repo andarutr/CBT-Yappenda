@@ -3,6 +3,7 @@
 use App\Livewire\Guru\Dashboard;
 use App\Livewire\Guru\LessonList;
 use App\Livewire\Assessment\ASHList;
+use App\Livewire\Assessment\AstsList;
 use App\Livewire\Setting\ProfileShow;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Assessment\ASHCreate;
@@ -21,20 +22,25 @@ Route::middleware('isGuru')->group(function(){
         Route::get('/ganti-password', ChangePassword::class);
 
         Route::get('/mata-pelajaran', LessonList::class);
-        
+        // Assessment
         Route::prefix('/assessment')->group(function(){
-            Route::get('/ash', ASHList::class);
-            Route::get('/ash/create', ASHCreate::class);
-            Route::get('/ash/input-soal/pg/{uuid}', ASHQuestionpg::class);
-            Route::get('/ash/input-soal/essay/{uuid}', ASHQuestionessay::class);
-            Route::get('/ash/input-soal/preview/{uuid}', ASHQuestionpr::class);
+            // Assessment Sumatif Harian
+            Route::prefix('/ash')->group(function(){
+                Route::get('/', ASHList::class);
+                Route::get('/create', ASHCreate::class);
+                Route::get('/input-soal/pg/{uuid}', ASHQuestionpg::class);
+                Route::get('/input-soal/essay/{uuid}', ASHQuestionessay::class);
+                Route::get('/input-soal/preview/{uuid}', ASHQuestionpr::class);
 
-            Route::get('/ash/edit-soal/pg/{uuid}', ASHEditQuestionpg::class);
-            Route::get('/ash/edit-soal/essay/{uuid}', ASHEditQuestionessay::class);
-
-            Route::get('/asts', function(){
-                abort(503);
+                Route::get('/edit-soal/pg/{uuid}', ASHEditQuestionpg::class);
+                Route::get('/edit-soal/essay/{uuid}', ASHEditQuestionessay::class);
             });
+
+            // Assessment Sumatif Tengah Semester
+            Route::prefix('/asts')->group(function(){
+                Route::get('/', AstsList::class);
+            });
+
             Route::get('/asas', function(){
                 abort(503);
             });
