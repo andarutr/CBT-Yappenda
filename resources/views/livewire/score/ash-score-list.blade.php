@@ -37,7 +37,8 @@
                                         </td>
                                         <td>{{ \Carbon\Carbon::parse($exam->date_exam)->format('d F Y, H:i') }}</td>
                                         <td>
-                                            <a class="btn btn-success" wire:click="toExamResult('{{ $exam->user_id }}', '{{ $exam->exam->uuid }}')" wire:navigate><i class="fas fa-school"></i></a>
+                                            <a class="btn btn btn-success" wire:click="toPgResult('{{ $exam->user_id }}', '{{ $exam->exam->uuid }}')" wire:navigate><i class="fas fa-school"></i> PG</a>
+                                            <a class="btn btn btn-success" wire:click="toEssayResult('{{ $exam->user_id }}', '{{ $exam->exam->uuid }}')" wire:navigate><i class="fas fa-school"></i> Essay</a>
                                         </td>
                                     </tr>
                                     @endif

@@ -3,12 +3,13 @@
 use App\Livewire\Guru\Dashboard;
 use App\Livewire\Guru\LessonList;
 use App\Livewire\Score\AshScoreList;
-use App\Livewire\Score\AshScoreShow;
+use App\Livewire\Score\AshScorePg;
 use App\Livewire\Assessment\ASHList;
 use App\Livewire\Assessment\AstsList;
 use App\Livewire\Assessment\AsasList;
 use App\Livewire\Setting\ProfileShow;
 use App\Livewire\Assessment\ASHCreate;
+use App\Livewire\Score\AshScoreEssay;
 use App\Livewire\Assessment\AstsCreate;
 use App\Livewire\Assessment\AsasCreate;
 use App\Livewire\Setting\ChangePassword;
@@ -85,7 +86,8 @@ Route::middleware('isGuru')->group(function(){
         // Input Nilai
         Route::prefix('/input-nilai')->group(function(){
             Route::get('/ash/', AshScoreList::class);
-            Route::get('/ash/{user_id}/{uuid}', AshScoreShow::class);
+            Route::get('/ash/pg/{user_id}/{uuid}', AshScorePg::class);
+            Route::get('/ash/essay/{id}/{uuid}', AshScoreEssay::class);
         });
     });
 });

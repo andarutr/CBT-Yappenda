@@ -39,9 +39,6 @@
                         <h1>Point PG</h1>
                         <h2>{{ ($pgscore*$b)*0.7 }}</h2>
                     </div>
-                    <div class="card-footer">
-                        <button class="btn btn-success form-control">nilai essay</button>
-                    </div>
                 </div>
             </div>
         </div>

@@ -14,9 +14,14 @@ class AshScoreList extends Component
         $this->exam_results = ExamResult::orderBy('date_exam','desc')->get();
     }
 
-    public function toExamResult($user_id, $uuid)
+    public function toPgResult($user_id, $uuid)
     {
-        return redirect('/guru/input-nilai/ash/'.$user_id.'/'.$uuid);
+        return redirect('/guru/input-nilai/ash/pg/'.$user_id.'/'.$uuid);
+    }
+
+    public function toEssayResult($user_id, $uuid)
+    {
+        return redirect('/guru/input-nilai/ash/essay/'.$user_id.'/'.$uuid);
     }
 
     public function render()
