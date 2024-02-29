@@ -18,7 +18,8 @@ class AshScoreEssay extends Component
     public $user;
     public $user_id;
     public $essay_question;
-    
+    public $count;
+
     public function mount()
     {
         $this->user_id = Request::segment(5);
@@ -27,6 +28,11 @@ class AshScoreEssay extends Component
         $this->exam = Exam::where('uuid', $this->uuid)->first();
         $this->essay_question = EssayQuestion::where('exam_id', $this->exam->id)->get();
         $this->essay = EssayAnswer::where(['user_id' => $this->user_id])->get();
+    }
+
+    public function addScoreEssay($uuid)
+    {
+        return redirect('/guru/input-nilai/ash/nilai-essay/'.$uuid);
     }
 
     public function render()

@@ -18,7 +18,10 @@
                         @endforeach
                         @foreach($essay as $key => $value)
                             @if($value->esQuestion->exam_id == $exam->id)
-                            <p>Jawaban No.{{ $key+1 }} :{{ $value->answer }} </p>
+                            <p>Jawaban No.{{ $key+1 }} :{{ $value->answer }} <a class="badge bg-success" wire:click="addScoreEssay('{{ $value->uuid }}')"><i class="fas fa-edit"></i></a></p>
+                            <p>
+                                <b>{{ $value->score ? $value->score : 'Belum Dinilai' }}</b>
+                            </p>
                             @endif
                         @endforeach
                     </div>
@@ -28,3 +31,4 @@
     </div>
     <livewire:partials.footer />             
 </div>
+
