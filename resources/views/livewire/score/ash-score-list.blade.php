@@ -39,6 +39,7 @@
                                         <td>
                                             <a class="btn btn btn-success" wire:click="toPgResult('{{ $exam->user_id }}', '{{ $exam->exam->uuid }}')" wire:navigate><i class="fas fa-school"></i> PG</a>
                                             <a class="btn btn btn-success" wire:click="toEssayResult('{{ $exam->user_id }}', '{{ $exam->exam->uuid }}')" wire:navigate><i class="fas fa-school"></i> Essay</a>
+                                            <button class="btn btn btn-success" wire:click="toResult('{{ $exam->user_id }}', '{{ $exam->exam->uuid }}')" wire:navigate><i class="fas fa-book"></i> Nilai</button>
                                         </td>
                                     </tr>
                                     @endif
