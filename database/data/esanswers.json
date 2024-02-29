@@ -2,6 +2,16 @@
     {
         "user_id": "3",
         "essay_question_id": "1",
-        "answer": "BENAR!"
+        "answer": "Teknologi memungkinkan kita untuk terhubung dengan orang lain di seluruh dunia dengan cepat dan mudah melalui media sosial, pesan instan, dan panggilan video. Ini mengubah cara kita berinteraksi dengan orang lain dan membuat komunikasi lebih efisien."
+    },
+    {
+        "user_id": "3",
+        "essay_question_id": "2",
+        "answer": "Budaya dan tradisi lokal adalah bagian integral dari identitas suatu masyarakat. Mereka mencerminkan sejarah, nilai-nilai, kepercayaan, dan cara hidup yang unik. Melestarikan budaya lokal membantu menjaga keberagaman dan jati diri suatu bangsa atau kelompok etnis"
+    },
+    {
+        "user_id": "3",
+        "essay_question_id": "3",
+        "answer": "Salah satu tema utama dalam novel ini adalah rasisme dan ketidakadilan yang melanda masyarakat fiktif Maycomb, Alabama. Melalui narasi yang diceritakan oleh Scout, pembaca disajikan dengan gambaran yang jelas tentang diskriminasi rasial yang dialami oleh tokoh-tokoh seperti Tom Robinson. Tema ini menggambarkan ketidakadilan sistematis yang dihadapi oleh orang-orang kulit hitam pada masa itu"
     }
 ]

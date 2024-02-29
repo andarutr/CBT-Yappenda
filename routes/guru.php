@@ -2,6 +2,8 @@
 
 use App\Livewire\Guru\Dashboard;
 use App\Livewire\Guru\LessonList;
+use App\Livewire\Score\AshScoreList;
+use App\Livewire\Score\AshScoreShow;
 use App\Livewire\Assessment\ASHList;
 use App\Livewire\Assessment\AstsList;
 use App\Livewire\Assessment\AsasList;
@@ -82,7 +84,8 @@ Route::middleware('isGuru')->group(function(){
 
         // Input Nilai
         Route::prefix('/input-nilai')->group(function(){
-            // Route::get('/ash/', AshScoreList::class);
+            Route::get('/ash/', AshScoreList::class);
+            Route::get('/ash/{user_id}/{uuid}', AshScoreShow::class);
         });
     });
 });

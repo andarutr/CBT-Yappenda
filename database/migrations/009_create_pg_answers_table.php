@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('pg_question_id');
             $table->text('answer');
+            $table->integer('correct')->nullable();
             $table->integer('score')->nullable();
             $table->timestamps();
 

@@ -23,7 +23,8 @@ class PgAnswerSeeder extends Seeder
                 'uuid' => Uuid::uuid4()->toString(),
                 'user_id' => $answer->user_id,
                 'pg_question_id' => $answer->pg_question_id,
-                'answer' => $answer->answer
+                'answer' => $answer->answer,
+                'correct' => $answer->correct
             ]);
         }
     }
