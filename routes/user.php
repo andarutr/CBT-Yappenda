@@ -15,20 +15,25 @@ use App\Livewire\Setting\ChangePassword;
 Route::middleware('isUser')->group(function(){
 	Route::prefix('/user')->group(function(){
 		Route::get('/dashboard', Dashboard::class);
+		// Settings
 		Route::get('/profile', ProfileShow::class);
 		Route::get('/ganti-password', ChangePassword::class);
-		
-		Route::get('/ujian/ash', ExamList::class);
-		Route::get('/ujian/pg/{uuid}', PgExam::class);
-		Route::get('/ujian/pg/{id}/{uuid}', PgExamId::class);
-		Route::get('/ujian/essay/{uuid}', EssayExam::class);
-		Route::get('/ujian/essay/{id}/{uuid}', EssayExamId::class);
-		Route::get('/ujian/preview/{uuid}', PreviewExam::class);
 
-		Route::get('/ujian/asts', ExamList::class);
-		Route::get('/ujian/asas', ExamList::class);
-		Route::get('/ujian/pas', ExamList::class);
+		// Ujian 
+		Route::prefix('/ujian')->group(function(){
+			Route::get('/ash', ExamList::class);
+			Route::get('/pg/{uuid}', PgExam::class);
+			Route::get('/pg/{id}/{uuid}', PgExamId::class);
+			Route::get('/essay/{uuid}', EssayExam::class);
+			Route::get('/essay/{id}/{uuid}', EssayExamId::class);
+			Route::get('/preview/{uuid}', PreviewExam::class);
 
+			Route::get('/asts', ExamList::class);
+			Route::get('/asas', ExamList::class);
+			Route::get('/pas', ExamList::class);
+		});
+
+		// Hasil Ujian
 		Route::get('/hasil-ujian/{uuid}', function(){
 			abort(503);
 		});

@@ -20,6 +20,6 @@ class EssayQuestion extends Model
 
     public function esAnswer()
     {
-        return $this->hasMany(EssayAnswer::class);
+        return $this->hasMany(EssayAnswer::class, 'essay_question_id');
     }
 }

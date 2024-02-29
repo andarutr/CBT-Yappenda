@@ -20,6 +20,6 @@ class EssayAnswer extends Model
 
     public function esQuestion()
     {
-        return $this->belongsTo(EssayQuestion::class);
+        return $this->belongsTo(EssayQuestion::class, 'essay_question_id');
     }
 }

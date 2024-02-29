@@ -17,15 +17,10 @@
                             <p>Soal {{ $key+1 }} : {{ $value->question }}</p>
                         @endforeach
                         @foreach($essay as $key => $value)
+                            @if($value->esQuestion->exam_id == $exam->id)
                             <p>Jawaban No.{{ $key+1 }} :{{ $value->answer }} </p>
+                            @endif
                         @endforeach
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="card shadow">
-                    <div class="card-body text-center">
-                       
                     </div>
                 </div>
             </div>

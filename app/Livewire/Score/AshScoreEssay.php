@@ -26,7 +26,7 @@ class AshScoreEssay extends Component
         $this->user = User::where('id', $this->user_id)->first();
         $this->exam = Exam::where('uuid', $this->uuid)->first();
         $this->essay_question = EssayQuestion::where('exam_id', $this->exam->id)->get();
-        $this->essay = EssayAnswer::where('user_id', $this->user_id)->get();
+        $this->essay = EssayAnswer::where(['user_id' => $this->user_id])->get();
     }
 
     public function render()

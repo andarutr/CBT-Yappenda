@@ -17,7 +17,7 @@ use App\Http\Controllers\ResetPasswordController;
 */
 
 Route::redirect('/', '/login');
-
+// Authentication
 Route::get('/login', Login::class);
 Route::get('/lupa-password', ForgotPassword::class);
 Route::get('/reset-password/{tokens}', [ResetPasswordController::class, 'index']);

@@ -41,9 +41,12 @@ use App\Livewire\Assessment\AsasEditQuestionessay;
 Route::middleware('isAdmin')->group(function(){
     Route::prefix('/admin')->group(function(){
         Route::get('/dashboard', Dashboard::class);
+        
+        // Settings
         Route::get('/profile', ProfileShow::class);
         Route::get('/ganti-password', ChangePassword::class);
 
+        // Management Account
         Route::prefix('/account')->group(function(){
             Route::get('/', AccountList::class);
             Route::get('/create', AccountCreate::class);
@@ -55,12 +58,14 @@ Route::middleware('isAdmin')->group(function(){
             Route::get('/suspend', SuspendList::class);
         });
 
+        // Mata Pelajaran
         Route::prefix('/mata-pelajaran')->group(function(){
             Route::get('/', LessonList::class);
             Route::get('/create', LessonCreate::class);
             Route::get('/edit/{uuid}', LessonUpdate::class);
         });
 
+        // Assessment
         Route::prefix('/assessment')->group(function(){
             // Assessment Sumatif Harian
             Route::prefix('/ash')->group(function(){
@@ -98,6 +103,7 @@ Route::middleware('isAdmin')->group(function(){
                 Route::get('/edit-soal/essay/{uuid}', AsasEditQuestionessay::class);
             });
 
+            // Penilaian Akhir Semester
             Route::get('/pas', function(){
                 abort(503);
             });
