@@ -23,7 +23,6 @@ class ExResultSeeder extends Seeder
                 'uuid' => Uuid::uuid4()->toString(),
                 'user_id' => $result->user_id,
                 'exam_id' => $result->exam_id,
-                'score' => $result->score,
                 'date_exam' => $result->date_exam,
                 'status' => $result->status
             ]);

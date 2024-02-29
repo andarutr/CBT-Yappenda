@@ -66,6 +66,21 @@
                             <a class="nav-link" href="{{ url('/'.Request::segment(1).'/assessment/pas') }}" wire:navigate>Penilaian Akhir (PAS)</a>
                         </li>
                     </ul>
+                    <h6 class="menu-title">Input Nilai</h6>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/'.Request::segment(1).'/input-nilai/ash') }}" wire:navigate> + Nilai ASH</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/'.Request::segment(1).'/input-nilai/asts') }}" wire:navigate> + Nilai ASTS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/'.Request::segment(1).'/input-nilai/asas') }}" wire:navigate> + Nilai ASAS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/'.Request::segment(1).'/input-nilai/pas') }}" wire:navigate> + Nilai PAS</a>
+                        </li>
+                    </ul>
                 </div>
                 @else
                 <h6 class="menu-title">Ujian</h6>

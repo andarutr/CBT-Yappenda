@@ -34,7 +34,9 @@ Route::middleware('isGuru')->group(function(){
         Route::get('/profile', ProfileShow::class);
         Route::get('/ganti-password', ChangePassword::class);
 
+        // Mata Pelajaran
         Route::get('/mata-pelajaran', LessonList::class);
+        
         // Assessment
         Route::prefix('/assessment')->group(function(){
             // Assessment Sumatif Harian
@@ -76,6 +78,11 @@ Route::middleware('isGuru')->group(function(){
             Route::get('/pas', function(){
                 abort(503);
             });
+        });
+
+        // Input Nilai
+        Route::prefix('/input-nilai')->group(function(){
+            // Route::get('/ash/', AshScoreList::class);
         });
     });
 });

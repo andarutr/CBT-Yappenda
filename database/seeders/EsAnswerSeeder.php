@@ -23,8 +23,7 @@ class EsAnswerSeeder extends Seeder
                 'uuid' => Uuid::uuid4()->toString(),
                 'user_id' => $answer->user_id,
                 'essay_question_id' => $answer->essay_question_id,
-                'answer' => $answer->answer,
-                'score' => $answer->score
+                'answer' => $answer->answer
             ]);
         }
     }

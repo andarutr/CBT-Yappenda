@@ -2,8 +2,7 @@
     {
         "user_id": "3",
         "exam_id": "1",
-        "score": "100",
         "date_exam": "2024-02-25 17:22:21",
-        "status": "Success" 
+        "status": "Belum dinilai" 
     }
 ]

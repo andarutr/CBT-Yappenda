@@ -2,10 +2,13 @@
 
 namespace App\Livewire\Exam;
 
+use Auth;
 use Request;
 use Carbon\Carbon;
 use App\Models\Exam;
+use Ramsey\Uuid\Uuid;
 use Livewire\Component;
+use App\Models\ExamResult;
 
 class ExamList extends Component
 {
@@ -13,6 +16,19 @@ class ExamList extends Component
 
     public function toExam($uuid)
     {
+        $exam_id = Exam::where('uuid', $uuid)->first();
+        
+        ExamResult::updateOrCreate([
+            'user_id' => Auth::user()->id,
+            'exam_id' => $exam_id->id
+        ],[
+            'uuid' => Uuid::uuid4()->toString(),
+            'user_id' => Auth::user()->id,
+            'exam_id' => $exam_id->id,
+            'date_exam' => now(),
+            'status' => 'Belum dinilai'
+        ]);
+
         return redirect('/user/ujian/pg/'.$uuid);
     }
     public function render()

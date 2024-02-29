@@ -16,9 +16,9 @@ return new class extends Migration
             $table->uuid('uuid')->index();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('exam_id');
-            $table->integer('score');
+            $table->integer('score')->nullable();
             $table->timestamp('date_exam');
-            $table->enum('status', ['Success','Failed']);
+            $table->enum('status', ['Sudah dinilai','Belum dinilai']);
             $table->timestamps();
 
             $table->foreign('user_id')
