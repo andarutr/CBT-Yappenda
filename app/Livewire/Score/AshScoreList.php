@@ -4,7 +4,7 @@ namespace App\Livewire\Score;
 
 use Livewire\Component;
 use App\Models\ExamResult;
-use App\Helpers\CalculateScore;
+use App\Helpers\ScoreHelper;
 
 class AshScoreList extends Component
 {
@@ -27,7 +27,7 @@ class AshScoreList extends Component
 
     public function generateScore($user_id, $uuid)
     {
-        CalculateScore::generateScore($user_id, $uuid);
+        ScoreHelper::generateScore($user_id, $uuid);
     }
 
     public function render()

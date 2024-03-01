@@ -2,9 +2,8 @@
 
 namespace App\Livewire\Lesson;
 
-use Ramsey\Uuid\Uuid;
-use App\Models\Lesson;
 use Livewire\Component;
+use App\Helpers\LessonHelper;
 use Livewire\Attributes\Validate;
 
 class LessonCreate extends Component
@@ -15,13 +14,7 @@ class LessonCreate extends Component
     public function store()
     {
         $this->validate();
-
-        Lesson::create([
-            'uuid' => Uuid::uuid4()->toString(),
-            'name' => $this->name
-        ]);
-
-        return redirect('/admin/mata-pelajaran')->with('success','Berhasil tambah mata pelajaran!');
+        $store = LessonHelper::store($this->name);
     }
 
     public function render()

@@ -5,6 +5,7 @@ namespace App\Livewire\Account;
 use Request;
 use App\Models\User;
 use Livewire\Component;
+use App\Helpers\AccountHelper;
 use Livewire\Attributes\Validate;
 
 class PasswordAccountUpdate extends Component
@@ -26,13 +27,13 @@ class PasswordAccountUpdate extends Component
     {
         $this->validate();
 
-        User::where('uuid', $this->uuid)
-                ->update([
-                    'password' => \Hash::make($this->new_password)
-                ]);
+        $data = [
+            'uuid' => $this->uuid,
+            'new_password' => $this->new_password,
+            'name' => $this->name,
+        ];
 
-        $this->reset('new_password');
-        return session()->flash('success', 'Berhasil memperbarui password '.$this->name);
+        $update = AccountHelper::updatePassword($data);
     }
 
     public function render()

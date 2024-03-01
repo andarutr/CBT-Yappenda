@@ -73,6 +73,10 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css
               title: "Login Gagal",
               text: "{{ session('failed') }}",
               icon: "error"
+            }).then((result) => {
+                if(result.isConfirmed){
+                    window.location.reload();
+                }
             });
         </script>
     @endscript

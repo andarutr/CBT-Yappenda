@@ -4,6 +4,7 @@ namespace App\Livewire\Account;
 
 use App\Models\User;
 use Livewire\Component;
+use App\Helpers\AccountHelper;
 
 class SuspendList extends Component
 {
@@ -16,26 +17,20 @@ class SuspendList extends Component
 
     public function suspend($uuid)
     {
-        User::where('uuid', $uuid)
-                ->update([
-                    'role_id' => 13
-                ]);
+        $data = [
+            'uuid' => $uuid,
+        ];
 
-        $user = User::where('uuid', $uuid)->first();
-
-        return redirect()->to('/admin/account/suspend')->with('success', 'Berhasil suspend akun '.$user->name);
+       $suspend = AccountHelper::suspend($data);
     }
 
     public function un_suspend($uuid)
     {
-        User::where('uuid', $uuid)
-                ->update([
-                    'role_id' => 3
-                ]);
-                
-        $user = User::where('uuid', $uuid)->first();
+        $data = [
+            'uuid' => $uuid,
+        ];
 
-        return redirect()->to('/admin/account/suspend')->with('success', 'Berhasil membatalkan suspend akun '.$user->name);
+       $suspend = AccountHelper::unSuspend($data);
     }
 
     public function render()

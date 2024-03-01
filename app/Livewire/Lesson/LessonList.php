@@ -4,6 +4,7 @@ namespace App\Livewire\Lesson;
 
 use App\Models\Lesson;
 use Livewire\Component;
+use App\Helpers\LessonHelper;
 
 class LessonList extends Component
 {
@@ -16,9 +17,7 @@ class LessonList extends Component
 
     public function destroy($uuid)
     {
-        Lesson::where('uuid', $uuid)->delete();
-        
-        return redirect('/admin/mata-pelajaran')->with('success', 'Berhasil menghapus mata pelajaran');
+        $destroy = LessonHelper::destroy($uuid);
     }
 
     public function render()

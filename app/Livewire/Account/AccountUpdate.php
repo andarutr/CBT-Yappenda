@@ -7,6 +7,7 @@ use App\Models\Role;
 use App\Models\User;
 use Ramsey\Uuid\Uuid;
 use Livewire\Component;
+use App\Helpers\AccountHelper;
 use Livewire\Attributes\Validate;
 use Illuminate\Http\Request as Req;
 
@@ -37,12 +38,14 @@ class AccountUpdate extends Component
     {
         $this->validate();
 
-        User::where('uuid', $this->uuid)->update([
+        $data = [
+            'uuid' => $this->uuid,
             'name' => $this->name,
             'email' => $this->email,
             'role_id' => $this->role_id,
-        ]);
-        return redirect('/admin/account')->with('success', 'Berhasil memperbarui akun!');
+        ];
+
+        $update = AccountHelper::update($data);
     }
 
     public function render()

@@ -6,6 +6,7 @@ use Request;
 use App\Models\User;
 use App\Models\Role;
 use Livewire\Component;
+use App\Helpers\AccountHelper;
 
 class RoleUpdate extends Component
 {
@@ -27,12 +28,12 @@ class RoleUpdate extends Component
 
     public function update()
     {
-        User::where('uuid', $this->uuid)
-                ->update([
-                    'role_id' => $this->role_id
-                ]);
+        $data = [
+            'uuid' => $this->uuid,
+            'role_id' => $this->role_id
+        ];
 
-        return session()->flash('success','Berhasil memperbarui role!');
+        $update = AccountHelper::updateRole($data);
     }
 
     public function render()

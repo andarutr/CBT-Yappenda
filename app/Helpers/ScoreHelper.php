@@ -8,7 +8,7 @@ use App\Models\PGQuestion;
 use App\Models\ExamResult;
 use App\Models\EssayAnswer;
 
-class CalculateScore
+class ScoreHelper
 {
     public static function generateScore($user_id, $uuid)
     {

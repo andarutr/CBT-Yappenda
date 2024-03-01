@@ -2,20 +2,17 @@
 
 namespace App\Livewire\Account;
 
-use App\Models\User;
 use App\Models\Role;
-use Ramsey\Uuid\Uuid;
 use Livewire\Component;
+use App\Helpers\AccountHelper;
 use Livewire\Attributes\Validate;
 
 class AccountCreate extends Component
 {
     #[Validate('required')]
     public $name;
-    
     #[Validate('required|unique:users|email')]
     public $email;
-
     #[Validate('required')]
     public $role_id;
     public $roles;
@@ -29,16 +26,13 @@ class AccountCreate extends Component
     {
         $this->validate();
 
-        // Logic Store 
-        User::create([
-            "uuid" => Uuid::uuid4()->toString(),
+        $data = [
+            'role_id' => $this->role_id,
             'name' => $this->name,
             'email' => $this->email,
-            'password' => \Hash::make('test1234'),
-            'role_id' => $this->role_id,
-        ]);
+        ];
 
-        return redirect('/admin/account')->with('success','Berhasil menambah akun!');
+        $store = AccountHelper::store($data);
     }
 
     public function render()
