@@ -37,9 +37,9 @@
                                         </td>
                                         <td>{{ \Carbon\Carbon::parse($exam->date_exam)->format('d F Y, H:i') }}</td>
                                         <td>
-                                            <a class="btn btn btn-success" wire:click="toPgResult('{{ $exam->user_id }}', '{{ $exam->exam->uuid }}')" wire:navigate><i class="fas fa-school"></i> PG</a>
-                                            <a class="btn btn btn-success" wire:click="toEssayResult('{{ $exam->user_id }}', '{{ $exam->exam->uuid }}')" wire:navigate><i class="fas fa-school"></i> Essay</a>
-                                            <button class="btn btn btn-success" wire:click="toResult('{{ $exam->user_id }}', '{{ $exam->exam->uuid }}')" wire:navigate><i class="fas fa-book"></i> Nilai</button>
+                                            <a class="btn btn btn-success" wire:click="toPgResult('{{ $exam->user_id }}', '{{ $exam->exam->uuid }}')"><i class="fas fa-school"></i> PG</a>
+                                            <a class="btn btn btn-success" wire:click="toEssayResult('{{ $exam->user_id }}', '{{ $exam->exam->uuid }}')"><i class="fas fa-school"></i> Essay</a>
+                                            <button class="btn btn btn-success" wire:click="generateScore('{{ $exam->user_id }}', '{{ $exam->exam->uuid }}')"><i class="fas fa-book"></i> Nilai</button>
                                         </td>
                                     </tr>
                                     @endif
@@ -54,3 +54,38 @@
     </div>
     <livewire:partials.footer />             
 </div>
+
+@assets
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link href="
+https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css
+" rel="stylesheet">
+@endassets
+
+@if(session('failed'))
+    @script
+        <script>
+            Swal.fire({
+              title: "{{ session('failed') }}",
+              icon: "error"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.reload();
+                }
+            });
+        </script>
+    @endscript
+@elseif(session('success'))
+    @script
+        <script>
+            Swal.fire({
+              title: "{{ session('success') }}",
+              icon: "success"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.reload();
+                }
+            });
+        </script>
+    @endscript
+@endif
