@@ -7,6 +7,7 @@ use App\Livewire\User\Dashboard;
 use App\Livewire\Exam\EssayExam;
 use App\Livewire\Exam\EssayExamId;
 use App\Livewire\Exam\PreviewExam;
+use App\Livewire\Exam\ShowExamResults;
 use App\Livewire\Setting\ProfileShow;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Setting\ChangePassword;
@@ -34,7 +35,10 @@ Route::middleware('isUser')->group(function(){
 		});
 
 		// Hasil Ujian
-		Route::get('/hasil-ujian/{uuid}', function(){
+		Route::get('/hasil-ujian/ash', ShowExamResults::class);
+		Route::get('/hasil-ujian/asts', ShowExamResults::class);
+		Route::get('/hasil-ujian/asas', ShowExamResults::class);
+		Route::get('/hasil-ujian/pas', function(){
 			abort(503);
 		});
 	});
