@@ -36,10 +36,10 @@
                                 <a class="nav-link active" data-bs-toggle="tab" href="#SoalPG" role="tab" aria-selected="false">Soal PG</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('guru/assessment/ash/input-soal/essay/'.$uuid) }}" class="nav-link" wire:navigate>Soal Essay</a>
+                                <a href="{{ url('guru/assessment/'.strtolower($exam->exam_type).'/input-soal/essay/'.$uuid) }}" class="nav-link" wire:navigate>Soal Essay</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('guru/assessment/ash/input-soal/preview/'.$uuid) }}" class="nav-link" wire:navigate>Preview</a>
+                                <a href="{{ url('guru/assessment/'.strtolower($exam->exam_type).'/input-soal/preview/'.$uuid) }}" class="nav-link" wire:navigate>Preview</a>
                             </li>
                         </ul>
 

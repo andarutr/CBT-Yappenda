@@ -1,4 +1,4 @@
-@section('title', 'Tambah ASH')
+@section('title', 'Tambah Assessment')
 
 <div class="page-content-tab">
     <div class="container-fluid">
@@ -17,6 +17,16 @@
                                     @endforeach               
                                 </select>
                                 @error('lesson_id')<p class="text-danger">{{ $message }}</p>@enderror
+                            </div>
+                            <div class="mt-3">
+                                <label>Jenis Assessment</label>
+                                <select class="form-control border border-3 rounded-3" wire:model.live="exam_type">
+                                    <option value="">Pilih</option> 
+                                    <option value="ASH">ASH</option> 
+                                    <option value="ASTS">ASTS</option> 
+                                    <option value="ASAS">ASAS</option> 
+                                </select>
+                                @error('exam_type')<p class="text-danger">{{ $message }}</p>@enderror
                             </div>
                             <div class="mt-3">
                                 <label>Kelas</label>

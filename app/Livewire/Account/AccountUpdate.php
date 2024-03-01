@@ -46,6 +46,8 @@ class AccountUpdate extends Component
         ];
 
         $update = AccountHelper::update($data);
+
+        return redirect('/admin/account')->with('success', 'Berhasil memperbarui akun!');
     }
 
     public function render()

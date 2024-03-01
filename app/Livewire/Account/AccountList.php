@@ -23,6 +23,8 @@ class AccountList extends Component
         ];
 
         $destroy = AccountHelper::destroy($data);
+
+        return redirect('/admin/account')->with('success', 'Berhasil menghapus akun!');
     }
 
     public function render()

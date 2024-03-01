@@ -41,7 +41,7 @@
                                 </div>
                                 <!--end meta-box-->
                                 <div class="align-self-center">
-                                    <a wire:click="destroy('{{ $ass->uuid }}')" class="btn btn-sm btn-danger rounded-circle" wire:confirm="Yakin ingin menghapus ASH?"><i class="fas fa-trash"></i></a>&nbsp;
+                                    <button wire:click="destroy('{{ $ass->uuid }}')" class="btn btn-sm btn-danger rounded-circle" wire:confirm="Yakin ingin menghapus ASH?"><i class="fas fa-trash"></i></button>&nbsp;
                                     <a href="{{ url('/'.Request::segment(1).'/assessment/ash/input-soal/pg/'.$ass->uuid) }}" class="btn btn-sm btn-primary rounded-circle"><i class="fas fa-plus"></i></a>
                                 </div>
                             </div>

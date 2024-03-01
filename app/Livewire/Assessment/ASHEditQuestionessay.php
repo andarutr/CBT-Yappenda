@@ -6,6 +6,7 @@ use Request;
 use App\Models\Exam;
 use Livewire\Component;
 use App\Models\EssayQuestion;
+use App\Helpers\AssessmentHelper;
 
 class ASHEditQuestionessay extends Component
 {
@@ -20,15 +21,17 @@ class ASHEditQuestionessay extends Component
 
         $this->question = $essay->question;
         $redirect = Exam::where('id', $essay->exam_id)->first();
-        $this->redirect_url = '/guru/assessment/ash/input-soal/essay/'.$redirect->uuid;
+        $this->redirect_url = '/guru/assessment/'.strtolower($redirect->exam_type).'/input-soal/preview/'.$redirect->uuid;
     }
 
-    public function store_essay()
+    public function update_essay()
     {
-        EssayQuestion::where('uuid', $this->uuid)
-                        ->update([
-                            'question' => $this->question
-                        ]);
+        $data = [
+            'uuid' => $this->uuid,
+            'question' => $this->question,
+        ];
+
+        $update = AssessmentHelper::updateEsQuestion($data);
 
         return redirect()->back()->with('success', 'Berhasil memperbarui soal essay!');
     }

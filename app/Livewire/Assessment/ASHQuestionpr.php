@@ -7,6 +7,7 @@ use App\Models\Exam;
 use Livewire\Component;
 use App\Models\PGQuestion;
 use App\Models\EssayQuestion;
+use App\Helpers\AssessmentHelper;
 
 class ASHQuestionpr extends Component
 {
@@ -25,20 +26,20 @@ class ASHQuestionpr extends Component
 
     public function destroy_pg($id_quest)
     {
-        PGQuestion::where('id', $id_quest)->delete();
+        $destroy = AssessmentHelper::destroyPg($id_quest);
 
         session()->flash('success', 'Berhasil menghapus soal PG!');
 
-        return url()->current();
+        return redirect()->back();
     }
 
     public function destroy_essay($id_quest)
     {
-        EssayQuestion::where('id', $id_quest)->delete();
+        $destroy = AssessmentHelper::destroyEs($id_quest);
 
         session()->flash('success', 'Berhasil menghapus soal Essay!');
 
-        return url()->current();
+        return redirect()->back();
     }
 
     public function render()

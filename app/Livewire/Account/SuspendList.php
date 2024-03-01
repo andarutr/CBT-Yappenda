@@ -22,6 +22,7 @@ class SuspendList extends Component
         ];
 
        $suspend = AccountHelper::suspend($data);
+        return redirect()->to('/admin/account/suspend')->with('success', 'Berhasil suspend akun!'); 
     }
 
     public function un_suspend($uuid)
@@ -31,6 +32,8 @@ class SuspendList extends Component
         ];
 
        $suspend = AccountHelper::unSuspend($data);
+
+        return redirect()->to('/admin/account/suspend')->with('success', 'Berhasil membatalkan suspend akun '.$user->name);
     }
 
     public function render()

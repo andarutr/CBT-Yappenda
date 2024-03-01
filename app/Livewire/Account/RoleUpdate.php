@@ -34,6 +34,8 @@ class RoleUpdate extends Component
         ];
 
         $update = AccountHelper::updateRole($data);
+
+        return session()->flash('success','Berhasil memperbarui role!');
     }
 
     public function render()

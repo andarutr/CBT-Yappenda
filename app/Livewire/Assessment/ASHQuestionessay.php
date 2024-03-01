@@ -8,6 +8,7 @@ use Ramsey\Uuid\Uuid;
 use Livewire\Component;
 use App\Models\EssayQuestion;
 use Livewire\Attributes\Validate;
+use App\Helpers\AssessmentHelper;
 
 class ASHQuestionessay extends Component
 {
@@ -26,11 +27,12 @@ class ASHQuestionessay extends Component
     {
         $this->validate();
 
-        EssayQuestion::create([
-            'uuid' => Uuid::uuid4()->toString(),
+        $data = [
             'exam_id' => $this->exam->id,
             'question' => $this->question
-        ]);
+        ];
+
+        $store = AssessmentHelper::storeEsQuestion($data);
         
         $this->reset('question');
 

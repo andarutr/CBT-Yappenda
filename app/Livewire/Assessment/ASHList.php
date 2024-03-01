@@ -2,9 +2,11 @@
 
 namespace App\Livewire\Assessment;
 
+use Auth;
 use Request;
 use App\Models\Exam;
 use Livewire\Component;
+use App\Helpers\AssessmentHelper;
 
 class ASHList extends Component
 {
@@ -12,14 +14,14 @@ class ASHList extends Component
 
     public function mount()
     {
-        $this->assessment = Exam::where('exam_type','ASH')->orderByDesc('id')->get();
+        $this->assessment = Exam::where('exam_type','ASH')->orderByDesc('start_time')->get();
     }
 
     public function destroy($uuid)
     {
-        Exam::where('uuid', $uuid)->delete();
+       $destroy = AssessmentHelper::destroyExam($uuid);
 
-        return redirect('/'.Request::segment(1).'/assessment/ash')->with('success','Berhasil menghapus ASH!');
+        return redirect('/'.strtolower(Auth::user()->role->role).'/assessment/ash')->with('success','Berhasil menghapus Assessment!');
     }
 
     public function render()

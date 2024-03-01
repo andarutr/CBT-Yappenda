@@ -33,13 +33,13 @@
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
-                                <a href="{{ url('guru/assessment/ash/input-soal/pg/'.$uuid) }}" class="nav-link" wire:navigate>Soal PG</a>
+                                <a href="{{ url('guru/assessment/'.strtolower($exam->exam_type).'/input-soal/pg/'.$uuid) }}" class="nav-link" wire:navigate>Soal PG</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" data-bs-toggle="tab" href="#SoalEssay" role="tab" aria-selected="false">Soal Essay</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('guru/assessment/ash/input-soal/preview/'.$uuid) }}" class="nav-link" wire:navigate>Preview</a>
+                                <a href="{{ url('guru/assessment/'.strtolower($exam->exam_type).'/input-soal/preview/'.$uuid) }}" class="nav-link" wire:navigate>Preview</a>
                             </li>
                         </ul>
 

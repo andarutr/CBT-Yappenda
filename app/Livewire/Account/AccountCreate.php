@@ -33,6 +33,8 @@ class AccountCreate extends Component
         ];
 
         $store = AccountHelper::store($data);
+        
+        return redirect('/admin/account')->with('success','Berhasil menambah akun!');
     }
 
     public function render()

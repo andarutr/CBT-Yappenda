@@ -7,6 +7,7 @@ use App\Models\Exam;
 use Ramsey\Uuid\Uuid;
 use Livewire\Component;
 use App\Models\PGQuestion;
+use App\Helpers\AssessmentHelper;
 
 class ASHQuestionpg extends Component
 {
@@ -43,16 +44,17 @@ class ASHQuestionpg extends Component
             'D' => $this->option['D'],
             'E' => $this->option['E'],
         ];
-
+        
         $optionJson = json_encode($options);
         
-        PGQuestion::create([
-            'uuid' => Uuid::uuid4()->toString(),
+        $data = [
             'exam_id' => $this->exam->id,
             'pgquestion' => $this->pgquestion,
             'option' => $optionJson,
             'correct' => $this->correct,
-        ]);
+        ];
+
+        $store = AssessmentHelper::storePgQuestion($data);
 
         $this->reset(['pgquestion','option.A','option.B','option.C','option.D','option.E']);
 

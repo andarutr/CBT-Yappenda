@@ -34,6 +34,8 @@ class PasswordAccountUpdate extends Component
         ];
 
         $update = AccountHelper::updatePassword($data);
+
+        return redirect('/admin/account/reset-password')->with('success', 'Berhasil memperbarui akun '.$data['name']);
     }
 
     public function render()

@@ -33,10 +33,10 @@
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
-                                <a href="{{ url('guru/assessment/ash/input-soal/pg/'.$uuid) }}" class="nav-link" wire:navigate>Soal PG</a>
+                                <a href="{{ url('guru/assessment/'.strtolower($exam->exam_type).'/input-soal/pg/'.$uuid) }}" class="nav-link" wire:navigate>Soal PG</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('guru/assessment/ash/input-soal/essay/'.$uuid) }}" class="nav-link" wire:navigate>Soal Essay</a>
+                                <a href="{{ url('guru/assessment/'.strtolower($exam->exam_type).'/input-soal/essay/'.$uuid) }}" class="nav-link" wire:navigate>Soal Essay</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" data-bs-toggle="tab" href="#Preview" role="tab" aria-selected="false">Preview</a>
@@ -65,7 +65,6 @@
                                                     <div class="col-lg-12 col-xl-12">
                                                         @foreach($pg_question as $key => $pg)
                                                             <p>{{ $key + 1 }} {{ $pg->pgquestion }} 
-                                                                <a href="{{ url('/guru/assessment/ash/edit-soal/pg/'.$pg->uuid) }}" class="badge bg-success"><i class="fas fa-edit"></i></a>
                                                                 <button class="badge bg-danger" wire:click="destroy_pg('{{ $pg->id }}')" wire:confirm="Yakin ingin menghapus data?"><i class="fas fa-trash"></i></button>
                                                             </p>
                                                             @foreach(json_decode($pg->option) as $key => $value)
@@ -91,7 +90,7 @@
                                                     <div class="col-lg-12 col-xl-12">
                                                         @foreach($essay_question as $key => $essay)
                                                         <p>{{ $key + 1 }}.{{ $essay->question }} 
-                                                            <a href="{{ url('/guru/assessment/ash/edit-soal/essay/'.$essay->uuid) }}" class="badge bg-success"><i class="fas fa-edit"></i></a>
+                                                            <a href="{{ url('/guru/assessment/'.strtolower(Request::segment(3)).'/edit-soal/essay/'.$essay->uuid) }}" class="badge bg-success"><i class="fas fa-edit"></i></a>
                                                             <button class="badge bg-danger" wire:click="destroy_essay('{{ $essay->id }}')" wire:confirm="Yakin ingin menghapus data?"><i class="fas fa-trash"></i></button>
                                                         </p>
                                                         @endforeach

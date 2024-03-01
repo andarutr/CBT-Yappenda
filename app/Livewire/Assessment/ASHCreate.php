@@ -8,6 +8,7 @@ use Ramsey\Uuid\Uuid;
 use App\Models\Lesson;
 use Livewire\Component;
 use Livewire\Attributes\Validate;
+use App\Helpers\AssessmentHelper;
 use Illuminate\Support\Facades\Auth;
 
 class ASHCreate extends Component
@@ -15,6 +16,8 @@ class ASHCreate extends Component
     public $lessons;
     #[Validate('required')]
     public $lesson_id;
+    #[Validate('required')]
+    public $exam_type;
     #[Validate('required')]
     public $grade;
     #[Validate('required')]
@@ -35,19 +38,19 @@ class ASHCreate extends Component
     {
         $this->validate();
 
-        Exam::create([
-            'uuid' => Uuid::uuid4()->toString(),
-            'user_id' => Auth::user()->id,
+        $data = [
             'lesson_id' => $this->lesson_id,
-            'exam_type' => 'ASH',
+            'exam_type' => $this->exam_type,
             'grade' => $this->grade,
             'major' => $this->major,
             'duration' => $this->duration*60,
             'start_time' => $this->start_time,
             'end_time' => $this->end_time,
-        ]);
+        ];
         
-        return redirect('/guru/assessment/ash')->with('success', 'Berhasil menambah ASH');
+        $store = AssessmentHelper::store($data);
+
+        return redirect('/'.strtolower(Auth::user()->role->role).'/assessment/'.strtolower($this->exam_type))->with('success', 'Berhasil menambah Assessment!');
     }
     
     public function render()
