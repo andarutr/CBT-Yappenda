@@ -24,6 +24,12 @@ use App\Livewire\Assessment\ASHQuestionpg;
 use App\Livewire\Assessment\ASHQuestionessay;
 use App\Livewire\Assessment\ASHCreate;
 use App\Livewire\Assessment\ASHEditQuestionessay;
+use App\Livewire\Score\AshScoreList;
+use App\Livewire\Score\AstsScoreList;
+use App\Livewire\Score\AsasScoreList;
+use App\Livewire\Score\AshScorePg;
+use App\Livewire\Score\AshScoreEssay;
+use App\Livewire\Score\AshScoreEssayId;
 
 // Routes
 Route::middleware('isAdmin')->group(function(){
@@ -86,6 +92,38 @@ Route::middleware('isAdmin')->group(function(){
             });
 
             // Penilaian Akhir Semester
+            Route::get('/pas', function(){
+                abort(503);
+            });
+        });
+
+        // Input Nilai
+        Route::prefix('/input-nilai')->group(function(){
+            // Input Nilai Assessment Sumatif Harian
+            Route::prefix('/ash')->group(function(){
+                Route::get('/', AshScoreList::class);
+                Route::get('/pg/{user_id}/{uuid}', AshScorePg::class);
+                Route::get('/essay/{id}/{uuid}', AshScoreEssay::class);
+                Route::get('/nilai-essay/{uuid}', AshScoreEssayId::class);
+            });
+
+             // Input Nilai Assessment Sumatif Tengah Semester
+            Route::prefix('/asts')->group(function(){
+                Route::get('/', AstsScoreList::class);
+                Route::get('/pg/{user_id}/{uuid}', AshScorePg::class);
+                Route::get('/essay/{id}/{uuid}', AshScoreEssay::class);
+                Route::get('/nilai-essay/{uuid}', AshScoreEssayId::class);
+            });
+
+             // Input Nilai Assessment Sumatif Akhir Semester
+            Route::prefix('/asas')->group(function(){
+                Route::get('/', AsasScoreList::class);
+                Route::get('/pg/{user_id}/{uuid}', AshScorePg::class);
+                Route::get('/essay/{id}/{uuid}', AshScoreEssay::class);
+                Route::get('/nilai-essay/{uuid}', AshScoreEssayId::class);
+            });
+            
+             // Input Nilai Penilaian Akhir
             Route::get('/pas', function(){
                 abort(503);
             });

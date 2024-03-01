@@ -8,25 +8,25 @@ use App\Models\ExamResult;
 use App\Helpers\ScoreHelper;
 use Illuminate\Database\Eloquent\Builder;
 
-class AshScoreList extends Component
+class AstsScoreList extends Component
 {
     public $exam_results;
 
     public function mount()
     {
         $this->exam_results = ExamResult::whereHas('exam', function(Builder $query){
-            $query->where('exam_type', 'ASH');
+            $query->where('exam_type', 'ASTS');
         })->orderBy('date_exam','desc')->get();
     }
 
     public function toPgResult($user_id, $uuid)
     {
-        return redirect('/'.strtolower(Auth::user()->role->role).'/input-nilai/ash/pg/'.$user_id.'/'.$uuid);
+        return redirect('/'.strtolower(Auth::user()->role->role).'/input-nilai/asts/pg/'.$user_id.'/'.$uuid);
     }
 
     public function toEssayResult($user_id, $uuid)
     {
-        return redirect('/'.strtolower(Auth::user()->role->role).'/input-nilai/ash/essay/'.$user_id.'/'.$uuid);
+        return redirect('/'.strtolower(Auth::user()->role->role).'/input-nilai/asts/essay/'.$user_id.'/'.$uuid);
     }
 
     public function generateScore($user_id, $uuid)
@@ -36,6 +36,6 @@ class AshScoreList extends Component
 
     public function render()
     {
-        return view('livewire.score.ash-score-list');
+        return view('livewire.score.asts-score-list');
     }
 }

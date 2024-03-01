@@ -7,6 +7,7 @@ use Request;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use App\Helpers\SettingHelper;
 use Livewire\Attributes\Validate;
 
 class ProfileShow extends Component
@@ -29,25 +30,26 @@ class ProfileShow extends Component
     {
         $this->validate();
         
-        $segment_1 = Request::segment(1);
+        $data = [
+            'name' => $this->name,
+            'email' => $this->email,
+        ];
 
-        User::where('uuid', Auth::user()->uuid)
-                ->update([
-                    'name' => $this->name,
-                    'email' => $this->email,
-                ]);
+        $update = SettingHelper::updateProfile($data);
 
         return redirect()->back()->with('success', 'Berhasil memperbarui profile!');
     }
 
     public function upload_picture()
     {
-         $this->picture->storePubliclyAs('public/assets/images/users', $this->picture->getClientOriginalName());
-         
-        User::where('uuid', Auth::user()->uuid)
-                ->update([
-                    'picture' => $this->picture->getClientOriginalName()
-                ]);
+        $name_picture = $this->picture->getClientOriginalName();
+        $this->picture->storePubliclyAs('public/assets/images/users', $name_picture);
+        
+        $data = [
+            'picture' => $name_picture
+        ];
+
+        $update = SettingHelper::updatePicture($data);
 
         return redirect()->back()->with('success', 'Berhasil memperbarui foto!');    
     }

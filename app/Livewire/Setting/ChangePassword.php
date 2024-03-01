@@ -2,14 +2,13 @@
 
 namespace App\Livewire\Setting;
 
-use Auth;
-use App\Models\User;
 use Livewire\Component;
+use App\Helpers\SettingHelper;
 use Livewire\Attributes\Validate;
 
 class ChangePassword extends Component
 {
-    #[Validate('required')]
+    #[Validate('required|min:8')]
     public $old_password;
     #[Validate('required|min:8')]
     public $new_password;
@@ -18,19 +17,12 @@ class ChangePassword extends Component
     {
         $this->validate();
 
-        if(auth()->attempt(['email' => Auth::user()->email, 'password' => $this->old_password]))
-        {
-            User::where('uuid', Auth::user()->uuid)
-                ->update([
-                    'password' => \Hash::make($this->new_password)
-                ]);
+       $data = [
+           'old_password' => $this->old_password,
+           'new_password' => $this->new_password,
+       ];
 
-            $this->reset();
-            return redirect()->back()->with('success', 'Berhasil memperbarui password!');
-        }else{
-            $this->reset();
-            return redirect()->back()->with('failed', 'Password salah!');
-        }
+       $update = SettingHelper::updatePassword($data);
         
     }
 

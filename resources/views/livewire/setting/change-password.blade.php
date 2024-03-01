@@ -103,6 +103,10 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css
             Swal.fire({
               title: "{{ session('failed') }}",
               icon: "error"
+            }).then((result) => {
+                if(result.isConfirmed){
+                    window.location.reload();
+                }
             });
         </script>
     @endscript
@@ -112,6 +116,10 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css
             Swal.fire({
               title: "{{ session('success') }}",
               icon: "success"
+            }).then((result) => {
+                if(result.isConfirmed){
+                    window.location.reload();
+                }
             });
         </script>
     @endscript

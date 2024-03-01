@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Score;
 
+use Auth;
 use Request;
 use App\Models\User;
 use App\Models\Exam;
@@ -19,11 +20,13 @@ class AshScoreEssay extends Component
     public $user_id;
     public $essay_question;
     public $count;
+    public $exam_type;
 
     public function mount()
     {
         $this->user_id = Request::segment(5);
         $this->uuid = Request::segment(6);
+        $this->exam_type = Request::segment(3);
         $this->user = User::where('id', $this->user_id)->first();
         $this->exam = Exam::where('uuid', $this->uuid)->first();
         $this->essay_question = EssayQuestion::where('exam_id', $this->exam->id)->get();
@@ -32,7 +35,7 @@ class AshScoreEssay extends Component
 
     public function addScoreEssay($uuid)
     {
-        return redirect('/guru/input-nilai/ash/nilai-essay/'.$uuid);
+        return redirect('/'.strtolower(Auth::user()->role->role).'/input-nilai/'.$this->exam_type.'/nilai-essay/'.$uuid);
     }
 
     public function render()

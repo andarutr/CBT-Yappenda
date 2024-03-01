@@ -7,6 +7,8 @@ use App\Livewire\Setting\ProfileShow;
 use App\Livewire\Guru\LessonList;
 use App\Livewire\Score\AshScorePg;
 use App\Livewire\Score\AshScoreList;
+use App\Livewire\Score\AstsScoreList;
+use App\Livewire\Score\AsasScoreList;
 use App\Livewire\Score\AshScoreEssay;
 use App\Livewire\Score\AshScoreEssayId;
 use App\Livewire\Setting\ChangePassword;
@@ -68,10 +70,27 @@ Route::middleware('isGuru')->group(function(){
 
         // Input Nilai
         Route::prefix('/input-nilai')->group(function(){
-            Route::get('/ash/', AshScoreList::class);
-            Route::get('/ash/pg/{user_id}/{uuid}', AshScorePg::class);
-            Route::get('/ash/essay/{id}/{uuid}', AshScoreEssay::class);
-            Route::get('/ash/nilai-essay/{uuid}', AshScoreEssayId::class);
+            // Input Nilai Assessment Sumatif Harian
+            Route::prefix('/ash')->group(function(){
+                Route::get('/', AshScoreList::class);
+                Route::get('/pg/{user_id}/{uuid}', AshScorePg::class);
+                Route::get('/essay/{id}/{uuid}', AshScoreEssay::class);
+                Route::get('/nilai-essay/{uuid}', AshScoreEssayId::class);
+            });
+
+            Route::prefix('/asts')->group(function(){
+                Route::get('/', AstsScoreList::class);
+                Route::get('/pg/{user_id}/{uuid}', AshScorePg::class);
+                Route::get('/essay/{id}/{uuid}', AshScoreEssay::class);
+                Route::get('/nilai-essay/{uuid}', AshScoreEssayId::class);
+            });
+
+            Route::prefix('/asas')->group(function(){
+                Route::get('/', AsasScoreList::class);
+                Route::get('/pg/{user_id}/{uuid}', AshScorePg::class);
+                Route::get('/essay/{id}/{uuid}', AshScoreEssay::class);
+                Route::get('/nilai-essay/{uuid}', AshScoreEssayId::class);
+            });
         });
     });
 });

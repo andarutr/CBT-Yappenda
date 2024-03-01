@@ -1,4 +1,4 @@
-@section('title', 'Input Nilai ASH')
+@section('title', 'Input Nilai ASAS')
 
 <div class="page-content-tab">
     <div class="container-fluid">
