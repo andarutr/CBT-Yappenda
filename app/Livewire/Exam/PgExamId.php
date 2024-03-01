@@ -11,12 +11,14 @@ use Livewire\Component;
 use App\Models\PGAnswer;
 use App\Models\PGQuestion;
 use App\Models\EssayQuestion;
+use Illuminate\Database\Eloquent\Builder;
 
 class PgExamId extends Component
 {
     public $uuid;
     public $exam;
     public $id_quest;
+    public $picture;
     public $question;
     public $answer;
     public $box_question;
@@ -28,7 +30,7 @@ class PgExamId extends Component
         $this->uuid = Request::segment(5);
         $this->exam = Exam::where('uuid', $this->uuid)->first();
         $this->question = PGQuestion::where(['exam_id' => $this->exam->id, 'id' => $this->id_quest])->first();
-
+        $this->picture = $this->question->picture;
         $this->box_question = PGQuestion::where('exam_id', $this->exam->id)->get();
         $this->box_question_essay = EssayQuestion::where('exam_id', $this->exam->id)->get();
 
@@ -50,7 +52,7 @@ class PgExamId extends Component
             'pg_question_id' => $this->question->id,
             'user_id' => Auth::user()->id,
             'answer' => $this->answer,
-            'score' => 10
+            'correct' => $this->question->correct == $this->answer ? '1' : '0'
         ]);
     }
 

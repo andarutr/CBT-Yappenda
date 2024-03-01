@@ -17,6 +17,7 @@ class EssayExamId extends Component
     public $exam;
     public $answer;
     public $id_quest;
+    public $picture;
     public $question;
     public $box_question;
     public $box_question_essay;
@@ -28,7 +29,7 @@ class EssayExamId extends Component
         $this->exam = Exam::where('uuid', $this->uuid)->first();
         $essay = EssayQuestion::where('id', $this->exam->id)->first();
         $this->question = EssayQuestion::where(['exam_id' => $this->exam->id, 'id' => $this->id_quest])->first();
-
+        $this->picture = $this->question->picture;
         $this->box_question = PGQuestion::where('exam_id', $this->exam->id)->get();
         $this->box_question_essay = EssayQuestion::where('exam_id', $this->exam->id)->get();
 

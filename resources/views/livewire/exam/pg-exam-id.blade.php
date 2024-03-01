@@ -57,6 +57,16 @@
                                             </div><!--end card-header-->
                                             <div class="card-body"> 
                                                 <form wire:submit="store">
+                                                @if($picture)
+                                                <div class="form-group mb-3 row">
+                                                    <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Gambar</label>
+                                                    <div class="col-lg-9 col-xl-8">
+                                                        <a href="{{ asset('storage/assets/images/exam/'.$picture) }}" data-lightbox="image-1">
+                                                            <img src="{{ asset('storage/assets/images/exam/'.$picture) }}" class="img-fluid" width="150">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                @endif
                                                 <div class="form-group mb-3 row">
                                                     <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Soal</label>
                                                     <div class="col-lg-9 col-xl-8">
@@ -114,16 +124,16 @@
                                                     <b>Pilihan Ganda</b>
                                                 </p>
                                                 @foreach($box_question as $key => $value)
-                                                <div class="col-lg-2">
-                                                    <a href="{{ url('/user/ujian/pg/'.$value->id.'/'.$uuid) }}" class="bg-primary text-white p-3 mb-4" wire:navigate>{{ $key+1 }}</a>
+                                                <div class="col-lg-3 mb-2">
+                                                    <a href="{{ url('/user/ujian/pg/'.$value->id.'/'.$uuid) }}" class="btn btn-sm btn-primary text-white p-3 mb-4" wire:navigate>{{ $key+1 }}</a>
                                                 </div>
                                                 @endforeach
                                                 <p class="mt-4">
                                                     <b>Essay</b>
                                                 </p>
                                                 @foreach($box_question_essay as $key => $value)
-                                                <div class="col-lg-2">
-                                                    <a href="{{ url('/user/ujian/essay/'.$value->id.'/'.$uuid) }}" class="bg-warning text-white p-3 mb-4" wire:navigate>{{ $key+1 }}</a>
+                                                <div class="col-lg-2 mb-2">
+                                                    <a href="{{ url('/user/ujian/essay/'.$value->id.'/'.$uuid) }}" class="btn btn-sm btn-warning text-white p-3 mb-4" wire:navigate>{{ $key+1 }}</a>
                                                 </div>
                                                 @endforeach
                                             </div>
@@ -146,4 +156,6 @@
         </div><!--end row-->
     </div>
     <livewire:partials.footer />             
+<link href="{{ url('assets/css/lightbox.css') }}" rel="stylesheet" />
+<script src="{{ url('assets/js/lightbox-plus-jquery.min.js') }}"></script>
 </div>

@@ -69,17 +69,18 @@
                                                 <p>
                                                     <b>Pilihan Ganda</b>
                                                 </p>
+
                                                 @foreach($box_question as $key => $value)
-                                                <div class="col-lg-2">
-                                                    <a href="{{ url('/user/ujian/pg/'.$value->id.'/'.$uuid) }}" class="bg-primary text-white p-3 mb-4" wire:navigate>{{ $key+1 }}</a>
+                                                <div class="col-lg-3 mb-2">
+                                                    <a href="{{ url('/user/ujian/pg/'.$value->id.'/'.$uuid) }}" class="btn btn-primary text-white" wire:navigate>{{ $key+1 }}</a><br>
                                                 </div>
                                                 @endforeach
                                                 <p class="mt-4">
                                                     <b>Essay</b>
                                                 </p>
                                                 @foreach($box_question_essay as $key => $value)
-                                                <div class="col-lg-2">
-                                                    <a href="{{ url('/user/ujian/essay/'.$value->id.'/'.$uuid) }}" class="bg-warning text-white p-3 mb-4" wire:navigate>{{ $key+1 }}</a>
+                                                <div class="col-lg-2 mb-2">
+                                                    <a href="{{ url('/user/ujian/essay/'.$value->id.'/'.$uuid) }}" class="btn btn-warning text-white" wire:navigate>{{ $key+1 }}</a>
                                                 </div>
                                                 @endforeach
                                             </div>
