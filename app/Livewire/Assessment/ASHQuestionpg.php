@@ -3,17 +3,25 @@
 namespace App\Livewire\Assessment;
 
 use Request;
+use Carbon\Carbon;
 use App\Models\Exam;
 use Ramsey\Uuid\Uuid;
 use Livewire\Component;
 use App\Models\PGQuestion;
+use Livewire\WithFileUploads;
+use Livewire\Attributes\Validate;
 use App\Helpers\AssessmentHelper;
 
 class ASHQuestionpg extends Component
 {
+    use WithFileUploads;
+
     public $uuid;
     public $exam;
+    public $picture;
+    #[Validate('required')]
     public $pgquestion;
+    #[Validate('required')]
     public $option = [];
     public $correct;
     
@@ -47,16 +55,33 @@ class ASHQuestionpg extends Component
         
         $optionJson = json_encode($options);
         
-        $data = [
-            'exam_id' => $this->exam->id,
-            'pgquestion' => $this->pgquestion,
-            'option' => $optionJson,
-            'correct' => $this->correct,
-        ];
+        if($this->picture){
+            $imageName = Carbon::parse(now())->format('dmYHis').$this->picture->getClientOriginalExtension();
 
-        $store = AssessmentHelper::storePgQuestion($data);
+            $data = [
+                'exam_id' => $this->exam->id,
+                'pgquestion' => $this->pgquestion,
+                'option' => $optionJson,
+                'correct' => $this->correct,
+                'picture' => $imageName
+            ];
 
-        $this->reset(['pgquestion','option.A','option.B','option.C','option.D','option.E']);
+            $this->picture->storePubliclyAs('public/assets/images/exam', $imageName);
+            $store = AssessmentHelper::storePgQuestion($data);
+        }else{
+            $data = [
+                'exam_id' => $this->exam->id,
+                'pgquestion' => $this->pgquestion,
+                'option' => $optionJson,
+                'correct' => $this->correct,
+                'picture' => NULL
+            ];
+
+            $store = AssessmentHelper::storePgQuestion($data);
+        }
+
+
+        $this->reset(['pgquestion','option.A','option.B','option.C','option.D','option.E','picture']);
 
         return redirect()->back()->with('success', 'Berhasil membuat soal PG!');
     }

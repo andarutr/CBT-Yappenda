@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->uuid('uuid')->index();
             $table->unsignedBigInteger('exam_id');
+            $table->string('picture', 128)->nullable();
             $table->text('pgquestion');
             $table->json('option');
             $table->string('correct');

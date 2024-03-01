@@ -3,14 +3,19 @@
 namespace App\Livewire\Assessment;
 
 use Request;
+use Carbon\Carbon;
 use App\Models\Exam;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use App\Models\EssayQuestion;
 use App\Helpers\AssessmentHelper;
 
 class ASHEditQuestionessay extends Component
 {
+    use WithFileUploads;
+
     public $uuid;
+    public $picture;
     public $question;
     public $redirect_url;
 
@@ -26,12 +31,26 @@ class ASHEditQuestionessay extends Component
 
     public function update_essay()
     {
-        $data = [
-            'uuid' => $this->uuid,
-            'question' => $this->question,
-        ];
+        if($this->picture){
+            $imageName = Carbon::parse(now())->format('dmYHis').$this->picture->getClientOriginalExtension();
+            
+            $data = [
+                'uuid' => $this->uuid,
+                'question' => $this->question,
+                'picture' => $imageName
+            ];
 
-        $update = AssessmentHelper::updateEsQuestion($data);
+            $this->picture->storePubliclyAs('public/assets/images/exam', $imageName);
+            $update = AssessmentHelper::updateEsQuestion($data);
+        }else{
+            $data = [
+                'uuid' => $this->uuid,
+                'question' => $this->question,
+                'picture' => NULL
+            ];
+
+            $update = AssessmentHelper::updateEsQuestion($data);
+        }
 
         return redirect()->back()->with('success', 'Berhasil memperbarui soal essay!');
     }

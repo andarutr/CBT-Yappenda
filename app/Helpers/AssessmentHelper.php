@@ -32,6 +32,7 @@ class AssessmentHelper
             'pgquestion' => $data['pgquestion'],
             'option' => $data['option'],
             'correct' => $data['correct'],
+            'picture' => $data['picture']
         ]);
     }
 
@@ -40,7 +41,8 @@ class AssessmentHelper
         EssayQuestion::create([
             'uuid' => Uuid::uuid4()->toString(),
             'exam_id' => $data['exam_id'],
-            'question' => $data['question']
+            'question' => $data['question'],
+            'picture' => $data['picture']
         ]);
     }
 
@@ -48,7 +50,8 @@ class AssessmentHelper
     {
         EssayQuestion::where('uuid', $data['uuid'])
                         ->update([
-                            'question' => $data['question']
+                            'question' => $data['question'],
+                            'picture' => $data['picture']
                         ]);
     }
 

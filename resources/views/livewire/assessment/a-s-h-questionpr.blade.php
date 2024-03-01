@@ -64,6 +64,9 @@
                                                 <div class="form-group mb-3 row">
                                                     <div class="col-lg-12 col-xl-12">
                                                         @foreach($pg_question as $key => $pg)
+                                                            @if($pg->picture)
+                                                                <img src="{{ asset('storage/assets/images/exam/'.$pg->picture) }}" class="img-fluid mb-3" width="250">
+                                                            @endif
                                                             <p>{{ $key + 1 }} {{ $pg->pgquestion }} 
                                                                 <button class="badge bg-danger" wire:click="destroy_pg('{{ $pg->id }}')" wire:confirm="Yakin ingin menghapus data?"><i class="fas fa-trash"></i></button>
                                                             </p>
@@ -89,6 +92,9 @@
                                                 <div class="form-group mb-3 row">
                                                     <div class="col-lg-12 col-xl-12">
                                                         @foreach($essay_question as $key => $essay)
+                                                        @if($essay->picture)
+                                                            <img src="{{ asset('storage/assets/images/exam/'.$essay->picture) }}" class="img-fluid mb-3" width="250">
+                                                        @endif
                                                         <p>{{ $key + 1 }}.{{ $essay->question }} 
                                                             <a href="{{ url('/guru/assessment/'.strtolower(Request::segment(3)).'/edit-soal/essay/'.$essay->uuid) }}" class="badge bg-success"><i class="fas fa-edit"></i></a>
                                                             <button class="badge bg-danger" wire:click="destroy_essay('{{ $essay->id }}')" wire:confirm="Yakin ingin menghapus data?"><i class="fas fa-trash"></i></button>
@@ -109,3 +115,8 @@
     </div>
     <livewire:partials.footer />             
 </div>
+
+@assets
+<link href="{{ url('assets/css/lightbox.css') }}" rel="stylesheet" />
+<script src="{{ url('assets/js/lightbox-plus-jquery.min.js') }}"></script>
+@endassets

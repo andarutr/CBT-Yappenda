@@ -63,6 +63,12 @@
                                             <div class="card-body"> 
                                                 <form wire:submit="store_essay">
                                                 <div class="form-group mb-3 row">
+                                                    <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Foto (opsional)</label>
+                                                    <div class="col-lg-9 col-xl-8">
+                                                        <input type="file" class="form-control border border-3 rounded-3" wire:model="picture" />
+                                                    </div>
+                                                </div>
+                                                <div class="form-group mb-3 row">
                                                     <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Soal</label>
                                                     <div class="col-lg-9 col-xl-8">
                                                         <textarea class="form-control border border-3 rounded-3" type="text" wire:model="question" rows="5"></textarea>
@@ -77,7 +83,23 @@
                                                 </form>  
                                             </div><!--end card-body-->
                                         </div><!--end card-->
-                                    </div> <!-- end col -->                                          
+                                    </div> <!-- end col -->      
+                                    <div class="col-lg-4">
+                                        <div class="card shadow">
+                                            <div class="card-header">
+                                                <p>Preview Foto</p>
+                                            </div>
+                                            <div class="card-body">
+                                                @if ($picture) 
+                                                <center>
+                                                    <a href="{{ $picture->temporaryUrl() }}" data-lightbox="image-1">
+                                                        <img src="{{ $picture->temporaryUrl() }}" class="img-fluid rounded mb-3" width="250">
+                                                    </a>
+                                                </center>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>                                       
                                 </div><!--end row-->
                             </div>
                         </div>        
@@ -87,4 +109,6 @@
         </div><!--end row-->
     </div>
     <livewire:partials.footer />             
+    <link href="{{ url('assets/css/lightbox.css') }}" rel="stylesheet" />
+    <script src="{{ url('assets/js/lightbox-plus-jquery.min.js') }}"></script>
 </div>
