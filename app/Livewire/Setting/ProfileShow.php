@@ -18,12 +18,20 @@ class ProfileShow extends Component
     public $name;
     #[Validate('required')]
     public $email;
+    public $nis;
+    public $nisn;
+    public $kelas;
+    public $fase;
     public $picture;
 
     public function mount()
     {
         $this->name = Auth::user()->name;
         $this->email = Auth::user()->email;
+        $this->nis = Auth::user()->nis;
+        $this->nisn = Auth::user()->nisn;
+        $this->kelas = Auth::user()->kelas;
+        $this->fase = Auth::user()->fase;
     }
 
     public function update_profile()
@@ -33,6 +41,10 @@ class ProfileShow extends Component
         $data = [
             'name' => $this->name,
             'email' => $this->email,
+            'nis' => $this->nis,
+            'nisn' => $this->nisn,
+            'kelas' => $this->kelas,
+            'fase' => $this->fase,
         ];
 
         $update = SettingHelper::updateProfile($data);

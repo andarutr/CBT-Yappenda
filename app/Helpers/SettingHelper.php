@@ -12,6 +12,10 @@ class SettingHelper
                 ->update([
                     'name' => $data['name'],
                     'email' => $data['email'],
+                    'nis' => $data['nis'],
+                    'nisn' => $data['nisn'],
+                    'kelas' => $data['kelas'],
+                    'fase' => $data['fase'],
                 ]);
     }
 

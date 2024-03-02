@@ -69,6 +69,45 @@
                                                         @error('name')<p class="text-danger">{{ $message }}</p>@enderror
                                                     </div>
                                                 </div>
+                                                @if(Auth::user()->role->role == 'User')
+                                                <div class="form-group mb-3 row">
+                                                    <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">NIS</label>
+                                                    <div class="col-lg-9 col-xl-8">
+                                                        <input class="form-control border border-3 rounded-3" type="text" wire:model="nis" placeholder="Opsional">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group mb-3 row">
+                                                    <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">NISN</label>
+                                                    <div class="col-lg-9 col-xl-8">
+                                                        <input class="form-control border border-3 rounded-3" type="text" wire:model="nisn" placeholder="Opsional">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group mb-3 row">
+                                                    <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Kelas</label>
+                                                    <div class="col-lg-9 col-xl-8">
+                                                        <select class="form-control" wire:model="kelas">
+                                                            <option value="">Pilih</option>
+                                                            <option value="X">X</option>
+                                                            <option value="XI">XI</option>
+                                                            <option value="XII">XII</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group mb-3 row">
+                                                    <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Fase</label>
+                                                    <div class="col-lg-9 col-xl-8">
+                                                        <select class="form-control" wire:model="fase">
+                                                            <option value="">Pilih</option>
+                                                            <option value="A">A</option>
+                                                            <option value="B">B</option>
+                                                            <option value="C">C</option>
+                                                            <option value="D">D</option>
+                                                            <option value="E">E</option>
+                                                            <option value="F">F</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                @endif
                                                 <div class="form-group mb-3 row">
                                                     <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Email</label>
                                                     <div class="col-lg-9 col-xl-8">
