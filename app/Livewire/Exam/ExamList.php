@@ -29,8 +29,16 @@ class ExamList extends Component
             'status' => 'Belum dinilai'
         ]);
 
-        return redirect('/user/ujian/pg/'.$uuid);
+        $results_id = ExamResult::where(['user_id' => Auth::user()->id, 'exam_id' => $exam_id->id])->first();
+
+        if($results_id->is_end == true)
+        {
+            return redirect('/user/ujian/'.strtolower($exam_id->exam_type))->with('failed', 'Anda sudah menyelesaikan ujian ini!');
+        }else{
+            return redirect('/user/ujian/pg/'.$uuid);
+        }
     }
+
     public function render()
     {
         $exams = Exam::where('exam_type', Request::segment(3))->get();
@@ -42,7 +50,7 @@ class ExamList extends Component
                                 $query->where('name','like','%'.$this->search.'%');
                             })
                             ->get();
-        
+
         return view('livewire.exam.exam-list', [
             'exams' => $this->search ? $results : $exams
         ]);

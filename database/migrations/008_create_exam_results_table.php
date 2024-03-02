@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('exam_id');
             $table->integer('score')->nullable();
             $table->timestamp('date_exam');
+            $table->boolean('is_end')->default(false);
             $table->enum('status', ['Sudah dinilai','Belum dinilai']);
             $table->timestamps();
 

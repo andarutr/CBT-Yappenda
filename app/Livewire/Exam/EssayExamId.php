@@ -8,6 +8,7 @@ use App\Models\Exam;
 use Ramsey\Uuid\Uuid;
 use Livewire\Component;
 use App\Models\PgQuestion;
+use App\Models\ExamResult;
 use App\Models\EssayAnswer;
 use App\Models\EssayQuestion;
 
@@ -52,6 +53,19 @@ class EssayExamId extends Component
             'user_id' => Auth::user()->id,
             'answer' => $this->answer
         ]);
+    }
+
+    public function endExam()
+    {
+        ExamResult::where(['exam_id' => $this->exam->id, 'user_id' => Auth::user()->id])
+                    ->updateOrCreate([
+                        'exam_id' => $this->exam->id, 
+                        'user_id' => Auth::user()->id
+                    ],[
+                        'is_end' => true
+                    ]);
+
+        return redirect('/user/ujian/'.strtolower($this->exam->exam_type))->with('success', 'Selamat anda telah menyelesaikan ujian!');
     }
 
     public function render()

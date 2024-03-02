@@ -139,7 +139,7 @@
                                             </div>
                                             </div>
                                         </div>
-                                        <button class="form-control btn btn-success mb-3">Selesai</button>
+                                        <button class="form-control btn btn-success mb-3" wire:click="endExam" wire:confirm="Yakin ingin menyelesaikan ujian ini? Pastikan semua soal telah terisi...">Selesai</button>
                                         <p>Note : </p>
                                         <ul>
                                             <li>Data akan tersimpan setelah klik tombol simpan</li>

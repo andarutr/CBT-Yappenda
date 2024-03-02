@@ -9,6 +9,7 @@ use App\Models\Exam;
 use Ramsey\Uuid\Uuid;
 use Livewire\Component;
 use App\Models\PGAnswer;
+use App\Models\ExamResult;
 use App\Models\PGQuestion;
 use App\Models\EssayQuestion;
 use Illuminate\Database\Eloquent\Builder;
@@ -54,6 +55,19 @@ class PgExamId extends Component
             'answer' => $this->answer,
             'correct' => $this->question->correct == $this->answer ? '1' : '0'
         ]);
+    }
+
+    public function endExam()
+    {
+        ExamResult::where(['exam_id' => $this->exam->id, 'user_id' => Auth::user()->id])
+                    ->updateOrCreate([
+                        'exam_id' => $this->exam->id, 
+                        'user_id' => Auth::user()->id
+                    ],[
+                        'is_end' => true
+                    ]);
+
+        return redirect('/user/ujian/'.strtolower($this->exam->exam_type))->with('success', 'Selamat anda telah menyelesaikan ujian!');
     }
 
     public function render()
