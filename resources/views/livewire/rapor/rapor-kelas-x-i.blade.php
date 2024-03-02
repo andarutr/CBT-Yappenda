@@ -30,7 +30,7 @@
                                         <td>{{ $rapor->semester }}</td>
                                         <td>{{ $rapor->th_ajaran }}</td>
                                         <td>
-                                            <a href="{{ url('/'.strtolower(Auth::user()->role->role).'/rapor/kelas/XI/list') }}" class="btn btn btn-primary" wire:navigate><i class="fas fa-plus"></i> </a>
+                                            <a href="{{ url('/'.strtolower(Auth::user()->role->role).'/rapor/kelas/XI/'.$rapor->uuid) }}" class="btn btn btn-primary" wire:navigate><i class="fas fa-plus"></i> </a>
                                             <button class="btn btn btn-success" wire:click=""><i class="fas fa-eye"></i></button>
                                         </td>
                                     </tr>

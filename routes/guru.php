@@ -4,8 +4,11 @@ use Illuminate\Support\Facades\Route;
 
 use App\Livewire\Guru\Dashboard;
 use App\Livewire\Guru\LessonList;
+use App\Livewire\Rapor\RaporList;
 use App\Livewire\Score\AshScorePg;
 use App\Livewire\Rapor\RaporKelasX;
+use App\Livewire\Rapor\RaporCreate;
+use App\Livewire\Rapor\RaporUpdate;
 use App\Livewire\Rapor\RaporKelasXI;
 use App\Livewire\Rapor\RaporKelasXII;
 use App\Livewire\Assessment\ASHList;
@@ -18,7 +21,6 @@ use App\Livewire\Assessment\AstsList;
 use App\Livewire\Assessment\AsasList;
 use App\Livewire\Assessment\ASHCreate;
 use App\Livewire\Assessment\ASHUpdate;
-use App\Livewire\Rapor\RaporKelasXList;
 use App\Livewire\Score\AshScoreEssayId;
 use App\Livewire\Setting\ChangePassword;
 use App\Livewire\Assessment\ASHQuestionpr;
@@ -102,9 +104,19 @@ Route::middleware('isGuru')->group(function(){
         // Rapor
         Route::prefix('/rapor')->group(function(){
             Route::get('/kelas/X', RaporKelasX::class);
-            Route::get('/kelas/X/list', RaporKelasXList::class);
+            Route::get('/kelas/X/{uuid}', RaporList::class);
+            Route::get('/kelas/X/{user_id}/{uuid}/create', RaporCreate::class);
+            Route::get('/kelas/X/{user_id}/{uuid}/edit', RaporUpdate::class);
+
             Route::get('/kelas/XI', RaporKelasXI::class);
+            Route::get('/kelas/XI/{uuid}', RaporList::class);
+            Route::get('/kelas/XI/{user_id}/{uuid}/create', RaporCreate::class);
+            Route::get('/kelas/XI/{user_id}/{uuid}/edit', RaporUpdate::class);
+
             Route::get('/kelas/XII', RaporKelasXII::class);
+            Route::get('/kelas/XII/{uuid}', RaporList::class);
+            Route::get('/kelas/XII/{user_id}/{uuid}/create', RaporCreate::class);
+            Route::get('/kelas/XII/{user_id}/{uuid}/edit', RaporUpdate::class);
         });
     });
 });

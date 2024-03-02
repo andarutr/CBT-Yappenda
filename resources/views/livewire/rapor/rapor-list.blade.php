@@ -1,8 +1,21 @@
-@section('title', 'Rapor Kelas X')
+@section('title','Rapor Kelas '.Request::segment(4))
 
 <div class="page-content-tab">
     <div class="container-fluid">
         <livewire:partials.breadcrumb />
+        <div class="row">
+            <div class="col-lg-12">
+                <h5>Nama : {{ $rapor->user->name }}</h5>
+                <h5>Kelas : {{ $rapor->user->kelas }}</h5>
+                <h5>Semester : {{ $rapor->semester }}</h5>
+                <h5>Tahun Ajaran : {{ $rapor->th_ajaran }}</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <a href="{{ url('/'.strtolower(Auth::user()->role->role).'/rapor/kelas/'.Request::segment(4).'/'.$rapor->user_id.'/'.$rapor->uuid.'/create') }}" class="btn btn-primary" wire:navigate>Tambah data</a>
+            </div>
+        </div>
         <div class="row">
             <div class="col-12">
                 <div class="card shadow mt-3">
@@ -11,27 +24,23 @@
                             <table class="table" id="datatable_1">
                                 <thead class="thead-light">
                                   <tr>
-                                    <th>Nama</th>
-                                    <th>Kelas</th>
-                                    <th>Jenis Ujian</th>
-                                    <th>Semester</th>
-                                    <th>Tahun Ajaran</th>
+                                    <th>Kelompok</th>
+                                    <th>Mata Pelajaran</th>
+                                    <th>Nilai</th>
+                                    <th>Capaian Pembelajaran</th>
                                     <th>Action</th>
                                   </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($rapors as $rapor)
+                                    @foreach($contents as $content)
                                     <tr>
-                                        <td><img src="{{ url('assets/images/users/'.$rapor->user->picture) }}" alt="" class="rounded-circle thumb-xs me-1">
-                                            {{ $rapor->user->name }}
-                                        </td>
-                                        <td>{{ $rapor->user->kelas }}</td>
-                                        <td>{{ $rapor->exam_type }}</td>
-                                        <td>{{ $rapor->semester }}</td>
-                                        <td>{{ $rapor->th_ajaran }}</td>
+                                        <td>{{ $content->kelompok_mpl }}</td>
+                                        <td>{{ $content->exam->lesson->name }}</td>
+                                        <td>{{ $content->nilai }}</td>
+                                        <td>{{ $content->description }}</td>
                                         <td>
-                                            <a href="{{ url('/'.strtolower(Auth::user()->role->role).'/rapor/kelas/X/'.$rapor->uuid) }}" class="btn btn btn-primary" wire:navigate><i class="fas fa-plus"></i> </a>
-                                            <button class="btn btn btn-success" wire:click=""><i class="fas fa-eye"></i></button>
+                                            <a href="{{ url('/'.strtolower(Auth::user()->role->role).'/rapor/kelas/'.Request::segment(4).'/'.$content->rapor->user_id.'/'.$content->rapor->uuid.'/edit') }}" class="btn btn btn-success" wire:navigate><i class="fas fa-edit"></i> </a>
+                                            <button class="btn btn btn-danger" wire:click="destroy('{{ $content->uuid }}')" wire:confirm="Yakin ingin menghapus data?"><i class="fas fa-trash"></i></button>
                                         </td>
                                     </tr>
                                     @endforeach                      
@@ -59,10 +68,6 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css
             Swal.fire({
               title: "{{ session('failed') }}",
               icon: "error"
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.reload();
-                }
             });
         </script>
     @endscript
@@ -72,10 +77,6 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css
             Swal.fire({
               title: "{{ session('success') }}",
               icon: "success"
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.reload();
-                }
             });
         </script>
     @endscript
