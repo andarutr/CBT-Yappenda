@@ -1,6 +1,7 @@
 [
     {
         "user_id": 3,
+        "exam_type": "ASTS",
         "semester": "1 (Ganjil)",
         "th_ajaran": "2024/2025"
     }

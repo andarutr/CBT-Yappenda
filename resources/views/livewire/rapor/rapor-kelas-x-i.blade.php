@@ -1,4 +1,4 @@
-@section('title', 'Rapor Kelas X')
+@section('title', 'Rapor Kelas XI')
 
 <div class="page-content-tab">
     <div class="container-fluid">
@@ -11,33 +11,27 @@
                             <table class="table" id="datatable_1">
                                 <thead class="thead-light">
                                   <tr>
-                                    <th>Mata Pelajaran</th>
                                     <th>Nama</th>
+                                    <th>Kelas</th>
+                                    <th>Jenis Ujian</th>
                                     <th>Semester</th>
                                     <th>Tahun Ajaran</th>
                                     <th>Action</th>
                                   </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($exam_results as $exam)
+                                    @foreach($rapors as $rapor)
                                     <tr>
-                                        <td><img src="{{ url('assets/images/users/'.$exam->user->picture) }}" alt="" class="rounded-circle thumb-xs me-1">
-                                            {{ $exam->user->name }}
+                                        <td><img src="{{ url('assets/images/users/'.$rapor->user->picture) }}" alt="" class="rounded-circle thumb-xs me-1">
+                                            {{ $rapor->user->name }}
                                         </td>
-                                        <td>{{ $exam->exam->lesson->name }}</td>
-                                        <td>{{ $exam->score }}</td>
+                                        <td>{{ $rapor->user->kelas }}</td>
+                                        <td>{{ $rapor->exam_type }}</td>
+                                        <td>{{ $rapor->semester }}</td>
+                                        <td>{{ $rapor->th_ajaran }}</td>
                                         <td>
-                                        @if($exam->status === 'Belum dinilai')
-                                        <span class="badge bg-warning">{{ $exam->status }}</span>
-                                        @else
-                                        <span class="badge bg-primary">{{ $exam->status }}</span>
-                                        @endif
-                                        </td>
-                                        <td>{{ \Carbon\Carbon::parse($exam->date_exam)->format('d F Y, H:i') }}</td>
-                                        <td>
-                                            <a class="btn btn btn-success" wire:click="toPgResult('{{ $exam->user_id }}', '{{ $exam->exam->uuid }}')"><i class="fas fa-school"></i> PG</a>
-                                            <a class="btn btn btn-success" wire:click="toEssayResult('{{ $exam->user_id }}', '{{ $exam->exam->uuid }}')"><i class="fas fa-school"></i> Essay</a>
-                                            <button class="btn btn btn-success" wire:click="generateScore('{{ $exam->user_id }}', '{{ $exam->exam->uuid }}')"><i class="fas fa-book"></i> Nilai</button>
+                                            <a href="{{ url('/'.strtolower(Auth::user()->role->role).'/rapor/kelas/XI/list') }}" class="btn btn btn-primary" wire:navigate><i class="fas fa-plus"></i> </a>
+                                            <button class="btn btn btn-success" wire:click=""><i class="fas fa-eye"></i></button>
                                         </td>
                                     </tr>
                                     @endforeach                      

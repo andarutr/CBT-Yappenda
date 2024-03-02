@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->uuid('uuid');
             $table->unsignedBigInteger('user_id');
+            $table->enum('exam_type', ['ASH','ASTS','ASAS','PAS']);
             $table->enum('semester', ['1 (Ganjil)','2 (Genap)']);
             $table->enum('th_ajaran', ['2024/2025','2025/2026','2026/2027']);
             $table->timestamps();
