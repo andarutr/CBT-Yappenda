@@ -38,4 +38,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(EssayAnswer::class);
     }
+
+    public function rapor()
+    {
+        return $this->hasMany(Rapor::class);
+    }
 }

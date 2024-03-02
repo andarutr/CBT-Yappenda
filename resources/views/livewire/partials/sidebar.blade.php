@@ -84,15 +84,15 @@
                     <h6 class="menu-title">Rapor</h6>
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/'.Request::segment(1).'/kelas/X') }}" wire:navigate><i class="fas fa-book"></i>&nbsp; Kelas X</a>
+                            <a class="nav-link" href="{{ url('/'.Request::segment(1).'/rapor/kelas/X') }}" wire:navigate><i class="fas fa-book"></i>&nbsp; Kelas X</a>
                         </li>
                         
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/'.Request::segment(1).'/kelas/XI') }}" wire:navigate><i class="fas fa-book"></i>&nbsp; Kelas XI</a>
+                            <a class="nav-link" href="{{ url('/'.Request::segment(1).'/rapor/kelas/XI') }}" wire:navigate><i class="fas fa-book"></i>&nbsp; Kelas XI</a>
                         </li>
                         
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/'.Request::segment(1).'/kelas/XII') }}" wire:navigate><i class="fas fa-book"></i>&nbsp; Kelas XII</a>
+                            <a class="nav-link" href="{{ url('/'.Request::segment(1).'/rapor/kelas/XII') }}" wire:navigate><i class="fas fa-book"></i>&nbsp; Kelas XII</a>
                         </li>
                     </ul>
                 </div>

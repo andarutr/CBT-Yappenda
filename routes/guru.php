@@ -3,20 +3,23 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Livewire\Guru\Dashboard;
-use App\Livewire\Setting\ProfileShow;
 use App\Livewire\Guru\LessonList;
 use App\Livewire\Score\AshScorePg;
+use App\Livewire\Rapor\RaporKelasX;
+use App\Livewire\Rapor\RaporKelasXI;
+use App\Livewire\Rapor\RaporKelasXII;
+use App\Livewire\Assessment\ASHList;
 use App\Livewire\Score\AshScoreList;
+use App\Livewire\Setting\ProfileShow;
 use App\Livewire\Score\AstsScoreList;
 use App\Livewire\Score\AsasScoreList;
 use App\Livewire\Score\AshScoreEssay;
-use App\Livewire\Score\AshScoreEssayId;
-use App\Livewire\Setting\ChangePassword;
-use App\Livewire\Assessment\ASHList;
 use App\Livewire\Assessment\AstsList;
 use App\Livewire\Assessment\AsasList;
 use App\Livewire\Assessment\ASHCreate;
 use App\Livewire\Assessment\ASHUpdate;
+use App\Livewire\Score\AshScoreEssayId;
+use App\Livewire\Setting\ChangePassword;
 use App\Livewire\Assessment\ASHQuestionpr;
 use App\Livewire\Assessment\ASHQuestionpg;
 use App\Livewire\Assessment\ASHQuestionessay;
@@ -93,6 +96,13 @@ Route::middleware('isGuru')->group(function(){
                 Route::get('/essay/{id}/{uuid}', AshScoreEssay::class);
                 Route::get('/nilai-essay/{uuid}', AshScoreEssayId::class);
             });
+        });
+
+        // Rapor
+        Route::prefix('/rapor')->group(function(){
+            Route::get('/kelas/X', RaporKelasX::class);
+            Route::get('/kelas/XI', RaporKelasXI::class);
+            Route::get('/kelas/XII', RaporKelasXII::class);
         });
     });
 });

@@ -29,6 +29,8 @@ class DatabaseSeeder extends Seeder
             ExResultSeeder::class,
             PgAnswerSeeder::class,
             EsAnswerSeeder::class,
+            RaporSeeder::class,
+            ContentRaporSeeder::class,
         ]);
     }
 }

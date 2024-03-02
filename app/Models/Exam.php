@@ -35,4 +35,9 @@ class Exam extends Model
     {
         return $this->hasMany(ExamResult::class);
     }
+
+    public function rapor()
+    {
+        return $this->hasMany(Rapor::class);
+    }
 }
