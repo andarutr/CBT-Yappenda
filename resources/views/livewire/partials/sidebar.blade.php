@@ -40,7 +40,7 @@
 
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link" href="/{{ Request::segment(1) }}/dashboard" wire:navigate>Dashboard</a>
+                        <a class="nav-link" href="/{{ Request::segment(1) }}/dashboard" wire:navigate><i class="fas fa-rocket"></i>&nbsp;Dashboard</a>
                     </li>
                 </ul><!--end nav-->
                 @if(Auth::user()->role->role === 'Guru' | Auth::user()->role->role === 'Admin')
@@ -48,37 +48,51 @@
                     <h6 class="menu-title">Assets</h6>
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/'.Request::segment(1).'/mata-pelajaran') }}" wire:navigate>Mata Pelajaran</a>
+                            <a class="nav-link" href="{{ url('/'.Request::segment(1).'/mata-pelajaran') }}" wire:navigate><i class="fas fa-shapes"></i>&nbsp;Mata Pelajaran</a>
                         </li>
                     </ul>
                     <h6 class="menu-title">Assessment</h6>
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/'.Request::segment(1).'/assessment/ash') }}" wire:navigate>Harian (ASH)</a>
+                            <a class="nav-link" href="{{ url('/'.Request::segment(1).'/assessment/ash') }}" wire:navigate><i class="fas fa-book-open"></i>&nbsp;Asessment ASH</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/'.Request::segment(1).'/assessment/asts') }}" wire:navigate>Tengah Semester (ASTS)</a>
+                            <a class="nav-link" href="{{ url('/'.Request::segment(1).'/assessment/asts') }}" wire:navigate><i class="fas fa-book-open"></i>&nbsp;Asessment ASTS</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/'.Request::segment(1).'/assessment/asas') }}" wire:navigate>Akhir Semester (ASAS)</a>
+                            <a class="nav-link" href="{{ url('/'.Request::segment(1).'/assessment/asas') }}" wire:navigate><i class="fas fa-book-open"></i>&nbsp;Asessment ASAS</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/'.Request::segment(1).'/assessment/pas') }}" wire:navigate>Penilaian Akhir (PAS)</a>
+                            <a class="nav-link" href="{{ url('/'.Request::segment(1).'/assessment/pas') }}" wire:navigate><i class="fas fa-book-open"></i>&nbsp;Asessment PAS</a>
                         </li>
                     </ul>
                     <h6 class="menu-title">Input Nilai</h6>
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/'.Request::segment(1).'/input-nilai/ash') }}" wire:navigate> + Nilai ASH</a>
+                            <a class="nav-link" href="{{ url('/'.Request::segment(1).'/input-nilai/ash') }}" wire:navigate><i class="fas fa-star"></i>&nbsp; Nilai ASH</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/'.Request::segment(1).'/input-nilai/asts') }}" wire:navigate> + Nilai ASTS</a>
+                            <a class="nav-link" href="{{ url('/'.Request::segment(1).'/input-nilai/asts') }}" wire:navigate><i class="fas fa-star"></i>&nbsp; Nilai ASTS</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/'.Request::segment(1).'/input-nilai/asas') }}" wire:navigate> + Nilai ASAS</a>
+                            <a class="nav-link" href="{{ url('/'.Request::segment(1).'/input-nilai/asas') }}" wire:navigate><i class="fas fa-star"></i>&nbsp; Nilai ASAS</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/'.Request::segment(1).'/input-nilai/pas') }}" wire:navigate> + Nilai PAS</a>
+                            <a class="nav-link" href="{{ url('/'.Request::segment(1).'/input-nilai/pas') }}" wire:navigate><i class="fas fa-star"></i>&nbsp;Nilai PAS</a>
+                        </li>
+                    </ul>
+                    <h6 class="menu-title">Rapor</h6>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/'.Request::segment(1).'/kelas/X') }}" wire:navigate><i class="fas fa-book"></i>&nbsp; Kelas X</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/'.Request::segment(1).'/kelas/XI') }}" wire:navigate><i class="fas fa-book"></i>&nbsp; Kelas XI</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/'.Request::segment(1).'/kelas/XII') }}" wire:navigate><i class="fas fa-book"></i>&nbsp; Kelas XII</a>
                         </li>
                     </ul>
                 </div>
@@ -86,31 +100,31 @@
                 <h6 class="menu-title">Ujian</h6>
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/user/ujian/ash') }}" wire:navigate>Harian (ASH)</a>
+                        <a class="nav-link" href="{{ url('/user/ujian/ash') }}" wire:navigate><i class="fas fa-user-graduate"></i>&nbsp; Assessment ASH</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/user/ujian/asts') }}" wire:navigate>Tengah Semester (ASTS)</a>
+                        <a class="nav-link" href="{{ url('/user/ujian/asts') }}" wire:navigate><i class="fas fa-user-graduate"></i>&nbsp; Assessment ASTS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/user/ujian/asas') }}" wire:navigate>Akhir Semester (ASAS)</a>
+                        <a class="nav-link" href="{{ url('/user/ujian/asas') }}" wire:navigate><i class="fas fa-user-graduate"></i>&nbsp; Assessment ASAS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/user/ujian/pas') }}" wire:navigate>Penilaian Akhir (PAS)</a>
+                        <a class="nav-link" href="{{ url('/user/ujian/pas') }}" wire:navigate><i class="fas fa-user-graduate"></i>&nbsp; Assessment PAS</a>
                     </li>
                 </ul>
                 <h6 class="menu-title">Hasil Ujian</h6>
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/user/hasil-ujian/ash') }}" wire:navigate>Harian (ASH)</a>
+                        <a class="nav-link" href="{{ url('/user/hasil-ujian/ash') }}" wire:navigate><i class="fas fa-award"></i>&nbsp; Nilai ASH</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/user/hasil-ujian/asts') }}" wire:navigate>Tengah Semester (ASTS)</a>
+                        <a class="nav-link" href="{{ url('/user/hasil-ujian/asts') }}" wire:navigate><i class="fas fa-award"></i>&nbsp; Nilai ASTS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/user/hasil-ujian/asas') }}" wire:navigate>Akhir Semester (ASAS)</a>
+                        <a class="nav-link" href="{{ url('/user/hasil-ujian/asas') }}" wire:navigate><i class="fas fa-award"></i>&nbsp; Nilai ASAS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/user/hasil-ujian/pas') }}" wire:navigate>Penilaian Akhir (PAS)</a>
+                        <a class="nav-link" href="{{ url('/user/hasil-ujian/pas') }}" wire:navigate><i class="fas fa-award"></i>&nbsp; Nilai PAS</a>
                     </li>
                 </ul>
                 @endif
@@ -120,16 +134,16 @@
                 </div>
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/admin/account') }}" wire:navigate>Account</a>
+                        <a class="nav-link" href="{{ url('/admin/account') }}" wire:navigate><i class="fas fa-users"></i>&nbsp;Account</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/admin/account/reset-password') }}" wire:navigate>Reset Password</a>
+                        <a class="nav-link" href="{{ url('/admin/account/reset-password') }}" wire:navigate><i class="fas fa-lock"></i>&nbsp;Reset Password</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/admin/account/role') }}" wire:navigate>Ganti Role</a>
+                        <a class="nav-link" href="{{ url('/admin/account/role') }}" wire:navigate><i class="fas fa-user"></i>&nbsp;Ganti Role</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/admin/account/suspend') }}" wire:navigate>Suspend</a>
+                        <a class="nav-link" href="{{ url('/admin/account/suspend') }}" wire:navigate><i class="fas fa-times"></i>&nbsp;Suspend</a>
                     </li>
                 </ul><!--end nav-->
                 @endif
