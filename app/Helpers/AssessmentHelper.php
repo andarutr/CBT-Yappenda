@@ -18,7 +18,24 @@ class AssessmentHelper
             'exam_type' => $data['exam_type'],
             'grade' => $data['grade'],
             'major' => $data['major'],
-            'duration' => $data['duration']*60,
+            'semester' => $data['semester'],
+            'th_ajaran' => $data['th_ajaran'],
+            'duration' => $data['duration'],
+            'start_time' => $data['start_time'],
+            'end_time' => $data['end_time'],
+        ]);
+    }
+
+    public static function update($data)
+    {
+        Exam::where('uuid', $data['uuid'])->update([
+            'uuid' => Uuid::uuid4()->toString(),
+            'exam_type' => $data['exam_type'],
+            'grade' => $data['grade'],
+            'major' => $data['major'],
+            'semester' => $data['semester'],
+            'th_ajaran' => $data['th_ajaran'],
+            'duration' => $data['duration'],
             'start_time' => $data['start_time'],
             'end_time' => $data['end_time'],
         ]);

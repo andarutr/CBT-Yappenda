@@ -22,7 +22,7 @@
                                 <p>{{ $exam->grade.' '.$exam->major }}</p>
                                 <p>Waktu Mulai : {{ \Carbon\Carbon::parse($exam->start_time)->format('H:i') }}</p>
                                 <p>Waktu Selesai : {{ \Carbon\Carbon::parse($exam->end_time)->format('H:i') }}</p>
-                                <p>Durasi : {{ $exam->duration/60 }} Menit</p>
+                                <p>Durasi : {{ $exam->duration }} Menit</p>
                             </h4>
                             <hr class="hr-dashed">
                             <div class="d-flex justify-content-between">

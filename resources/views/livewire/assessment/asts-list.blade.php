@@ -23,7 +23,7 @@
                                 <p>{{ $ass->grade.' '.$ass->major }}</p>
                                 <p>Waktu Mulai : {{ \Carbon\Carbon::parse($ass->start_time)->format('d F Y H:i') }}</p>
                                 <p>Waktu Selesai : {{ \Carbon\Carbon::parse($ass->end_time)->format('d F Y H:i') }}</p>
-                                <p>Durasi : {{ $ass->duration/60 }} Menit</p>
+                                <p>Durasi : {{ $ass->duration }} Menit</p>
                             </h4>
                             <hr class="hr-dashed">
                             <div class="d-flex justify-content-between">

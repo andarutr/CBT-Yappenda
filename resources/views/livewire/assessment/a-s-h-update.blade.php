@@ -1,4 +1,4 @@
-@section('title', 'Tambah Assessment')
+@section('title', 'Memperbarui Assessment')
 
 <div class="page-content-tab">
     <div class="container-fluid">
@@ -7,16 +7,12 @@
             <div class="col-lg-12">
                 <div class="card shadow">
                     <div class="card-body">
-                        <form wire:submit="store">
+                        <form wire:submit="update">
                             <div class="mt-3">
                                 <label>Mata Pelajaran</label>
-                                <select class="form-control border border-3 rounded-3" wire:model.live="lesson_id">
-                                    <option value="">Pilih</option> 
-                                    @foreach($lessons as $lesson)
-                                    <option value="{{ $lesson->id }}">{{ $lesson->name }}</option> 
-                                    @endforeach               
+                                <select class="form-control border border-3 rounded-3" disabled>
+                                    <option>{{ $exam->lesson->name }}</option> 
                                 </select>
-                                @error('lesson_id')<p class="text-danger">{{ $message }}</p>@enderror
                             </div>
                             <div class="mt-3">
                                 <label>Jenis Assessment</label>
@@ -82,7 +78,7 @@
                                 @error('end_time')<p class="text-danger">{{ $message }}</p>@enderror
                             </div>
                             <div class="mt-3">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-success">Update</button>
                             </div>
                         </form>
                     </div>

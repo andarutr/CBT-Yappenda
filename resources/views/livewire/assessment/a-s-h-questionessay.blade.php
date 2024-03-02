@@ -13,14 +13,15 @@
                                     <div class="met-profile-main">
                                         <div class="met-profile_user-detail">
                                             <h5 class="met-user-name">{{ $exam->lesson->name }} ({{ $exam->grade.' '.$exam->major}})</h5>                                                        
-                                            <p class="mb-0 met-user-name-post">{{ $exam->user->name }}</p>                                                        
+                                            <p class="mb-0 met-user-name-post">{{ $exam->user->name }}</p>    
+                                            <p class="mb-0 met-user-name-post">Semester {{ $exam->semester }} - {{ $exam->th_ajaran }}</p>                                                    
                                         </div>
                                     </div>                                                
                                 </div><!--end col-->
                                 
                                 <div class="col-lg-4 ms-auto align-self-center">
                                     <ul class="list-unstyled personal-detail mb-0">
-                                        <li class="mt-2"><i class="fas fa-clock text-secondary font-22 align-middle mr-2"></i> <b> Durasi </b> : {{ $exam->duration/60 }} menit</li>
+                                        <li class="mt-2"><i class="fas fa-clock text-secondary font-22 align-middle mr-2"></i> <b> Durasi </b> : {{ $exam->duration }} menit</li>
                                         <li class="mt-2"><i class="fas fa-calendar text-secondary font-22 align-middle mr-2"></i> <b> Mulai </b> : {{ \Carbon\Carbon::parse($exam->start_time)->format('d F Y, H:i') }}</li>
                                         <li class="mt-2"><i class="fas fa-calendar text-secondary font-22 align-middle mr-2"></i> <b> Selesai </b> : {{ \Carbon\Carbon::parse($exam->end_time)->format('d F Y, H:i') }}</li>
                                     </ul>

@@ -23,7 +23,9 @@
                                 <p>{{ $ass->grade.' '.$ass->major }}</p>
                                 <p>Waktu Mulai : {{ \Carbon\Carbon::parse($ass->start_time)->format('d F Y H:i') }}</p>
                                 <p>Waktu Selesai : {{ \Carbon\Carbon::parse($ass->end_time)->format('d F Y H:i') }}</p>
-                                <p>Durasi : {{ $ass->duration/60 }} Menit</p>
+                                <p>Durasi : {{ $ass->duration }} Menit</p>
+                                <p>Semester : {{ $ass->semester }}</p>
+                                <p>Tahun Ajaran : {{ $ass->th_ajaran }}</p>
                             </h4>
                             <hr class="hr-dashed">
                             <div class="d-flex justify-content-between">
@@ -41,8 +43,9 @@
                                 </div>
                                 <!--end meta-box-->
                                 <div class="align-self-center">
+                                    <a href="{{ url('/'.strtolower(Auth::user()->role->role).'/assessment/ash/edit/'.$ass->uuid) }}" class="btn btn-sm btn-success rounded-circle"><i class="fas fa-edit"></i></a>&nbsp;
+                                    <a href="{{ url('/'.strtolower(Auth::user()->role->role).'/assessment/ash/input-soal/pg/'.$ass->uuid) }}" class="btn btn-sm btn-primary rounded-circle"><i class="fas fa-plus"></i></a>
                                     <button wire:click="destroy('{{ $ass->uuid }}')" class="btn btn-sm btn-danger rounded-circle" wire:confirm="Yakin ingin menghapus ASH?"><i class="fas fa-trash"></i></button>&nbsp;
-                                    <a href="{{ url('/'.Request::segment(1).'/assessment/ash/input-soal/pg/'.$ass->uuid) }}" class="btn btn-sm btn-primary rounded-circle"><i class="fas fa-plus"></i></a>
                                 </div>
                             </div>
                         </div>

@@ -16,6 +16,7 @@ use App\Livewire\Assessment\ASHList;
 use App\Livewire\Assessment\AstsList;
 use App\Livewire\Assessment\AsasList;
 use App\Livewire\Assessment\ASHCreate;
+use App\Livewire\Assessment\ASHUpdate;
 use App\Livewire\Assessment\ASHQuestionpr;
 use App\Livewire\Assessment\ASHQuestionpg;
 use App\Livewire\Assessment\ASHQuestionessay;
@@ -37,6 +38,7 @@ Route::middleware('isGuru')->group(function(){
             Route::prefix('/ash')->group(function(){
                 Route::get('/', ASHList::class);
                 Route::get('/create', ASHCreate::class);
+                Route::get('/edit/{uuid}', ASHUpdate::class);
                 Route::get('/input-soal/pg/{uuid}', ASHQuestionpg::class);
                 Route::get('/input-soal/essay/{uuid}', ASHQuestionessay::class);
                 Route::get('/input-soal/preview/{uuid}', ASHQuestionpr::class);

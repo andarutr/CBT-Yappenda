@@ -11,29 +11,23 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('exams', function (Blueprint $table) {
+        Schema::create('rapor', function (Blueprint $table) {
             $table->id();
-            $table->uuid('uuid')->index();
+            $table->uuid('uuid');
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('lesson_id');
-            $table->enum('exam_type', ['ASH','ASTS','ASAS','PAS']);
-            $table->enum('grade', ['X','XI','XII']);
-            $table->enum('major', ['IPA','IPS']);
+            $table->unsignedBigInteger('exam_id');
             $table->enum('semester', ['1 (Ganjil)','2 (Genap)']);
             $table->enum('th_ajaran', ['2024/2025','2025/2026','2026/2027']);
-            $table->integer('duration');
-            $table->timestamp('start_time')->nullable();
-            $table->timestamp('end_time')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')
                     ->references('id')
                     ->on('users')
                     ->onDelete('cascade');
-
-            $table->foreign('lesson_id')
+            
+            $table->foreign('exam_id')
                     ->references('id')
-                    ->on('lessons')
+                    ->on('exams')
                     ->onDelete('cascade');
         });
     }
@@ -43,6 +37,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('exams');
+        Schema::dropIfExists('rapor');
     }
 };
