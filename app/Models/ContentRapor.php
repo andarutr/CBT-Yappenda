@@ -18,8 +18,8 @@ class ContentRapor extends Model
         return $this->belongsTo(Rapor::class);
     }    
     
-    public function lesson()
+    public function exam()
     {
-        return $this->belongsTo(Lesson::class);
+        return $this->belongsTo(Exam::class);
     }    
 }

@@ -15,9 +15,4 @@ class Lesson extends Model
     {
         return $this->hasMany(Exam::class);
     }
-
-    public function contentRapor()
-    {
-        return $this->hasMany(ContentRapor::class);
-    }
 }

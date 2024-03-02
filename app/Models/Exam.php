@@ -36,8 +36,8 @@ class Exam extends Model
         return $this->hasMany(ExamResult::class);
     }
 
-    public function rapor()
+    public function contentRapor()
     {
-        return $this->hasMany(Rapor::class);
+        return $this->hasMany(ContentRapor::class);
     }
 }

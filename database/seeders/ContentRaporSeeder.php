@@ -22,7 +22,7 @@ class ContentRaporSeeder extends Seeder
             ContentRapor::create([
                 'uuid' => Uuid::uuid4()->toString(),
                 'rapor_id' => $rapor->rapor_id,
-                'lesson_id' => $rapor->lesson_id,
+                'exam_id' => $rapor->exam_id,
                 'kelompok_mpl' => $rapor->kelompok_mpl,
                 'nilai' => $rapor->nilai,
                 'description' => $rapor->description,

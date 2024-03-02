@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->uuid('uuid');
             $table->unsignedBigInteger('rapor_id');
-            $table->unsignedBigInteger('lesson_id');
+            $table->unsignedBigInteger('exam_id');
             $table->string('kelompok_mpl', 128);
             $table->integer('nilai');
             $table->text('description');
@@ -26,9 +26,9 @@ return new class extends Migration
                     ->on('rapor')
                     ->onDelete('cascade');
             
-            $table->foreign('lesson_id')
+            $table->foreign('exam_id')
                     ->references('id')
-                    ->on('lessons')
+                    ->on('exams')
                     ->onDelete('cascade');
         });
     }

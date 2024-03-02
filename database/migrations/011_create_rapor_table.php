@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->uuid('uuid');
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('exam_id');
             $table->enum('semester', ['1 (Ganjil)','2 (Genap)']);
             $table->enum('th_ajaran', ['2024/2025','2025/2026','2026/2027']);
             $table->timestamps();
@@ -23,11 +22,6 @@ return new class extends Migration
             $table->foreign('user_id')
                     ->references('id')
                     ->on('users')
-                    ->onDelete('cascade');
-            
-            $table->foreign('exam_id')
-                    ->references('id')
-                    ->on('exams')
                     ->onDelete('cascade');
         });
     }
