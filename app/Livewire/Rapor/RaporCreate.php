@@ -15,7 +15,6 @@ class RaporCreate extends Component
 {
     public $uuid;
     public $user_id;
-    public $examId;
     public $rapor;
     public $exams;
     #[Validate('required')]
@@ -31,7 +30,6 @@ class RaporCreate extends Component
     {
         $this->uuid = Request::segment(6);
         $this->rapor = Rapor::where('uuid', $this->uuid)->first();
-        $this->examId = Exam::where('id', $this->rapor->id)->first();
         $this->exams = Exam::all();
     }
 
@@ -41,7 +39,7 @@ class RaporCreate extends Component
         ContentRapor::create([
             'uuid' => Uuid::uuid4()->toString(),
             'rapor_id' => $this->rapor->id,
-            'exam_id' => $this->examId->id,
+            'exam_id' => $this->exam_id,
             'kelompok_mpl' => $this->kelompok_mpl,
             'nilai' => $this->nilai,
             'description' => $this->description,
