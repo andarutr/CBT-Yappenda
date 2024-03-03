@@ -29,7 +29,7 @@
                             <div class="d-flex justify-content-between">
                                 <div class="meta-box">
                                     <div class="media">
-                                        <img src="{{ asset('assets/images/users/'.$ass->user->picture) }}" alt=""
+                                        <img src="{{ asset('storage/assets/images/users/'.$ass->user->picture) }}" alt=""
                                             class="thumb-sm rounded-circle me-2" width="50" height="50">
                                         <div class="media-body align-self-center text-truncate">
                                             <h6 class="m-0 text-dark">{{ $ass->user->name }}</h6>

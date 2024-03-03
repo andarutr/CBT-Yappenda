@@ -22,7 +22,7 @@
                                     @foreach($accounts as $account)
                                     @if($account->id !== Auth::user()->id)
                                     <tr>
-                                        <td><img src="{{ url('assets/images/users/'.$account->picture) }}" alt="" class="rounded-circle thumb-xs me-1">
+                                        <td><img src="{{ asset('storage/assets/images/users/'.$account->picture) }}" alt="" class="rounded-circle thumb-xs me-1">
                                             {{ $account->name }}
                                         </td>
                                         <td>{{ $account->email }}</td>

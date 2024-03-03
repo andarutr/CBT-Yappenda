@@ -135,5 +135,7 @@
             </div><!--end col-->
         </div><!--end row-->
     </div>
-    <livewire:partials.footer />             
+    <livewire:partials.footer />     
+    <link href="{{ url('assets/css/lightbox.css') }}" rel="stylesheet" />
+    <script src="{{ url('assets/js/lightbox-plus-jquery.min.js') }}"></script>        
 </div>

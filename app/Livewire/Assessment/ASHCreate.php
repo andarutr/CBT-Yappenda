@@ -49,7 +49,7 @@ class ASHCreate extends Component
             'major' => $this->major,
             'semester' => $this->semester,
             'th_ajaran' => $this->th_ajaran,
-            'duration' => $this->duration*60,
+            'duration' => $this->duration,
             'start_time' => $this->start_time,
             'end_time' => $this->end_time,
         ];

@@ -22,7 +22,7 @@
                                     @foreach($accounts as $account)
                                     @if($account->id !== Auth::user()->id)
                                     <tr>
-                                        <td><img src="{{ url('assets/images/users/'.$account->picture) }}" alt="" class="rounded-circle thumb-xs me-1">
+                                        <td><img src="{{ asset('storage/assets/images/users/'.$account->picture) }}" alt="" class="rounded-circle thumb-xs me-1">
                                             {{ $account->name }}
                                         </td>
                                         <td>{{ $account->email }}</td>
@@ -52,3 +52,30 @@
     </div>
     <livewire:partials.footer />             
 </div>
+
+@assets
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link href="
+https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css
+" rel="stylesheet">
+@endassets
+
+@if(session('failed'))
+    @script
+        <script>
+            Swal.fire({
+              title: "{{ session('failed') }}",
+              icon: "error"
+            });
+        </script>
+    @endscript
+@elseif(session('success'))
+    @script
+        <script>
+            Swal.fire({
+              title: "{{ session('success') }}",
+              icon: "success"
+            });
+        </script>
+    @endscript
+@endif

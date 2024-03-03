@@ -7,7 +7,7 @@ use Request;
 use App\Models\Exam;
 use Ramsey\Uuid\Uuid;
 use Livewire\Component;
-use App\Models\PgQuestion;
+use App\Models\PGQuestion;
 use App\Models\ExamResult;
 use App\Models\EssayAnswer;
 use App\Models\EssayQuestion;
