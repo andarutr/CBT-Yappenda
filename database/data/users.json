@@ -2,16 +2,46 @@
     {
         "name": "Administrator",
         "email": "admin@domain.com",
+        "nis": null,
+        "nisn": null,
+        "kelas": null,
+        "fase": null,
         "role_id": "1"
     },
     {
-        "name": "Guru Tester",
-        "email": "guru@domain.com",
+        "name": "Niko Bayu Aji, S.Pd",
+        "email": "nikobayugeografi90@gmail.com",
+        "nis": null,
+        "nisn": null,
+        "kelas": null,
+        "fase": null,
         "role_id": "2"
     },
     {
-        "name": "User Tester",
-        "email": "user@domain.com",
+        "name": "Andaru Triadi, S.Kom",
+        "email": "andarutr@gmail.com",
+        "nis": null,
+        "nisn": null,
+        "kelas": null,
+        "fase": null,
+        "role_id": "2"
+    },
+    {
+        "name": "Imanuel Revando",
+        "email": "imrevan@domain.com",
+        "nis": "9396",
+        "nisn": "0088776379",
+        "kelas": "X",
+        "fase": "A",
+        "role_id": "3"
+    },
+    {
+        "name": "Alinsky Onibal",
+        "email": "alion@domain.com",
+        "nis": "9397",
+        "nisn": "00887763710",
+        "kelas": "XI",
+        "fase": "B",
         "role_id": "3"
     }
 ]

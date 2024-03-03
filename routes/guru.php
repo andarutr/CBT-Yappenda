@@ -105,10 +105,9 @@ Route::middleware('isGuru')->group(function(){
 
         // Rapor
         Route::prefix('/rapor')->group(function(){
-
             // Rapor Kelas X
             Route::get('/kelas/X', RaporKelasX::class);
-            // Route::get('/kelas/X/create', CreateRapor::class);
+            Route::get('/kelas/X/create', CreateRapor::class);
             Route::get('/kelas/X/{uuid}', RaporList::class);
             Route::get('/kelas/X/{user_id}/{uuid}/create', RaporCreate::class);
             Route::get('/kelas/X/{user_id}/{uuid}/edit', RaporUpdate::class);

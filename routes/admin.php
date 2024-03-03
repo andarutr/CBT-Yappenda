@@ -30,6 +30,14 @@ use App\Livewire\Score\AsasScoreList;
 use App\Livewire\Score\AshScorePg;
 use App\Livewire\Score\AshScoreEssay;
 use App\Livewire\Score\AshScoreEssayId;
+use App\Livewire\Rapor\RaporKelasX;
+use App\Livewire\Rapor\RaporKelasXI;
+use App\Livewire\Rapor\RaporKelasXII;
+use App\Livewire\Rapor\CreateRapor;
+use App\Livewire\Rapor\RaporList;
+use App\Livewire\Rapor\RaporCreate;
+use App\Livewire\Rapor\RaporUpdate;
+use App\Livewire\Rapor\ShowRapor;
 
 // Routes
 Route::middleware('isAdmin')->group(function(){
@@ -126,6 +134,37 @@ Route::middleware('isAdmin')->group(function(){
              // Input Nilai Penilaian Akhir
             Route::get('/pas', function(){
                 abort(503);
+            });
+        });
+
+        // Rapor
+        Route::prefix('/rapor')->group(function(){
+            // Rapor Kelas X
+            Route::get('/kelas/X', RaporKelasX::class);
+            Route::get('/kelas/X/create', CreateRapor::class);
+            Route::get('/kelas/X/{uuid}', RaporList::class);
+            Route::get('/kelas/X/{user_id}/{uuid}/create', RaporCreate::class);
+            Route::get('/kelas/X/{user_id}/{uuid}/edit', RaporUpdate::class);
+            Route::get('/kelas/X/{user_id}/{uuid}/show', ShowRapor::class);
+
+            // Rapor Kelas XI
+            Route::get('/kelas/XI', RaporKelasXI::class);
+            Route::get('/kelas/XI/create', CreateRapor::class);
+            Route::get('/kelas/XI/{uuid}', RaporList::class);
+            Route::get('/kelas/XI/{user_id}/{uuid}/create', RaporCreate::class);
+            Route::get('/kelas/XI/{user_id}/{uuid}/edit', RaporUpdate::class);
+            Route::get('/kelas/XI/{user_id}/{uuid}/show', ShowRapor::class);
+
+            // Rapor Kelas XII
+            Route::get('/kelas/XII', RaporKelasXII::class);
+            Route::get('/kelas/XII/create', CreateRapor::class);
+            Route::get('/kelas/XII/{uuid}', RaporList::class);
+            Route::get('/kelas/XII/{user_id}/{uuid}/create', RaporCreate::class);
+            Route::get('/kelas/XII/{user_id}/{uuid}/edit', RaporUpdate::class);
+            Route::get('/kelas/XII/{user_id}/{uuid}/show', ShowRapor::class);
+
+            Route::get('/contoh', function(){
+                return view('contoh-rapor');
             });
         });
     });
