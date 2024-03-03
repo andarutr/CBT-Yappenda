@@ -5,6 +5,7 @@
         <livewire:partials.breadcrumb />
         <div class="row">
             <div class="col-12">
+                <a href="{{ url('/'.strtolower(Auth::user()->role->role).'/rapor/kelas/XI/create') }}" class="btn btn-primary">Tambah data</a>
                 <div class="card shadow mt-3">
                     <div class="card-body">
                         <div class="table-responsive mt-3">
@@ -31,7 +32,8 @@
                                         <td>{{ $rapor->th_ajaran }}</td>
                                         <td>
                                             <a href="{{ url('/'.strtolower(Auth::user()->role->role).'/rapor/kelas/XI/'.$rapor->uuid) }}" class="btn btn btn-primary" wire:navigate><i class="fas fa-plus"></i> </a>
-                                            <button class="btn btn btn-success" wire:click=""><i class="fas fa-eye"></i></button>
+                                            <a href="{{ url('/'.strtolower(Auth::user()->role->role).'/rapor/kelas/XI/'.$rapor->user_id.'/'.$rapor->uuid.'/show') }}" class="btn btn btn-success" wire:navigate><i class="fas fa-eye"></i></a>
+                                            <button class="btn btn btn-danger" wire:click="destroy('{{ $rapor->uuid }}')" wire:confirm="Yakin ingin menghapus rapor?"><i class="fas fa-trash"></i></button>
                                         </td>
                                     </tr>
                                     @endforeach                      

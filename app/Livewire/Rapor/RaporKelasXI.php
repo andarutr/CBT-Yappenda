@@ -17,6 +17,12 @@ class RaporKelasXI extends Component
         })->get();
     }
 
+    public function destroy($uuid)
+    {
+        Rapor::where('uuid', $uuid)->delete();
+        return redirect()->back()->with('success', 'Berhasil menghapus rapor!');
+    }
+    
     public function render()
     {
         return view('livewire.rapor.rapor-kelas-x-i');

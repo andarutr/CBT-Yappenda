@@ -22,6 +22,7 @@ class RaporSeeder extends Seeder
             Rapor::create([
                 'uuid' => Uuid::uuid4()->toString(),
                 'user_id' => $rapor->user_id,
+                'wali_kelas' => $rapor->wali_kelas,
                 'exam_type' => $rapor->exam_type,
                 'semester' => $rapor->semester,
                 'th_ajaran' => $rapor->th_ajaran,
