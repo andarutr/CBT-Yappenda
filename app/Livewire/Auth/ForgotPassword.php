@@ -2,9 +2,13 @@
 
 namespace App\Livewire\Auth;
 
+use App\Models\User;
+use Ramsey\Uuid\Uuid;
 use Livewire\Component;
 use App\Helpers\AuthHelper;
+use App\Mail\ResetPasswordMail;
 use Livewire\Attributes\Validate;
+use Illuminate\Support\Facades\Mail;
 
 class ForgotPassword extends Component
 {
@@ -13,7 +17,28 @@ class ForgotPassword extends Component
 
     public function forgotPassword()
     {
-        AuthHelper::forgotPassword($this->email);
+        $user = User::where('email', $this->email)->first();
+
+        if($user)
+        {
+            $uuid = Uuid::uuid4()->toString();
+
+            $data = [
+                'name' => $user->name,
+                'tokens' => $uuid
+            ];
+            
+            \DB::table('reset_password')->insert([
+                'email' => $user->email,
+                'tokens' => $uuid
+            ]);
+            
+            Mail::to($this->email)->send(new ResetPasswordMail($data));
+            session()->flash('success', 'Silahkan periksa email kamu ya!');
+        }else{
+            session()->flash('failed', 'Email kamu tidak terdaftar!');
+        }
+        // AuthHelper::forgotPassword($this->email);
     }
 
     public function render()
