@@ -18,11 +18,11 @@ class LessonHelper
         return redirect('/'.strtolower(Auth::user()->role->role).'/mata-pelajaran')->with('success','Berhasil tambah mata pelajaran!');
     }
 
-    public static function update($uuid, $name)
+    public static function update($data)
     {
-        Lesson::where('uuid', $uuid)
+        Lesson::where('uuid', $data['uuid'])
                 ->update([
-                    'name' => $name
+                    'name' => $data['name']
                 ]);
         
         return redirect('/'.strtolower(Auth::user()->role->role).'/mata-pelajaran')->with('success', 'Berhasil memperbarui mata pelajaran!');

@@ -6,7 +6,7 @@
             <span class="brand-logo">
                 <img src="{{ url('assets/images/logo.png') }}" alt="">
             </span>
-            <h2 class="brand-text">Vuexy</h2></a></li>
+            <h2 class="brand-text">My CBT</h2></a></li>
         <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pe-0" data-bs-toggle="collapse"><i class="d-block d-xl-none text-primary toggle-icon font-medium-4" data-feather="x"></i><i class="d-none d-xl-block collapse-toggle-icon font-medium-4  text-primary" data-feather="disc" data-ticon="disc"></i></a></li>
     </ul>
     </div>
@@ -15,8 +15,10 @@
     <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
         <li class=" nav-item"><a class="d-flex align-items-center" href="{{ url('/'.strtolower(Auth::user()->role->role)) }}" wire:navigate><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Dashboard">Dashboard</span></a>
         </li>
-        <!-- <li class=" nav-item"><a class="d-flex align-items-center" href="app-kanban.html"><i data-feather="grid"></i><span class="menu-title text-truncate" data-i18n="Kanban">Kanban</span></a>
-        </li> -->
+        @if(Auth::user()->role->role === 'Admin')
+        <li class=" nav-item"><a class="d-flex align-items-center" href="{{ url('/'.strtolower(Auth::user()->role->role).'/mata-pelajaran') }}" wire:navigate><i data-feather="book"></i><span class="menu-title text-truncate" data-i18n="Mata Pelajaran">Mata Pelajaran</span></a>
+        </li>
+        @endif
         @if(Auth::user()->role->role === 'Guru' | Auth::user()->role->role === 'Admin')
         <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Assessment">Assessment</span></a>
             <ul class="menu-content">
