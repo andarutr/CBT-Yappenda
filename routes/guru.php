@@ -33,6 +33,7 @@ use App\Livewire\Assessment\ASHEditQuestionessay;
 // Route
 Route::middleware('isGuru')->group(function(){
     Route::prefix('/guru')->group(function(){
+        Route::redirect('/','/guru/dashboard');
         Route::get('/dashboard', Dashboard::class);
         Route::get('/profile', ProfileShow::class);
         Route::get('/ganti-password', ChangePassword::class);

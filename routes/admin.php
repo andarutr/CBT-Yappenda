@@ -42,6 +42,7 @@ use App\Livewire\Rapor\ShowRapor;
 // Routes
 Route::middleware('isAdmin')->group(function(){
     Route::prefix('/admin')->group(function(){
+        Route::redirect('/','/admin/dashboard');
         Route::get('/dashboard', Dashboard::class);
         
         // Settings
