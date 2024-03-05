@@ -1,61 +1,26 @@
 @section('title', 'Login')
 
-<div>
-    <!-- Log In page -->
-    <div class="container-md">
-        <div class="row vh-100 d-flex justify-content-center">
-            <div class="col-12 align-self-center">
-                <center>
-                    <img src="{{ url('assets/images/yappenda.png') }}" width="100" alt="logo" class="auth-logo mb-3">
-                </center>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-lg-4 mx-auto">
-                            <div class="card shadow">
-                                <div class="card-body p-0 auth-header-box">
-                                    <div class="text-center p-3">
-                                        <a href="#" class="logo logo-admin">
-                                        </a>
-                                        <h4 class="mt-3 mb-1 fw-semibold text-white font-18">CBT Yappenda</h4>   
-                                        <p class="text-muted  mb-0">Silahkan Login</p>  
-                                    </div>
-                                </div>
-                                <div class="card-body pt-0">                                    
-                                    <form class="my-4" wire:submit="login">            
-                                        <div class="form-group mb-2">
-                                            <label class="form-label" for="email">Email</label>
-                                            <input type="text" class="form-control" id="email" placeholder="Masukkan Email" wire:model.live="email" autocomplete="off">
-                                            @error('email')<p class="text-danger">{{ $message }}</p>@enderror                               
-                                        </div> 
-            
-                                        <div class="form-group">
-                                            <label class="form-label" for="userpassword">Password</label>
-                                            <input type="password" class="form-control" id="userpassword" placeholder="Enter password" wire:model.live="password">    
-                                            @error('password')<p class="text-danger">{{ $message }}</p>@enderror                           
-                                        </div>
-            
-                                        <div class="form-group row mt-3">
-                                            <div class="col-sm-6"></div>
-                                            <div class="col-sm-6 text-end">
-                                                <a href="{{ url('/lupa-password') }}" class="text-muted font-13" wire:navigate><i class="dripicons-lock"></i> Lupa password?</a>                                    
-                                            </div>
-                                        </div>
-            
-                                        <div class="form-group mb-0 row">
-                                            <div class="col-12">
-                                                <div class="d-grid mt-3">
-                                                    <button class="btn btn-primary" type="submit">Log In <i class="fas fa-sign-in-alt ms-1"></i></button>
-                                                </div>
-                                            </div>
-                                        </div> 
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div><
-                </div>
-            </div>
-        </div><
+<div class="h-screen xl:h-auto flex py-5 xl:py-0 my-10 xl:my-0">
+    <div class="my-auto mx-auto xl:ml-20 bg-white dark:bg-darkmode-600 xl:bg-transparent px-5 sm:px-8 py-8 xl:p-0 rounded-md shadow-md xl:shadow-none w-full sm:w-3/4 lg:w-2/4 xl:w-auto">
+        <h2 class="intro-x font-bold text-2xl xl:text-3xl text-center xl:text-left">
+            Login
+        </h2>
+        <div class="intro-x mt-2 text-slate-400 xl:hidden text-center">A few more clicks to sign in to your account. Manage all your e-commerce accounts in one place</div>
+        <form wire:submit="login">
+        <div class="intro-x mt-8">
+            <input type="text" class="intro-x login__input form-control py-3 px-4 block" placeholder="Email" wire:model.live="email">
+            @error('email')<p class="text-danger">{{ $message }}</p>@enderror
+            <input type="password" class="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Password" wire:model.live="password">
+            @error('password')<p class="text-danger">{{ $message }}</p>@enderror
+        </div>
+        <div class="intro-x flex text-slate-600 dark:text-slate-500 text-xs sm:text-sm mt-4">
+            <div class="flex items-center mr-auto"></div>
+            <a href="{{ url('/lupa-password') }}">Lupa Password?</a> 
+        </div>
+        <div class="intro-x mt-5 xl:mt-8 text-center xl:text-left">
+            <button class="btn btn-primary py-3 px-4 w-full xl:w-32 xl:mr-3 align-top">Login</button>
+        </div>
+        </form>
     </div>
 </div>
 
