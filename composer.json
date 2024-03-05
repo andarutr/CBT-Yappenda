@@ -13,7 +13,8 @@
         "laravel/telescope": "^4.17",
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^3.4",
-        "ramsey/uuid": "*"
+        "ramsey/uuid": "*",
+        "yoeunes/toastr": "^2.3"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

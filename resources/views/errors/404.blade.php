@@ -4,7 +4,6 @@
     <meta charset="utf-8" />
     <title>404 Not Found</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="shortcut icon" href="{{ url('assets/images/favicon.ico') }}">
      <link href="{{ url('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
      <link href="{{ url('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
      <link href="{{ url('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />

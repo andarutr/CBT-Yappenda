@@ -8,8 +8,6 @@ use App\Livewire\Lesson\LessonList;
 use App\Livewire\Account\RoleUpdate;
 use App\Livewire\Account\AccountList;
 use App\Livewire\Account\SuspendList;
-use App\Livewire\Lesson\LessonCreate;
-use App\Livewire\Lesson\LessonUpdate;
 use App\Livewire\Setting\ProfileShow;
 use App\Livewire\Account\AccountCreate;
 use App\Livewire\Account\AccountUpdate;
@@ -62,11 +60,7 @@ Route::middleware('isAdmin')->group(function(){
         });
 
         // Mata Pelajaran
-        Route::prefix('/mata-pelajaran')->group(function(){
-            Route::get('/', LessonList::class);
-            Route::get('/create', LessonCreate::class);
-            Route::get('/edit/{uuid}', LessonUpdate::class);
-        });
+        Route::get('/mata-pelajaran', LessonList::class);
 
         // Assessment
         Route::prefix('/assessment')->group(function(){

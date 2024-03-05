@@ -35,10 +35,10 @@
                                         <td>{{ \Carbon\Carbon::parse($lesson->updated_at)->format('d F Y') }}
                                         </td>
                                         <td>
-                                            <button class="btn btn-success" wire:click="edit('{{$lesson->uuid}}')"><i data-feather="edit"></i></button>
+                                            <button class="btn btn-sm btn-success" wire:click="edit('{{$lesson->uuid}}')"><i class="bi-pencil-square"></i></button>
                                             <button class="btn btn-sm btn-danger" wire:click="destroy('{{ $lesson->uuid }}')"
                                                 wire:confirm="Yakin ingin menghapus mata pelajaran?"><i
-                                                    data-feather="trash"></i></button>
+                                                    class="bi-trash"></i></button>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -75,32 +75,10 @@
                     @endif
                 </div>
             </div>
+            
+        </div>
+        <div class="mb-3">
+            {{ $lessons->links() }}
         </div>
     </div>
 </div>
-@assets
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link href="
-https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css
-" rel="stylesheet">
-@endassets
-
-@if(session('failed'))
-    @script
-        <script>
-            Swal.fire({
-                title: "{{ session('failed') }}",
-                icon: "error"
-            });
-        </script>
-    @endscript
-@elseif(session('success'))
-    @script
-        <script>
-            Swal.fire({
-                title: "{{ session('success') }}",
-                icon: "success"
-            });
-        </script>
-    @endscript
-@endif

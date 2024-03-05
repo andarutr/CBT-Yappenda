@@ -36,7 +36,7 @@
         <li class="auto-suggestion"><a class="d-flex align-items-center justify-content-between w-100"
                 href="app-file-manager.html">
                 <div class="d-flex">
-                    <div class="me-75"><img src="../../../app-assets/images/icons/xls.png" alt="png" height="32"></div>
+                    <div class="me-75"><img src="/assets/images/icons/xls.png" alt="png" height="32"></div>
                     <div class="search-data">
                         <p class="search-data-title mb-0">Two new item submitted</p><small class="text-muted">Marketing
                             Manager</small>
@@ -46,7 +46,7 @@
         <li class="auto-suggestion"><a class="d-flex align-items-center justify-content-between w-100"
                 href="app-file-manager.html">
                 <div class="d-flex">
-                    <div class="me-75"><img src="../../../app-assets/images/icons/jpg.png" alt="png" height="32"></div>
+                    <div class="me-75"><img src="{{ url('assets/images/icons/jpg.png') }}" alt="png" height="32"></div>
                     <div class="search-data">
                         <p class="search-data-title mb-0">52 JPG file Generated</p><small class="text-muted">FontEnd
                             Developer</small>
@@ -56,7 +56,7 @@
         <li class="auto-suggestion"><a class="d-flex align-items-center justify-content-between w-100"
                 href="app-file-manager.html">
                 <div class="d-flex">
-                    <div class="me-75"><img src="../../../app-assets/images/icons/pdf.png" alt="png" height="32"></div>
+                    <div class="me-75"><img src="{{ url('assets/images/icons/pdf.png') }}" alt="png" height="32"></div>
                     <div class="search-data">
                         <p class="search-data-title mb-0">25 PDF File Uploaded</p><small class="text-muted">Digital
                             Marketing Manager</small>
@@ -66,7 +66,7 @@
         <li class="auto-suggestion"><a class="d-flex align-items-center justify-content-between w-100"
                 href="app-file-manager.html">
                 <div class="d-flex">
-                    <div class="me-75"><img src="../../../app-assets/images/icons/doc.png" alt="png" height="32"></div>
+                    <div class="me-75"><img src="{{ url('assets/images/icons/doc.png') }}" alt="png" height="32"></div>
                     <div class="search-data">
                         <p class="search-data-title mb-0">Anna_Strong.doc</p><small class="text-muted">Web
                             Designer</small>
@@ -79,7 +79,7 @@
         <li class="auto-suggestion"><a class="d-flex align-items-center justify-content-between py-50 w-100"
                 href="app-user-view-account.html">
                 <div class="d-flex align-items-center">
-                    <div class="avatar me-75"><img src="../../../app-assets/images/portrait/small/avatar-s-8.jpg"
+                    <div class="avatar me-75"><img src="/assets/images/portrait/small/avatar-s-8.jpg"
                             alt="png" height="32"></div>
                     <div class="search-data">
                         <p class="search-data-title mb-0">John Doe</p><small class="text-muted">UI designer</small>
@@ -89,7 +89,7 @@
         <li class="auto-suggestion"><a class="d-flex align-items-center justify-content-between py-50 w-100"
                 href="app-user-view-account.html">
                 <div class="d-flex align-items-center">
-                    <div class="avatar me-75"><img src="../../../app-assets/images/portrait/small/avatar-s-1.jpg"
+                    <div class="avatar me-75"><img src="/assets/images/portrait/small/avatar-s-1.jpg"
                             alt="png" height="32"></div>
                     <div class="search-data">
                         <p class="search-data-title mb-0">Michal Clark</p><small class="text-muted">FontEnd
@@ -100,7 +100,7 @@
         <li class="auto-suggestion"><a class="d-flex align-items-center justify-content-between py-50 w-100"
                 href="app-user-view-account.html">
                 <div class="d-flex align-items-center">
-                    <div class="avatar me-75"><img src="../../../app-assets/images/portrait/small/avatar-s-14.jpg"
+                    <div class="avatar me-75"><img src="/assets/images/portrait/small/avatar-s-14.jpg"
                             alt="png" height="32"></div>
                     <div class="search-data">
                         <p class="search-data-title mb-0">Milena Gibson</p><small class="text-muted">Digital Marketing
@@ -111,7 +111,7 @@
         <li class="auto-suggestion"><a class="d-flex align-items-center justify-content-between py-50 w-100"
                 href="app-user-view-account.html">
                 <div class="d-flex align-items-center">
-                    <div class="avatar me-75"><img src="../../../app-assets/images/portrait/small/avatar-s-6.jpg"
+                    <div class="avatar me-75"><img src="/assets/images/portrait/small/avatar-s-6.jpg"
                             alt="png" height="32"></div>
                     <div class="search-data">
                         <p class="search-data-title mb-0">Anna Strong</p><small class="text-muted">Web Designer</small>

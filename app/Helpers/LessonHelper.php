@@ -14,8 +14,10 @@ class LessonHelper
             'uuid' => Uuid::uuid4()->toString(),
             'name' => $name
         ]);
+        
+        toastr()->success('Berhasil tambah mata pelajaran!');
 
-        return redirect('/'.strtolower(Auth::user()->role->role).'/mata-pelajaran')->with('success','Berhasil tambah mata pelajaran!');
+        return redirect('/'.strtolower(Auth::user()->role->role).'/mata-pelajaran');
     }
 
     public static function update($data)
@@ -24,8 +26,10 @@ class LessonHelper
                 ->update([
                     'name' => $data['name']
                 ]);
-        
-        return redirect('/'.strtolower(Auth::user()->role->role).'/mata-pelajaran')->with('success', 'Berhasil memperbarui mata pelajaran!');
+
+        toastr()->success('Berhasil tambah mata pelajaran!');
+
+        return redirect('/'.strtolower(Auth::user()->role->role).'/mata-pelajaran');
     }
 
     public static function destroy($uuid)
