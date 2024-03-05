@@ -1,27 +1,53 @@
 @section('title', 'Login')
 
-<div class="h-screen xl:h-auto flex py-5 xl:py-0 my-10 xl:my-0">
-    <div class="my-auto mx-auto xl:ml-20 bg-white dark:bg-darkmode-600 xl:bg-transparent px-5 sm:px-8 py-8 xl:p-0 rounded-md shadow-md xl:shadow-none w-full sm:w-3/4 lg:w-2/4 xl:w-auto">
-        <h2 class="intro-x font-bold text-2xl xl:text-3xl text-center xl:text-left">
-            Login
-        </h2>
-        <div class="intro-x mt-2 text-slate-400 xl:hidden text-center">A few more clicks to sign in to your account. Manage all your e-commerce accounts in one place</div>
-        <form wire:submit="login">
-        <div class="intro-x mt-8">
-            <input type="text" class="intro-x login__input form-control py-3 px-4 block" placeholder="Email" wire:model.live="email">
-            @error('email')<p class="text-danger">{{ $message }}</p>@enderror
-            <input type="password" class="intro-x login__input form-control py-3 px-4 block mt-4" placeholder="Password" wire:model.live="password">
-            @error('password')<p class="text-danger">{{ $message }}</p>@enderror
+<div>   
+    <div class="content-overlay"></div>
+      <div class="header-navbar-shadow"></div>
+      <div class="content-wrapper">
+        <div class="content-header row">
         </div>
-        <div class="intro-x flex text-slate-600 dark:text-slate-500 text-xs sm:text-sm mt-4">
-            <div class="flex items-center mr-auto"></div>
-            <a href="{{ url('/lupa-password') }}">Lupa Password?</a> 
+        <div class="content-body">
+          <div class="auth-wrapper auth-cover">
+            <div class="auth-inner row m-0">
+              <!-- Brand logo--><a class="brand-logo" href="index.html">
+                
+                <h2 class="brand-text text-primary ms-1">SMAS Yappenda</h2></a>
+              <!-- /Brand logo-->
+              <!-- Left Text-->
+              <div class="d-none d-lg-flex col-lg-8 align-items-center p-5">
+                <div class="w-100 d-lg-flex align-items-center justify-content-center px-5"><img class="img-fluid" src="{{ url('assets/images/pages/login-v2.svg') }}" alt="Login V2"/></div>
+              </div>
+              <!-- /Left Text-->
+              <!-- Login-->
+              <div class="d-flex col-lg-4 align-items-center auth-bg px-2 p-lg-5">
+                <div class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">
+                  <h2 class="card-title fw-bold mb-1">Selamat Datang di <br>CBT SMAS Yappenda!</h2>
+                  <p class="card-text mb-2">CBT for All Students</p>
+                  <form class="auth-login-form mt-2" wire:submit="login">
+                    <div class="mb-1">
+                      <label class="form-label" for="login-email">Email</label>
+                      <input class="form-control" id="login-email" type="text" wire:model.live="email" />
+                       @error('email')<p class="text-danger">{{ $message }}</p>@enderror
+                    </div>
+                    <div class="mb-1">
+                      <div class="d-flex justify-content-between">
+                        <label class="form-label" for="login-password">Password</label>
+                        <a href="{{ url('/lupa-password') }}" wire:navigate><small>Lupa Password?</small></a>
+                      </div>
+                      <div class="input-group input-group-merge form-password-toggle">
+                        <input class="form-control form-control-merge" id="login-password" type="password" wire:model="password" /><span class="input-group-text cursor-pointer"><i data-feather="eye"></i></span>
+                      </div>
+                        @error('password')<p class="text-danger">{{ $message }}</p>@enderror
+                    </div>
+                    <button class="btn btn-primary w-100" tabindex="4">Sign in</button>
+                  </form>
+                </div>
+              </div>
+              <!-- /Login-->
+            </div>
+          </div>
         </div>
-        <div class="intro-x mt-5 xl:mt-8 text-center xl:text-left">
-            <button class="btn btn-primary py-3 px-4 w-full xl:w-32 xl:mr-3 align-top">Login</button>
-        </div>
-        </form>
-    </div>
+      </div>
 </div>
 
 @assets

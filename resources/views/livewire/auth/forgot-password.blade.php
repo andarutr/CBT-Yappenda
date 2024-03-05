@@ -1,21 +1,43 @@
 @section('title', 'Lupa Password')
 
-<div class="h-screen xl:h-auto flex py-5 xl:py-0 my-10 xl:my-0">
-    <div class="my-auto mx-auto xl:ml-20 bg-white dark:bg-darkmode-600 xl:bg-transparent px-5 sm:px-8 py-8 xl:p-0 rounded-md shadow-md xl:shadow-none w-full sm:w-3/4 lg:w-2/4 xl:w-auto">
-        <h2 class="intro-x font-bold text-2xl xl:text-3xl text-center xl:text-left">
-            Lupa Password
-        </h2>
-        <div class="intro-x mt-2 text-slate-400 xl:hidden text-center">A few more clicks to sign in to your account. Manage all your e-commerce accounts in one place</div>
-        <form wire:submit="forgotPassword">
-            <div class="intro-x mt-8">
-                <input type="text" class="intro-x login__input form-control py-3 px-4 block" placeholder="Email" wire:model.live="email">
-                @error('email')<p class="text-danger">{{ $message }}</p>@enderror
+<div>
+    <div class="content-overlay"></div>
+      <div class="header-navbar-shadow"></div>
+      <div class="content-wrapper">
+        <div class="content-header row">
+        </div>
+        <div class="content-body"><div class="auth-wrapper auth-basic px-2">
+        <div class="auth-inner my-2">
+          <!-- Reset Password basic -->
+          <div class="card mb-0">
+            <div class="card-body">
+              <a href="index.html" class="brand-logo">
+                <img src="{{ url('assets/images/logo.png') }}" class="img-fluid" width="100">
+              </a>
+
+              <h4 class="card-title text-center mb-1">Lupa Password</h4>
+              <p class="card-text mb-2">Masukkan email yg terdaftar di google. Jika tidak terdaftar, silahkan hubungi administrasi untuk di reset secara manual.</p>
+
+              <form class="auth-reset-password-form mt-2" wire:submit="forgotPassword">
+                <div class="mb-1">
+                  <div class="d-flex justify-content-between">
+                    <label class="form-label">Email</label>
+                  </div>
+                  <div class="input-group input-group-merge form-password-toggle">
+                    <input type="text" class="form-control form-control-merge" wire:model="email" />
+                    @error('email')<p class="text-danger">{{ $message }}</p>@enderror
+                  </div>
+                </div>
+                <button class="btn btn-primary w-100" tabindex="3">Submit</button>
+              </form>
+
+              <p class="text-center mt-2">
+                <a href="{{ url('/login') }}"> <i data-feather="chevron-left"></i> Kembali ke login </a>
+              </p>
             </div>
-            <div class="intro-x mt-5 xl:mt-8 text-center xl:text-left">
-                <button class="btn btn-primary py-3 px-4 w-full xl:w-32 xl:mr-3 align-top">Submit</button>
-            </div>
-        </form>
-    </div>
+          </div>
+          <!-- /Reset Password basic -->
+        </div>
 </div>
 
 @assets
