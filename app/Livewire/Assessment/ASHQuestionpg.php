@@ -83,7 +83,8 @@ class ASHQuestionpg extends Component
 
         $this->reset(['pgquestion','option.A','option.B','option.C','option.D','option.E','picture']);
 
-        return redirect()->back()->with('success', 'Berhasil membuat soal PG!');
+        toastr()->success('Berhasil membuat soal PG!');
+        return redirect()->back();
     }
 
     public function render()

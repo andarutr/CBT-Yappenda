@@ -1,24 +1,23 @@
 @section('title', 'Edit Soal Essay')
 
-<div class="page-content-tab">
-    <div class="container-fluid">
-        <livewire:partials.breadcrumb />
-        <div class="row">
-            <div class="col-lg-8 col-xl-8">
-                @if(session('success'))
-                <div wire:transition>
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        {{ session('success') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+<div class="content-body">
+    <section class="app-ecommerce-details">
+        
+        <div class="card">
+            <div class="card-body mb-3">
+                <div class="row my-2">
+                    <div class="col-12 col-md-3">
+                        <p>Preview Image</p>
+                        <div class="d-flex align-items-center justify-content-center">
+                            @if($picture)
+                            <a href="{{ $picture->temporaryUrl() }}" data-lightbox="image-1">
+                                <img src="{{ $picture->temporaryUrl() }}" class="img-fluid product-img" width="250">
+                            </a>
+                            @endif
+                        </div>
                     </div>
-                </div>
-                @endif
-                <a href="{{ url($redirect_url) }}" class="btn btn-success mb-3">Kembali</a>
-                <div class="card shadow">
-                    <div class="card-header">
-                        <h4 class="card-title">Soal Essay</h4>
-                    </div><!--end card-header-->
-                    <div class="card-body"> 
+                    <div class="col-12 col-md-9">
+                        <p class="card-text mt-2">
                         <form wire:submit="update_essay">
                         <div class="form-group mb-3 row">
                             <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Foto (opsional)</label>
@@ -38,28 +37,16 @@
                             </div>
                         </div> 
                         </form>  
-                    </div><!--end card-body-->
-                </div><!--end card-->
-            </div> <!-- end col -->  
-            <div class="col-lg-4">
-                <div class="card shadow">
-                    <div class="card-header">
-                        <p>Preview Foto</p>
-                    </div>
-                    <div class="card-body">
-                        @if ($picture) 
-                        <center>
-                            <a href="{{ $picture->temporaryUrl() }}" data-lightbox="image-1">
-                                <img src="{{ $picture->temporaryUrl() }}" class="img-fluid rounded mb-3" width="250">
-                            </a>
-                        </center>
-                        @endif
+                        </p>
                     </div>
                 </div>
-            </div>                                        
+            </div>
         </div>
-    </div>
-    <livewire:partials.footer />           
-    <link href="{{ url('assets/css/lightbox.css') }}" rel="stylesheet" />
-    <script src="{{ url('assets/js/lightbox-plus-jquery.min.js') }}"></script>  
+    </section>
+    <br>
 </div>
+
+@assets
+<link href="{{ url('assets/css/lightbox.css') }}" rel="stylesheet" />
+<script src="{{ url('assets/js/lightbox-plus-jquery.min.js') }}"></script>
+@endassets

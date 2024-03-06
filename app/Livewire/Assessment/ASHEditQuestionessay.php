@@ -52,7 +52,9 @@ class ASHEditQuestionessay extends Component
             $update = AssessmentHelper::updateEsQuestion($data);
         }
 
-        return redirect()->back()->with('success', 'Berhasil memperbarui soal essay!');
+        toastr()->success('Berhasil memperbarui soal essay!');
+
+        return redirect()->back();
     }
 
     public function render()

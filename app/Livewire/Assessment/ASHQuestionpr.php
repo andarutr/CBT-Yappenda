@@ -28,7 +28,7 @@ class ASHQuestionpr extends Component
     {
         $destroy = AssessmentHelper::destroyPg($id_quest);
 
-        session()->flash('success', 'Berhasil menghapus soal PG!');
+        toastr()->success('Berhasil menghapus soal PG!');
 
         return redirect()->back();
     }
@@ -37,7 +37,7 @@ class ASHQuestionpr extends Component
     {
         $destroy = AssessmentHelper::destroyEs($id_quest);
 
-        session()->flash('success', 'Berhasil menghapus soal Essay!');
+        toastr()->success('Berhasil menghapus soal Essay!');
 
         return redirect()->back();
     }

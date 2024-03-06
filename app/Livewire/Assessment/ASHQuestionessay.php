@@ -55,7 +55,9 @@ class ASHQuestionessay extends Component
         
         $this->reset(['question','picture']);
 
-        return redirect()->back()->with('success', 'Berhasil menambahkan soal essay!');
+        toastr()->success('Berhasil menambahkan soal essay!');
+        
+        return redirect()->back();
     }
     
     public function render()

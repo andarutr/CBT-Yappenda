@@ -1,177 +1,126 @@
 @section('title','Input Soal PG')
 
-<div class="page-content-tab">
-    <div class="container-fluid">
-        <livewire:partials.breadcrumb />
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="met-profile">
-                            <div class="row">
-                                <div class="col-lg-4 align-self-center mb-3 mb-lg-0">
-                                    <div class="met-profile-main">
-                                        <div class="met-profile_user-detail">
-                                            <h5 class="met-user-name">{{ $exam->lesson->name }} ({{ $exam->grade.' '.$exam->major}})</h5>                                                        
-                                            <p class="mb-0 met-user-name-post">{{ $exam->user->name }}</p>                                                        
-                                            <p class="mb-0 met-user-name-post">Semester {{ $exam->semester }} - {{ $exam->th_ajaran }}</p>                                                        
-                                        </div>
-                                    </div>                                                
-                                </div><!--end col-->
-                                
-                                <div class="col-lg-4 ms-auto align-self-center">
-                                    <ul class="list-unstyled personal-detail mb-0">
-                                        <li class="mt-2"><i class="fas fa-clock text-secondary font-22 align-middle mr-2"></i> <b> Durasi </b> : {{ $exam->duration }} menit</li>
-                                        <li class="mt-2"><i class="fas fa-calendar text-secondary font-22 align-middle mr-2"></i> <b> Mulai </b> : {{ \Carbon\Carbon::parse($exam->start_time)->format('d F Y, H:i') }}</li>
-                                        <li class="mt-2"><i class="fas fa-calendar text-secondary font-22 align-middle mr-2"></i> <b> Selesai </b> : {{ \Carbon\Carbon::parse($exam->end_time)->format('d F Y, H:i') }}</li>
-                                    </ul>
-                                   
+<div class="content-body">
+    <section class="app-ecommerce-details">
+        <div class="item-features mb-5">
+            <div class="row text-center">
+                <div class="col-12 col-md-4">
+                    <a href="#" class="btn btn-primary form-control">Soal PG</a>
+                </div>
+                <div class="col-12 col-md-4">
+                    <a href="{{ url('guru/assessment/'.strtolower($exam->exam_type).'/input-soal/essay/'.$uuid) }}" class="btn btn-success form-control">Essay</a>
+                </div>
+                <div class="col-12 col-md-4">
+                    <a href="{{ url('guru/assessment/'.strtolower($exam->exam_type).'/input-soal/preview/'.$uuid) }}" class="btn btn-info form-control">Preview</a>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body mb-3">
+                <div class="row my-2">
+                    <div class="col-12 col-md-3">
+                        <p>Preview Image</p>
+                        <div class="d-flex align-items-center justify-content-center">
+                            @if($picture)
+                            <a href="{{ $picture->temporaryUrl() }}" data-lightbox="image-1">
+                                <img src="{{ $picture->temporaryUrl() }}" class="img-fluid product-img" width="250">
+                            </a>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <h4>{{ $exam->lesson->name }} ({{ $exam->grade.' '.$exam->major}}) Semester {{ $exam->semester }} - {{ $exam->th_ajaran }}</h4>
+                        <span class="card-text item-company">By <a href="#" class="company-name">{{ $exam->user->name }}</a></span>
+                        <p class="card-text mt-2">
+                        <form wire:submit="store_pg">
+                            <div class="form-group mb-1 row">
+                                <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Foto (opsional)</label>
+                                <div class="col-lg-9 col-xl-8">
+                                    <input type="file" class="form-control border border-3 rounded-3" wire:model="picture" />
                                 </div>
-                            </div><!--end row-->
-                        </div><!--end f_profile-->                                                                                
-                    </div><!--end card-body-->  
-                    <div class="card-body p-0">    
-                        <!-- Nav tabs -->
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" data-bs-toggle="tab" href="#SoalPG" role="tab" aria-selected="false">Soal PG</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('guru/assessment/'.strtolower($exam->exam_type).'/input-soal/essay/'.$uuid) }}" class="nav-link" wire:navigate>Soal Essay</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('guru/assessment/'.strtolower($exam->exam_type).'/input-soal/preview/'.$uuid) }}" class="nav-link" wire:navigate>Preview</a>
-                            </li>
-                        </ul>
-
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div class="tab-pane p-3 active" id="SoalPG" role="tabpanel">
-                                <div class="row">
-                                    <div class="col-lg-8 col-xl-8">
-                                        @if(session('success'))
-                                        <div wire:transition>
-                                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                              {{ session('success') }}
-                                              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                            </div>
-                                        </div>
-                                        @endif
-                                        <div class="card shadow">
-                                            <div class="card-header">
-                                                <h4 class="card-title">Soal PG</h4>
-                                            </div><!--end card-header-->
-                                            <div class="card-body"> 
-                                                <form wire:submit="store_pg">
-                                                <div class="form-group mb-3 row">
-                                                    <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Foto (opsional)</label>
-                                                    <div class="col-lg-9 col-xl-8">
-                                                        <input type="file" class="form-control border border-3 rounded-3" wire:model="picture" />
-                                                    </div>
-                                                </div>
-                                                <div class="form-group mb-3 row">
-                                                    <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Soal</label>
-                                                    <div class="col-lg-9 col-xl-8">
-                                                        <textarea class="form-control border border-3 rounded-3" type="text" wire:model="pgquestion"></textarea>
-                                                        @error('pgquestion')<p class="text-danger">{{ $message }}</p>@enderror
-                                                    </div>
-                                                </div>
-                                                <div class="form-group mb-3 row">
-                                                    <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">A</label>
-                                                    <div class="col-lg-9 col-xl-8">
-                                                        <input class="form-control border border-3 rounded-3" type="text" wire:model="option.A">
-                                                        @error('option.A')<p class="text-danger">{{ $message }}</p>@enderror
-                                                    </div>
-                                                </div>
-                                                <div class="form-group mb-3 row">
-                                                    <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">B</label>
-                                                    <div class="col-lg-9 col-xl-8">
-                                                        <input class="form-control border border-3 rounded-3" type="text" wire:model="option.B">
-                                                         @error('option.B')<p class="text-danger">{{ $message }}</p>@enderror
-                                                    </div>
-                                                </div>
-                                                <div class="form-group mb-3 row">
-                                                    <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">C</label>
-                                                    <div class="col-lg-9 col-xl-8">
-                                                        <input class="form-control border border-3 rounded-3" type="text" wire:model="option.C">
-                                                         @error('option.C')<p class="text-danger">{{ $message }}</p>@enderror
-                                                    </div>
-                                                </div>
-                                                <div class="form-group mb-3 row">
-                                                    <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">D</label>
-                                                    <div class="col-lg-9 col-xl-8">
-                                                        <input class="form-control border border-3 rounded-3" type="text" wire:model="option.D">
-                                                         @error('option.D')<p class="text-danger">{{ $message }}</p>@enderror
-                                                    </div>
-                                                </div>
-                                                <div class="form-group mb-3 row">
-                                                    <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">E</label>
-                                                    <div class="col-lg-9 col-xl-8">
-                                                        <input class="form-control border border-3 rounded-3" type="text" wire:model="option.E">
-                                                         @error('option.E')<p class="text-danger">{{ $message }}</p>@enderror
-                                                    </div>
-                                                </div>
-                                                <div class="form-group mb-3 row">
-                                                    <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Jawaban Benar</label>
-                                                    <div class="col-lg-9 col-xl-8">
-                                                        <table class="table table-bordered">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>
-                                                                        <input type="radio" wire:model="correct" value="A"> A
-                                                                    </th>
-                                                                    <th>
-                                                                        <input type="radio" wire:model="correct" value="B"> B
-                                                                    </th>
-                                                                    <th>
-                                                                        <input type="radio" wire:model="correct" value="C"> C
-                                                                    </th>
-                                                                    <th>
-                                                                        <input type="radio" wire:model="correct" value="D"> D
-                                                                    </th>
-                                                                    <th>
-                                                                        <input type="radio" wire:model="correct" value="E"> E
-                                                                    </th>
-                                                                </tr>
-                                                            </thead>
-                                                        </table>
-                                                         @error('correct')<p class="text-danger">{{ $message }}</p>@enderror
-                                                    </div>
-                                                </div>
-                                                <div class="form-group mb-3 row">
-                                                    <div class="col-lg-9 col-xl-8 offset-lg-3">
-                                                        <button type="submit" class="btn btn-primary">Submit</button>
-                                                    </div>
-                                                </div> 
-                                                </form>  
-                                            </div><!--end card-body-->
-                                        </div><!--end card-->
-                                    </div> <!-- end col -->   
-                                    <div class="col-lg-4">
-                                        <div class="card shadow">
-                                            <div class="card-header">
-                                                <p>Preview Foto</p>
-                                            </div>
-                                            <div class="card-body">
-                                                @if ($picture) 
-                                                <center>
-                                                    <a href="{{ $picture->temporaryUrl() }}" data-lightbox="image-1">
-                                                        <img src="{{ $picture->temporaryUrl() }}" class="img-fluid rounded mb-3" width="250">
-                                                    </a>
-                                                </center>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>                                      
-                                </div><!--end row-->
                             </div>
-                        </div>        
-                    </div> <!--end card-body-->                            
-                </div><!--end card-->
-            </div><!--end col-->
-        </div><!--end row-->
-    </div>
-    <livewire:partials.footer />             
+                            <div class="form-group mb-1 row">
+                                <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Soal</label>
+                                <div class="col-lg-9 col-xl-8">
+                                    <textarea class="form-control border border-3 rounded-3" type="text" wire:model="pgquestion"></textarea>
+                                    @error('pgquestion')<p class="text-danger">{{ $message }}</p>@enderror
+                                </div>
+                            </div>
+                            <div class="form-group mb-1 row">
+                                <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">A</label>
+                                <div class="col-lg-9 col-xl-8">
+                                    <input class="form-control border border-3 rounded-3" type="text" wire:model="option.A">
+                                    @error('option.A')<p class="text-danger">{{ $message }}</p>@enderror
+                                </div>
+                            </div>
+                            <div class="form-group mb-1 row">
+                                <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">B</label>
+                                <div class="col-lg-9 col-xl-8">
+                                    <input class="form-control border border-3 rounded-3" type="text" wire:model="option.B">
+                                        @error('option.B')<p class="text-danger">{{ $message }}</p>@enderror
+                                </div>
+                            </div>
+                            <div class="form-group mb-1 row">
+                                <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">C</label>
+                                <div class="col-lg-9 col-xl-8">
+                                    <input class="form-control border border-3 rounded-3" type="text" wire:model="option.C">
+                                        @error('option.C')<p class="text-danger">{{ $message }}</p>@enderror
+                                </div>
+                            </div>
+                            <div class="form-group mb-1 row">
+                                <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">D</label>
+                                <div class="col-lg-9 col-xl-8">
+                                    <input class="form-control border border-3 rounded-3" type="text" wire:model="option.D">
+                                        @error('option.D')<p class="text-danger">{{ $message }}</p>@enderror
+                                </div>
+                            </div>
+                            <div class="form-group mb-1 row">
+                                <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">E</label>
+                                <div class="col-lg-9 col-xl-8">
+                                    <input class="form-control border border-3 rounded-3" type="text" wire:model="option.E">
+                                        @error('option.E')<p class="text-danger">{{ $message }}</p>@enderror
+                                </div>
+                            </div>
+                            <div class="form-group mb-1 row">
+                                <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Jawaban Benar</label>
+                                <div class="col-lg-9 col-xl-8">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    <input type="radio" wire:model="correct" value="A"> A
+                                                </th>
+                                                <th>
+                                                    <input type="radio" wire:model="correct" value="B"> B
+                                                </th>
+                                                <th>
+                                                    <input type="radio" wire:model="correct" value="C"> C
+                                                </th>
+                                                <th>
+                                                    <input type="radio" wire:model="correct" value="D"> D
+                                                </th>
+                                                <th>
+                                                    <input type="radio" wire:model="correct" value="E"> E
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                        @error('correct')<p class="text-danger">{{ $message }}</p>@enderror
+                                </div>
+                            </div>
+                            <div class="form-group mb-1 row">
+                                <div class="col-lg-9 col-xl-8 offset-lg-3">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </div> 
+                        </form> 
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br>
 </div>
 
 @assets
