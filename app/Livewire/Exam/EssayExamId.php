@@ -53,6 +53,8 @@ class EssayExamId extends Component
             'user_id' => Auth::user()->id,
             'answer' => $this->answer
         ]);
+
+        toastr()->success('Jawaban tersimpan!');
     }
 
     public function endExam()
@@ -64,8 +66,10 @@ class EssayExamId extends Component
                     ],[
                         'is_end' => true
                     ]);
+        
+        toastr()->success('Selamat anda telah menyelesaikan ujian!');
 
-        return redirect('/user/ujian/'.strtolower($this->exam->exam_type))->with('success', 'Selamat anda telah menyelesaikan ujian!');
+        return redirect('/user/ujian/'.strtolower($this->exam->exam_type));
     }
 
     public function render()

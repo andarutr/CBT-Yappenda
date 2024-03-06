@@ -55,6 +55,8 @@ class PgExamId extends Component
             'answer' => $this->answer,
             'correct' => $this->question->correct == $this->answer ? '1' : '0'
         ]);
+
+        toastr()->success('Jawaban tersimpan!');
     }
 
     public function endExam()
@@ -66,8 +68,10 @@ class PgExamId extends Component
                     ],[
                         'is_end' => true
                     ]);
+        
+        toastr()->success('Selamat anda telah menyelesaikan ujian!');
 
-        return redirect('/user/ujian/'.strtolower($this->exam->exam_type))->with('success', 'Selamat anda telah menyelesaikan ujian!');
+        return redirect('/user/ujian/'.strtolower($this->exam->exam_type));
     }
 
     public function render()

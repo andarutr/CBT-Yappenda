@@ -33,7 +33,8 @@ class ExamList extends Component
 
         if($results_id->is_end == true)
         {
-            return redirect('/user/ujian/'.strtolower($exam_id->exam_type))->with('failed', 'Anda sudah menyelesaikan ujian ini!');
+            toastr()->success('Anda sudah menyelesaikan ujian ini!');
+            return redirect('/user/ujian/'.strtolower($exam_id->exam_type));
         }else{
             return redirect('/user/ujian/pg/'.$uuid);
         }
