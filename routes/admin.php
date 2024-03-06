@@ -8,7 +8,7 @@ use App\Livewire\Lesson\LessonList;
 use App\Livewire\Account\RoleUpdate;
 use App\Livewire\Account\AccountList;
 use App\Livewire\Account\SuspendList;
-use App\Livewire\Setting\ProfileShow;
+use App\Livewire\Setting\Profile;
 use App\Livewire\Account\AccountCreate;
 use App\Livewire\Account\AccountUpdate;
 use App\Livewire\Account\PasswordAccountUpdate;
@@ -44,7 +44,7 @@ Route::middleware('isAdmin')->group(function(){
         Route::get('/dashboard', Dashboard::class);
         
         // Settings
-        Route::get('/profile', ProfileShow::class);
+        Route::get('/profile', Profile::class);
         Route::get('/ganti-password', ChangePassword::class);
 
         // Management Account

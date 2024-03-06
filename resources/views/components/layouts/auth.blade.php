@@ -22,6 +22,7 @@
     <link rel="stylesheet" type="text/css" href="{{ url('assets/css/plugins/forms/form-validation.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url('assets/css/pages/authentication.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url('assets/css/style.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   </head>
   <body class="vertical-layout vertical-menu-modern blank-page navbar-floating footer-static  " data-open="click" data-menu="vertical-menu-modern" data-col="blank-page">
     <div class="app-content content ">

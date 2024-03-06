@@ -21,7 +21,7 @@ class AuthHelper
                 abort(403);
             }
         }else{
-            return session()->flash('failed','Email dan password salah!');
+            return toastr()->warning('Email dan password salah!');
         }
     }
 

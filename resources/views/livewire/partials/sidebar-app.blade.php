@@ -13,10 +13,10 @@
     <div class="shadow-bottom"></div>
     <div class="main-menu-content">
     <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-        <li class=" nav-item"><a class="d-flex align-items-center" href="{{ url('/'.strtolower(Auth::user()->role->role)) }}/dashboard" wire:navigate><i class="bi-rocket-takeoff"></i><span class="menu-title text-truncate mt-1" data-i18n="Dashboard">Dashboard</span></a>
+        <li class=" nav-item"><a class="d-flex align-items-center" href="{{ url('/'.strtolower(Auth::user()->role->role)) }}/dashboard"><i class="bi-rocket-takeoff"></i><span class="menu-title text-truncate mt-1" data-i18n="Dashboard">Dashboard</span></a>
         </li>
         @if(Auth::user()->role->role === 'Admin')
-        <li class=" nav-item"><a class="d-flex align-items-center" href="{{ url('/'.strtolower(Auth::user()->role->role).'/mata-pelajaran') }}" wire:navigate><i class="bi-book"></i><span class="menu-title text-truncate mt-1" data-i18n="Mata Pelajaran">Mata Pelajaran</span></a>
+        <li class=" nav-item"><a class="d-flex align-items-center" href="{{ url('/'.strtolower(Auth::user()->role->role).'/mata-pelajaran') }}"><i class="bi-book"></i><span class="menu-title text-truncate mt-1" data-i18n="Mata Pelajaran">Mata Pelajaran</span></a>
         </li>
         @endif
         @if(Auth::user()->role->role === 'Guru' | Auth::user()->role->role === 'Admin')

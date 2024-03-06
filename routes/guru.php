@@ -15,7 +15,7 @@ use App\Livewire\Rapor\RaporKelasXI;
 use App\Livewire\Rapor\RaporKelasXII;
 use App\Livewire\Assessment\ASHList;
 use App\Livewire\Score\AshScoreList;
-use App\Livewire\Setting\ProfileShow;
+use App\Livewire\Setting\Profile;
 use App\Livewire\Score\AstsScoreList;
 use App\Livewire\Score\AsasScoreList;
 use App\Livewire\Score\AshScoreEssay;
@@ -35,7 +35,7 @@ Route::middleware('isGuru')->group(function(){
     Route::prefix('/guru')->group(function(){
         Route::redirect('/','/guru/dashboard');
         Route::get('/dashboard', Dashboard::class);
-        Route::get('/profile', ProfileShow::class);
+        Route::get('/profile', Profile::class);
         Route::get('/ganti-password', ChangePassword::class);
 
         // Mata Pelajaran

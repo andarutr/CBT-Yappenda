@@ -10,10 +10,29 @@ use App\Mail\ResetPasswordMail;
 use Livewire\Attributes\Validate;
 use Illuminate\Support\Facades\Mail;
 
-class ForgotPassword extends Component
+class Authentication extends Component
 {
+    // Jangan dihapus!
+    public $statusPage = 'login';
+
     #[Validate('required|email')]
     public $email;
+    #[Validate('required')]
+    public $password;
+    public $users;
+
+    public function login()
+    {
+        $this->validate();
+        $login = AuthHelper::login($this->email, $this->password);
+    }
+
+    public function toPage($page)
+    {
+        $this->email = '';
+        $this->password = '';
+        $this->statusPage = $page;
+    }
 
     public function forgotPassword()
     {
@@ -34,16 +53,15 @@ class ForgotPassword extends Component
             ]);
             
             Mail::to($this->email)->send(new ResetPasswordMail($data));
-            session()->flash('success', 'Silahkan periksa email kamu ya!');
+            toastr()->success('Silahkan periksa email kamu ya!');
         }else{
-            session()->flash('failed', 'Email kamu tidak terdaftar!');
+            toastr()->warning('Email kamu tidak terdaftar!');
         }
-        // AuthHelper::forgotPassword($this->email);
     }
 
     public function render()
     {
-        return view('livewire.auth.forgot-password')
+        return view('livewire.auth.authentication')
                 ->layout('components.layouts.auth');
     }
 }

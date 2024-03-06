@@ -5,10 +5,10 @@ use App\Livewire\Exam\PgExamId;
 use App\Livewire\Exam\ExamList;
 use App\Livewire\User\Dashboard;
 use App\Livewire\Exam\EssayExam;
+use App\Livewire\Setting\Profile;
 use App\Livewire\Exam\EssayExamId;
 use App\Livewire\Exam\PreviewExam;
 use App\Livewire\Exam\ShowExamResults;
-use App\Livewire\Setting\ProfileShow;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Setting\ChangePassword;
 
@@ -17,7 +17,7 @@ Route::middleware('isUser')->group(function(){
 	Route::prefix('/user')->group(function(){
 		Route::get('/dashboard', Dashboard::class);
 		// Settings
-		Route::get('/profile', ProfileShow::class);
+		Route::get('/profile', Profile::class);
 		Route::get('/ganti-password', ChangePassword::class);
 
 		// Ujian 

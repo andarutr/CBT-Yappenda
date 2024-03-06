@@ -16,14 +16,7 @@ class SettingHelper
                     'nisn' => $data['nisn'],
                     'kelas' => $data['kelas'],
                     'fase' => $data['fase'],
-                ]);
-    }
-
-    public static function updatePicture($data)
-    {
-        User::where('uuid', Auth::user()->uuid)
-                ->update([
-                    'picture' => $data['picture']
+                    'picture' => $data['picture'],
                 ]);
     }
 
@@ -35,10 +28,9 @@ class SettingHelper
                 ->update([
                     'password' => \Hash::make($data['new_password'])
                 ]);
-
-            return redirect()->back()->with('success', 'Berhasil memperbarui password!');
+            toastr()->success('Berhasil memperbarui password!');    
         }else{
-            return redirect()->back()->with('failed', 'Password salah!');
+            toastr()->warning('Password salah!');    
         }
     }
 }
