@@ -15,7 +15,6 @@ use App\Livewire\Assessment\AstsList;
 use App\Livewire\Assessment\ASHQuestionpr;
 use App\Livewire\Assessment\ASHQuestionpg;
 use App\Livewire\Assessment\ASHQuestionessay;
-use App\Livewire\Assessment\ASHCreate;
 use App\Livewire\Assessment\ASHEditQuestionessay;
 use App\Livewire\Score\AshScoreList;
 use App\Livewire\Score\AstsScoreList;
@@ -57,7 +56,6 @@ Route::middleware('isAdmin')->group(function(){
             // Assessment Sumatif Harian
             Route::prefix('/ash')->group(function(){
                 Route::get('/', ASHList::class);
-                Route::get('/create', ASHCreate::class);
                 Route::get('/input-soal/pg/{uuid}', ASHQuestionpg::class);
                 Route::get('/input-soal/essay/{uuid}', ASHQuestionessay::class);
                 Route::get('/input-soal/preview/{uuid}', ASHQuestionpr::class);
@@ -67,7 +65,6 @@ Route::middleware('isAdmin')->group(function(){
             // Assessment Sumatif Tengah Semester
             Route::prefix('/asts')->group(function(){
                 Route::get('/', AstsList::class);
-                Route::get('/create', ASHCreate::class);
                 Route::get('/input-soal/pg/{uuid}', ASHQuestionpg::class);
                 Route::get('/input-soal/essay/{uuid}', ASHQuestionessay::class);
                 Route::get('/input-soal/preview/{uuid}', ASHQuestionpr::class);
@@ -77,7 +74,6 @@ Route::middleware('isAdmin')->group(function(){
             // Assessment Sumatif Akhir Semester
             Route::prefix('/asas')->group(function(){
                 Route::get('/', AsasList::class);
-                Route::get('/create', ASHCreate::class);
                 Route::get('/input-soal/pg/{uuid}', ASHQuestionpg::class);
                 Route::get('/input-soal/essay/{uuid}', ASHQuestionessay::class);
                 Route::get('/input-soal/preview/{uuid}', ASHQuestionpr::class);
