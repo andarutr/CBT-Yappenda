@@ -10,14 +10,9 @@ use Illuminate\Database\Eloquent\Builder;
 
 class AsasScoreList extends Component
 {
-    public $exam_results;
-
-    public function mount()
-    {
-        $this->exam_results = ExamResult::whereHas('exam', function(Builder $query){
-            $query->where('exam_type', 'ASAS');
-        })->orderBy('date_exam','desc')->get();
-    }
+    // Jangan dihapus
+    public $search;
+    public $paginate = 8;
 
     public function toPgResult($user_id, $uuid)
     {
@@ -36,6 +31,16 @@ class AsasScoreList extends Component
 
     public function render()
     {
-        return view('livewire.score.asas-score-list');
+        $exam = ExamResult::whereHas('exam', function(Builder $query){
+            $query->where('exam_type', 'ASAS');
+        })->orderBy('date_exam','desc')->paginate($this->paginate);
+        
+        $result = ExamResult::whereHas('user', function(Builder $query){
+            $query->where('name', 'like','%'.$this->search.'%');
+        })->orderBy('date_exam','desc')->paginate($this->paginate);
+
+        return view('livewire.score.asas-score-list', [
+            'exam_results' => $this->search ? $result : $exam
+        ]);
     }
 }

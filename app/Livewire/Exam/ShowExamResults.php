@@ -10,20 +10,24 @@ use Illuminate\Database\Eloquent\Builder;
 
 class ShowExamResults extends Component
 {
+    // Jangan dihapus!
     public $exam_type;
-    public $exam_results;
+    public $paginate = 8;
 
     public function mount()
     {
         $this->exam_type = Request::segment(3);
-        $this->exam_results = ExamResult::where('user_id', Auth::user()->id)
-                                            ->whereHas('exam', function(Builder $query){
-                                                $query->where('exam_type', $this->exam_type);
-                                            })->get();
     }
 
     public function render()
     {
-        return view('livewire.exam.show-exam-results');
+        $exam_results = ExamResult::where('user_id', Auth::user()->id)
+                                            ->whereHas('exam', function(Builder $query){
+                                                $query->where('exam_type', $this->exam_type);
+                                            })->paginate($this->paginate);
+
+        return view('livewire.exam.show-exam-results', [
+            'exam_results' => $exam_results
+        ]);
     }
 }
