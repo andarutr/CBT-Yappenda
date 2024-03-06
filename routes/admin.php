@@ -5,13 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Livewire\Admin\Dashboard;
 use App\Livewire\Account\RoleList;
 use App\Livewire\Lesson\LessonList;
-use App\Livewire\Account\RoleUpdate;
 use App\Livewire\Account\AccountList;
 use App\Livewire\Account\SuspendList;
 use App\Livewire\Setting\Profile;
-use App\Livewire\Account\AccountCreate;
-use App\Livewire\Account\AccountUpdate;
-use App\Livewire\Account\PasswordAccountUpdate;
 use App\Livewire\Account\PasswordAccountList;
 use App\Livewire\Assessment\ASHList;
 use App\Livewire\Assessment\AsasList;
@@ -48,12 +44,8 @@ Route::middleware('isAdmin')->group(function(){
         // Management Account
         Route::prefix('/account')->group(function(){
             Route::get('/', AccountList::class);
-            Route::get('/create', AccountCreate::class);
-            Route::get('/edit/{uuid}', AccountUpdate::class);
             Route::get('/reset-password', PasswordAccountList::class);
-            Route::get('/reset-password/{uuid}', PasswordAccountUpdate::class);
             Route::get('/role', RoleList::class);
-            Route::get('/role/{uuid}', RoleUpdate::class);
             Route::get('/suspend', SuspendList::class);
         });
 

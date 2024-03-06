@@ -8,12 +8,9 @@ use App\Helpers\AccountHelper;
 
 class SuspendList extends Component
 {
-    public $accounts;
-
-    public function mount()
-    {
-        $this->accounts = User::all();
-    }
+    // Jangan dihapus
+    public $search;
+    public $paginate = 8;
 
     public function suspend($uuid)
     {
@@ -22,22 +19,34 @@ class SuspendList extends Component
         ];
 
        $suspend = AccountHelper::suspend($data);
-        return redirect()->to('/admin/account/suspend')->with('success', 'Berhasil suspend akun!'); 
+
+       toastr()->success('Berhasil suspend akun!');
+
+        return redirect()->to('/admin/account/suspend');
     }
 
-    public function un_suspend($uuid)
+    public function unSuspend($uuid)
     {
         $data = [
             'uuid' => $uuid,
         ];
 
        $suspend = AccountHelper::unSuspend($data);
+       
+       toastr()->success('Berhasil un-suspend akun!');
 
-        return redirect()->to('/admin/account/suspend')->with('success', 'Berhasil membatalkan suspend akun '.$user->name);
+       return redirect()->to('/admin/account/suspend');
     }
 
     public function render()
     {
-        return view('livewire.account.suspend-list');
+        $accounts = User::orderByDesc('id')->paginate($this->paginate);
+        $result = User::where('name','like','%'.$this->search.'%')
+                        ->orwhere('email','like','%'.$this->search.'%')
+                        ->paginate($this->paginate);
+
+        return view('livewire.account.suspend-list',[
+            'accounts' => $this->search ? $result : $accounts
+        ]);
     }
 }
