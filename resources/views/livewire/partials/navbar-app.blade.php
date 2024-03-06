@@ -17,15 +17,15 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-user">
                         <a class="dropdown-item" href="/{{ Request::segment(1) }}/profile">
-                            <i class="me-50" data-feather="user"></i> Profile
+                            <i class="bi-people"></i> Profile
                         </a>
                         <a class="dropdown-item" href="/{{ Request::segment(1) }}/ganti-password">
-                            <i class="me-50" data-feather="lock"></i> Ganti Password
+                            <i class="bi-key"></i> Ganti Password
                         </a>
-                        <a class="dropdown-item" wire:click="logout"><i class="me-50" data-feather="power"></i>Logout</a>
+                        <a class="dropdown-item" wire:click="logout"><i class="bi-box-arrow-left"></i> Logout</a>
                     </div>
                 </li>
-                <li class="nav-item d-none d-lg-block"><a class="nav-link nav-link-style"><i class="ficon" data-feather="moon"></i></a></li>
+                <li class="nav-item d-none d-lg-block"><a class="nav-link nav-link-style"><i class="bi-moon"></i></a></li>
             </ul>
         </div>
     </nav>
