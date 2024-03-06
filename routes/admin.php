@@ -12,7 +12,6 @@ use App\Livewire\Setting\Profile;
 use App\Livewire\Account\AccountCreate;
 use App\Livewire\Account\AccountUpdate;
 use App\Livewire\Account\PasswordAccountUpdate;
-use App\Livewire\Setting\ChangePassword;
 use App\Livewire\Account\PasswordAccountList;
 use App\Livewire\Assessment\ASHList;
 use App\Livewire\Assessment\AsasList;
@@ -45,7 +44,6 @@ Route::middleware('isAdmin')->group(function(){
         
         // Settings
         Route::get('/profile', Profile::class);
-        Route::get('/ganti-password', ChangePassword::class);
 
         // Management Account
         Route::prefix('/account')->group(function(){

@@ -24,7 +24,6 @@ use App\Livewire\Assessment\AsasList;
 use App\Livewire\Assessment\ASHCreate;
 use App\Livewire\Assessment\ASHUpdate;
 use App\Livewire\Score\AshScoreEssayId;
-use App\Livewire\Setting\ChangePassword;
 use App\Livewire\Assessment\ASHQuestionpr;
 use App\Livewire\Assessment\ASHQuestionpg;
 use App\Livewire\Assessment\ASHQuestionessay;
@@ -36,7 +35,6 @@ Route::middleware('isGuru')->group(function(){
         Route::redirect('/','/guru/dashboard');
         Route::get('/dashboard', Dashboard::class);
         Route::get('/profile', Profile::class);
-        Route::get('/ganti-password', ChangePassword::class);
 
         // Mata Pelajaran
         Route::get('/mata-pelajaran', LessonList::class);

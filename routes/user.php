@@ -10,7 +10,6 @@ use App\Livewire\Exam\EssayExamId;
 use App\Livewire\Exam\PreviewExam;
 use App\Livewire\Exam\ShowExamResults;
 use Illuminate\Support\Facades\Route;
-use App\Livewire\Setting\ChangePassword;
 
 // Route
 Route::middleware('isUser')->group(function(){
@@ -18,7 +17,6 @@ Route::middleware('isUser')->group(function(){
 		Route::get('/dashboard', Dashboard::class);
 		// Settings
 		Route::get('/profile', Profile::class);
-		Route::get('/ganti-password', ChangePassword::class);
 
 		// Ujian 
 		Route::prefix('/ujian')->group(function(){

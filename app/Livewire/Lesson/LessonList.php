@@ -12,6 +12,7 @@ class LessonList extends Component
     // Jangan Dihapus
     public $lesson_uuid;
     public $search;
+    public $paginate = 8;
     public $statusPage = 'list';
 
     #[Validate('required|unique:lessons')]
@@ -54,7 +55,7 @@ class LessonList extends Component
 
     public function render()
     {
-        $lessons = Lesson::paginate(5);
+        $lessons = Lesson::paginate($this->paginate);
         $result = Lesson::where('name','like','%'.$this->search.'%')->get();
         return view('livewire.lesson.lesson-list', [
             'lessons' => $this->search ?  $result : $lessons
