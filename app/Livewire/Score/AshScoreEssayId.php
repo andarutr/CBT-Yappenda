@@ -41,6 +41,8 @@ class AshScoreEssayId extends Component
         $essay_question = EssayQuestion::where('id', $this->essay_answer->essay_question_id)->first();
         $exam = Exam::where('id', $essay_question->exam_id)->first();
 
+        toastr()->success('Berhasil menilai essay!');
+
         return redirect('/'.strtolower(Auth::user()->role->role).'/input-nilai/'.strtolower($exam->exam_type).'/essay/'.$this->essay_answer->user_id.'/'.$this->backToUrl);
     }
 

@@ -1,21 +1,21 @@
 @section('title', 'Berikan Nilai Essay!')
 
-<div class="page-content-tab">
-    <div class="container-fluid">
-        <livewire:partials.breadcrumb />
-       <div class="row">
-        <div class="col-lg-4">
-            <div class="card shadow">
-                <div class="card-body">
+<div class="content-body">
+    <section class="app-user-view-account">
+        <div class="row">
+            <div class="col-xl-8 col-lg-7 col-md-7">
+                <div class="card">
+                    <h4 class="card-header">Koreksi Essay</h4>
+                    <div class="card-body pt-1">
                     <form wire:submit="update">
                         <input type="number" class="form-control" wire:model="score" required>
-                        <button class="btn btn-success mt-3">Update</button>
+                        <button class="btn btn-success mt-1">Update</button>
                     </form>
+                    </div>
                 </div>
             </div>
+            <!--/ User Content -->
         </div>
-       </div>
-    </div>
-    <livewire:partials.footer />             
+    </section>
 </div>
 
