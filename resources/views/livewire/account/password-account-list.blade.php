@@ -34,7 +34,7 @@
                                 @if($account->id !== Auth::user()->id)
                                     <tr>
                                         <td>
-                                            <img src="{{ asset('storage/assets/images/users/'.$account->picture) }}" alt="" class="img-fluid rounded-circle thumb-xs me-1" width="80">
+                                            <img src="{{ asset('storage/assets/images/users/'.$account->picture) }}" alt="" class="rounded-circle" width="50" height="50">
                                         </td>
                                         <td>{{ $account->name }}</td>
                                         <td>{{ $account->email }}</td>
@@ -62,36 +62,13 @@
                     @endif
 
                     @if($statusPage == 'editPassword')
-                    <form wire:submit="update">
-                        <div class="mt-1">
-                            <label>Nama</label>
-                            <input type="text" class="form-control border border-3 rounded-3"  wire:model="name" disabled>
-                        </div>
-                        <div class="mt-1">
-                            <label>Password Baru</label>
-                            <input type="password" class="form-control border border-3 rounded-3" wire:model.live="new_password"> 
-                            @error('new_password')<p class="text-danger">{{ $message }}</p>@enderror
-                        </div>
-                        <div class="mt-1">
-                            <button type="submit" class="btn btn-success">Reset</button>
-                        </div>
-                    </form>
+                        @include('components.forms.edit-password-account')
                     @endif
                 </div>
             </div>
         </div>
     </div>
     @if($statusPage == 'list')
-    <div class="row">
-        <div class="col-2">
-            <select wire:model.live="paginate" class="btn btn-sm btn-secondary mb-2">
-                <option value="">Tampilkan Data</option>
-                <option value="10">10</option>
-                <option value="25">25</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-            </select>
-        </div>
-    </div>
+        @include('components.buttons.btn-paginate')
     @endif
 </div>

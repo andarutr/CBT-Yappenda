@@ -35,7 +35,7 @@
                                 @if($account->id !== Auth::user()->id)
                                     <tr>
                                         <td>
-                                            <img src="{{ asset('storage/assets/images/users/'.$account->picture) }}" alt="" class="img-fluid rounded-circle thumb-xs me-1" width="80">
+                                            <img src="{{ asset('storage/assets/images/users/'.$account->picture) }}" alt="" class="rounded-circle" width="50" height="50">
                                         </td>
                                         <td>{{ $account->name }}</td>
                                         <td>{{ $account->email }}</td>
@@ -66,74 +66,17 @@
                     @endif
 
                     @if($statusPage == 'create')
-                    <form wire:submit="store">
-                        <div class="mt-1">
-                            <label>Nama</label>
-                            <input type="text" class="form-control border border-3 rounded-3" wire:model.live="name">
-                            @error('name')<p class="text-danger">{{ $message }}</p>@enderror
-                        </div>
-                        <div class="mt-1">
-                            <label>Email</label>
-                            <input type="text" class="form-control border border-3 rounded-3" wire:model.live="email"> 
-                            @error('email')<p class="text-danger">{{ $message }}</p>@enderror
-                        </div>
-                        <div class="mt-1">
-                            <label>Role</label>
-                            <select class="form-control border border-3 rounded-3" wire:model.live="role_id">
-                                <option value="">Pilih</option>                
-                                @foreach($roles as $role)                    
-                                <option value="{{ $role->id }}">{{ $role->role }}</option>       
-                                @endforeach                             
-                            </select>
-                            @error('role_id')<p class="text-danger">{{ $message }}</p>@enderror
-                        </div>
-                        <div class="mt-1">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                    </form>
+                        @include('components.forms.post-account')
                     @endif
-
+                        
                     @if($statusPage !== 'list' AND $statusPage !== 'create')
-                    <form wire:submit="update">
-                        <div class="mt-3">
-                            <label>Nama</label>
-                            <input type="text" class="form-control border border-3 rounded-3"  wire:model="name">
-                            @error('name')<p class="text-danger">{{ $message }}</p>@enderror
-                        </div>
-                        <div class="mt-3">
-                            <label>Email</label>
-                            <input type="text" class="form-control border border-3 rounded-3" wire:model="email"> 
-                            @error('email')<p class="text-danger">{{ $message }}</p>@enderror
-                        </div>
-                        <div class="mt-3">
-                            <label>Role</label>
-                            <select class="form-control border border-3 rounded-3" wire:model="role_id">
-                                @foreach($roles as $role)                    
-                                <option value="{{ $role->id }}">{{ $role->role }}</option>       
-                                @endforeach                             
-                            </select>
-                            @error('role_id')<p class="text-danger">{{ $message }}</p>@enderror
-                        </div>
-                        <div class="mt-3">
-                            <button type="submit" class="btn btn-success">Update</button>
-                        </div>
-                    </form>
+                        @include('components.forms.edit-account')
                     @endif
                 </div>
             </div>
         </div>
     </div>
     @if($statusPage == 'list')
-    <div class="row">
-        <div class="col-2">
-            <select wire:model.live="paginate" class="btn btn-sm btn-secondary mb-2">
-                <option value="">Tampilkan Data</option>
-                <option value="10">10</option>
-                <option value="25">25</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-            </select>
-        </div>
-    </div>
+        @include('components.buttons.btn-paginate')
     @endif
 </div>

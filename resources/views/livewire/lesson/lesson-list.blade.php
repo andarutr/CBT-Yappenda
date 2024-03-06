@@ -50,46 +50,17 @@
                     @endif
 
                     @if($statusPage == 'create')
-                    <form wire:submit="store">
-                        <div class="mt-3">
-                            <label>Mata Pelajaran</label>
-                            <input type="text" class="form-control border border-3 rounded-3"  wire:model="name">
-                            @error('name')<p class="text-danger">{{ $message }}</p>@enderror
-                        </div>
-                        <div class="mt-3">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                    </form>
+                        @include('components.forms.post-lesson')
                     @endif
-
+                        
                     @if($statusPage !== 'list' AND $statusPage !== 'create')
-                    <form wire:submit="update">
-                        <input type="hidden" wire:model="lesson_id">
-                        <div class="mt-3">
-                            <label>Mata Pelajaran</label>
-                            <input type="text" class="form-control border border-3 rounded-3"  wire:model="name">
-                            @error('name')<p class="text-danger">{{ $message }}</p>@enderror
-                        </div>
-                        <div class="mt-3">
-                            <button type="submit" class="btn btn-success">Update</button>
-                        </div>
-                    </form>
+                        @include('components.forms.edit-lesson')
                     @endif
                 </div>
             </div>
         </div>
     </div>
     @if($statusPage == 'list')
-    <div class="row">
-        <div class="col-2">
-            <select wire:model.live="paginate" class="btn btn-sm btn-secondary mb-2">
-                <option value="">Tampilkan Data</option>
-                <option value="10">10</option>
-                <option value="25">25</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-            </select>
-        </div>
-    </div>
+        @include('components.buttons.btn-paginate')
     @endif
 </div>

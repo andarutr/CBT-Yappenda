@@ -1,4 +1,3 @@
-@section('title', 'Account')
 @section('title', 'Mata Pelajaran')
 <div class="content-body">
     <div class="row">
