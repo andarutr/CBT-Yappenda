@@ -4,6 +4,9 @@
         <div class="navbar-container d-flex content">
             <div class="bookmark-wrapper d-flex align-items-center">
             </div>
+            <ul class="nav navbar-nav d-xl-none">
+                <li class="nav-item"><a class="nav-link menu-toggle" href="#"><i class="ficon" data-feather="menu"></i></a></li>
+            </ul>
             <ul class="nav navbar-nav align-items-center ms-auto">
                 <li class="nav-item dropdown dropdown-user"><a class="nav-link dropdown-toggle dropdown-user-link"
                         id="dropdown-user" href="#" data-bs-toggle="dropdown" aria-haspopup="true"
@@ -29,4 +32,5 @@
             </ul>
         </div>
     </nav>
+    
 </div>
