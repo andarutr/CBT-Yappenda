@@ -10,7 +10,7 @@
     },
     {
         "name": "Niko Bayu Aji, S.Pd",
-        "email": "nikobayugeografi90@gmail.com",
+        "email": "nikobayu@smayappenda.sch.id",
         "nis": null,
         "nisn": null,
         "kelas": null,
@@ -18,8 +18,8 @@
         "role_id": "2"
     },
     {
-        "name": "Andaru Triadi, S.Kom",
-        "email": "andarutr@gmail.com",
+        "name": "Wahyu Dawam Budi Utomo, M.Pd.",
+        "email": "wahyudawam@smayappenda.sch.id",
         "nis": null,
         "nisn": null,
         "kelas": null,
@@ -27,21 +27,390 @@
         "role_id": "2"
     },
     {
-        "name": "Imanuel Revando",
-        "email": "imrevan@domain.com",
-        "nis": "9396",
-        "nisn": "0088776379",
-        "kelas": "X",
-        "fase": "A",
-        "role_id": "3"
-    },
-    {
-        "name": "Alinsky Onibal",
-        "email": "alion@domain.com",
+        "name": "Imanuel Revando Alinsky Onibal",
+        "email": "revando@smayappenda.sch.id",
         "nis": "9397",
         "nisn": "00887763710",
         "kelas": "XI",
         "fase": "B",
         "role_id": "3"
+    },
+    {
+        "name": "Dra. Lulus Purwandari",
+        "email": "luluspurwandari@smayappenda.sch.id",
+        "nis": null,
+        "nisn": null,
+        "kelas": null,
+        "fase": null,
+        "role_id": "2"
+    },
+    {
+        "name": "Jullianty Supandi, S.Pd.",
+        "email": "julliantysupandi@smayappenda.sch.id",
+        "nis": null,
+        "nisn": null,
+        "kelas": null,
+        "fase": null,
+        "role_id": "2"
+    },
+    {
+        "name": "Deby Rahmat, S.Ag.",
+        "email": "debyrahmat@smayappenda.sch.id",
+        "nis": null,
+        "nisn": null,
+        "kelas": null,
+        "fase": null,
+        "role_id": "2"
+    },
+    {
+        "name": "Era Hendrayana, M.Pd.",
+        "email": "erahendrayana@smayappenda.sch.id",
+        "nis": null,
+        "nisn": null,
+        "kelas": null,
+        "fase": null,
+        "role_id": "2"
+    },
+    {
+        "name": "Tri Marheningsih, S.Pd.",
+        "email": "trimarheningsih@smayappenda.sch.id",
+        "nis": null,
+        "nisn": null,
+        "kelas": null,
+        "fase": null,
+        "role_id": "2"
+    },
+    {
+        "name": "Eva Syawamah, S.Pd.",
+        "email": "evasyawamah@smayappenda.sch.id",
+        "nis": null,
+        "nisn": null,
+        "kelas": null,
+        "fase": null,
+        "role_id": "2"
+    },
+    {
+        "name": "Nuraini Maswain, M.Pd.",
+        "email": "nurainimaswain@smayappenda.sch.id",
+        "nis": null,
+        "nisn": null,
+        "kelas": null,
+        "fase": null,
+        "role_id": "2"
+    },
+    {
+        "name": "Kardinata, S.S.",
+        "email": "kardinata@smayappenda.sch.id",
+        "nis": null,
+        "nisn": null,
+        "kelas": null,
+        "fase": null,
+        "role_id": "2"
+    },
+    {
+        "name": "Arif Nurhidayatullah, S.Pd.",
+        "email": "arifnurhidayatullah@smayappenda.sch.id",
+        "nis": null,
+        "nisn": null,
+        "kelas": null,
+        "fase": null,
+        "role_id": "2"
+    },
+    {
+        "name": "Nurlaillul Qaidah, S.Pd.",
+        "email": "nurlaillulqaidah@smayappenda.sch.id",
+        "nis": null,
+        "nisn": null,
+        "kelas": null,
+        "fase": null,
+        "role_id": "2"
+    },
+    {
+        "name": "Dzaqiyah Tsabatulloh, S.Pd.",
+        "email": "dzaqiyahtsabatulloh@smayappenda.sch.id",
+        "nis": null,
+        "nisn": null,
+        "kelas": null,
+        "fase": null,
+        "role_id": "2"
+    },
+    {
+        "name": "Purbaya Cahya Muhammad, S.Pd.",
+        "email": "purbayacahya@smayappenda.sch.id",
+        "nis": null,
+        "nisn": null,
+        "kelas": null,
+        "fase": null,
+        "role_id": "2"
+    },
+    {
+        "name": "Reshita Gusti Vianinggar, S.Pd.",
+        "email": "reshitagusti@smayappenda.sch.id",
+        "nis": null,
+        "nisn": null,
+        "kelas": null,
+        "fase": null,
+        "role_id": "2"
+    },
+    {
+        "name": "Riska Juniarum, S.Pd.",
+        "email": "riskajuniarum@smayappenda.sch.id",
+        "nis": null,
+        "nisn": null,
+        "kelas": null,
+        "fase": null,
+        "role_id": "2"
+    },
+    {
+        "name": "Ayu Oktaviani, S.Kom.",
+        "email": "ayuoktaviani@smayappenda.sch.id",
+        "nis": null,
+        "nisn": null,
+        "kelas": null,
+        "fase": null,
+        "role_id": "2"
+    },
+    {
+        "name": "Anton Oktaviansyah, S.Pd.",
+        "email": "antonoktaviansyah@smayappenda.sch.id",
+        "nis": null,
+        "nisn": null,
+        "kelas": null,
+        "fase": null,
+        "role_id": "2"
+    },
+    {
+        "name": "Helmi Anwar Allaudin, S.Pd.",
+        "email": "helmianwar@smayappenda.sch.id",
+        "nis": null,
+        "nisn": null,
+        "kelas": null,
+        "fase": null,
+        "role_id": "2"
+    },
+    {
+        "name": "Saeful Ridwan, S.Pd.",
+        "email": "saefulridwan@smayappenda.sch.id",
+        "nis": null,
+        "nisn": null,
+        "kelas": null,
+        "fase": null,
+        "role_id": "2"
+    },
+    {
+        "name": "Khairul Makmun, S.Pd.",
+        "email": "khairulmakmun@smayappenda.sch.id",
+        "nis": null,
+        "nisn": null,
+        "kelas": null,
+        "fase": null,
+        "role_id": "2"
+    },
+    {
+        "name": "Dwiriyadi, S.Pd.",
+        "email": "dwiriyadi@smayappenda.sch.id",
+        "nis": null,
+        "nisn": null,
+        "kelas": null,
+        "fase": null,
+        "role_id": "2"
+    },
+    {
+        "name": "Devira Fajri Nur, S.Pd.",
+        "email": "devirafajri@smayappenda.sch.id",
+        "nis": null,
+        "nisn": null,
+        "kelas": null,
+        "fase": null,
+        "role_id": "2"
+    },
+    {
+        "name": "Sudir Almansyah, S.Or.",
+        "email": "sudiralmansyah@smayappenda.sch.id",
+        "nis": null,
+        "nisn": null,
+        "kelas": null,
+        "fase": null,
+        "role_id": "2"
+    },
+    {
+        "name": "Asma Z Karimah, S.Pd.",
+        "email": "asmakarimah@smayappenda.sch.id",
+        "nis": null,
+        "nisn": null,
+        "kelas": null,
+        "fase": null,
+        "role_id": "2"
+    },
+    {
+        "name": "Azizah Rahma Ardita, S.Pd.",
+        "email": "azizahrahma@smayappenda.sch.id",
+        "nis": null,
+        "nisn": null,
+        "kelas": null,
+        "fase": null,
+        "role_id": "2"
+    },
+    {
+        "name": "Reza Maulana, S.Pd.",
+        "email": "rezamaulana@smayappenda.sch.id",
+        "nis": null,
+        "nisn": null,
+        "kelas": null,
+        "fase": null,
+        "role_id": "2"
+    },
+    {
+        "name": "Helmi Rifkyansyah, S.Pd.",
+        "email": "helmirifkyansyah@smayappenda.sch.id",
+        "nis": null,
+        "nisn": null,
+        "kelas": null,
+        "fase": null,
+        "role_id": "2"
+    },
+    {
+        "name": "Anisah, S.Ag.",
+        "email": "anisah@smayappenda.sch.id",
+        "nis": null,
+        "nisn": null,
+        "kelas": null,
+        "fase": null,
+        "role_id": "2"
+    },
+    {
+        "name": "Muhammad Hamdan Andrysof Taifur, S.Psi.",
+        "email": "muhammadhamdan@smayappenda.sch.id",
+        "nis": null,
+        "nisn": null,
+        "kelas": null,
+        "fase": null,
+        "role_id": "2"
+    },
+    {
+        "name": "Desi Ramadanniati, S.Pd.",
+        "email": "desiramadanniati@smayappenda.sch.id",
+        "nis": null,
+        "nisn": null,
+        "kelas": null,
+        "fase": null,
+        "role_id": "2"
+    },
+    {
+        "name": "Siti Lilik Nur Rohmah, S.Hum.",
+        "email": "sitililik@smayappenda.sch.id",
+        "nis": null,
+        "nisn": null,
+        "kelas": null,
+        "fase": null,
+        "role_id": "2"
+    },
+    {
+        "name": "Yashmin, S.Pd.",
+        "email": "yashmin@smayappenda.sch.id",
+        "nis": null,
+        "nisn": null,
+        "kelas": null,
+        "fase": null,
+        "role_id": "2"
+    },
+    {
+        "name": "Andi Nurmayasari, M.Pd.",
+        "email": "andinurmayasari@smayappenda.sch.id",
+        "nis": null,
+        "nisn": null,
+        "kelas": null,
+        "fase": null,
+        "role_id": "2"
+    },
+    {
+        "name": "Muhammad Dhimas Syaputra, S.Pd.",
+        "email": "mdhimas@smayappenda.sch.id",
+        "nis": null,
+        "nisn": null,
+        "kelas": null,
+        "fase": null,
+        "role_id": "2"
+    },
+    {
+        "name": "Yulianti, S.Tp.",
+        "email": "yulianti@smayappenda.sch.id",
+        "nis": null,
+        "nisn": null,
+        "kelas": null,
+        "fase": null,
+        "role_id": "2"
+    },
+    {
+        "name": "Armi Lia Aji, M.Pd.",
+        "email": "armilia@smayappenda.sch.id",
+        "nis": null,
+        "nisn": null,
+        "kelas": null,
+        "fase": null,
+        "role_id": "2"
+    },
+    {
+        "name": "Muhamad Hafidh Kahfi, S.Pd.",
+        "email": "muhammadhafidh@smayappenda.sch.id",
+        "nis": null,
+        "nisn": null,
+        "kelas": null,
+        "fase": null,
+        "role_id": "2"
+    },
+    {
+        "name": "Henny Kurnia Asharie, S.Pd.",
+        "email": "hennykurnia@smayappenda.sch.id",
+        "nis": null,
+        "nisn": null,
+        "kelas": null,
+        "fase": null,
+        "role_id": "2"
+    },
+    {
+        "name": "Delia Sati, S.Pd.",
+        "email": "deliasati@smayappenda.sch.id",
+        "nis": null,
+        "nisn": null,
+        "kelas": null,
+        "fase": null,
+        "role_id": "2"
+    },
+    {
+        "name": "Mei Khadiroh, S.Ag., M.Pd.",
+        "email": "meikhadiroh@smayappenda.sch.id",
+        "nis": null,
+        "nisn": null,
+        "kelas": null,
+        "fase": null,
+        "role_id": "2"
+    },
+    {
+        "name": "Dewi Sri Utami, S.Pd.",
+        "email": "dewisriutami@smayappenda.sch.id",
+        "nis": null,
+        "nisn": null,
+        "kelas": null,
+        "fase": null,
+        "role_id": "2"
+    },
+    {
+        "name": "Putri Shania Maharani, S.Pd.",
+        "email": "putrishania@smayappenda.sch.id",
+        "nis": null,
+        "nisn": null,
+        "kelas": null,
+        "fase": null,
+        "role_id": "2"
+    },
+    {
+        "name": "Muhammad Dwi Ikhwannudin, S.Kom.",
+        "email": "ikhwan@smayappenda.sch.id",
+        "nis": null,
+        "nisn": null,
+        "kelas": null,
+        "fase": null,
+        "role_id": "2"
     }
 ]
