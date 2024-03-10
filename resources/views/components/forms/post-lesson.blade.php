@@ -1,7 +1,7 @@
 <form wire:submit="store">
     <div class="mt-3">
         <label>Mata Pelajaran</label>
-        <input type="text" class="form-control border border-3 rounded-3"  wire:model="name">
+        <input type="text" class="form-control"  wire:model="name">
         @error('name')<p class="text-danger">{{ $message }}</p>@enderror
     </div>
     <div class="mt-3">

@@ -10,7 +10,7 @@
                         <form wire:submit="store">
                             <div class="mt-3">
                                 <label>Siswa</label>
-                                <select class="form-control border border-3 rounded-3" wire:model.live="user_id">
+                                <select class="form-control" wire:model.live="user_id">
                                     <option value="">Pilih</option> 
                                     @foreach($users as $user)
                                     <option value="{{ $user->id }}">{{ $user->name }}</option> 
@@ -20,7 +20,7 @@
                             </div>
                             <div class="mt-3">
                                 <label>Jenis Ujian</label>
-                                <select class="form-control border border-3 rounded-3" wire:model.live="exam_type">
+                                <select class="form-control" wire:model.live="exam_type">
                                     <option value="">Pilih</option> 
                                     <option value="ASH">ASH</option> 
                                     <option value="ASTS">ASTS</option> 
@@ -31,7 +31,7 @@
                             </div>
                             <div class="mt-3">
                                 <label>Semester</label>
-                                <select class="form-control border border-3 rounded-3" wire:model.live="semester">
+                                <select class="form-control" wire:model.live="semester">
                                     <option value="">Pilih</option> 
                                     <option value="1 (Ganjil)">1 (Ganjil)</option> 
                                     <option value="2 (Genap)">2 (Genap)</option> 
@@ -40,7 +40,7 @@
                             </div>
                             <div class="mt-3">
                                 <label>Tahun Ajaran</label>
-                                <select class="form-control border border-3 rounded-3" wire:model.live="th_ajaran">
+                                <select class="form-control" wire:model.live="th_ajaran">
                                     <option value="">Pilih</option> 
                                     <option value="2024/2025">2024/2025</option> 
                                     <option value="2025/2026">2025/2026</option> 

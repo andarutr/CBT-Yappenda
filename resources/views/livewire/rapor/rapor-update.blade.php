@@ -9,7 +9,7 @@
                         <form wire:submit="update">
                             <div class="mt-3">
                                 <label>Mata Pelajaran</label>
-                                <select class="form-control border border-3 rounded-3" wire:model.live="exam_id">
+                                <select class="form-control" wire:model.live="exam_id">
                                     <option value="">Pilih</option> 
                                     @foreach($exams as $exam)
                                     <option value="{{ $exam->id }}">{{ $exam->lesson->name }} ({{ $exam->grade.' '.$exam->major }})[{{ $exam->exam_type }}] {{ $exam->semester.' '.$exam->th_ajaran }}</option> 
@@ -19,7 +19,7 @@
                             </div>
                             <div class="mt-3">
                                 <label>Kelompok</label>
-                                <select class="form-control border border-3 rounded-3" wire:model.live="kelompok_mpl">
+                                <select class="form-control" wire:model.live="kelompok_mpl">
                                     <option value="">Pilih</option> 
                                     <option value="KELOMPOK A (UMUM)">KELOMPOK A (UMUM)</option> 
                                     <option value="KELOMPOK B (UMUM)">KELOMPOK B (UMUM)</option> 
@@ -31,12 +31,12 @@
                             </div>
                             <div class="mt-3">
                                 <label>Nilai</label>
-                                <input type="number" class="form-control border border-3 rounded-3" wire:model.live="nilai" min="0" max="100"> 
+                                <input type="number" class="form-control" wire:model.live="nilai" min="0" max="100"> 
                                 @error('nilai')<p class="text-danger">{{ $message }}</p>@enderror
                             </div>
                             <div class="mt-3">
                                 <label>Deskripsi</label>
-                                <textarea class="form-control border border-3 rounded-3" wire:model.live="description" rows="15"></textarea> 
+                                <textarea class="form-control" wire:model.live="description" rows="15"></textarea> 
                                 @error('description')<p class="text-danger">{{ $message }}</p>@enderror
                             </div>
                             <div class="mt-3">

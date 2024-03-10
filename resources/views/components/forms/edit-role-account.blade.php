@@ -1,11 +1,11 @@
 <form wire:submit="update">
     <div class="mt-3">
         <label>Nama</label>
-        <input type="text" class="form-control border border-3 rounded-3"  wire:model="name" disabled>
+        <input type="text" class="form-control"  wire:model="name" disabled>
     </div>
     <div class="mt-3">
         <label>Role</label>
-        <select class="form-control border border-3 rounded-3" wire:model="role_id">
+        <select class="form-control" wire:model="role_id">
             @foreach($roles as $role)                    
             <option value="{{ $role->id }}">{{ $role->role }}</option>       
             @endforeach                             

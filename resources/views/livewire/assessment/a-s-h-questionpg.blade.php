@@ -36,48 +36,48 @@
                             <div class="form-group mb-1 row">
                                 <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Foto (opsional)</label>
                                 <div class="col-lg-9 col-xl-8">
-                                    <input type="file" class="form-control border border-3 rounded-3" wire:model="picture" />
+                                    <input type="file" class="form-control" wire:model="picture" />
                                 </div>
                             </div>
                             <div class="form-group mb-1 row">
                                 <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Soal</label>
                                 <div class="col-lg-9 col-xl-8">
-                                    <textarea class="form-control border border-3 rounded-3" type="text" wire:model="pgquestion"></textarea>
+                                    <textarea class="form-control" type="text" wire:model="pgquestion"></textarea>
                                     @error('pgquestion')<p class="text-danger">{{ $message }}</p>@enderror
                                 </div>
                             </div>
                             <div class="form-group mb-1 row">
                                 <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">A</label>
                                 <div class="col-lg-9 col-xl-8">
-                                    <input class="form-control border border-3 rounded-3" type="text" wire:model="option.A">
+                                    <input class="form-control" type="text" wire:model="option.A">
                                     @error('option.A')<p class="text-danger">{{ $message }}</p>@enderror
                                 </div>
                             </div>
                             <div class="form-group mb-1 row">
                                 <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">B</label>
                                 <div class="col-lg-9 col-xl-8">
-                                    <input class="form-control border border-3 rounded-3" type="text" wire:model="option.B">
+                                    <input class="form-control" type="text" wire:model="option.B">
                                         @error('option.B')<p class="text-danger">{{ $message }}</p>@enderror
                                 </div>
                             </div>
                             <div class="form-group mb-1 row">
                                 <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">C</label>
                                 <div class="col-lg-9 col-xl-8">
-                                    <input class="form-control border border-3 rounded-3" type="text" wire:model="option.C">
+                                    <input class="form-control" type="text" wire:model="option.C">
                                         @error('option.C')<p class="text-danger">{{ $message }}</p>@enderror
                                 </div>
                             </div>
                             <div class="form-group mb-1 row">
                                 <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">D</label>
                                 <div class="col-lg-9 col-xl-8">
-                                    <input class="form-control border border-3 rounded-3" type="text" wire:model="option.D">
+                                    <input class="form-control" type="text" wire:model="option.D">
                                         @error('option.D')<p class="text-danger">{{ $message }}</p>@enderror
                                 </div>
                             </div>
                             <div class="form-group mb-1 row">
                                 <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">E</label>
                                 <div class="col-lg-9 col-xl-8">
-                                    <input class="form-control border border-3 rounded-3" type="text" wire:model="option.E">
+                                    <input class="form-control" type="text" wire:model="option.E">
                                         @error('option.E')<p class="text-danger">{{ $message }}</p>@enderror
                                 </div>
                             </div>

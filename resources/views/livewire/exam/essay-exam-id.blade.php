@@ -27,7 +27,7 @@
                         <div class="form-group mb-3 row">
                             <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Jawaban</label>
                             <div class="col-lg-9 col-xl-8">
-                                <textarea class="form-control border border-3 rounded-3" type="text" wire:model="answer" rows="8"></textarea>
+                                <textarea class="form-control" type="text" wire:model="answer" rows="8"></textarea>
                             </div>
                         </div>
                         <div class="form-group mb-3 row">

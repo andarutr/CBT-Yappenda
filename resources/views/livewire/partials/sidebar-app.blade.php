@@ -18,6 +18,8 @@
         @if(Auth::user()->role->role === 'Admin')
         <li class=" nav-item"><a class="d-flex align-items-center" href="{{ url('/'.strtolower(Auth::user()->role->role).'/mata-pelajaran') }}"><i class="bi-book"></i><span class="menu-title text-truncate mt-1" data-i18n="Mata Pelajaran">Mata Pelajaran</span></a>
         </li>
+        <li class=" nav-item"><a class="d-flex align-items-center" href="{{ url('/'.strtolower(Auth::user()->role->role).'/tujuan-pembelajaran') }}"><i class="bi-bar-chart-steps"></i><span class="menu-title text-truncate mt-1" data-i18n="Tujuan Pembelajaran">Tujuan Pembelajaran</span></a>
+        </li>
         @endif
         @if(Auth::user()->role->role === 'Guru' | Auth::user()->role->role === 'Admin')
         <li class=" nav-item mt-1"><a class="d-flex align-items-center" href="#"><i class="bi-journal-text"></i><span class="menu-title text-truncate" data-i18n="Assessment">Assessment</span></a>
