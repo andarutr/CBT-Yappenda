@@ -4,9 +4,11 @@
 2. Guru
 3. User
 ## Account
-1. admin@domain.com | test1234
-2. guru@domain.com | test1234
-3. user@domain.com | test1234
+Password : test1234
+1. admin@smayappenda.id
+2. nikobayu@smayappenda.id
+3. wahyudawam@smayappenda.id
+4. Check di database...
 ## Tech Stack
 1. Laravel 10
 2. Livewire 3
