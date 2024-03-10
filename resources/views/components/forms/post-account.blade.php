@@ -11,7 +11,7 @@
     </div>
     <div class="mt-1">
         <label>Role</label>
-        <select class="form-control" wire:model.live="role_id">
+        <select class="form-select" wire:model.live="role_id">
             <option value="">Pilih</option>                
             @foreach($roles as $role)                    
             <option value="{{ $role->id }}">{{ $role->role }}</option>       

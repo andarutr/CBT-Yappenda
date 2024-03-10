@@ -5,7 +5,7 @@
     </div>
     <div class="mt-3">
         <label>Role</label>
-        <select class="form-control" wire:model="role_id">
+        <select class="form-select" wire:model="role_id">
             @foreach($roles as $role)                    
             <option value="{{ $role->id }}">{{ $role->role }}</option>       
             @endforeach                             

@@ -5,7 +5,7 @@
     </div>
     <div class="mt-1">
         <label>Jenis Assessment</label>
-        <select class="form-control" wire:model.live="exam_type">
+        <select class="form-select" wire:model.live="exam_type">
             <option value="">Pilih</option> 
             <option value="ASH">ASH</option> 
             <option value="ASTS">ASTS</option> 
@@ -15,7 +15,7 @@
     </div>
     <div class="mt-1">
         <label>Kelas</label>
-        <select class="form-control" wire:model.live="grade">
+        <select class="form-select" wire:model.live="grade">
             <option value="">Pilih</option> 
             <optgroup label="Kelas X">
                 <option value="X-1">X-1</option>
@@ -52,7 +52,7 @@
     </div>
     <div class="mt-1">
         <label>Jurusan</label>
-        <select class="form-control" wire:model.live="major">
+        <select class="form-select" wire:model.live="major">
             <option value="">Pilih</option> 
             <option value="IPA">IPA</option> 
             <option value="IPS">IPS</option> 
@@ -61,7 +61,7 @@
     </div>
     <div class="mt-1">
         <label>Semester</label>
-        <select class="form-control" wire:model.live="semester">
+        <select class="form-select" wire:model.live="semester">
             <option value="">Pilih</option> 
             <option value="1 (Ganjil)">1 (Ganjil)</option> 
             <option value="2 (Genap)">2 (Genap)</option> 
@@ -70,7 +70,7 @@
     </div>
     <div class="mt-1">
         <label>Tahun Ajaran</label>
-        <select class="form-control" wire:model.live="th_ajaran">
+        <select class="form-select" wire:model.live="th_ajaran">
             <option value="">Pilih</option> 
             <option value="2024/2025">2024/2025</option> 
             <option value="2025/2026">2025/2026</option> 
