@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('lesson_id');
             $table->enum('exam_type', ['ASH','ASTS','ASAS','PAS']);
-            $table->enum('grade', ['X','XI','XII']);
+            $table->enum('grade', ['X-1','X-2','X-3','X-4','X-5','X-6','X-7','X-8','XI-1','XI-2','XI-3','XI-4','XI-5','XI-6','XI-7','XI-8','XII-1','XII-2','XII-3','XII-4','XII-5','XII-6','XII-7','XII-8']);
             $table->enum('major', ['IPA','IPS']);
             $table->enum('semester', ['1 (Ganjil)','2 (Genap)']);
             $table->enum('th_ajaran', ['2024/2025','2025/2026','2026/2027']);

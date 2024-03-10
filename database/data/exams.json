@@ -2,8 +2,8 @@
     {
         "user_id": "2",
         "lesson_id": "1",
-        "exam_type": "ASH",
-        "grade": "X",
+        "exam_type": "ASTS",
+        "grade": "X-1",
         "major": "IPA",
         "duration": "60",
         "start_time": "2024-03-03 08:00:21",
