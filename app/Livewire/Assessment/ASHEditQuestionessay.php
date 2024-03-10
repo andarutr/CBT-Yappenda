@@ -40,7 +40,7 @@ class ASHEditQuestionessay extends Component
                 'picture' => $imageName
             ];
 
-            $this->picture->storePubliclyAs('public/assets/images/exam', $imageName);
+            $this->picture->storeAs('assets/images/exam', $imageName);
             $update = AssessmentHelper::updateEsQuestion($data);
         }else{
             $data = [

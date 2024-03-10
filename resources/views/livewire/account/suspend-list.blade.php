@@ -29,7 +29,7 @@
                                 @if($account->id !== Auth::user()->id)
                                     <tr>
                                         <td>
-                                            <img src="{{ asset('storage/assets/images/users/'.$account->picture) }}" alt="" class="img-fluid rounded-circle thumb-xs me-1" width="80">
+                                            <img src="{{ asset('assets/images/users/'.$account->picture) }}" alt="" class="img-fluid rounded-circle thumb-xs me-1" width="80">
                                         </td>
                                         <td>{{ $account->name }}</td>
                                         <td>{{ $account->email }}</td>

@@ -13,7 +13,7 @@
                                 class="congratulations-img-right" alt="card-img-right" />
                             <div class="avatar avatar-xl bg-primary shadow">
                                 <div class="avatar-content">
-                                    <i data-feather="award" class="font-large-1"></i>
+                                    <i data-feather="star" class="font-large-1"></i>
                                 </div>
                             </div>
                             <div class="text-center">

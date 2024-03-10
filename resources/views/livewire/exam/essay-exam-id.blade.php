@@ -12,8 +12,8 @@
                         <div class="form-group mb-3 row">
                             <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Gambar</label>
                             <div class="col-lg-9 col-xl-8">
-                                <a href="{{ asset('storage/assets/images/exam/'.$picture) }}" data-lightbox="image-1">
-                                    <img src="{{ asset('storage/assets/images/exam/'.$picture) }}" class="img-fluid" width="150">
+                                <a href="{{ asset('assets/images/exam/'.$picture) }}" data-lightbox="image-1">
+                                    <img src="{{ asset('assets/images/exam/'.$picture) }}" class="img-fluid" width="150">
                                 </a>
                             </div>
                         </div>

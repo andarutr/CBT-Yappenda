@@ -50,7 +50,7 @@ class Profile extends Component
         $this->validate();
         
         if($this->picture){
-            $imageName = Carbon::parse(now())->format('dmYHis').$this->picture->getClientOriginalExtension();
+            $imageName = Carbon::parse(now())->format('dmYHis').'.'.$this->picture->getClientOriginalExtension();
 
             $data = [
                 'name' => $this->name,
@@ -62,7 +62,7 @@ class Profile extends Component
                 'picture' => $imageName
             ];
 
-            $this->picture->storePubliclyAs('public/assets/images/users', $imageName);
+            $this->picture->storeAs('assets/images/users', $imageName);
             $update = SettingHelper::updateProfile($data);
         }else{
             $data = [

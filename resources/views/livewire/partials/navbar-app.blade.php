@@ -15,7 +15,7 @@
                                 class="user-name fw-bolder">{{ explode(' ', Auth::user()->name)[0] }}</span><span
                                 class="user-status">{{ Auth::user()->role->role }}</span></div><span
                             class="avatar"><img class="round"
-                                src="{{ asset('storage/assets/images/users/'.Auth::user()->picture) }}"
+                                src="{{ asset('assets/images/users/'.Auth::user()->picture) }}"
                                 alt="avatar" height="40" width="40"><span class="avatar-status-online"></span></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-user">

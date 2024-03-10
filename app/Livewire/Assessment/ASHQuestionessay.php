@@ -41,7 +41,7 @@ class ASHQuestionessay extends Component
                 'picture' => $imageName
             ];
 
-            $this->picture->storePubliclyAs('public/assets/images/exam', $imageName);
+            $this->picture->storeAs('assets/images/exam', $imageName);
             $store = AssessmentHelper::storeEsQuestion($data);
         }else{
             $data = [

@@ -10,7 +10,7 @@
                         <div class="user-avatar-section">
                             <div class="d-flex align-items-center flex-column">
                                 <img class="img-fluid rounded mt-3 mb-2"
-                                    src="{{ asset('storage/assets/images/users/'.Auth::user()->picture) }}"
+                                    src="{{ asset('assets/images/users/'.Auth::user()->picture) }}"
                                     height="110" width="110" alt="User avatar" />
                                 <div class="user-info text-center">
                                     <h4>{{ Auth::user()->name }}</h4>
