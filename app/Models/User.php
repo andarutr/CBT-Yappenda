@@ -43,4 +43,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Rapor::class);
     }
+
+    public function ashResult()
+    {
+        return $this->hasMany(AshResult::class);
+    }
 }

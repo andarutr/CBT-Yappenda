@@ -5,16 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Lesson extends Model
+class AshPurpose extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $table = 'ash_purposes';
 
-    public function exam()
-    {
-        return $this->hasMany(Exam::class);
-    }
+    protected $guarded = [];
 
     public function ashResult()
     {
