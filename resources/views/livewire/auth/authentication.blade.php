@@ -31,7 +31,7 @@
                   <form class="auth-login-form mt-2" wire:submit="login">
                     <div class="mb-1">
                       <label class="form-label" for="login-email">Email</label>
-                      <input class="form-control" id="login-email" type="text" wire:model.live="email" />
+                      <input class="form-control" id="login-email" type="text" wire:model.live="email" autocomplete="off" />
                        @error('email')<p class="text-danger">{{ $message }}</p>@enderror
                     </div>
                     <div class="mb-1">
@@ -56,7 +56,7 @@
                         <label class="form-label">Email</label>
                       </div>
                       <div class="input-group input-group-merge form-password-toggle">
-                        <input type="text" class="form-control form-control-merge" wire:model="email" />
+                        <input type="text" class="form-control form-control-merge" wire:model="email" autocomplete="off" />
                       </div>
                       <div class="d-flex justify-content-between">
                         <a wire:click="toPage('login')"><small>Sudah ingat? kembali login</small></a>

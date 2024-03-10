@@ -21,9 +21,7 @@ class Profile extends Component
     public $name;
     #[Validate('required')]
     public $email;
-    #[Validate('required|min:8')]
     public $old_password;
-    #[Validate('required|min:8')]
     public $new_password;
 
     public $nis;

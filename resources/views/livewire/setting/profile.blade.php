@@ -95,21 +95,20 @@
                             <div class="form-group mb-1 row">
                                 <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Foto</label>
                                 <div class="col-lg-9 col-xl-8">
-                                    <input type="file" class="form-control border border-3 rounded-3"
-                                        wire:model="picture" id="updPicture">
+                                    <input type="file" class="form-control" wire:model="picture" id="updPicture">
                                 </div>
                             </div>
                             <div class="form-group mb-1 row">
                                 <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Nama</label>
                                 <div class="col-lg-9 col-xl-8">
-                                    <input type="text" class="form-control border border-3 rounded-3" wire:model.live="name">
+                                    <input type="text" class="form-control" wire:model.live="name">
                                     @error('name')<p class="text-danger">{{ $message }}</p>@enderror
                                 </div>
                             </div>
                             <div class="form-group mb-1 row">
                                 <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Email</label>
                                 <div class="col-lg-9 col-xl-8">
-                                    <input type="text" class="form-control border border-3 rounded-3" wire:model.live="email">
+                                    <input type="text" class="form-control" wire:model.live="email">
                                     @error('email')<p class="text-danger">{{ $message }}</p>@enderror
                                 </div>
                             </div>
@@ -117,37 +116,64 @@
                             <div class="form-group mb-1 row">
                                 <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">NIS</label>
                                 <div class="col-lg-9 col-xl-8">
-                                    <input type="number" class="form-control border border-3 rounded-3" wire:model="nis">
+                                    <input type="number" class="form-control" wire:model="nis">
                                 </div>
                             </div>
                             <div class="form-group mb-1 row">
                                 <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">NISN</label>
                                 <div class="col-lg-9 col-xl-8">
-                                    <input type="number" class="form-control border border-3 rounded-3" wire:model="nisn">
+                                    <input type="number" class="form-control" wire:model="nisn">
                                 </div>
                             </div>
                             <div class="form-group mb-1 row">
                                 <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Kelas</label>
                                 <div class="col-lg-9 col-xl-8">
-                                    <select wire:model="kelas">
-                                        <option value="{{ $kelas }}">{{ $kelas }}</option>
-                                        <option value="X">X</option>
-                                        <option value="XI">XI</option>
-                                        <option value="XII">XII</option>
+                                    <select wire:model="kelas" class="select2 form-select">
+                                        <optgroup label="Kelas X">
+                                            <option value="X-1">X-1</option>
+                                            <option value="X-2">X-2</option>
+                                            <option value="X-3">X-3</option>
+                                            <option value="X-4">X-4</option>
+                                            <option value="X-5">X-5</option>
+                                            <option value="X-6">X-6</option>
+                                            <option value="X-7">X-7</option>
+                                            <option value="X-8">X-8</option>
+                                        </optgroup>
+                                        <optgroup label="Kelas XI">
+                                            <option value="XI-1">XI-1</option>
+                                            <option value="XI-2">XI-2</option>
+                                            <option value="XI-3">XI-3</option>
+                                            <option value="XI-4">XI-4</option>
+                                            <option value="XI-5">XI-5</option>
+                                            <option value="XI-6">XI-6</option>
+                                            <option value="XI-7">XI-7</option>
+                                            <option value="XI-8">XI-8</option>
+                                        </optgroup>
+                                        <optgroup label="Kelas XII">
+                                            <option value="XII-1">XII-1</option>
+                                            <option value="XII-2">XII-2</option>
+                                            <option value="XII-3">XII-3</option>
+                                            <option value="XII-4">XII-4</option>
+                                            <option value="XII-5">XII-5</option>
+                                            <option value="XII-6">XII-6</option>
+                                            <option value="XII-7">XII-7</option>
+                                            <option value="XII-8">XII-8</option>
+                                        </optgroup>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group mb-1 row">
-                                <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Fase</label>
+                                <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Kelas</label>
                                 <div class="col-lg-9 col-xl-8">
-                                    <select wire:model="fase">
-                                        <option value="{{ $fase }}">{{ $fase }}</option>
+                                    <select wire:model="fase" class="select2 form-select">
                                         <option value="A">A</option>
                                         <option value="B">B</option>
                                         <option value="C">C</option>
                                         <option value="D">D</option>
                                         <option value="E">E</option>
                                         <option value="F">F</option>
+                                        <option value="G">G</option>
+                                        <option value="H">H</option>
                                     </select>
                                 </div>
                             </div>
@@ -163,18 +189,16 @@
 
                         @if($statusPage == 'editPassword')
                         <form wire:submit="updatePassword">
-                            <div class="form-group mb-3 row">
+                            <div class="form-group mb-1 row">
                                 <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Password Lama</label>
                                 <div class="col-lg-9 col-xl-8">
-                                    <input class="form-control border border-3 rounded-3" type="password" wire:model.live="old_password">
-                                    @error('old_password')<p class="text-danger">{{ $message }}</p>@enderror
+                                    <input class="form-control" type="password" wire:model.live="old_password" required>
                                 </div>
                             </div>
-                            <div class="form-group mb-3 row">
+                            <div class="form-group mb-1 row">
                                 <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Password Baru</label>
                                 <div class="col-lg-9 col-xl-8">
-                                    <input class="form-control border border-3 rounded-3" type="password" wire:model.live="new_password">
-                                    @error('new_password')<p class="text-danger">{{ $message }}</p>@enderror
+                                    <input class="form-control" type="password" wire:model.live="new_password" required>
                                 </div>
                             </div>
                             <div class="form-group mb-3 row">
