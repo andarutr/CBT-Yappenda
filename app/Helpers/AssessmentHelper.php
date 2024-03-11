@@ -4,6 +4,8 @@ namespace App\Helpers;
 use Auth;
 use App\Models\Exam;
 use Ramsey\Uuid\Uuid;
+use App\Models\AshResult;
+use App\Models\AshPurpose;
 use App\Models\PGQuestion;
 use App\Models\EssayQuestion;
 
@@ -63,6 +65,40 @@ class AssessmentHelper
         ]);
     }
 
+    public static function storeAshPurpose($data)
+    {
+        AshPurpose::create([
+            'uuid' => Uuid::uuid4()->toString(),
+            'title' => $data['title'],
+            'tp_1' => $data['tp_1'],
+            'tp_2' => $data['tp_2'],
+            'tp_3' => $data['tp_3'],
+            'tp_4' => $data['tp_4'],
+            'tp_5' => $data['tp_5'],
+            'tp_6' => $data['tp_6'],
+            'tp_7' => $data['tp_7'],
+            'tp_8' => $data['tp_8'],
+        ]);
+    }
+
+    public static function storeAshResultId($data)
+    {
+        AshResult::create([
+            'uuid' => Uuid::uuid4()->toString(),
+            'user_id' => $data['user_id'],
+            'lesson_id' => $data['lesson_id'],
+            'ash_purpose_id' => $data['ash_purpose_id'],
+            'tp_1' => $data['tp_1'],
+            'tp_2' => $data['tp_2'],
+            'tp_3' => $data['tp_3'],
+            'tp_4' => $data['tp_4'],
+            'tp_5' => $data['tp_5'],
+            'tp_6' => $data['tp_6'],
+            'tp_7' => $data['tp_7'],
+            'tp_8' => $data['tp_8'],
+        ]);
+    }
+
     public static function updateEsQuestion($data)
     {
         EssayQuestion::where('uuid', $data['uuid'])
@@ -70,6 +106,38 @@ class AssessmentHelper
                             'question' => $data['question'],
                             'picture' => $data['picture']
                         ]);
+    }
+
+    public static function updateAshPurpose($data)
+    {
+        AshPurpose::where('uuid', $data['uuid'])->update([
+            'title' => $data['title'],
+            'tp_1' => $data['tp_1'],
+            'tp_2' => $data['tp_2'],
+            'tp_3' => $data['tp_3'],
+            'tp_4' => $data['tp_4'],
+            'tp_5' => $data['tp_5'],
+            'tp_6' => $data['tp_6'],
+            'tp_7' => $data['tp_7'],
+            'tp_8' => $data['tp_8'],
+        ]);
+    }
+
+    public static function updateAshResultId($data)
+    {
+        AshResult::where('uuid', $data['uuid'])
+                    ->update([
+                        'lesson_id' => $data['lesson_id'],
+                        'ash_purpose_id' => $data['ash_purpose_id'],
+                        'tp_1' => $data['tp_1'],
+                        'tp_2' => $data['tp_2'],
+                        'tp_3' => $data['tp_3'],
+                        'tp_4' => $data['tp_4'],
+                        'tp_5' => $data['tp_5'],
+                        'tp_6' => $data['tp_6'],
+                        'tp_7' => $data['tp_7'],
+                        'tp_8' => $data['tp_8'],
+                    ]);
     }
 
     public static function destroyPg($id_quest)
@@ -85,5 +153,15 @@ class AssessmentHelper
     public static function destroyExam($uuid)
     {
          Exam::where('uuid', $uuid)->delete();
+    }
+
+    public static function destroyAshPurpose($uuid)
+    {
+        AshPurpose::where('uuid', $uuid)->delete();
+    }
+
+    public static function destroyAshResultId($uuid)
+    {
+        AshResult::where('uuid', $uuid)->delete();
     }
 }

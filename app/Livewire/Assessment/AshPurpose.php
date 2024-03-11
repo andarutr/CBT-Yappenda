@@ -4,6 +4,7 @@ namespace App\Livewire\Assessment;
 
 use Ramsey\Uuid\Uuid;
 use Livewire\Component;
+use App\Helpers\AssessmentHelper;
 use Livewire\Attributes\Validate;
 use App\Models\AshPurpose as Purpose;
 
@@ -38,7 +39,7 @@ class AshPurpose extends Component
     {
         $this->validate();
 
-        Purpose::create([
+        $data = [
             'uuid' => Uuid::uuid4()->toString(),
             'title' => $this->title,
             'tp_1' => $this->tp_1,
@@ -49,9 +50,12 @@ class AshPurpose extends Component
             'tp_6' => $this->tp_6,
             'tp_7' => $this->tp_7,
             'tp_8' => $this->tp_8,
-        ]);
+        ];
+
+        $store = AssessmentHelper::storeAshPurpose($data);
 
         $this->statusPage = 'list';
+        
         toastr()->success('Berhasil membuat tujuan pembelajaran!');
     }
 
@@ -74,7 +78,8 @@ class AshPurpose extends Component
 
     public function update()
     {
-        Purpose::where('uuid', $this->ash_uuid)->update([
+        $data = [
+            'uuid', $this->ash_uuid,
             'title' => $this->title,
             'tp_1' => $this->tp_1,
             'tp_2' => $this->tp_2,
@@ -84,14 +89,18 @@ class AshPurpose extends Component
             'tp_6' => $this->tp_6,
             'tp_7' => $this->tp_7,
             'tp_8' => $this->tp_8,
-        ]);
+        ];
+        $update = AssessmentHelper::updateAshPurpose($data);
 
         $this->statusPage = 'list';
+        
         toastr()->success('Berhasil memperbarui tujuan pembelajaran!');
     }
+
     public function destroy($uuid)
     {
-        Purpose::where('uuid', $uuid)->delete();
+        $destroy = AssessmentHelper::destroyAshPurpose($uuid);
+
         toastr()->success('Berhasil menghapus tujuan pembelajaran!');
     }
 

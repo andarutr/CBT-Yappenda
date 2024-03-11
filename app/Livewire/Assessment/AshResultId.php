@@ -9,6 +9,7 @@ use App\Models\Lesson;
 use Livewire\Component;
 use App\Models\AshResult;
 use App\Models\AshPurpose;
+use App\Helpers\AssessmentHelper;
 use Livewire\Attributes\Validate;
 use Illuminate\Support\Facades\Auth;
 
@@ -56,8 +57,7 @@ class AshResultId extends Component
         
         $user_id = User::where('uuid', $this->user_uuid)->first();
 
-        AshResult::create([
-            'uuid' => Uuid::uuid4()->toString(),
+        $data = [
             'user_id' => $user_id->id,
             'lesson_id' => $this->lesson_id,
             'ash_purpose_id' => $this->ash_purpose_id,
@@ -69,8 +69,10 @@ class AshResultId extends Component
             'tp_6' => $this->tp_6,
             'tp_7' => $this->tp_7,
             'tp_8' => $this->tp_8,
-        ]);
+        ];
         
+        $store = AssessmentHelper::storeAshResultId($data);
+
         $this->statusPage = 'list';
 
         toastr()->success('Berhasil membuat tujuan pembelajaran!');
@@ -96,27 +98,31 @@ class AshResultId extends Component
     {
         $this->validate();
 
-        AshResult::where('uuid', $this->ash_uuid)
-                    ->update([
-                        'lesson_id' => $this->lesson_id,
-                        'ash_purpose_id' => $this->ash_purpose_id,
-                        'tp_1' => $this->tp_1,
-                        'tp_2' => $this->tp_2,
-                        'tp_3' => $this->tp_3,
-                        'tp_4' => $this->tp_4,
-                        'tp_5' => $this->tp_5,
-                        'tp_6' => $this->tp_6,
-                        'tp_7' => $this->tp_7,
-                        'tp_8' => $this->tp_8,
-                    ]);
-        
+        $data = [
+            'uuid' => $this->ash_uuid,
+            'lesson_id' => $this->lesson_id,
+            'ash_purpose_id' => $this->ash_purpose_id,
+            'tp_1' => $this->tp_1,
+            'tp_2' => $this->tp_2,
+            'tp_3' => $this->tp_3,
+            'tp_4' => $this->tp_4,
+            'tp_5' => $this->tp_5,
+            'tp_6' => $this->tp_6,
+            'tp_7' => $this->tp_7,
+            'tp_8' => $this->tp_8,
+        ];
+
+        $update = AssessmentHelper::updateAshResultId($data);
+
         $this->statusPage = 'list';
+        
         toastr()->success('Berhasil memperbarui tujuan pembelajaran!');
     }
 
     public function destroy($uuid)
     {
-        AshResult::where('uuid', $uuid)->delete();
+        $destroy = AssessmentHelper::destroyAshResultId($uuid);
+        
         toastr()->success('Berhasil menghapus tujuan pembelajaran!');
     }
 
