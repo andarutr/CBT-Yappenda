@@ -1,35 +1,36 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
 use App\Livewire\Admin\Dashboard;
+
+use App\Livewire\Rapor\RaporList;
+use App\Livewire\Rapor\ShowRapor;
+use App\Livewire\Setting\Profile;
 use App\Livewire\Account\RoleList;
+use App\Livewire\Score\AshScorePg;
 use App\Livewire\Lesson\LessonList;
+use App\Livewire\Rapor\CreateRapor;
+use App\Livewire\Rapor\RaporCreate;
+use App\Livewire\Rapor\RaporKelasX;
+use App\Livewire\Rapor\RaporUpdate;
+use App\Livewire\Assessment\ASHList;
+use App\Livewire\Rapor\RaporKelasXI;
+use App\Livewire\Score\AshScoreList;
 use App\Livewire\Account\AccountList;
 use App\Livewire\Account\SuspendList;
-use App\Livewire\Setting\Profile;
-use App\Livewire\Account\PasswordAccountList;
-use App\Livewire\Assessment\ASHList;
 use App\Livewire\Assessment\AsasList;
 use App\Livewire\Assessment\AstsList;
-use App\Livewire\Assessment\ASHQuestionpr;
+use App\Livewire\Rapor\RaporKelasXII;
+use App\Livewire\Score\AsasScoreList;
+use App\Livewire\Score\AshScoreEssay;
+use App\Livewire\Score\AstsScoreList;
+use Illuminate\Support\Facades\Route;
+use App\Livewire\Assessment\AshPurpose;
+use App\Livewire\Score\AshScoreEssayId;
 use App\Livewire\Assessment\ASHQuestionpg;
+use App\Livewire\Assessment\ASHQuestionpr;
+use App\Livewire\Account\PasswordAccountList;
 use App\Livewire\Assessment\ASHQuestionessay;
 use App\Livewire\Assessment\ASHEditQuestionessay;
-use App\Livewire\Score\AshScoreList;
-use App\Livewire\Score\AstsScoreList;
-use App\Livewire\Score\AsasScoreList;
-use App\Livewire\Score\AshScorePg;
-use App\Livewire\Score\AshScoreEssay;
-use App\Livewire\Score\AshScoreEssayId;
-use App\Livewire\Rapor\RaporKelasX;
-use App\Livewire\Rapor\RaporKelasXI;
-use App\Livewire\Rapor\RaporKelasXII;
-use App\Livewire\Rapor\CreateRapor;
-use App\Livewire\Rapor\RaporList;
-use App\Livewire\Rapor\RaporCreate;
-use App\Livewire\Rapor\RaporUpdate;
-use App\Livewire\Rapor\ShowRapor;
 
 // Routes
 Route::middleware('isAdmin')->group(function(){
@@ -51,6 +52,8 @@ Route::middleware('isAdmin')->group(function(){
         // Mata Pelajaran
         Route::get('/mata-pelajaran', LessonList::class);
 
+        // Tujuan Pembelajaran
+        Route::get('/tujuan-pembelajaran', AshPurpose::class);
         // Assessment
         Route::prefix('/assessment')->group(function(){
             // Assessment Sumatif Harian
