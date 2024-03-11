@@ -24,8 +24,10 @@ use App\Livewire\Score\AsasScoreList;
 use App\Livewire\Score\AshScoreEssay;
 use App\Livewire\Score\AstsScoreList;
 use Illuminate\Support\Facades\Route;
+use App\Livewire\Assessment\AshResult;
 use App\Livewire\Assessment\AshPurpose;
 use App\Livewire\Score\AshScoreEssayId;
+use App\Livewire\Assessment\AshResultId;
 use App\Livewire\Assessment\ASHQuestionpg;
 use App\Livewire\Assessment\ASHQuestionpr;
 use App\Livewire\Account\PasswordAccountList;
@@ -57,13 +59,16 @@ Route::middleware('isAdmin')->group(function(){
         // Assessment
         Route::prefix('/assessment')->group(function(){
             // Assessment Sumatif Harian
-            Route::prefix('/ash')->group(function(){
-                Route::get('/', ASHList::class);
-                Route::get('/input-soal/pg/{uuid}', ASHQuestionpg::class);
-                Route::get('/input-soal/essay/{uuid}', ASHQuestionessay::class);
-                Route::get('/input-soal/preview/{uuid}', ASHQuestionpr::class);
-                Route::get('/edit-soal/essay/{uuid}', ASHEditQuestionessay::class);
+            Route::get('/ash', function(){
+                abort(503);
             });
+            // Route::prefix('/ash')->group(function(){
+            //     Route::get('/', ASHList::class);
+            //     Route::get('/input-soal/pg/{uuid}', ASHQuestionpg::class);
+            //     Route::get('/input-soal/essay/{uuid}', ASHQuestionessay::class);
+            //     Route::get('/input-soal/preview/{uuid}', ASHQuestionpr::class);
+            //     Route::get('/edit-soal/essay/{uuid}', ASHEditQuestionessay::class);
+            // });
 
             // Assessment Sumatif Tengah Semester
             Route::prefix('/asts')->group(function(){
@@ -93,10 +98,12 @@ Route::middleware('isAdmin')->group(function(){
         Route::prefix('/input-nilai')->group(function(){
             // Input Nilai Assessment Sumatif Harian
             Route::prefix('/ash')->group(function(){
-                Route::get('/', AshScoreList::class);
-                Route::get('/pg/{user_id}/{uuid}', AshScorePg::class);
-                Route::get('/essay/{id}/{uuid}', AshScoreEssay::class);
-                Route::get('/nilai-essay/{uuid}', AshScoreEssayId::class);
+                Route::get('/', AshResult::class);
+                Route::get('/tp/{uuid}', AshResultId::class);
+                // Route::get('/', AshScoreList::class);
+                // Route::get('/pg/{user_id}/{uuid}', AshScorePg::class);
+                // Route::get('/essay/{id}/{uuid}', AshScoreEssay::class);
+                // Route::get('/nilai-essay/{uuid}', AshScoreEssayId::class);
             });
 
              // Input Nilai Assessment Sumatif Tengah Semester
