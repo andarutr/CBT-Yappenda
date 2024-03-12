@@ -83,8 +83,9 @@ class AssessmentHelper
 
     public static function storeAshResultId($data)
     {
+        $uuid = Uuid::uuid4()->toString();
         AshResult::create([
-            'uuid' => Uuid::uuid4()->toString(),
+            'uuid' => $uuid,
             'user_id' => $data['user_id'],
             'lesson_id' => $data['lesson_id'],
             'ash_purpose_id' => $data['ash_purpose_id'],
@@ -97,6 +98,28 @@ class AssessmentHelper
             'tp_7' => $data['tp_7'],
             'tp_8' => $data['tp_8'],
         ]);
+
+        $tp1 = AshResult::where('uuid', $uuid)->whereNotNull('tp_1')->exists();
+        $tp2 = AshResult::where('uuid', $uuid)->whereNotNull('tp_2')->exists();
+        $tp3 = AshResult::where('uuid', $uuid)->whereNotNull('tp_3')->exists();
+        $tp4 = AshResult::where('uuid', $uuid)->whereNotNull('tp_4')->exists();
+        $tp5 = AshResult::where('uuid', $uuid)->whereNotNull('tp_5')->exists();
+        $tp6 = AshResult::where('uuid', $uuid)->whereNotNull('tp_6')->exists();
+        $tp7 = AshResult::where('uuid', $uuid)->whereNotNull('tp_7')->exists();
+        $tp8 = AshResult::where('uuid', $uuid)->whereNotNull('tp_8')->exists();
+        
+        $totally = AshResult::where('uuid', $uuid)->sum('tp_1') + AshResult::where('uuid', $uuid)->sum('tp_2') + AshResult::where('uuid', $uuid)->sum('tp_3') + AshResult::where('uuid', $uuid)->sum('tp_4') + AshResult::where('uuid', $uuid)->sum('tp_5') + AshResult::where('uuid', $uuid)->sum('tp_6') + AshResult::where('uuid', $uuid)->sum('tp_7') + AshResult::where('uuid', $uuid)->sum('tp_8');
+        
+        // Hitungan
+        // tp_sum = total tp terisi
+        // total = penjumlahan total nilai tp / total tp terisi
+        $tp_sum = $tp1 + $tp2 + $tp3 + $tp4 + $tp5 + $tp6 + $tp7 + $tp8;
+        $total = round($totally/$tp_sum);
+
+        AshResult::where('uuid', $uuid)
+                    ->update([
+                        'total' => number_format($total, 0, '.', '')
+                    ]);
     }
 
     public static function updateEsQuestion($data)
@@ -137,6 +160,28 @@ class AssessmentHelper
                         'tp_6' => $data['tp_6'],
                         'tp_7' => $data['tp_7'],
                         'tp_8' => $data['tp_8'],
+                    ]);
+                    
+        $tp1 = AshResult::where('uuid', $data['uuid'])->whereNotNull('tp_1')->exists();
+        $tp2 = AshResult::where('uuid', $data['uuid'])->whereNotNull('tp_2')->exists();
+        $tp3 = AshResult::where('uuid', $data['uuid'])->whereNotNull('tp_3')->exists();
+        $tp4 = AshResult::where('uuid', $data['uuid'])->whereNotNull('tp_4')->exists();
+        $tp5 = AshResult::where('uuid', $data['uuid'])->whereNotNull('tp_5')->exists();
+        $tp6 = AshResult::where('uuid', $data['uuid'])->whereNotNull('tp_6')->exists();
+        $tp7 = AshResult::where('uuid', $data['uuid'])->whereNotNull('tp_7')->exists();
+        $tp8 = AshResult::where('uuid', $data['uuid'])->whereNotNull('tp_8')->exists();
+        
+        $totally = AshResult::where('uuid', $data['uuid'])->sum('tp_1') + AshResult::where('uuid', $data['uuid'])->sum('tp_2') + AshResult::where('uuid', $data['uuid'])->sum('tp_3') + AshResult::where('uuid', $data['uuid'])->sum('tp_4') + AshResult::where('uuid', $data['uuid'])->sum('tp_5') + AshResult::where('uuid', $data['uuid'])->sum('tp_6') + AshResult::where('uuid', $data['uuid'])->sum('tp_7') + AshResult::where('uuid', $data['uuid'])->sum('tp_8');
+        
+        // Hitungan
+        // tp_sum = total tp terisi
+        // total = penjumlahan total nilai tp / total tp terisi
+        $tp_sum = $tp1 + $tp2 + $tp3 + $tp4 + $tp5 + $tp6 + $tp7 + $tp8;
+        $total = round($totally/$tp_sum);
+
+        AshResult::where('uuid', $data['uuid'])
+                    ->update([
+                        'total' => number_format($total, 0, '.', '')
                     ]);
     }
 
