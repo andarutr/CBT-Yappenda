@@ -28,7 +28,7 @@
                             <tbody>
                                 @foreach($exam_results as $exam)
                                 <tr>
-                                    <td><img src="{{ url('assets/images/users/'.$exam->user->picture) }}" alt="" class="rounded-circle" width="100">
+                                    <td>
                                         {{ $exam->user->name }}
                                     </td>
                                     <td>{{ $exam->exam->lesson->name }}</td>

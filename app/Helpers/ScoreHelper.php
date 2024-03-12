@@ -26,7 +26,7 @@ class ScoreHelper
                                     $exa->where('uuid', $exa->uuid);
                                 })->count();
 
-        $a = 100 / $count_pgq;
+        $a = round(100 / $count_pgq);
         $nilai_pg = ($count_pga*$a)*0.7;
         // dd($nilai_pg);
         // Essay TIme
@@ -40,9 +40,8 @@ class ScoreHelper
                                     $exa->where('uuid', $exa->uuid);
                                 })->sum('score');
         
-        $b = round(100 / $count_esq);
-        $nilai_essay = $count_esa*0.3;
-
+        // $b = (20 * $count_esq)*0.3;
+        $nilai_essay = ($count_esa)*0.3;
         $generate = ExamResult::where(['user_id' => $user_id, 'exam_id' => $exa->id])
                                 ->update([
                                     'score' => $nilai_pg + $nilai_essay,
