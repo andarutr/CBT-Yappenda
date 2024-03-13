@@ -2,18 +2,13 @@
 
 <div class="content-body">
     <section class="app-user-view-account">
+        <a href="{{ url('/'.strtolower(Auth::user()->role->role).'/input-nilai/'.Request::segment(3)) }}" class="btn btn-sm btn-success mb-1">Kembali</a>
         <div class="row">
             <!-- User Sidebar -->
             <div class="col-xl-4 col-lg-5 col-md-5">
                 <!-- User Card -->
                 <div class="card">
                     <div class="card-body">
-                        @php 
-                            $a = count($pganswer);
-                            $b = 100/$a;
-                        @endphp
-                        <h1 class="text-center">Point PG</h1>
-                        <h2 class="text-center mb-3">{{ ($pgscore*$b)*0.7 }}</h2>
                         <h5>Tipe Ujian : {{ $exam->exam_type }}</h5>
                         <h5>Mata Pelajaran : {{ $exam->lesson->name }}</h5>
                         <h5>Nama Siswa : {{ $user->name }}</h5>

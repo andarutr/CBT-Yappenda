@@ -32,7 +32,13 @@
                                         {{ $exam->user->name }}
                                     </td>
                                     <td>{{ $exam->exam->lesson->name }}</td>
-                                    <td>{{ $exam->score }}</td>
+                                    <td>
+                                        @if($exam->score >= 75)
+                                        <b>{{ $exam->score }}</b>
+                                        @else
+                                        <b class="text-danger">{{ $exam->score }}</b>
+                                        @endif
+                                    </td>
                                     <td>
                                     @if($exam->status === 'Belum dinilai')
                                     <span class="badge bg-warning">{{ $exam->status }}</span>

@@ -3,9 +3,11 @@ namespace App\Helpers;
 
 use Request;
 use App\Models\Exam;
+use Ramsey\Uuid\Uuid;
 use App\Models\PGAnswer;
-use App\Models\PGQuestion;
+use App\Models\Remedial;
 use App\Models\ExamResult;
+use App\Models\PGQuestion;
 use App\Models\EssayAnswer;
 
 class ScoreHelper
@@ -40,14 +42,29 @@ class ScoreHelper
                                     $exa->where('uuid', $exa->uuid);
                                 })->sum('score');
         
-        // $b = (20 * $count_esq)*0.3;
-        $nilai_essay = ($count_esa)*0.3;
+        // $b = 100/$count_esq;
+        $nilai_essay = $count_esa*0.3;
+        // dd($nilai_essay);
         $generate = ExamResult::where(['user_id' => $user_id, 'exam_id' => $exa->id])
                                 ->update([
                                     'score' => $nilai_pg + $nilai_essay,
                                     'status' => 'Sudah dinilai'
                                 ]);
+        
+        $remeds = $nilai_pg + $nilai_essay;
 
+        if($remeds < 75)
+        {
+            Remedial::create([
+                'uuid' => Uuid::uuid4()->toString(),
+                'user_id' => $pga->user_id,
+                'exam_id' => $exa->id,
+                'date_exam' => now(),
+                'is_end' => false,
+                'status' => 'Belum dinilai'
+            ]);
+        }
+        
         session()->flash('success', 'Berhasil generate nilai!');
     }
 }

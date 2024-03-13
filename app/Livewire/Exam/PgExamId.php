@@ -46,7 +46,8 @@ class PgExamId extends Component
     {
         PGAnswer::updateOrCreate([
             'user_id' => Auth::user()->id,
-            'pg_question_id' => $this->id_quest
+            'pg_question_id' => $this->id_quest,
+            'answer' => $this->answer,
         ],
         [
             'uuid' => Uuid::uuid4()->toString(),

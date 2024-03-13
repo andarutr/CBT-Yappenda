@@ -2,6 +2,7 @@
 
 <div class="content-body">
     <section class="app-user-view-account">
+    <a href="{{ url('/'.strtolower(Auth::user()->role->role).'/input-nilai/'.Request::segment(3)) }}" class="btn btn-sm btn-success mb-1">Kembali</a>
         <div class="row">
             <!-- User Sidebar -->
             <div class="col-xl-4 col-lg-5 col-md-5">
