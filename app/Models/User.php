@@ -29,6 +29,11 @@ class User extends Authenticatable
         return $this->hasMany(ExamResult::class);
     }
 
+    public function remedial()
+    {
+        return $this->hasMany(Remedial::class);
+    }
+
     public function pgAnswer()
     {
         return $this->hasMany(PGAnswer::class);
