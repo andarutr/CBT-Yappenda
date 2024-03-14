@@ -11,6 +11,7 @@ use App\Livewire\Exam\PreviewExam;
 use App\Livewire\Exam\ShowAshResult;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Exam\ShowExamResults;
+use App\Livewire\Remedial\RemedialList;
 
 // Route
 Route::middleware('isUser')->group(function(){
@@ -34,6 +35,18 @@ Route::middleware('isUser')->group(function(){
 			Route::get('/asts', ExamList::class);
 			Route::get('/asas', ExamList::class);
 			Route::get('/pas', ExamList::class);
+		});
+
+		// Remedial
+		Route::prefix('/remedial')->group(function(){
+			Route::get('/asts', RemedialList::class);
+			Route::get('/asas', RemedialList::class);
+
+			Route::get('/pg/{uuid}', PgExam::class);
+			Route::get('/pg/{id}/{uuid}', PgExamId::class);
+			Route::get('/essay/{uuid}', EssayExam::class);
+			Route::get('/essay/{id}/{uuid}', EssayExamId::class);
+			Route::get('/preview/{uuid}', PreviewExam::class);
 		});
 
 		// Hasil Ujian
