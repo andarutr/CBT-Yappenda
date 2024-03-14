@@ -7,8 +7,9 @@ use Request;
 use App\Models\Exam;
 use Ramsey\Uuid\Uuid;
 use Livewire\Component;
-use App\Models\PGQuestion;
+use App\Models\Remedial;
 use App\Models\ExamResult;
+use App\Models\PGQuestion;
 use App\Models\EssayAnswer;
 use App\Models\EssayQuestion;
 
@@ -59,13 +60,25 @@ class EssayExamId extends Component
 
     public function endExam()
     {
-        ExamResult::where(['exam_id' => $this->exam->id, 'user_id' => Auth::user()->id])
-                    ->updateOrCreate([
-                        'exam_id' => $this->exam->id, 
-                        'user_id' => Auth::user()->id
-                    ],[
-                        'is_end' => true
-                    ]);
+        $remed = Remedial::where(['user_id' => Auth::user()->id, 'exam_id' => $this->exam->id])->exists();
+        
+        if($remed){
+            Remedial::where(['exam_id' => $this->exam->id, 'user_id' => Auth::user()->id])
+                        ->updateOrCreate([
+                            'exam_id' => $this->exam->id, 
+                            'user_id' => Auth::user()->id
+                        ],[
+                            'is_end' => true
+                        ]);
+        }else{
+            ExamResult::where(['exam_id' => $this->exam->id, 'user_id' => Auth::user()->id])
+                        ->updateOrCreate([
+                            'exam_id' => $this->exam->id, 
+                            'user_id' => Auth::user()->id
+                        ],[
+                            'is_end' => true
+                        ]);
+        }
         
         toastr()->success('Selamat anda telah menyelesaikan ujian!');
 

@@ -3,6 +3,7 @@
 <div class="content-body">
     <div class="row">
         @foreach($remedials as $remedial)
+        @if($remedial->exam->exam_type == strtoupper(Request::segment(3)))
         <div class="col-xl-4 col-lg-6 col-md-6">
             <div class="card">
                 <div class="card-body">
@@ -20,18 +21,23 @@
                             <p>Waktu Selesai : {{ \Carbon\Carbon::parse($remedial->exam->end_time)->format('H:i') }}</p>
                             <p>Durasi : {{ $remedial->exam->duration }} Menit</p>
                             <p>Guru : {{ $remedial->exam->user->name }}</p>
-                            @if($now < $remedial->exam->start_time)
-                            <button class="btn btn-sm btn-secondary">Belum Mulai</button>
-                            @elseif($now >= $remedial->exam->start_time && $now <= $remedial->exam->end_time)
-                            <button class="btn btn-sm btn-sm btn-primary" wire:click="toRemedial('{{ $remedial->exam->uuid }}')" wire:confirm="Yakin ingin memulai ujian?">Mulai Ujian</button>
+                            @if($remedial->is_end)
+                            <button class="btn btn-sm btn-danger">Sudah Dikerjakan</button>
                             @else
-                            <button class="btn btn-sm btn-danger">Telah Berakhir</button>
+                                @if($now < $remedial->exam->start_time)
+                                <button class="btn btn-sm btn-secondary">Belum Mulai</button>
+                                @elseif($now >= $remedial->exam->start_time && $now <= $remedial->exam->end_time)
+                                <button class="btn btn-sm btn-sm btn-primary" wire:click="toRemedial('{{ $remedial->exam->uuid }}')" wire:confirm="Yakin ingin memulai remedial?">Mulai Ujian</button>
+                                @else
+                                <button class="btn btn-sm btn-danger">Telah Berakhir</button>
+                                @endif
                             @endif
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        @endif
         @endforeach
     </div>
 </div>
