@@ -74,7 +74,7 @@
         </li>
         @else
         <!-- Untuk Siswa -->
-        <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i class="bi-file-earmark-person"></i><span class="menu-title text-truncate" data-i18n="Ujian">Ujian</span></a>
+        <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i class="bi-journal"></i><span class="menu-title text-truncate" data-i18n="Ujian">Ujian</span></a>
             <ul class="menu-content">
                 <li>
                     <a class="d-flex align-items-center" href="{{ url('/user/ujian/ash') }}"><span class="menu-item text-truncate" data-i18n="Assessment ASH">Assessment ASH</span>
@@ -90,7 +90,19 @@
                 </li>
             </ul>
         </li>
-        <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="file-text"></i><span class="menu-title text-truncate" data-i18n="Hasil Ujian">Hasil Ujian</span></a>
+        <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i class="bi-journals"></i><span class="menu-title text-truncate" data-i18n="Remedial">Remedial</span></a>
+            <ul class="menu-content">
+                <li>
+                    <a class="d-flex align-items-center" href="{{ url('/user/remedial/asts') }}"><span class="menu-item text-truncate" data-i18n="Remedial ASTS">Remedial ASTS</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="d-flex align-items-center" href="{{ url('/user/remedial/asas') }}"><span class="menu-item text-truncate" data-i18n="Remedial ASAS">Remedial ASAS</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i class="bi-journal-medical"></i><span class="menu-title text-truncate" data-i18n="Hasil Ujian">Hasil Ujian</span></a>
             <ul class="menu-content">
                 <li>
                     <a class="d-flex align-items-center" href="{{ url('/user/hasil-ujian/ash') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Nilai ASH">Nilai ASH</span>
