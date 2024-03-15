@@ -5,7 +5,7 @@ return [
     /**
      * The endpoint to access the routes.
      */
-    'url' => 'routes',
+    'url' => 'admin/routes',
 
     /**
      * The middleware(s) to apply before attempting to access routes page.
