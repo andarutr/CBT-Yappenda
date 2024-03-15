@@ -30,8 +30,13 @@ use App\Livewire\Score\AshScoreEssayId;
 use App\Livewire\Assessment\AshResultId;
 use App\Livewire\Assessment\ASHQuestionpg;
 use App\Livewire\Assessment\ASHQuestionpr;
+use App\Livewire\Score\AshRemedialScorePg;
 use App\Livewire\Account\PasswordAccountList;
 use App\Livewire\Assessment\ASHQuestionessay;
+use App\Livewire\Score\AsasRemedialScoreList;
+use App\Livewire\Score\AshRemedialScoreEssay;
+use App\Livewire\Score\AstsRemedialScoreList;
+use App\Livewire\Score\AshRemedialScoreEssayId;
 use App\Livewire\Assessment\ASHEditQuestionessay;
 
 // Routes
@@ -122,9 +127,21 @@ Route::middleware('isAdmin')->group(function(){
                 Route::get('/nilai-essay/{uuid}', AshScoreEssayId::class);
             });
             
-             // Input Nilai Penilaian Akhir
-            Route::get('/pas', function(){
-                abort(503);
+            // Remedial
+            Route::prefix('/remedial')->group(function(){
+                Route::prefix('/asts')->group(function(){
+                    Route::get('/', AstsRemedialScoreList::class);
+                    Route::get('/pg/{user_id}/{uuid}', AshRemedialScorePg::class);
+                    Route::get('/essay/{id}/{uuid}', AshRemedialScoreEssay::class);
+                    Route::get('/nilai-essay/{uuid}', AshRemedialScoreEssayId::class);
+                });
+
+                Route::prefix('/asas')->group(function(){
+                    Route::get('/', AsasRemedialScoreList::class);
+                    Route::get('/pg/{user_id}/{uuid}', AshRemedialScorePg::class);
+                    Route::get('/essay/{id}/{uuid}', AshRemedialScoreEssay::class);
+                    Route::get('/nilai-essay/{uuid}', AshRemedialScoreEssayId::class);
+                });
             });
         });
 
