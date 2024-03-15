@@ -22,4 +22,9 @@ class PGQuestion extends Model
     {
         return $this->hasMany(PGAnswer::class, 'pg_question_id');
     }
+
+    public function pgRemedialAnswer()
+    {
+        return $this->hasMany(PgRemedialAnswer::class);
+    }
 }

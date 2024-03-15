@@ -22,4 +22,9 @@ class EssayQuestion extends Model
     {
         return $this->hasMany(EssayAnswer::class, 'essay_question_id');
     }
+
+    public function esRemedialAnswer()
+    {
+        return $this->hasMany(EssayRemedialAnswer::class);
+    }
 }

@@ -53,6 +53,14 @@
                     <a class="d-flex align-items-center" href="{{ url('/'.Request::segment(1).'/input-nilai/asas') }}"><span class="menu-item text-truncate" data-i18n="Nilai ASAS">Nilai ASAS</span>
                     </a>
                 </li>
+                <li>
+                    <a class="d-flex align-items-center" href="{{ url('/'.Request::segment(1).'/input-nilai/remedial/asts') }}"><span class="menu-item text-truncate" data-i18n="Nilai Remedial ASTS">Nilai Remedial ASTS</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="d-flex align-items-center" href="{{ url('/'.Request::segment(1).'/input-nilai/remedial/asas') }}"><span class="menu-item text-truncate" data-i18n="Nilai Remedial ASAS">Nilai Remedial ASAS</span>
+                    </a>
+                </li>
             </ul>
         </li>
         <!-- Rapor -->

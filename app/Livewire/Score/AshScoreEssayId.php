@@ -28,15 +28,10 @@ class AshScoreEssayId extends Component
 
     public function update()
     {
-        try{
-
         EssayAnswer::where('uuid', $this->uuid)
             ->update([
                 'score' => $this->score
             ]);
-        }catch (\Exception $e) {
-            dd($e->getMessage());
-        }
 
         $essay_question = EssayQuestion::where('id', $this->essay_answer->essay_question_id)->first();
         $exam = Exam::where('id', $essay_question->exam_id)->first();

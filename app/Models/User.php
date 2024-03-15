@@ -39,9 +39,19 @@ class User extends Authenticatable
         return $this->hasMany(PGAnswer::class);
     }
 
+    public function pgRemedialAnswer()
+    {
+        return $this->hasMany(PgRemedialAnswer::class);
+    }
+
     public function esAnswer()
     {
         return $this->hasMany(EssayAnswer::class);
+    }
+
+    public function esRemedialAnswer()
+    {
+        return $this->hasMany(EssayRemedialAnswer::class);
     }
 
     public function rapor()
