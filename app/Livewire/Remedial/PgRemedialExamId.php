@@ -1,21 +1,20 @@
 <?php
 
-namespace App\Livewire\Exam;
+namespace App\Livewire\Remedial;
 
-use Auth;
 use Request;
 use Carbon\Carbon;
 use App\Models\Exam;
 use Ramsey\Uuid\Uuid;
 use Livewire\Component;
-use App\Models\PGAnswer;
 use App\Models\Remedial;
 use App\Models\ExamResult;
 use App\Models\PGQuestion;
 use App\Models\EssayQuestion;
-use Illuminate\Database\Eloquent\Builder;
+use App\Models\PgRemedialAnswer;
+use Illuminate\Support\Facades\Auth;
 
-class PgExamId extends Component
+class PgRemedialExamId extends Component
 {
     public $uuid;
     public $exam;
@@ -36,7 +35,7 @@ class PgExamId extends Component
         $this->box_question = PGQuestion::where('exam_id', $this->exam->id)->get();
         $this->box_question_essay = EssayQuestion::where('exam_id', $this->exam->id)->get();
 
-        $fulled = PGAnswer::where(['user_id' => Auth::user()->id, 'pg_question_id' => $this->id_quest])->first();
+        $fulled = PgRemedialAnswer::where(['user_id' => Auth::user()->id, 'pg_question_id' => $this->id_quest])->first();
 
         if($fulled){
             $this->answer = $fulled->answer;
@@ -45,7 +44,7 @@ class PgExamId extends Component
 
     public function store()
     {
-        PGAnswer::updateOrCreate([
+        PgRemedialAnswer::updateOrCreate([
             'user_id' => Auth::user()->id,
             'pg_question_id' => $this->id_quest,
         ],
@@ -82,9 +81,9 @@ class PgExamId extends Component
                         ]);
         }
         
-        toastr()->success('Selamat anda telah menyelesaikan ujian!');
+        toastr()->success('Selamat anda telah menyelesaikan remedial!');
 
-        return redirect('/user/ujian/'.strtolower($this->exam->exam_type));
+        return redirect('/user/remedial/'.strtolower($this->exam->exam_type));
     }
 
     public function render()
@@ -94,7 +93,7 @@ class PgExamId extends Component
         if($now > $end){
             return view('end_exam');
         }else{
-            return view('livewire.exam.pg-exam-id');
+            return view('livewire.remedial.pg-remedial-exam-id');
         }
     }
 }

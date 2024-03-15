@@ -25,6 +25,6 @@ class PGQuestion extends Model
 
     public function pgRemedialAnswer()
     {
-        return $this->hasMany(PgRemedialAnswer::class);
+        return $this->hasMany(PgRemedialAnswer::class, 'pg_question_id');
     }
 }

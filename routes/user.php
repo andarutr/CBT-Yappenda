@@ -12,6 +12,11 @@ use App\Livewire\Exam\ShowAshResult;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Exam\ShowExamResults;
 use App\Livewire\Remedial\RemedialList;
+use App\Livewire\Remedial\PgRemedialExam;
+use App\Livewire\Remedial\PgRemedialExamId;
+use App\Livewire\Remedial\EssayRemedialExam;
+use App\Livewire\Remedial\EssayRemedialExamId;
+use App\Livewire\Remedial\PreviewRemedialExam;
 
 // Route
 Route::middleware('isUser')->group(function(){
@@ -22,19 +27,15 @@ Route::middleware('isUser')->group(function(){
 
 		// Ujian 
 		Route::prefix('/ujian')->group(function(){
-			Route::get('/ash', function(){
-				abort(503);
-			});
-			// Route::get('/ash', ExamList::class);
+			Route::get('/ash', ExamList::class);
+			Route::get('/asts', ExamList::class);
+			Route::get('/asas', ExamList::class);
+			// PG Exam & Essay Exam
 			Route::get('/pg/{uuid}', PgExam::class);
 			Route::get('/pg/{id}/{uuid}', PgExamId::class);
 			Route::get('/essay/{uuid}', EssayExam::class);
 			Route::get('/essay/{id}/{uuid}', EssayExamId::class);
 			Route::get('/preview/{uuid}', PreviewExam::class);
-
-			Route::get('/asts', ExamList::class);
-			Route::get('/asas', ExamList::class);
-			Route::get('/pas', ExamList::class);
 		});
 
 		// Remedial
@@ -42,11 +43,11 @@ Route::middleware('isUser')->group(function(){
 			Route::get('/asts', RemedialList::class);
 			Route::get('/asas', RemedialList::class);
 
-			Route::get('/pg/{uuid}', PgExam::class);
-			Route::get('/pg/{id}/{uuid}', PgExamId::class);
-			Route::get('/essay/{uuid}', EssayExam::class);
-			Route::get('/essay/{id}/{uuid}', EssayExamId::class);
-			Route::get('/preview/{uuid}', PreviewExam::class);
+			Route::get('/pg/{uuid}', PgRemedialExam::class);
+			Route::get('/pg/{id}/{uuid}', PgRemedialExamId::class);
+			Route::get('/essay/{uuid}', EssayRemedialExam::class);
+			Route::get('/essay/{id}/{uuid}', EssayRemedialExamId::class);
+			Route::get('/preview/{uuid}', PreviewRemedialExam::class);
 		});
 
 		// Hasil Ujian

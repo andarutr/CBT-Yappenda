@@ -24,6 +24,7 @@ class ExResultSeeder extends Seeder
                 'user_id' => $result->user_id,
                 'exam_id' => $result->exam_id,
                 'date_exam' => $result->date_exam,
+                'is_end' => true,
                 'status' => $result->status
             ]);
         }

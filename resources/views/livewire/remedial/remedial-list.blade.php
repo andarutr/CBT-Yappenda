@@ -1,7 +1,8 @@
 @section('title', strtoupper(Request::segment(3)))
 
 <div class="content-body">
-    <div class="row">
+    <h1><u>Remedial</u></h1>
+    <div class="row mt-1">
         @foreach($remedials as $remedial)
         @if($remedial->exam->exam_type == strtoupper(Request::segment(3)))
         <div class="col-xl-4 col-lg-6 col-md-6">

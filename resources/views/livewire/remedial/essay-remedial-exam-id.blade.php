@@ -1,5 +1,4 @@
-@section('title','Essay')
-
+@section('title','Remedial')
 <div class="content-body">
     <section class="app-user-view-account">
         <div class="row">
@@ -51,7 +50,7 @@
                     <h3 class="mb-0 met-user-name-post text-center mb-3 mt-1" wire:poll.keep-alive>Sisa Waktu : <br>{{ $end->diffInMinutes($now) }} menit</h3>  
                         @foreach($box_question as $key => $value)
                         <div class="col-lg-3 mb-2">
-                            <a href="{{ url('/user/ujian/pg/'.$value->id.'/'.$uuid) }}" class="btn btn-primary text-white" wire:navigate>{{ $key+1 }}</a><br>
+                            <a href="{{ url('/user/remedial/pg/'.$value->id.'/'.$uuid) }}" class="btn btn-primary text-white" wire:navigate>{{ $key+1 }}</a><br>
                         </div>
                         @endforeach
                         </div>
@@ -61,14 +60,14 @@
                             </p>
                             @foreach($box_question_essay as $key => $value)
                             <div class="col-lg-3 mb-2">
-                                <a href="{{ url('/user/ujian/essay/'.$value->id.'/'.$uuid) }}" class="btn btn-warning text-white" wire:navigate>{{ $key+1 }}</a>
+                                <a href="{{ url('/user/remedial/essay/'.$value->id.'/'.$uuid) }}" class="btn btn-warning text-white" wire:navigate>{{ $key+1 }}</a>
                             </div>
                             @endforeach
-                            <a href="{{ url('/user/ujian/preview/'.$exam->uuid) }}" class="text-center" wire:navigate>Preview Jawaban</a>
+                            <a href="{{ url('/user/remedial/preview/'.$exam->uuid) }}" class="text-center" wire:navigate>Preview Jawaban</a>
                         </div>
                     </div>
                 </div>
-                <button class="form-control btn btn-success mb-3" wire:click="endExam" wire:confirm="Yakin ingin menyelesaikan ujian ini? Pastikan semua soal telah terisi...">Selesai</button>
+                <button class="form-control btn btn-success mb-3" wire:click="endExam" wire:confirm="Yakin ingin menyelesaikan remedial ini? Pastikan semua soal telah terisi...">Selesai</button>
             </div>
         </div>
     </section>
