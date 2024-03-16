@@ -8,14 +8,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class RaporKelasXII extends Component
 {
-    public $rapors;
-
-    public function mount()
-    {
-        $this->rapors = Rapor::whereHas('user', function(Builder $query){
-            $query->where('kelas','XII');
-        })->get();
-    }
+    public $kelas;
 
     public function destroy($uuid)
     {
@@ -25,6 +18,16 @@ class RaporKelasXII extends Component
     
     public function render()
     {
-        return view('livewire.rapor.rapor-kelas-x-i-i');
+        $rapors = Rapor::whereHas('user', function(Builder $query){
+            $query->where('kelas', 'XII-1');
+        })->get();
+
+        $result = Rapor::whereHas('user', function(Builder $query){
+            $query->where('kelas', 'like','%'.$this->kelas.'%');
+        })->get();
+
+        return view('livewire.rapor.rapor-kelas-x-i-i', [
+            'rapors' => $this->kelas ? $result : $rapors
+        ]);
     }
 }

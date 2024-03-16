@@ -2,13 +2,27 @@
 
 <div class="page-content-tab">
     <div class="container-fluid">
-        <livewire:partials.breadcrumb />
+        <div class="row">
+            <div class="col-3">
+                <a href="{{ url('/'.strtolower(Auth::user()->role->role).'/rapor/kelas/XII/create') }}" class="btn btn-primary">Tambah data</a>
+                <select class="form-select mt-1" wire:model.live="kelas">
+                    <option>Pilih Kelas</option>                
+                    <option value="XII-1">Kelas XII-1</option>                
+                    <option value="XII-2">Kelas XII-2</option>                
+                    <option value="XII-3">Kelas XII-3</option>
+                    <option value="XII-4">Kelas XII-4</option>                
+                    <option value="XII-5">Kelas XII-5</option>                
+                    <option value="XII-6">Kelas XII-6</option>
+                    <option value="XII-7">Kelas XII-7</option>                
+                    <option value="XII-8">Kelas XII-8</option>                
+                </select>
+            </div>
+        </div>
         <div class="row">
             <div class="col-12">
-            <a href="{{ url('/'.strtolower(Auth::user()->role->role).'/rapor/kelas/XII/create') }}" class="btn btn-primary">Tambah data</a>
-                <div class="card shadow mt-3">
+                <div class="card shadow mt-1">
                     <div class="card-body">
-                        <div class="table-responsive mt-3">
+                        <div class="table-responsive mt-1">
                             <table class="table" id="datatable_1">
                                 <thead class="thead-light">
                                   <tr>
@@ -23,7 +37,7 @@
                                 <tbody>
                                     @foreach($rapors as $rapor)
                                     <tr>
-                                        <td><img src="{{ url('assets/images/users/'.$rapor->user->picture) }}" alt="" class="rounded-circle thumb-xs me-1">
+                                        <td>
                                             {{ $rapor->user->name }}
                                         </td>
                                         <td>{{ $rapor->user->kelas }}</td>
@@ -31,9 +45,9 @@
                                         <td>{{ $rapor->semester }}</td>
                                         <td>{{ $rapor->th_ajaran }}</td>
                                         <td>
-                                            <a href="{{ url('/'.strtolower(Auth::user()->role->role).'/rapor/kelas/XII/'.$rapor->uuid) }}" class="btn btn btn-primary" wire:navigate><i class="fas fa-plus"></i> </a>
-                                            <a href="{{ url('/'.strtolower(Auth::user()->role->role).'/rapor/kelas/XII/'.$rapor->user_id.'/'.$rapor->uuid.'/show') }}" class="btn btn btn-success" wire:navigate><i class="fas fa-eye"></i></a>
-                                            <button class="btn btn btn-danger" wire:click="destroy('{{ $rapor->uuid }}')" wire:confirm="Yakin ingin menghapus rapor?"><i class="fas fa-trash"></i></button>
+                                            <a href="{{ url('/'.strtolower(Auth::user()->role->role).'/rapor/kelas/XII/'.$rapor->uuid) }}" class="btn btn-sm btn-primary" wire:navigate><i class="bi-plus"></i> </a>
+                                            <a href="{{ url('/'.strtolower(Auth::user()->role->role).'/rapor/kelas/XII/'.$rapor->user_id.'/'.$rapor->uuid.'/show') }}" class="btn btn-sm btn-success" wire:navigate><i class="bi-eye"></i></a>
+                                            <button class="btn btn-sm btn-danger" wire:click="destroy('{{ $rapor->uuid }}')" wire:confirm="Yakin ingin menghapus rapor?"><i class="bi-trash"></i></button>
                                         </td>
                                     </tr>
                                     @endforeach                      
@@ -45,40 +59,4 @@
             </div> <!-- end col -->
         </div> <!-- end row -->
     </div>
-    <livewire:partials.footer />             
 </div>
-
-@assets
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<link href="
-https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css
-" rel="stylesheet">
-@endassets
-
-@if(session('failed'))
-    @script
-        <script>
-            Swal.fire({
-              title: "{{ session('failed') }}",
-              icon: "error"
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.reload();
-                }
-            });
-        </script>
-    @endscript
-@elseif(session('success'))
-    @script
-        <script>
-            Swal.fire({
-              title: "{{ session('success') }}",
-              icon: "success"
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.reload();
-                }
-            });
-        </script>
-    @endscript
-@endif
