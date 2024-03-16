@@ -1,23 +1,11 @@
 <?php
 
-use App\Livewire\Exam\PgExam;
-use App\Livewire\Exam\ExamList;
-use App\Livewire\Exam\PgExamId;
-use App\Livewire\Exam\EssayExam;
+use Illuminate\Support\Facades\Route;
+
 use App\Livewire\User\Dashboard;
 use App\Livewire\Setting\Profile;
-use App\Livewire\Exam\EssayExamId;
-use App\Livewire\Exam\PreviewExam;
-use App\Livewire\Exam\ShowAshResult;
-use Illuminate\Support\Facades\Route;
-use App\Livewire\Exam\ShowExamResults;
-use App\Livewire\Remedial\RemedialList;
-use App\Livewire\Remedial\PgRemedialExam;
-use App\Livewire\Exam\ShowRemedialResults;
-use App\Livewire\Remedial\PgRemedialExamId;
-use App\Livewire\Remedial\EssayRemedialExam;
-use App\Livewire\Remedial\EssayRemedialExamId;
-use App\Livewire\Remedial\PreviewRemedialExam;
+use App\Livewire\Exam\{PgExam, ExamList, PgExamId, EssayExam, EssayExamId, PreviewExam, ShowAshResult, ShowExamResults, ShowRemedialResults};
+use App\Livewire\Remedial\{RemedialList, PgRemedialExam, PgRemedialExamId, EssayRemedialExam, EssayRemedialExamId, PreviewRemedialExam};
 
 // Route
 Route::middleware('isUser')->group(function(){

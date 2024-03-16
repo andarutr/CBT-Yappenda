@@ -1,38 +1,13 @@
 <?php
 
-use App\Livewire\Guru\Dashboard;
-
-use App\Livewire\Guru\LessonList;
-use App\Livewire\Rapor\RaporList;
-use App\Livewire\Rapor\ShowRapor;
-use App\Livewire\Setting\Profile;
-use App\Livewire\Score\AshScorePg;
-use App\Livewire\Rapor\CreateRapor;
-use App\Livewire\Rapor\RaporCreate;
-use App\Livewire\Rapor\RaporKelasX;
-use App\Livewire\Rapor\RaporUpdate;
-use App\Livewire\Assessment\ASHList;
-use App\Livewire\Rapor\RaporKelasXI;
-use App\Livewire\Score\AshScoreList;
-use App\Livewire\Assessment\AsasList;
-use App\Livewire\Assessment\AstsList;
-use App\Livewire\Rapor\RaporKelasXII;
-use App\Livewire\Score\AsasScoreList;
-use App\Livewire\Score\AshScoreEssay;
-use App\Livewire\Score\AstsScoreList;
 use Illuminate\Support\Facades\Route;
-use App\Livewire\Assessment\AshResult;
-use App\Livewire\Score\AshScoreEssayId;
-use App\Livewire\Assessment\AshResultId;
-use App\Livewire\Assessment\ASHQuestionpg;
-use App\Livewire\Assessment\ASHQuestionpr;
-use App\Livewire\Score\AshRemedialScorePg;
-use App\Livewire\Assessment\ASHQuestionessay;
-use App\Livewire\Score\AsasRemedialScoreList;
-use App\Livewire\Score\AshRemedialScoreEssay;
-use App\Livewire\Score\AstsRemedialScoreList;
-use App\Livewire\Score\AshRemedialScoreEssayId;
-use App\Livewire\Assessment\ASHEditQuestionessay;
+
+use App\Livewire\Guru\Dashboard;
+use App\Livewire\Guru\LessonList;
+use App\Livewire\Setting\Profile;
+use App\Livewire\Assessment\{ASHList, AsasList, AstsList, AshResult, AshResultId, ASHQuestionpg, ASHQuestionpr, ASHQuestionessay, ASHEditQuestionessay};
+use App\Livewire\Score\{AshScorePg, AshScoreList, AsasScoreList, AshScoreEssay, AstsScoreList, AshScoreEssayId, AshRemedialScorePg, AsasRemedialScoreList, AshRemedialScoreEssay, AstsRemedialScoreList, AshRemedialScoreEssayId};
+use App\Livewire\Rapor\{RaporList, ShowRapor, CreateRapor, RaporCreate, RaporKelasX, RaporUpdate, RaporKelasXI, RaporKelasXII};
 
 // Route
 Route::middleware('isGuru')->group(function(){
