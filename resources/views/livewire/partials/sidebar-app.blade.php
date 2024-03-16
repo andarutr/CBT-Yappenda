@@ -42,6 +42,10 @@
         <li class=" nav-item mt-1"><a class="d-flex align-items-center" href="#"><i class="bi-journal-check"></i><span class="menu-title text-truncate" data-i18n="Input Nilai">Input Nilai</span></a>
             <ul class="menu-content">
                 <li>
+                    <a class="d-flex align-items-center" href="{{ url('/'.Request::segment(1).'/input-nilai/tp') }}"><span class="menu-item text-truncate" data-i18n="Nilai TP">Nilai TP</span>
+                    </a>
+                </li>
+                <li>
                     <a class="d-flex align-items-center" href="{{ url('/'.Request::segment(1).'/input-nilai/ash') }}"><span class="menu-item text-truncate" data-i18n="Nilai ASH">Nilai ASH</span>
                     </a>
                 </li>
@@ -122,6 +126,14 @@
                 </li>
                 <li>
                     <a class="d-flex align-items-center" href="{{ url('/user/hasil-ujian/asas') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Nilai ASAS">Nilai ASAS</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="d-flex align-items-center" href="{{ url('/user/hasil-ujian/remedial/asts') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Nilai Remedial ASTS">Nilai Remedial ASTS</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="d-flex align-items-center" href="{{ url('/user/hasil-ujian/remedial/asas') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Nilai Remedial ASAS">Nilai Remedial ASAS</span>
                     </a>
                 </li>
             </ul>

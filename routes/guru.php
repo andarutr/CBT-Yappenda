@@ -47,16 +47,13 @@ Route::middleware('isGuru')->group(function(){
         // Assessment
         Route::prefix('/assessment')->group(function(){
             // Assessment Sumatif Harian
-            Route::get('/ash', function(){
-                abort(503);
+            Route::prefix('/ash')->group(function(){
+                Route::get('/', ASHList::class);
+                Route::get('/input-soal/pg/{uuid}', ASHQuestionpg::class);
+                Route::get('/input-soal/essay/{uuid}', ASHQuestionessay::class);
+                Route::get('/input-soal/preview/{uuid}', ASHQuestionpr::class);
+                Route::get('/edit-soal/essay/{uuid}', ASHEditQuestionessay::class);
             });
-            // Route::prefix('/ash')->group(function(){
-            //     Route::get('/', ASHList::class);
-            //     Route::get('/input-soal/pg/{uuid}', ASHQuestionpg::class);
-            //     Route::get('/input-soal/essay/{uuid}', ASHQuestionessay::class);
-            //     Route::get('/input-soal/preview/{uuid}', ASHQuestionpr::class);
-            //     Route::get('/edit-soal/essay/{uuid}', ASHEditQuestionessay::class);
-            // });
 
             // Assessment Sumatif Tengah Semester
             Route::prefix('/asts')->group(function(){
@@ -83,14 +80,18 @@ Route::middleware('isGuru')->group(function(){
 
         // Input Nilai
         Route::prefix('/input-nilai')->group(function(){
+             // Input Nilai TP
+             Route::prefix('/tp')->group(function(){
+                Route::get('/', AshResult::class);
+                Route::get('/{uuid}', AshResultId::class);
+            });
+
             // Input Nilai Assessment Sumatif Harian
             Route::prefix('/ash')->group(function(){
-                Route::get('/', AshResult::class);
-                Route::get('/tp/{uuid}', AshResultId::class);
-                // Route::get('/', AshScoreList::class);
-                // Route::get('/pg/{user_id}/{uuid}', AshScorePg::class);
-                // Route::get('/essay/{id}/{uuid}', AshScoreEssay::class);
-                // Route::get('/nilai-essay/{uuid}', AshScoreEssayId::class);
+                Route::get('/', AshScoreList::class);
+                Route::get('/pg/{user_id}/{uuid}', AshScorePg::class);
+                Route::get('/essay/{id}/{uuid}', AshScoreEssay::class);
+                Route::get('/nilai-essay/{uuid}', AshScoreEssayId::class);
             });
 
             Route::prefix('/asts')->group(function(){

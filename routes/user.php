@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 use App\Livewire\Exam\ShowExamResults;
 use App\Livewire\Remedial\RemedialList;
 use App\Livewire\Remedial\PgRemedialExam;
+use App\Livewire\Exam\ShowRemedialResults;
 use App\Livewire\Remedial\PgRemedialExamId;
 use App\Livewire\Remedial\EssayRemedialExam;
 use App\Livewire\Remedial\EssayRemedialExamId;
@@ -51,11 +52,12 @@ Route::middleware('isUser')->group(function(){
 		});
 
 		// Hasil Ujian
-		Route::get('/hasil-ujian/ash', ShowAshResult::class);
-		Route::get('/hasil-ujian/asts', ShowExamResults::class);
-		Route::get('/hasil-ujian/asas', ShowExamResults::class);
-		Route::get('/hasil-ujian/pas', function(){
-			abort(503);
+		Route::prefix('/hasil-ujian')->group(function(){
+			Route::get('/ash', ShowAshResult::class);
+			Route::get('/asts', ShowExamResults::class);
+			Route::get('/asas', ShowExamResults::class);
+			Route::get('/remedial/asts', ShowRemedialResults::class);
+			Route::get('/remedial/asas', ShowRemedialResults::class);
 		});
 	});
 });
