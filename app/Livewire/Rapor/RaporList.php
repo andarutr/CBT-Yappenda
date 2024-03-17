@@ -23,7 +23,7 @@ class RaporList extends Component
     public function destroy($uuid)
     {
         ContentRapor::where('uuid', $uuid)->delete();
-        return redirect()->back()->with('success','Berhasil menghapus nilai!');
+        toastr()->success('Berhasil menghapus nilai!');
     }
 
     public function render()

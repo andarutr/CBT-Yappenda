@@ -18,11 +18,9 @@ class RaporUpdate extends Component
     public $uuid;
     public $user_id;
     public $rapor;
-    public $exams;
+    public $exam;
     public $user;
     public $kelas;
-    #[Validate('required')]
-    public $exam_id;
     #[Validate('required')]
     public $description;
 
@@ -31,13 +29,14 @@ class RaporUpdate extends Component
         $this->uuid = Request::segment(6);
         $this->kelas = Request::segment(4);
         $this->rapor = Rapor::where('uuid', $this->uuid)->first();
-        $this->exams = Exam::all();
         $content = ContentRapor::whereHas('rapor', function(Builder $query){
             $query->where('uuid', $this->uuid);
         })->first();
 
         $this->exam_id = $this->rapor->id;
         $this->description = $content->description;
+        $this->exam = $content->exam->lesson->name.' ('.$content->exam->grade.') ['.$content->exam->exam_type.'] '.$content->exam->semester.' '.$content->exam->th_ajaran;
+        //  }}
         $this->user = User::where('id', $this->rapor->user_id)->first();
     }
 
@@ -46,8 +45,6 @@ class RaporUpdate extends Component
         $this->validate();
 
         ContentRapor::where('rapor_id', $this->rapor->id)->update([
-            'exam_id' => $this->exam_id,
-            'nilai' => 2,
             'description' => $this->description,
         ]);
         

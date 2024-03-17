@@ -14,7 +14,7 @@
                             <select class="form-control" wire:model.live="exam_id">
                                 <option value="">Pilih</option> 
                                 @foreach($exams as $exam)
-                                <option value="{{ $exam->id }}">{{ $exam->lesson->name }} ({{ $exam->grade.' '.$exam->major }})[{{ $exam->exam_type }}] {{ $exam->semester.' '.$exam->th_ajaran }}</option> 
+                                <option value="{{ $exam->id }}">{{ $exam->lesson->name }} ({{ $exam->grade }})[{{ $exam->exam_type }}] {{ $exam->semester.' '.$exam->th_ajaran }}</option> 
                                 @endforeach               
                             </select>
                             @error('exam_id')<p class="text-danger">{{ $message }}</p>@enderror
