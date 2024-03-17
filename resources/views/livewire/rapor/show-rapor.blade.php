@@ -1,7 +1,7 @@
 @section('title', 'Show Rapor')
 
 <div class="content-body">
-    <div class="row">
+    <div class="row mt-2">
         <div class="col-lg-10 mx-auto">
             <div class="row">
                 <div class="col-lg-6">
@@ -135,7 +135,7 @@
                     
                 </tbody>
             </table>
-            <div class="row mt-5">
+            <div class="row mt-5 mb-5">
                 <div class="col-lg-4">
                     <p>Mengetahui</p>
                     <p>Orang Tua / Wali</p>

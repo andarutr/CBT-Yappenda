@@ -1,4 +1,4 @@
-@section('title', 'Rapor '.Request::segment(3))
+@section('title', 'Rapor')
 
 <div class="content-body">
     <div class="row">
@@ -10,23 +10,23 @@
                             <thead class="thead-light">
                               <tr>
                                 <th>Rapor</th>
-                                <th>Nama Guru/Wali Kelas</th>
+                                <th>Nama Guru</th>
+                                <th>Kelas</th>
+                                <th>Semester</th>
                                 <th>Tahun Ajaran</th>
-                                <th>Diperbarui</th>
-                                <th>Dibuat</th>
                                 <th>Action</th>
                               </tr>
                             </thead>
                             <tbody>
                                 @foreach($rapors as $rapor)
                                 <tr>
-                                    <td>Rapor {{ $rapor->exam_type }} Semester {{ $rapor->semester }}</td>
+                                    <td>Rapor {{ $rapor->exam_type.' '.$rapor->user->name }}</td>
                                     <td>{{ $rapor->wali_kelas }}</td>
+                                    <td>{{ $rapor->user->kelas }}</td>
+                                    <td>{{ $rapor->semester }}</td>
                                     <td>{{ $rapor->th_ajaran }}</td>
-                                    <td>{{ $rapor->updated_at }}</td>
-                                    <td>{{ $rapor->created_at }}</td>
                                     <td>
-                                        <button class="btn btn-sm btn-danger" wire:click="download('{{ $rapor->user_id }}')"><i class="bi-download"> pdf</i></button>
+                                        <a href="{{ url('/'.strtolower(Auth::user()->role->role).'/rapor/kelas/'.Auth::user()->kelas.'/'.$rapor->user_id.'/'.$rapor->uuid.'/show') }}" class="btn btn-sm btn-success" wire:navigate><i class="bi-eye"></i></a>
                                     </td>
                                 </tr>
                                 @endforeach                      

@@ -3,6 +3,7 @@
 namespace App\Livewire\Rapor;
 
 use Auth;
+use Request;
 use Livewire\Component;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\{Rapor, ContentRapor};
@@ -31,6 +32,10 @@ class ShowRaporId extends Component
 
     public function render()
     {
-        return view('livewire.rapor.show-rapor-id');
+        $rapors = Rapor::where(['user_id' => Auth::user()->id, 'exam_type' => strtoupper(Request::segment(3))])->get();
+
+        return view('livewire.rapor.show-rapor-id', [
+            'rapors' => $rapors
+        ]);
     }
 }

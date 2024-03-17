@@ -138,17 +138,7 @@
                 </li>
             </ul>
         </li>
-        <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i class="bi-award"></i><span class="menu-title text-truncate" data-i18n="Rapor">Rapor</span></a>
-            <ul class="menu-content">
-                <li>
-                    <a class="d-flex align-items-center" href="{{ url('/user/rapor/asts') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Rapor ASTS">Rapor ASTS</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="d-flex align-items-center" href="{{ url('/user/rapor/asas') }}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Rapor ASAS">Rapor ASAS</span>
-                    </a>
-                </li>
-            </ul>
+        <li class=" nav-item"><a class="d-flex align-items-center" href="{{ url('user/rapor') }}"><i class="bi-award"></i><span class="menu-title text-truncate mt-1" data-i18n="Rapor">Rapor</span></a>
         </li>
         @endif
 
