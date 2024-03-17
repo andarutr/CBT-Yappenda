@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Livewire\User\Dashboard;
 use App\Livewire\Setting\Profile;
+use App\Livewire\Rapor\ShowRaporId;
 use App\Livewire\Exam\{PgExam, ExamList, PgExamId, EssayExam, EssayExamId, PreviewExam, ShowAshResult, ShowExamResults, ShowRemedialResults};
 use App\Livewire\Remedial\{RemedialList, PgRemedialExam, PgRemedialExamId, EssayRemedialExam, EssayRemedialExamId, PreviewRemedialExam};
 
@@ -46,6 +47,12 @@ Route::middleware('isUser')->group(function(){
 			Route::get('/asas', ShowExamResults::class);
 			Route::get('/remedial/asts', ShowRemedialResults::class);
 			Route::get('/remedial/asas', ShowRemedialResults::class);
+		});
+
+		// Rapor
+		Route::prefix('/rapor')->group(function(){
+			Route::get('/asts', ShowRaporId::class);
+			Route::get('/asas', ShowRaporId::class);
 		});
 	});
 });
