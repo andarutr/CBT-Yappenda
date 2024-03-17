@@ -2,14 +2,13 @@
 
 namespace App\Livewire\Rapor;
 
-use Auth;
+use Auth; 
 use Request;
-use App\Models\Exam;
-use App\Models\Rapor;
 use Ramsey\Uuid\Uuid;
 use Livewire\Component;
-use App\Models\ContentRapor;
+use App\Models\{User, Rapor, Exam, ContentRapor};
 use Livewire\Attributes\Validate;
+use Illuminate\Database\Eloquent\Builder;
 
 class RaporCreate extends Component
 {
@@ -17,20 +16,21 @@ class RaporCreate extends Component
     public $user_id;
     public $rapor;
     public $exams;
+    public $user;
+    public $kelas;
     #[Validate('required')]
     public $exam_id;
-    #[Validate('required')]
-    public $kelompok_mpl;
-    #[Validate('required')]
-    public $nilai;
     #[Validate('required')]
     public $description;
 
     public function mount()
     {
+        $this->kelas = Request::segment(4);
+        $this->user_id = Request::segment(5);
         $this->uuid = Request::segment(6);
         $this->rapor = Rapor::where('uuid', $this->uuid)->first();
         $this->exams = Exam::all();
+        $this->user = User::where('id', $this->rapor->user_id)->first();
     }
 
     public function store()
@@ -40,12 +40,12 @@ class RaporCreate extends Component
             'uuid' => Uuid::uuid4()->toString(),
             'rapor_id' => $this->rapor->id,
             'exam_id' => $this->exam_id,
-            'kelompok_mpl' => $this->kelompok_mpl,
-            'nilai' => $this->nilai,
+            'nilai' => 1,
             'description' => $this->description,
         ]);
         
-        return redirect('/'.strtolower(Auth::user()->role->role).'/rapor/kelas/'.$this->rapor->user->kelas.'/'.$this->uuid)->with('success','Berhasil menambahkan nilai!');
+        toastr()->success('Berhasil memperbarui nilai!');
+        return redirect('/'.strtolower(Auth::user()->role->role).'/rapor/kelas/'.$this->kelas.'/'.$this->uuid);
     }
 
     public function render()

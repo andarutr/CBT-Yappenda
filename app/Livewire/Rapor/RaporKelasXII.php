@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class RaporKelasXII extends Component
 {
-    public $kelas;
+    public $kelas = 'XII-1';
 
     public function destroy($uuid)
     {

@@ -16,7 +16,6 @@ return new class extends Migration
             $table->uuid('uuid');
             $table->unsignedBigInteger('rapor_id');
             $table->unsignedBigInteger('exam_id');
-            $table->string('kelompok_mpl', 128);
             $table->integer('nilai');
             $table->text('description');
             $table->timestamps();

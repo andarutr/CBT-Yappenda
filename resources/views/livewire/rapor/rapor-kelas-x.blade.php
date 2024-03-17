@@ -20,6 +20,9 @@
     <div class="row">
         <div class="col-12">
             <div class="card shadow mt-1">
+                <div class="card-header">
+                    Kelas {{ $kelas }}
+                </div>
                 <div class="card-body">
                     <div class="table-responsive mt-1">
                         <table class="table" id="datatable_1">

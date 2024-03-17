@@ -24,7 +24,6 @@
                                 <option value="ASH">ASH</option> 
                                 <option value="ASTS">ASTS</option> 
                                 <option value="ASAS">ASAS</option> 
-                                <option value="PAS">PAS</option> 
                             </select>
                             @error('exam_type')<p class="text-danger">{{ $message }}</p>@enderror
                         </div>

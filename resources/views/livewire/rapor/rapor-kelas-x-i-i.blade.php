@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-3">
-                <a href="{{ url('/'.strtolower(Auth::user()->role->role).'/rapor/kelas/XII/create') }}" class="btn btn-primary">Tambah data</a>
+                <a href="{{ url('/'.strtolower(Auth::user()->role->role).'/rapor/kelas/XII/create') }}" class="btn btn-sm btn-primary">Tambah data</a>
                 <select class="form-select mt-1" wire:model.live="kelas">
                     <option>Pilih Kelas</option>                
                     <option value="XII-1">Kelas XII-1</option>                
@@ -21,6 +21,9 @@
         <div class="row">
             <div class="col-12">
                 <div class="card shadow mt-1">
+                    <div class="card-header">
+                        Kelas {{ $kelas }}
+                    </div>
                     <div class="card-body">
                         <div class="table-responsive mt-1">
                             <table class="table" id="datatable_1">

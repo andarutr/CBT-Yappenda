@@ -23,7 +23,6 @@ class ContentRaporSeeder extends Seeder
                 'uuid' => Uuid::uuid4()->toString(),
                 'rapor_id' => $rapor->rapor_id,
                 'exam_id' => $rapor->exam_id,
-                'kelompok_mpl' => $rapor->kelompok_mpl,
                 'nilai' => $rapor->nilai,
                 'description' => $rapor->description,
             ]);

@@ -2,15 +2,16 @@
 
 namespace App\Livewire\Rapor;
 
-use Auth;
-use Request;
+use App\Models\ContentRapor;
 use App\Models\Exam;
 use App\Models\Rapor;
-use Ramsey\Uuid\Uuid;
-use Livewire\Component;
-use App\Models\ContentRapor;
-use Livewire\Attributes\Validate;
+use App\Models\User;
+use Auth;
 use Illuminate\Database\Eloquent\Builder;
+use Livewire\Attributes\Validate;
+use Livewire\Component;
+use Ramsey\Uuid\Uuid;
+use Request;
 
 class RaporUpdate extends Component
 {
@@ -18,18 +19,17 @@ class RaporUpdate extends Component
     public $user_id;
     public $rapor;
     public $exams;
+    public $user;
+    public $kelas;
     #[Validate('required')]
     public $exam_id;
-    #[Validate('required')]
-    public $kelompok_mpl;
-    #[Validate('required')]
-    public $nilai;
     #[Validate('required')]
     public $description;
 
     public function mount()
     {
         $this->uuid = Request::segment(6);
+        $this->kelas = Request::segment(4);
         $this->rapor = Rapor::where('uuid', $this->uuid)->first();
         $this->exams = Exam::all();
         $content = ContentRapor::whereHas('rapor', function(Builder $query){
@@ -37,9 +37,8 @@ class RaporUpdate extends Component
         })->first();
 
         $this->exam_id = $this->rapor->id;
-        $this->kelompok_mpl = $content->kelompok_mpl;
-        $this->nilai = $content->nilai;
         $this->description = $content->description;
+        $this->user = User::where('id', $this->rapor->user_id)->first();
     }
 
     public function update()
@@ -48,12 +47,12 @@ class RaporUpdate extends Component
 
         ContentRapor::where('rapor_id', $this->rapor->id)->update([
             'exam_id' => $this->exam_id,
-            'kelompok_mpl' => $this->kelompok_mpl,
-            'nilai' => $this->nilai,
+            'nilai' => 2,
             'description' => $this->description,
         ]);
         
-        return redirect('/'.strtolower(Auth::user()->role->role).'/rapor/kelas/'.$this->rapor->user->kelas.'/'.$this->uuid)->with('success','Berhasil memperbarui nilai!');
+        toastr()->success('Berhasil memperbarui nilai!');
+        return redirect('/'.strtolower(Auth::user()->role->role).'/rapor/kelas/'.$this->kelas.'/'.$this->uuid);
     }
 
     public function render()
