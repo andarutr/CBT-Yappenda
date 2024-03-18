@@ -24,9 +24,9 @@ class AsasRemedialScoreList extends Component
         return redirect('/'.strtolower(Auth::user()->role->role).'/input-nilai/remedial/asas/essay/'.$user_id.'/'.$uuid);
     }
 
-    public function generateScoreRemedial($user_id, $uuid)
+    public function generateScoreRemedial($user_id, $exam_id)
     {
-        ScoreHelper::generateScoreRemedial($user_id, $uuid);
+        ScoreHelper::generateScoreRemedial($user_id, $exam_id);
     }
 
     public function render()

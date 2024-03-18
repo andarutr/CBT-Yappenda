@@ -30,7 +30,6 @@ class ScoreHelper
 
         // Essay TIme
         $count_esq = EssayQuestion::where('exam_id', $exam_id)->count();
-
         $count_esa = EssayAnswer::where(['user_id' => $user_id])
                                 ->whereHas('esQuestion', function(Builder $query) use ($exam_id){
                                     $query->where('exam_id', $exam_id);
@@ -65,40 +64,28 @@ class ScoreHelper
     }
 
     // Perhitungan Nilai Remedial
-    public static function generateScoreRemedial($user_id, $uuid)
+    public static function generateScoreRemedial($user_id, $exam_id)
     {
-        $pga = PgRemedialAnswer::where('user_id', $user_id)->first();
-        $pgq = PGQuestion::where('id', $pga->pg_question_id)->first();
-        $exa = Exam::where('id', $pgq->exam_id)->first();
-
-        $count_pgq = PgRemedialAnswer::where(['user_id' => $user_id])
-                                ->whereHas('pgQuestion', function($query) use ($exa){
-                                    $exa->where('uuid', $exa->uuid);
-                                })->count();
-
+        $count_pgq = PGQuestion::where('exam_id', $exam_id)->count();
         $count_pga = PgRemedialAnswer::where(['user_id' => $user_id, 'correct' => true])
-                                ->whereHas('pgQuestion', function($query) use ($exa){
-                                    $exa->where('uuid', $exa->uuid);
-                                })->count();
+                                ->whereHas('pgQuestion', function(Builder $query) use ($exam_id){
+                                    $query->where('exam_id', $exam_id);
+                                })->sum('correct');
 
         $a = round(100 / $count_pgq);
         $nilai_pg = ($count_pga*$a)*0.7;
-        // dd($nilai_pg);
-        // Essay TIme
-        $count_esq = EssayRemedialAnswer::where(['user_id' => $user_id])
-                                ->whereHas('esQuestion', function($query) use ($exa){
-                                    $exa->where('uuid', $exa->uuid);
-                                })->count();
 
+        // Essay TIme
+        $count_esq = EssayQuestion::where('exam_id', $exam_id)->count();
         $count_esa = EssayRemedialAnswer::where(['user_id' => $user_id])
-                                ->whereHas('esQuestion', function($query) use ($exa){
-                                    $exa->where('uuid', $exa->uuid);
+                                ->whereHas('esQuestion', function(Builder $query) use ($exam_id){
+                                    $query->where('exam_id', $exam_id);
                                 })->sum('score');
         
         // $b = 100/$count_esq;
         $nilai_essay = $count_esa*0.3;
         // dd($nilai_essay);
-        $generate = Remedial::where(['user_id' => $user_id, 'exam_id' => $exa->id])
+        $generate = Remedial::where(['user_id' => $user_id, 'exam_id' => $exam_id])
                                 ->update([
                                     'score' => $nilai_pg + $nilai_essay,
                                     'status' => 'Sudah dinilai'
