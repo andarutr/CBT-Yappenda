@@ -4,6 +4,7 @@ namespace App\Livewire\Exam;
 
 use Auth;
 use Request;
+use Carbon\Carbon;
 use App\Models\Exam;
 use Ramsey\Uuid\Uuid;
 use Livewire\Component;
@@ -87,6 +88,12 @@ class EssayExamId extends Component
 
     public function render()
     {
-        return view('livewire.exam.essay-exam-id');
+        $now = Carbon::now();
+        $end = Carbon::parse($this->exam->end_time);  
+        if($now > $end){
+            return view('end_exam');
+        }else{
+            return view('livewire.exam.essay-exam-id');
+        }
     }
 }
