@@ -32,7 +32,7 @@ class AshScoreList extends Component
     public function render()
     {
         $exam = ExamResult::whereHas('exam', function(Builder $query){
-            $query->where('exam_type', 'ASH');
+            $query->where(['exam_type' => 'ASH', 'user_id' => Auth::user()->id]);
         })->orderBy('date_exam','desc')->paginate($this->paginate);
         
         $result = ExamResult::whereHas('user', function(Builder $query){

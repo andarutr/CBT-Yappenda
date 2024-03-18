@@ -32,7 +32,7 @@ class AstsRemedialScoreList extends Component
     public function render()
     {
         $exam = Remedial::whereHas('exam', function(Builder $query){
-            $query->where('exam_type', 'ASTS');
+            $query->where(['exam_type' => 'ASTS', 'user_id' => Auth::user()->id]);
         })->orderBy('date_exam','desc')->paginate($this->paginate);
         
         $result = Remedial::whereHas('user', function(Builder $query){

@@ -32,7 +32,7 @@ class AstsScoreList extends Component
     public function render()
     {
         $exam = ExamResult::whereHas('exam', function(Builder $query){
-            $query->where('exam_type', 'ASTS');
+            $query->where(['exam_type' => 'ASTS', 'user_id' => Auth::user()->id]);
         })->orderBy('date_exam','desc')->paginate($this->paginate);
         
         $result = ExamResult::whereHas('user', function(Builder $query){
