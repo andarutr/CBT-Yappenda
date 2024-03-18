@@ -35,7 +35,7 @@
                 <td>
                     <a class="btn btn btn-sm btn-primary" wire:click="toPgResult('{{ $exam->user_id }}', '{{ $exam->exam->uuid }}')"><i class="bi-book"></i> PG</a>
                     <a class="btn btn btn-sm btn-info" wire:click="toEssayResult('{{ $exam->user_id }}', '{{ $exam->exam->uuid }}')"><i class="bi-book"></i> Essay</a>
-                    <button class="btn btn btn-sm btn-success" wire:click="generateScore('{{ $exam->user_id }}', '{{ $exam->exam->uuid }}')"><i class="bi-award"></i> Nilai</button>
+                    <button class="btn btn btn-sm btn-success" wire:click="generateScore('{{ $exam->user_id }}', '{{ $exam->exam_id }}')"><i class="bi-award"></i> Nilai</button>
                 </td>
             </tr>
             @endforeach   

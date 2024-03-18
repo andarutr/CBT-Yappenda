@@ -24,9 +24,9 @@ class AstsScoreList extends Component
         return redirect('/'.strtolower(Auth::user()->role->role).'/input-nilai/asts/essay/'.$user_id.'/'.$uuid);
     }
 
-    public function generateScore($user_id, $uuid)
+    public function generateScore($user_id, $exam_id)
     {
-        ScoreHelper::generateScore($user_id, $uuid);
+        ScoreHelper::generateScore($user_id, $exam_id);
     }
 
     public function render()
