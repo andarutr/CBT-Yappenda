@@ -7,7 +7,7 @@
                 <div class="card">
                     <h4 class="card-header">Selamat Mengerjakan</h4>
                     <div class="card-body pt-1">
-                        @include('components.forms.post-edit.essay-exam')
+                        @include('components.forms.post-edit-essay-exam')
                     </div>
                 </div>
             </div>
@@ -45,3 +45,8 @@
         </div>
     </section>
 </div>
+
+@assets
+<link href="{{ url('assets/css/lightbox.css') }}" rel="stylesheet" />
+<script src="{{ url('assets/js/lightbox-plus-jquery.min.js') }}"></script>
+@endassets
