@@ -33,9 +33,9 @@
                     <td>{{ \Carbon\Carbon::parse($account->created_at)->format('d F Y') }}</td>
                     <td>
                         @if($account->role->role === 'Suspend')
-                        <button class="btn btn-success" wire:click="unSuspend('{{$account->uuid}}')"><i class="bi-person-dash"></i></button>
+                        <button class="btn btn-sm btn-success" wire:click="unSuspend('{{$account->uuid}}')"><i class="bi-person-dash"></i></button>
                         @else
-                        <button class="btn btn-danger" wire:click="suspend('{{$account->uuid}}')"><i class="bi-person-exclamation"></i></button>
+                        <button class="btn btn-sm btn-danger" wire:click="suspend('{{$account->uuid}}')"><i class="bi-person-exclamation"></i></button>
                         @endif
                     </td>
                 </tr>

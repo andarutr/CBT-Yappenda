@@ -10,8 +10,8 @@
                             <div class="card shadow">
                                 <div class="card-body p-0 auth-header-box">
                                     <div class="text-center p-3">
-                                        <a href="index.html" class="logo logo-admin">
-                                            <img src="{{ url('assets/images/logo-sm.png') }}" height="50" alt="logo" class="auth-logo">
+                                        <a href="#" class="logo logo-admin">
+                                            <img src="{{ url('assets/images/logo.png') }}" width="150">
                                         </a>
                                     </div>
                                 </div>

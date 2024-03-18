@@ -55,7 +55,7 @@ class LessonList extends Component
 
     public function render()
     {
-        $lessons = Lesson::paginate($this->paginate);
+        $lessons = Lesson::orderBy('name','asc')->paginate($this->paginate);
         $result = Lesson::where('name','like','%'.$this->search.'%')->get();
         return view('livewire.lesson.lesson-list', [
             'lessons' => $this->search ?  $result : $lessons

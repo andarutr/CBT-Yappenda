@@ -17,11 +17,8 @@ class AccountList extends Component
     public $search;
     public $paginate = 8;
     
-    #[Validate('required')]
     public $name;
-    #[Validate('required|unique:users|email')]
     public $email;
-    #[Validate('required')]
     public $role_id;
 
     public function toPage($page)
@@ -34,7 +31,11 @@ class AccountList extends Component
 
     public function store()
     {
-        $this->validate();
+        $this->validate([
+            'name' => 'required',
+            'email' => 'required|unique:users|email',
+            'role_id' => 'required',
+        ]);
 
         $data = [
             'role_id' => $this->role_id,
@@ -62,7 +63,11 @@ class AccountList extends Component
 
     public function update()
     {
-        $this->validate();
+        $this->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'role_id' => 'required',
+        ]);
 
         $data = [
             'uuid' => $this->user_uuid,

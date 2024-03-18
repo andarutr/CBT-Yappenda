@@ -18,7 +18,7 @@
         <div class="row vh-100 d-flex justify-content-center">
             <div class="col-12 align-self-center">
                 <center>
-                    <img src="{{ url('assets/images/yappenda.png') }}" width="100" alt="logo" class="auth-logo mb-3">
+                    <img src="{{ url('assets/images/logo.png') }}" width="100" alt="logo" class="auth-logo mb-3">
                     <h3>Reset Password</h3>
                 </center>
                 <div class="card-body">
@@ -27,14 +27,14 @@
                             <div class="card">
                                 <div class="card-body pt-0">                                    
                                     <form class="my-4" action="{{ url('/reset-password/'.$tokens) }}" method="POST">@csrf            
-                                        <div class="form-group mb-2">
+                                        <div class="form-group">
                                             <label class="form-label">Password Baru</label>
                                             <input type="password" class="form-control" name="new_password">
                                             @error('new_password')<p class="text-danger">{{ $message }}</p>@enderror
                                         </div> 
                                         <div class="form-group mb-0 row">
                                             <div class="col-12">
-                                                <div class="d-grid mt-3">
+                                                <div class="d-grid mt-1">
                                                     <button class="btn btn-success" type="submit">Reset Password <i class="fas fa-lock ms-1"></i></button>
                                                 </div>
                                             </div>
