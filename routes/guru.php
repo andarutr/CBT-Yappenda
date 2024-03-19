@@ -60,6 +60,8 @@ Route::middleware('isGuru')->group(function(){
             // Input Nilai Assessment Sumatif Harian
             Route::prefix('/ash')->group(function(){
                 Route::get('/', AshScoreList::class);
+                Route::get('/tp', AshResult::class);
+                Route::get('/tp/{uuid}', AshResultId::class);
                 Route::get('/pg/{user_id}/{uuid}', AshScorePg::class);
                 Route::get('/essay/{id}/{uuid}', AshScoreEssay::class);
                 Route::get('/nilai-essay/{uuid}', AshScoreEssayId::class);
