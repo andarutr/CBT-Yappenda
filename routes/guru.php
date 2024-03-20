@@ -1,20 +1,22 @@
 <?php
 
+use Livewire\Volt\Volt;
 use Illuminate\Support\Facades\Route;
 
 use App\Livewire\Guru\Dashboard;
 use App\Livewire\Guru\LessonList;
-use App\Livewire\Setting\Profile;
+use App\Livewire\Rapor\{RaporList, ShowRapor, CreateRapor, RaporCreate, RaporKelasX, RaporUpdate, RaporKelasXI, RaporKelasXII};
 use App\Livewire\Assessment\{ASHList, AsasList, AstsList, AshResult, AshResultId, ASHQuestionpg, ASHQuestionpr, ASHQuestionessay, ASHEditQuestionessay};
 use App\Livewire\Score\{AshScorePg, AshScoreList, AsasScoreList, AshScoreEssay, AstsScoreList, AshScoreEssayId, AshRemedialScorePg, AsasRemedialScoreList, AshRemedialScoreEssay, AstsRemedialScoreList, AshRemedialScoreEssayId};
-use App\Livewire\Rapor\{RaporList, ShowRapor, CreateRapor, RaporCreate, RaporKelasX, RaporUpdate, RaporKelasXI, RaporKelasXII};
 
 // Route
 Route::middleware('isGuru')->group(function(){
     Route::prefix('/guru')->group(function(){
         Route::redirect('/','/guru/dashboard');
         Route::get('/dashboard', Dashboard::class);
-        Route::get('/profile', Profile::class);
+        // Settings = untuk semua role
+        Volt::route('/profile', 'settings/profile');
+        Volt::route('/ganti-password', 'settings/change-password');
 
         // Mata Pelajaran
         Route::get('/mata-pelajaran', LessonList::class);

@@ -1,19 +1,20 @@
 <?php
 
+use Livewire\Volt\Volt;
 use Illuminate\Support\Facades\Route;
 
 use App\Livewire\User\Dashboard;
-use App\Livewire\Setting\Profile;
 use App\Livewire\Rapor\{ShowRapor, ShowRaporId};
-use App\Livewire\Exam\{PgExam, ExamList, PgExamId, EssayExam, EssayExamId, PreviewExam, ShowAshResult, ShowExamResults, ShowRemedialResults};
 use App\Livewire\Remedial\{RemedialList, PgRemedialExam, PgRemedialExamId, EssayRemedialExam, EssayRemedialExamId, PreviewRemedialExam};
+use App\Livewire\Exam\{PgExam, ExamList, PgExamId, EssayExam, EssayExamId, PreviewExam, ShowAshResult, ShowExamResults, ShowRemedialResults};
 
 // Route
 Route::middleware('isUser')->group(function(){
 	Route::prefix('/user')->group(function(){
 		Route::get('/dashboard', Dashboard::class);
-		// Settings
-		Route::get('/profile', Profile::class);
+		// Settings = untuk semua role
+        Volt::route('/profile', 'settings/profile');
+        Volt::route('/ganti-password', 'settings/change-password');
 
 		// Ujian 
 		Route::prefix('/ujian')->group(function(){

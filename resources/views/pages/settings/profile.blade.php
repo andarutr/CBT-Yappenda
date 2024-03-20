@@ -1,4 +1,83 @@
-@section('title','Profile')
+<?php
+
+use Carbon\Carbon;
+use App\Models\User;
+use App\Helpers\SettingHelper;
+use Illuminate\Support\Facades\Auth;
+use function Livewire\Volt\{layout, title, usesFileUploads, state, rules, mount};
+
+layout('components.layouts.dashboard');
+title('Profile');
+
+usesFileUploads();
+
+state([
+    'name', 
+    'email', 
+    'nis', 
+    'nisn', 
+    'kelas', 
+    'fase', 
+    'picture',
+]);
+
+rules([
+    'name' => 'required',
+    'email' => 'required',
+]);
+
+mount(function(){
+    $this->name = Auth::user()->name;
+    $this->email = Auth::user()->email;
+    $this->nis = Auth::user()->nis;
+    $this->nisn = Auth::user()->nisn;
+    $this->kelas = Auth::user()->kelas;
+    $this->fase = Auth::user()->fase;
+});
+
+$toPage = function($role){
+    return redirect()->to('/'.strtolower($role).'/ganti-password');
+};
+
+$updateProfile = function(){
+    $this->validate();
+    
+    if($this->picture){
+        $imageName = Carbon::parse(now())->format('dmYHis').'.'.$this->picture->getClientOriginalExtension();
+
+        $data = [
+            'name' => $this->name,
+            'email' => $this->email,
+            'nis' => $this->nis,
+            'nisn' => $this->nisn,
+            'kelas' => $this->kelas,
+            'fase' => $this->fase,
+            'picture' => $imageName
+        ];
+
+        $this->picture->storeAs('assets/images/users', $imageName);
+        $update = SettingHelper::updateProfile($data);
+    }else{
+        $data = [
+            'name' => $this->name,
+            'email' => $this->email,
+            'nis' => $this->nis,
+            'nisn' => $this->nisn,
+            'kelas' => $this->kelas,
+            'fase' => $this->fase,
+            'picture' => Auth::user()->picture
+        ];
+
+        $update = SettingHelper::updateProfile($data);
+    }
+
+    toastr()->success('Berhasil memperbarui profile!');
+
+    return redirect('/'.strtolower(Auth::user()->role->role.'/profile'));
+}
+
+?>
+
 <div class="content-body">
     <section class="app-user-view-account">
         <div class="row">
@@ -65,12 +144,13 @@
                 <!-- User Pills -->
                 <ul class="nav nav-pills mb-2">
                     <li class="nav-item">
-                        <a class="nav-link @if($statusPage == 'editProfile') active @endif" wire:click="toPage('editProfile')">
+                        <a class="nav-link">
                             <i class="bi-people" class="font-medium-3 me-50"></i>
-                            <span class="fw-bold">Account</span></a>
+                            <span class="fw-bold">Account</span>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link @if($statusPage == 'editPassword') active @endif" wire:click="toPage('editPassword')">
+                        <a class="nav-link" wire:click="toPage('{{ Auth::user()->role->role }}')">
                             <i class="bi-key" class="font-medium-3 me-50"></i>
                             <span class="fw-bold">Ganti Password</span>
                         </a>
@@ -86,7 +166,6 @@
                             </center>
                         @endif
 
-                        @if($statusPage == 'editProfile')
                         <form wire:submit="updateProfile">
                             <div class="form-group mb-1 row">
                                 <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Foto</label>
@@ -181,29 +260,6 @@
                                 </div>
                             </div>
                         </form>
-                        @endif
-
-                        @if($statusPage == 'editPassword')
-                        <form wire:submit="updatePassword">
-                            <div class="form-group mb-1 row">
-                                <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Password Lama</label>
-                                <div class="col-lg-9 col-xl-8">
-                                    <input class="form-control" type="password" wire:model.live="old_password" required>
-                                </div>
-                            </div>
-                            <div class="form-group mb-1 row">
-                                <label class="col-xl-3 col-lg-3 text-end mb-lg-0 align-self-center form-label">Password Baru</label>
-                                <div class="col-lg-9 col-xl-8">
-                                    <input class="form-control" type="password" wire:model.live="new_password" required>
-                                </div>
-                            </div>
-                            <div class="form-group mb-3 row">
-                                <div class="col-lg-9 col-xl-8 offset-lg-3">
-                                    <button type="submit" class="btn btn-primary">Ganti Password</button>
-                                </div>
-                            </div> 
-                        </form>  
-                        @endif
                     </div>
                 </div>
             </div>
