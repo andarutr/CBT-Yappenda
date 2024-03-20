@@ -1,5 +1,5 @@
 <form wire:submit="update">
-    <div class="mt-1">
+    <div>
         <label>Nama</label>
         <input type="text" class="form-control"  wire:model="name">
         @error('name')<p class="text-danger">{{ $message }}</p>@enderror

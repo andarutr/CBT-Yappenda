@@ -1,13 +1,13 @@
 <?php
 
+use Livewire\Volt\Volt;
 use Illuminate\Support\Facades\Route;
 
-use App\Livewire\Admin\Dashboard;
 use App\Livewire\Setting\Profile;
 use App\Livewire\Lesson\LessonList;
 use App\Livewire\Rapor\{RaporList, ShowRapor};
 use App\Livewire\Assessment\{ASHList, AsasList, AstsList, AshResult, AshPurpose, AshResultId, ASHQuestionpg, ASHQuestionpr, ASHQuestionessay, ASHEditQuestionessay};
-use App\Livewire\Account\{RoleList, AccountList, SuspendList, PasswordAccountList};
+use App\Livewire\Account\{RoleList, SuspendList};
 use App\Livewire\Score\{AshScorePg, AshScoreList, AsasScoreList, AshScoreEssay, AstsScoreList, AshScoreEssayId, AshRemedialScorePg, AsasRemedialScoreList, AshRemedialScoreEssay, AstsRemedialScoreList, AshRemedialScoreEssayId};
 use App\Livewire\Rapor\{CreateRapor, RaporCreate, RaporKelasX, RaporUpdate, RaporKelasXI, RaporKelasXII};
 
@@ -15,15 +15,15 @@ use App\Livewire\Rapor\{CreateRapor, RaporCreate, RaporKelasX, RaporUpdate, Rapo
 Route::middleware('isAdmin')->group(function(){
     Route::prefix('/admin')->group(function(){
         Route::redirect('/','/admin/dashboard');
-        Route::get('/dashboard', Dashboard::class);
+        Volt::route('/dashboard', 'admin/dashboard');
         
         // Settings
         Route::get('/profile', Profile::class);
 
         // Management Account
         Route::prefix('/account')->group(function(){
-            Route::get('/', AccountList::class);
-            Route::get('/reset-password', PasswordAccountList::class);
+            Volt::route('/', 'account/account-list');
+            Volt::route('/reset-password', 'account/password-account-list');
             Route::get('/role', RoleList::class);
             Route::get('/suspend', SuspendList::class);
         });

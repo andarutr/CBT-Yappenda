@@ -3,62 +3,59 @@
 use App\Models\User;
 use Ramsey\Uuid\Uuid;
 use App\Helpers\AuthHelper;
-use Livewire\Volt\Component;
 use App\Mail\ResetPasswordMail;
-use Livewire\Attributes\Layout;
-use Livewire\Attributes\Validate;
 use Illuminate\Support\Facades\Mail;
+use function Livewire\Volt\{layout, title, state, rules};
 
-new
-#[Layout('components.layouts.auth')]
-class extends Component{
-    // Jangan dihapus!
-    public $statusPage = 'login';
+layout('components.layouts.auth');
+title('Login');
 
-    #[Validate('required|email')]
-    public $email;
-    #[Validate('required')]
-    public $password;
-    public $users;
+state([
+  'users',
+  'email',
+  'password',
+  'statusPage' => 'login'
+]);
 
-    public function login()
-    {
-        $this->validate();
-        $login = AuthHelper::login($this->email, $this->password);
-    }
+rules([
+  'email' => 'required',
+  'password' => 'required',
+]);
 
-    public function toPage($page)
-    {
-        $this->email = '';
-        $this->password = '';
-        $this->statusPage = $page;
-    }
+$login = function(){
+  $this->validate();
+  AuthHelper::login($this->email, $this->password);  
+};
 
-    public function forgotPassword()
-    {
-        $user = User::where('email', $this->email)->first();
+$toPage = function($page){
+  $this->email = '';
+  $this->password = '';
+  $this->statusPage = $page;
+};
 
-        if($user)
-        {
-            $uuid = Uuid::uuid4()->toString();
+$forgotPassword = function(){
+  $user = User::where('email', $this->email)->first();
 
-            $data = [
-                'name' => $user->name,
-                'tokens' => $uuid
-            ];
-            
-            \DB::table('reset_password')->insert([
-                'email' => $user->email,
-                'tokens' => $uuid
-            ]);
-            
-            Mail::to($this->email)->send(new ResetPasswordMail($data));
-            toastr()->success('Silahkan periksa email kamu ya!');
-        }else{
-            toastr()->warning('Email kamu tidak terdaftar!');
-        }
-    }    
-}
+  if($user)
+  {
+      $uuid = Uuid::uuid4()->toString();
+
+      $data = [
+          'name' => $user->name,
+          'tokens' => $uuid
+      ];
+      
+      \DB::table('reset_password')->insert([
+          'email' => $user->email,
+          'tokens' => $uuid
+      ]);
+      
+      Mail::to($this->email)->send(new ResetPasswordMail($data));
+      toastr()->success('Silahkan periksa email kamu ya!');
+  }else{
+      toastr()->warning('Email kamu tidak terdaftar!');
+  }
+};
 
 ?>
 
@@ -74,23 +71,22 @@ class extends Component{
               <a class="brand-logo" href="{{ url('/login') }}">
                 <h2 class="brand-text text-primary ms-1">SMAS Yappenda</h2>
               </a>
-              <!-- /Brand logo-->
-              <!-- Left Text-->
               <div class="d-none d-lg-flex col-lg-8 align-items-center p-5">
-                <img class="img-fluid" src="{{ url('assets/images/login.png') }}" alt="Background Login"/>
+                <img class="img-fluid" src="{{ url('assets/images/login.webp') }}" alt="Background Login"/>
               </div>
-              <!-- /Left Text-->
-              <!-- Login-->
               <div class="d-flex col-lg-4 align-items-center auth-bg px-2 p-lg-5">
                 <div class="col-12 col-sm-8 col-md-6 col-lg-12 px-xl-2 mx-auto">
                   <center>
-                    <img src="{{ url('assets/images/logo.png') }}" class="img-fluid" width="100">
+                    <img src="{{ url('assets/images/logo.webp') }}" class="img-fluid" width="100">
                     <h4 class="card-title fw-bold mb-1 mt-1">Selamat Datang di <br>CBT SMAS Yappenda!</h4>
-                    <p class="card-text mb-2">CBT for All Students</p>
+                    @if($statusPage == 'login')
+                    <p class="card-text">Login</p>
+                    @else
+                    <p class="card-text">Lupa Password</p>
+                    @endif
                   </center>
                   @if($statusPage == 'login')
-                  <h5 class="card-text mb-2">Login</h5>
-                  <form class="auth-login-form mt-2" wire:submit="login">
+                  <form class="auth-login-form mt-1" wire:submit="login">
                     <div class="mb-1">
                       <label class="form-label" for="login-email">Email</label>
                       <input class="form-control" id="login-email" type="text" wire:model.live="email" autocomplete="off" />
@@ -111,8 +107,7 @@ class extends Component{
                   @endif
 
                   @if($statusPage == 'forgotPassword')
-                  <h5 class="card-text mb-2">Lupa Password</h5>
-                  <form class="auth-reset-password-form mt-2" wire:submit="forgotPassword">
+                  <form class="auth-reset-password-form mt-1" wire:submit="forgotPassword">
                     <div class="mb-1">
                       <div class="d-flex justify-content-between">
                         <label class="form-label">Email</label>
@@ -130,7 +125,6 @@ class extends Component{
                   @endif
                 </div>
               </div>
-              <!-- /Login-->
             </div>
           </div>
         </div>

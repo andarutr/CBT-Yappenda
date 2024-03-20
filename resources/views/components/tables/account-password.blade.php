@@ -11,7 +11,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($accounts as $account)
+            @foreach($this->accounts as $account)
             @if($account->id !== Auth::user()->id)
                 <tr>
                     <td>
