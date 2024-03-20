@@ -2,10 +2,12 @@
 
 use App\Helpers\AccountHelper;
 use App\Models\{User, Role};
-use function Livewire\Volt\{layout, title, state, with, computed};
+use function Livewire\Volt\{layout, title, usesPagination, state, with, computed};
 
 layout('components.layouts.dashboard');
 title('Account Management');
+
+usesPagination();
 
 state(['search'])->url();
 
@@ -21,10 +23,12 @@ state([
 ]);
 
 $accounts = computed(function(){
+    $account = User::orderByDesc('id')->paginate($this->paginate);
     $result = User::where('name','like','%'.$this->search.'%')
                     ->orwhere('email','like','%'.$this->search.'%')
                     ->paginate($this->paginate);
-    return $this->search ? $result : User::orderByDesc('id')->paginate($this->paginate);
+
+    return $this->search ? $result : $account;
 });
 
 with(fn() => [
@@ -130,7 +134,5 @@ $destroy = function($uuid){
             </div>
         </div>
     </div>
-    @if($statusPage == 'list')
-        @include('components.buttons.btn-paginate')
-    @endif
+    {{ $this->accounts->links() }}
 </div>

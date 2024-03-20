@@ -2,7 +2,6 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Foto</th>
                 <th>Nama</th>
                 <th>Email</th>
                 <th>Jenis Akun</th>
@@ -11,12 +10,9 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($accounts as $account)
+            @foreach($this->accounts as $account)
             @if($account->id !== Auth::user()->id)
                 <tr>
-                    <td>
-                        <img src="{{ asset('assets/images/users/'.$account->picture) }}" alt="" class="img-fluid rounded-circle thumb-xs me-1" width="80">
-                    </td>
                     <td>{{ $account->name }}</td>
                     <td>{{ $account->email }}</td>
                     <td>

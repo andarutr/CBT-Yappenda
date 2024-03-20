@@ -1,26 +1,21 @@
 <?php
 
-use App\Models\User;
+use App\Models\{Role, User};
 use App\Helpers\AccountHelper;
-use function Livewire\Volt\{layout, title, usesPagination, state, computed, rules};
+use function Livewire\Volt\{layout, title, usesPagination, state, computed, with};
 
 layout('components.layouts.dashboard');
-title('Reset Password Account');
+title('Ganti Role Account');
 
 usesPagination();
 
+state(['search'])->url();
 state([
     'statusPage' => 'list',
-    'search', 
-    'paginate' => 8,
     'user_uuid',
-
+    'paginate' => 8,
     'name',
-    'new_password',
-]);
-
-rules([
-    'new_password' => 'required|min:8'
+    'role_id',
 ]);
 
 $accounts = computed(function(){
@@ -32,30 +27,32 @@ $accounts = computed(function(){
     return $this->search ? $result : $account;
 });
 
+with(fn() => [
+    'roles' => Role::all()
+]);
+
 $toPage = function($page){
     $this->statusPage = $page;
 };
 
-$editPassword = function($uuid){
+$editRole = function($uuid){
     $user = User::where('uuid', $uuid)->firstOrFail();
-    $this->statusPage = 'editPassword';
+    $this->statusPage = 'editRole';
     $this->user_uuid = $user->uuid;
     $this->name = $user->name;
+    $this->role_id = $user->role_id;
 };
 
 $update = function(){
-    $this->validate();
-
     $data = [
         'uuid' => $this->user_uuid,
-        'new_password' => $this->new_password,
-        'name' => $this->name,
+        'role_id' => $this->role_id
     ];
 
-    $update = AccountHelper::updatePassword($data);
-    toastr()->success('Berhasil memperbarui password!');
-    return $this->statusPage = 'list';
-};
+    $update = AccountHelper::updateRole($data);
+    toastr()->success('Berhasil memperbarui role!');
+    $this->statusPage = 'list';
+}
 
 ?>
 
@@ -73,15 +70,15 @@ $update = function(){
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Reset Password Account</h4>
+                    <h4 class="card-title">Ganti Role Account</h4>
                 </div>
                 <div class="card-body">
                     @if($statusPage == 'list')
-                        @include('components.tables.account-password')
+                        @include('components.tables.account-role')
                     @endif
 
-                    @if($statusPage == 'editPassword')
-                        @include('components.forms.edit-password-account')
+                    @if($statusPage == 'editRole')
+                        @include('components.forms.edit-role-account')
                     @endif
                 </div>
             </div>

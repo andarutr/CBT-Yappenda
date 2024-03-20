@@ -24,8 +24,8 @@ Route::middleware('isAdmin')->group(function(){
         Route::prefix('/account')->group(function(){
             Volt::route('/', 'account/account-list');
             Volt::route('/reset-password', 'account/password-account-list');
-            Route::get('/role', RoleList::class);
-            Route::get('/suspend', SuspendList::class);
+            Volt::route('/role', 'account/role-list');
+            Volt::route('/suspend', 'account/suspend-list');
         });
 
         // Mata Pelajaran
