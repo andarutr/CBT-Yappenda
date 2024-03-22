@@ -15,7 +15,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($purposes as $tp)
+            @foreach($this->purposes as $tp)
             <tr>
                 <td>{{ $tp->title }}</td>
                 <td>{{ $tp->tp_1 }}</td>

@@ -9,7 +9,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($lessons as $lesson)
+            @foreach($this->lessons as $lesson)
                 <tr>
                     <td>{{ $lesson->name }}</td>
                     <td>{{ \Carbon\Carbon::parse($lesson->created_at)->format('d F Y') }}

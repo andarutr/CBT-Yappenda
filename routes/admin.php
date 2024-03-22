@@ -2,9 +2,9 @@
 
 use Livewire\Volt\Volt;
 use Illuminate\Support\Facades\Route;
-use App\Livewire\Lesson\LessonList;
+
 use App\Livewire\Rapor\{RaporList, ShowRapor};
-use App\Livewire\Assessment\{ASHList, AsasList, AstsList, AshResult, AshPurpose, AshResultId, ASHQuestionpg, ASHQuestionpr, ASHQuestionessay, ASHEditQuestionessay};
+use App\Livewire\Assessment\{ASHList, AsasList, AstsList, AshResult, AshResultId, ASHQuestionpg, ASHQuestionpr, ASHQuestionessay, ASHEditQuestionessay};
 use App\Livewire\Score\{AshScorePg, AshScoreList, AsasScoreList, AshScoreEssay, AstsScoreList, AshScoreEssayId, AshRemedialScorePg, AsasRemedialScoreList, AshRemedialScoreEssay, AstsRemedialScoreList, AshRemedialScoreEssayId};
 use App\Livewire\Rapor\{CreateRapor, RaporCreate, RaporKelasX, RaporUpdate, RaporKelasXI, RaporKelasXII};
 
@@ -23,12 +23,10 @@ Route::middleware('isAdmin')->group(function(){
             Volt::route('/role', 'account/role-list');
             Volt::route('/suspend', 'account/suspend-list');
         });
-
         // Mata Pelajaran
-        Route::get('/mata-pelajaran', LessonList::class);
-
+        Volt::route('/mata-pelajaran', 'lesson/lesson-list');
         // Tujuan Pembelajaran
-        Route::get('/tujuan-pembelajaran', AshPurpose::class);
+        Volt::route('/tujuan-pembelajaran', 'assessment/ash-purpose');
         // Assessment
         Route::prefix('/assessment')->group(function(){
             // Assessment Sumatif Harian

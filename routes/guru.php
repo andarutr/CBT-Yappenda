@@ -3,7 +3,6 @@
 use Livewire\Volt\Volt;
 use Illuminate\Support\Facades\Route;
 
-use App\Livewire\Guru\Dashboard;
 use App\Livewire\Guru\LessonList;
 use App\Livewire\Rapor\{RaporList, ShowRapor, CreateRapor, RaporCreate, RaporKelasX, RaporUpdate, RaporKelasXI, RaporKelasXII};
 use App\Livewire\Assessment\{ASHList, AsasList, AstsList, AshResult, AshResultId, ASHQuestionpg, ASHQuestionpr, ASHQuestionessay, ASHEditQuestionessay};
@@ -13,7 +12,7 @@ use App\Livewire\Score\{AshScorePg, AshScoreList, AsasScoreList, AshScoreEssay, 
 Route::middleware('isGuru')->group(function(){
     Route::prefix('/guru')->group(function(){
         Route::redirect('/','/guru/dashboard');
-        Route::get('/dashboard', Dashboard::class);
+        Volt::route('/dashboard', 'guru/dashboard');
         // Settings = untuk semua role
         Volt::route('/profile', 'settings/profile');
         Volt::route('/ganti-password', 'settings/change-password');
