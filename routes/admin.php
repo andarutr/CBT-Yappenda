@@ -4,7 +4,7 @@ use Livewire\Volt\Volt;
 use Illuminate\Support\Facades\Route;
 
 use App\Livewire\Rapor\{RaporList, ShowRapor};
-use App\Livewire\Assessment\{ASHList, AsasList, AstsList, AshResult, AshResultId, ASHQuestionpg, ASHQuestionpr, ASHQuestionessay, ASHEditQuestionessay};
+use App\Livewire\Assessment\{AshResult, AshResultId, ASHQuestionpg, ASHQuestionpr, ASHQuestionessay, ASHEditQuestionessay};
 use App\Livewire\Score\{AshScorePg, AshScoreList, AsasScoreList, AshScoreEssay, AstsScoreList, AshScoreEssayId, AshRemedialScorePg, AsasRemedialScoreList, AshRemedialScoreEssay, AstsRemedialScoreList, AshRemedialScoreEssayId};
 use App\Livewire\Rapor\{CreateRapor, RaporCreate, RaporKelasX, RaporUpdate, RaporKelasXI, RaporKelasXII};
 
@@ -31,7 +31,7 @@ Route::middleware('isAdmin')->group(function(){
         Route::prefix('/assessment')->group(function(){
             // Assessment Sumatif Harian
             Route::prefix('/ash')->group(function(){
-                Route::get('/', ASHList::class);
+                Volt::route('/', 'assessment/ash-list');
                 Route::get('/input-soal/pg/{uuid}', ASHQuestionpg::class);
                 Route::get('/input-soal/essay/{uuid}', ASHQuestionessay::class);
                 Route::get('/input-soal/preview/{uuid}', ASHQuestionpr::class);
@@ -40,7 +40,7 @@ Route::middleware('isAdmin')->group(function(){
 
             // Assessment Sumatif Tengah Semester
             Route::prefix('/asts')->group(function(){
-                Route::get('/', AstsList::class);
+                Volt::route('/', 'assessment/asts-list');
                 Route::get('/input-soal/pg/{uuid}', ASHQuestionpg::class);
                 Route::get('/input-soal/essay/{uuid}', ASHQuestionessay::class);
                 Route::get('/input-soal/preview/{uuid}', ASHQuestionpr::class);
@@ -49,7 +49,7 @@ Route::middleware('isAdmin')->group(function(){
 
             // Assessment Sumatif Akhir Semester
             Route::prefix('/asas')->group(function(){
-                Route::get('/', AsasList::class);
+                Volt::route('/', 'assessment/asas-list');
                 Route::get('/input-soal/pg/{uuid}', ASHQuestionpg::class);
                 Route::get('/input-soal/essay/{uuid}', ASHQuestionessay::class);
                 Route::get('/input-soal/preview/{uuid}', ASHQuestionpr::class);
