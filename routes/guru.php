@@ -24,7 +24,7 @@ Route::middleware('isGuru')->group(function(){
         Route::prefix('/assessment')->group(function(){
             // Assessment Sumatif Harian
             Route::prefix('/ash')->group(function(){
-                Route::get('/', ASHList::class);
+                Volt::route('/', 'assessment/ash-list');
                 Route::get('/input-soal/pg/{uuid}', ASHQuestionpg::class);
                 Route::get('/input-soal/essay/{uuid}', ASHQuestionessay::class);
                 Route::get('/input-soal/preview/{uuid}', ASHQuestionpr::class);
@@ -33,7 +33,7 @@ Route::middleware('isGuru')->group(function(){
 
             // Assessment Sumatif Tengah Semester
             Route::prefix('/asts')->group(function(){
-                Route::get('/', AstsList::class);
+                Volt::route('/', 'assessment/asts-list');
                 Route::get('/input-soal/pg/{uuid}', ASHQuestionpg::class);
                 Route::get('/input-soal/essay/{uuid}', ASHQuestionessay::class);
                 Route::get('/input-soal/preview/{uuid}', ASHQuestionpr::class);
@@ -42,7 +42,7 @@ Route::middleware('isGuru')->group(function(){
 
             // Assessment Sumatif Akhir Semester
             Route::prefix('/asas')->group(function(){
-                Route::get('/', AsasList::class);
+                Volt::route('/', 'assessment/asas-list');
                 Route::get('/input-soal/pg/{uuid}', ASHQuestionpg::class);
                 Route::get('/input-soal/essay/{uuid}', ASHQuestionessay::class);
                 Route::get('/input-soal/preview/{uuid}', ASHQuestionpr::class);

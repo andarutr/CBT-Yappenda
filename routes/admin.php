@@ -32,7 +32,7 @@ Route::middleware('isAdmin')->group(function(){
             // Assessment Sumatif Harian
             Route::prefix('/ash')->group(function(){
                 Volt::route('/', 'assessment/ash-list');
-                Route::get('/input-soal/pg/{uuid}', ASHQuestionpg::class);
+                Volt::route('/input-soal/pg/{uuid}', 'assessment/ass-question-pg');
                 Route::get('/input-soal/essay/{uuid}', ASHQuestionessay::class);
                 Route::get('/input-soal/preview/{uuid}', ASHQuestionpr::class);
                 Route::get('/edit-soal/essay/{uuid}', ASHEditQuestionessay::class);
@@ -41,7 +41,7 @@ Route::middleware('isAdmin')->group(function(){
             // Assessment Sumatif Tengah Semester
             Route::prefix('/asts')->group(function(){
                 Volt::route('/', 'assessment/asts-list');
-                Route::get('/input-soal/pg/{uuid}', ASHQuestionpg::class);
+                Volt::route('/input-soal/pg/{uuid}', 'assessment/ass-question-pg');
                 Route::get('/input-soal/essay/{uuid}', ASHQuestionessay::class);
                 Route::get('/input-soal/preview/{uuid}', ASHQuestionpr::class);
                 Route::get('/edit-soal/essay/{uuid}', ASHEditQuestionessay::class);
@@ -50,7 +50,7 @@ Route::middleware('isAdmin')->group(function(){
             // Assessment Sumatif Akhir Semester
             Route::prefix('/asas')->group(function(){
                 Volt::route('/', 'assessment/asas-list');
-                Route::get('/input-soal/pg/{uuid}', ASHQuestionpg::class);
+                Volt::route('/input-soal/pg/{uuid}', 'assessment/ass-question-pg');
                 Route::get('/input-soal/essay/{uuid}', ASHQuestionessay::class);
                 Route::get('/input-soal/preview/{uuid}', ASHQuestionpr::class);
                 Route::get('/edit-soal/essay/{uuid}', ASHEditQuestionessay::class);
