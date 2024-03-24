@@ -17,7 +17,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($ashPurposes as $ash)
+            @foreach($this->ashPurposes as $ash)
             <tr>
                 <td>{{ $ash->lesson->name }}</td>
                 <td><b>{{ $ash->ashPurpose->title }}</b></td>

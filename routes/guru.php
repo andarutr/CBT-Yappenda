@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 
 use App\Livewire\Guru\LessonList;
 use App\Livewire\Rapor\{RaporList, ShowRapor, CreateRapor, RaporCreate, RaporKelasX, RaporUpdate, RaporKelasXI, RaporKelasXII};
-use App\Livewire\Assessment\{AshResult, AshResultId};
 use App\Livewire\Score\{AshScorePg, AshScoreList, AsasScoreList, AshScoreEssay, AstsScoreList, AshScoreEssayId, AshRemedialScorePg, AsasRemedialScoreList, AshRemedialScoreEssay, AstsRemedialScoreList, AshRemedialScoreEssayId};
 
 // Route
@@ -51,15 +50,13 @@ Route::middleware('isGuru')->group(function(){
         Route::prefix('/input-nilai')->group(function(){
              // Input Nilai TP
              Route::prefix('/tp')->group(function(){
-                Route::get('/', AshResult::class);
-                Route::get('/{uuid}', AshResultId::class);
+                Volt::route('/', 'assessment/ass-tp');
+                Volt::route('/{uuid}', 'assessment/ass-tp-result');
             });
 
             // Input Nilai Assessment Sumatif Harian
             Route::prefix('/ash')->group(function(){
                 Route::get('/', AshScoreList::class);
-                Route::get('/tp', AshResult::class);
-                Route::get('/tp/{uuid}', AshResultId::class);
                 Route::get('/pg/{user_id}/{uuid}', AshScorePg::class);
                 Route::get('/essay/{id}/{uuid}', AshScoreEssay::class);
                 Route::get('/nilai-essay/{uuid}', AshScoreEssayId::class);

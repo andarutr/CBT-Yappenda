@@ -3,7 +3,7 @@
         <label>Mata Pelajaran</label>
         <select class="form-select" wire:model="lesson_id">
             <option>Pilih</option>
-            @foreach($lessons as $lesson)
+            @foreach($this->lessons as $lesson)
             <option value="{{ $lesson->id }}">{{ $lesson->name }}</option>
             @endforeach
         </select>
@@ -13,7 +13,7 @@
         <label>Tujuan Pembelajaran</label>
         <select class="form-select" wire:model="ash_purpose_id">
             <option>Pilih</option>
-            @foreach($purposes as $purpose)
+            @foreach($this->purposes as $purpose)
             <option value="{{ $purpose->id }}">{{ $purpose->title }}</option>
             @endforeach
         </select>
