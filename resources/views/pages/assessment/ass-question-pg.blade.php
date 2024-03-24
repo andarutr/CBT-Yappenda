@@ -92,10 +92,10 @@ $store_pg = function(){
                     <a href="#" class="btn btn-primary form-control">Soal PG</a>
                 </div>
                 <div class="col-12 col-md-4">
-                    <a href="{{ url('guru/assessment/'.strtolower($exam->exam_type).'/input-soal/essay/'.$uuid) }}" class="btn btn-success form-control">Essay</a>
+                    <a href="{{ url('/'.strtolower(Auth::user()->role->role).'/assessment/'.strtolower($exam->exam_type).'/input-soal/essay/'.$uuid) }}" class="btn btn-success form-control">Essay</a>
                 </div>
                 <div class="col-12 col-md-4">
-                    <a href="{{ url('guru/assessment/'.strtolower($exam->exam_type).'/input-soal/preview/'.$uuid) }}" class="btn btn-info form-control">Preview</a>
+                    <a href="{{ url('/'.strtolower(Auth::user()->role->role).'/assessment/'.strtolower($exam->exam_type).'/input-soal/preview/'.$uuid) }}" class="btn btn-info form-control">Preview</a>
                 </div>
             </div>
         </div>

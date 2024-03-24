@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Livewire\Guru\LessonList;
 use App\Livewire\Rapor\{RaporList, ShowRapor, CreateRapor, RaporCreate, RaporKelasX, RaporUpdate, RaporKelasXI, RaporKelasXII};
-use App\Livewire\Assessment\{ASHList, AsasList, AstsList, AshResult, AshResultId, ASHQuestionpg, ASHQuestionpr, ASHQuestionessay, ASHEditQuestionessay};
+use App\Livewire\Assessment\{AshResult, AshResultId};
 use App\Livewire\Score\{AshScorePg, AshScoreList, AsasScoreList, AshScoreEssay, AstsScoreList, AshScoreEssayId, AshRemedialScorePg, AsasRemedialScoreList, AshRemedialScoreEssay, AstsRemedialScoreList, AshRemedialScoreEssayId};
 
 // Route
@@ -16,37 +16,34 @@ Route::middleware('isGuru')->group(function(){
         // Settings = untuk semua role
         Volt::route('/profile', 'settings/profile');
         Volt::route('/ganti-password', 'settings/change-password');
-
         // Mata Pelajaran
         Route::get('/mata-pelajaran', LessonList::class);
-        
         // Assessment
         Route::prefix('/assessment')->group(function(){
             // Assessment Sumatif Harian
             Route::prefix('/ash')->group(function(){
                 Volt::route('/', 'assessment/ash-list');
-                Route::get('/input-soal/pg/{uuid}', ASHQuestionpg::class);
-                Route::get('/input-soal/essay/{uuid}', ASHQuestionessay::class);
-                Route::get('/input-soal/preview/{uuid}', ASHQuestionpr::class);
-                Route::get('/edit-soal/essay/{uuid}', ASHEditQuestionessay::class);
+                Volt::route('/input-soal/pg/{uuid}', 'assessment/ass-question-pg');
+                Volt::route('/input-soal/essay/{uuid}', 'assessment/ass-question-essay');
+                Volt::route('/input-soal/preview/{uuid}', 'assessment/ass-question-pr');
+                Volt::route('/edit-soal/essay/{uuid}', 'assessment/ass-edit-question-essay');
             });
-
             // Assessment Sumatif Tengah Semester
             Route::prefix('/asts')->group(function(){
                 Volt::route('/', 'assessment/asts-list');
-                Route::get('/input-soal/pg/{uuid}', ASHQuestionpg::class);
-                Route::get('/input-soal/essay/{uuid}', ASHQuestionessay::class);
-                Route::get('/input-soal/preview/{uuid}', ASHQuestionpr::class);
-                Route::get('/edit-soal/essay/{uuid}', ASHEditQuestionessay::class);
+                Volt::route('/input-soal/pg/{uuid}', 'assessment/ass-question-pg');
+                Volt::route('/input-soal/essay/{uuid}', 'assessment/ass-question-essay');
+                Volt::route('/input-soal/preview/{uuid}', 'assessment/ass-question-pr');
+                Volt::route('/edit-soal/essay/{uuid}', 'assessment/ass-edit-question-essay');
             });
 
             // Assessment Sumatif Akhir Semester
             Route::prefix('/asas')->group(function(){
                 Volt::route('/', 'assessment/asas-list');
-                Route::get('/input-soal/pg/{uuid}', ASHQuestionpg::class);
-                Route::get('/input-soal/essay/{uuid}', ASHQuestionessay::class);
-                Route::get('/input-soal/preview/{uuid}', ASHQuestionpr::class);
-                Route::get('/edit-soal/essay/{uuid}', ASHEditQuestionessay::class);
+                Volt::route('/input-soal/pg/{uuid}', 'assessment/ass-question-pg');
+                Volt::route('/input-soal/essay/{uuid}', 'assessment/ass-question-essay');
+                Volt::route('/input-soal/preview/{uuid}', 'assessment/ass-question-pr');
+                Volt::route('/edit-soal/essay/{uuid}', 'assessment/ass-edit-question-essay');
             });
         });
 
