@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Livewire\User\Dashboard;
 use App\Livewire\Rapor\{ShowRapor, ShowRaporId};
 use App\Livewire\Remedial\{RemedialList, PgRemedialExam, PgRemedialExamId, EssayRemedialExam, EssayRemedialExamId, PreviewRemedialExam};
-use App\Livewire\Exam\{PgExam, ExamList, PgExamId, EssayExam, EssayExamId, PreviewExam, ShowAshResult, ShowExamResults, ShowRemedialResults};
+use App\Livewire\Exam\{ShowAshResult, ShowExamResults, ShowRemedialResults};
 
 // Route
 Route::middleware('isUser')->group(function(){
@@ -18,15 +18,14 @@ Route::middleware('isUser')->group(function(){
 
 		// Ujian 
 		Route::prefix('/ujian')->group(function(){
-			Route::get('/ash', ExamList::class);
-			Route::get('/asts', ExamList::class);
-			Route::get('/asas', ExamList::class);
+			Volt::route('/ash', 'exam/list-exam');
+			Volt::route('/asts', 'exam/list-exam');
+			Volt::route('/asas', 'exam/list-exam');
 			// PG Exam & Essay Exam
-			Route::get('/pg/{uuid}', PgExam::class);
-			Route::get('/pg/{id}/{uuid}', PgExamId::class);
-			Route::get('/essay/{uuid}', EssayExam::class);
-			Route::get('/essay/{id}/{uuid}', EssayExamId::class);
-			Route::get('/preview/{uuid}', PreviewExam::class);
+			Volt::route('/pg/{uuid}', 'exam/pg-exam');
+			Volt::route('/pg/{id}/{uuid}', 'exam/pg-exam-id');
+			Volt::route('/essay/{id}/{uuid}', 'exam/essay-exam-id');
+			Volt::route('/preview/{uuid}', 'exam/preview-exam');
 		});
 
 		// Remedial
