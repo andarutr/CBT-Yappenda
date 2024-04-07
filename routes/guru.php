@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Livewire\Guru\LessonList;
 use App\Livewire\Rapor\{RaporList, ShowRapor, CreateRapor, RaporCreate, RaporKelasX, RaporUpdate, RaporKelasXI, RaporKelasXII};
-use App\Livewire\Score\{AshScorePg, AshScoreList, AsasScoreList, AshScoreEssay, AstsScoreList, AshScoreEssayId, AshRemedialScorePg, AsasRemedialScoreList, AshRemedialScoreEssay, AstsRemedialScoreList, AshRemedialScoreEssayId};
+use App\Livewire\Score\{AshRemedialScorePg, AsasRemedialScoreList, AshRemedialScoreEssay, AshRemedialScoreEssayId};
 
 // Route
 Route::middleware('isGuru')->group(function(){
@@ -45,7 +45,6 @@ Route::middleware('isGuru')->group(function(){
                 Volt::route('/edit-soal/essay/{uuid}', 'assessment/ass-edit-question-essay');
             });
         });
-
         // Input Nilai
         Route::prefix('/input-nilai')->group(function(){
              // Input Nilai TP
@@ -53,33 +52,32 @@ Route::middleware('isGuru')->group(function(){
                 Volt::route('/', 'assessment/ass-tp');
                 Volt::route('/{uuid}', 'assessment/ass-tp-result');
             });
-
             // Input Nilai Assessment Sumatif Harian
             Route::prefix('/ash')->group(function(){
-                Route::get('/', AshScoreList::class);
-                Route::get('/pg/{user_id}/{uuid}', AshScorePg::class);
-                Route::get('/essay/{id}/{uuid}', AshScoreEssay::class);
-                Route::get('/nilai-essay/{uuid}', AshScoreEssayId::class);
+                Volt::route('/', 'score/ash-score-list');
+                Volt::route('/pg/{user_id}/{uuid}', 'score/ass-score-pg');
+                Volt::route('/essay/{id}/{uuid}', 'score/ass-score-essay');
+                Volt::route('/nilai-essay/{uuid}', 'score/ass-score-essay-id');
             });
 
             Route::prefix('/asts')->group(function(){
-                Route::get('/', AstsScoreList::class);
-                Route::get('/pg/{user_id}/{uuid}', AshScorePg::class);
-                Route::get('/essay/{id}/{uuid}', AshScoreEssay::class);
-                Route::get('/nilai-essay/{uuid}', AshScoreEssayId::class);
+                Volt::route('/', 'score/asts-score-list');
+                Volt::route('/pg/{user_id}/{uuid}', 'score/ass-score-pg');
+                Volt::route('/essay/{id}/{uuid}', 'score/ass-score-essay');
+                Volt::route('/nilai-essay/{uuid}', 'score/ass-score-essay-id');
             });
 
             Route::prefix('/asas')->group(function(){
-                Route::get('/', AsasScoreList::class);
-                Route::get('/pg/{user_id}/{uuid}', AshScorePg::class);
-                Route::get('/essay/{id}/{uuid}', AshScoreEssay::class);
-                Route::get('/nilai-essay/{uuid}', AshScoreEssayId::class);
+                Volt::route('/', 'score/asas-score-list');
+                Volt::route('/pg/{user_id}/{uuid}', 'score/ass-score-pg');
+                Volt::route('/essay/{id}/{uuid}', 'score/ass-score-essay');
+                Volt::route('/nilai-essay/{uuid}', 'score/ass-score-essay-id');
             });
 
             // Remedial
             Route::prefix('/remedial')->group(function(){
                 Route::prefix('/asts')->group(function(){
-                    Route::get('/', AstsRemedialScoreList::class);
+                    Volt::route('/', AstsRemedialScoreList::class);
                     Route::get('/pg/{user_id}/{uuid}', AshRemedialScorePg::class);
                     Route::get('/essay/{id}/{uuid}', AshRemedialScoreEssay::class);
                     Route::get('/nilai-essay/{uuid}', AshRemedialScoreEssayId::class);

@@ -11,7 +11,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($exam_results as $exam)
+                @foreach($this->exams as $exam)
                 <tr>
                     <td>
                         {{ $exam->user->name }}

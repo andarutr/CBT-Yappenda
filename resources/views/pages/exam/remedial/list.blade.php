@@ -1,9 +1,48 @@
-@section('title', strtoupper(Request::segment(3)))
+<?php
+
+use Ramsey\Uuid\Uuid;
+use App\Models\{Exam, Remedial};
+use Illuminate\Support\Facades\Auth;
+use function Livewire\Volt\{layout, title, state, computed};
+
+layout('components.layouts.dashboard');
+title('Remedial '.strtoupper(Request::segment(3)));
+
+$remedials = computed(function(){
+    return Remedial::where('user_id', Auth::user()->id)->get();
+});
+
+$toRemedial = function($uuid){
+    $exam_id = Exam::where('uuid', $uuid)->first();
+    
+    Remedial::updateOrCreate([
+        'user_id' => Auth::user()->id,
+        'exam_id' => $exam_id->id
+    ],[
+        'uuid' => Uuid::uuid4()->toString(),
+        'user_id' => Auth::user()->id,
+        'exam_id' => $exam_id->id,
+        'date_exam' => now(),
+        'status' => 'Belum dinilai'
+    ]);
+
+    $results_id = Remedial::where(['user_id' => Auth::user()->id, 'exam_id' => $exam_id->id])->first();
+
+    if($results_id->is_end == true)
+    {
+        toastr()->success('Anda sudah menyelesaikan ujian ini!');
+        return redirect('/user/remedial/'.strtolower($exam_id->exam_type));
+    }else{
+        return redirect('/user/remedial/pg/'.$uuid);
+    }
+};
+
+?>
 
 <div class="content-body">
-    <h1><u>Remedial</u></h1>
+    <h1><u>Remedial {{ strtoupper(Request::segment(3)) }}</u></h1>
     <div class="row mt-1">
-        @foreach($remedials as $remedial)
+        @foreach($this->remedials as $remedial)
         @if($remedial->exam->exam_type == strtoupper(Request::segment(3)))
         <div class="col-xl-4 col-lg-6 col-md-6">
             <div class="card">
