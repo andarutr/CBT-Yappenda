@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Auth;
-use App\Models\{Exam, EssayAnswer, EssayQuestion};
 use function Livewire\Volt\{layout, title, state, mount};
+use App\Models\{Exam, EssayQuestion, EssayRemedialAnswer};
 
 layout('components.layouts.dashboard');
 title('Nilai Essay');
@@ -15,8 +15,8 @@ state([
 ]);
 
 mount(function(){
-    $this->uuid = Request::segment(5);
-    $this->essay_answer = EssayAnswer::where('uuid', $this->uuid)->first();
+    $this->uuid = Request::segment(6);
+    $this->essay_answer = EssayRemedialAnswer::where('uuid', $this->uuid)->first();
     $essay_question = EssayQuestion::where('id', $this->essay_answer->essay_question_id)->first();
     $exam = Exam::where('id', $essay_question->exam_id)->first();
     $this->backToUrl = $exam->uuid;
@@ -24,7 +24,7 @@ mount(function(){
 });
 
 $update = function(){
-    EssayAnswer::where('uuid', $this->uuid)
+    EssayRemedialAnswer::where('uuid', $this->uuid)
         ->update([
             'score' => $this->score
         ]);
@@ -33,14 +33,14 @@ $update = function(){
     $exam = Exam::where('id', $essay_question->exam_id)->first();
 
     toastr()->success('Berhasil menilai essay!');
-    return redirect('/'.strtolower(Auth::user()->role->role).'/input-nilai/'.strtolower($exam->exam_type).'/essay/'.$this->essay_answer->user_id.'/'.$this->backToUrl);
-}
+    return redirect('/'.strtolower(Auth::user()->role->role).'/input-nilai/remedial/'.strtolower($exam->exam_type).'/essay/'.$this->essay_answer->user_id.'/'.$this->backToUrl);
+};
 
 ?>
 
 <div class="content-body">
     <section class="app-user-view-account">
-        <a href="{{ url('/'.strtolower(Auth::user()->role->role).'/input-nilai/'.Request::segment(3)) }}" class="btn btn-sm btn-success mb-1">Kembali</a>
+        <a href="{{ url('/'.strtolower(Auth::user()->role->role).'/input-nilai/remedial/'.Request::segment(4)) }}" class="btn btn-sm btn-success mb-1">Kembali</a>
         <div class="row">
             <div class="col-xl-8 col-lg-7 col-md-7">
                 <div class="card">

@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 
 use App\Livewire\Guru\LessonList;
 use App\Livewire\Rapor\{RaporList, ShowRapor, CreateRapor, RaporCreate, RaporKelasX, RaporUpdate, RaporKelasXI, RaporKelasXII};
-use App\Livewire\Score\{AshRemedialScorePg, AsasRemedialScoreList, AshRemedialScoreEssay, AshRemedialScoreEssayId};
 
 // Route
 Route::middleware('isGuru')->group(function(){
@@ -59,39 +58,38 @@ Route::middleware('isGuru')->group(function(){
                 Volt::route('/essay/{id}/{uuid}', 'score/ass-score-essay');
                 Volt::route('/nilai-essay/{uuid}', 'score/ass-score-essay-id');
             });
-
+            // Input Nilai Assessment Sumatif Tengah Semester
             Route::prefix('/asts')->group(function(){
                 Volt::route('/', 'score/asts-score-list');
                 Volt::route('/pg/{user_id}/{uuid}', 'score/ass-score-pg');
                 Volt::route('/essay/{id}/{uuid}', 'score/ass-score-essay');
                 Volt::route('/nilai-essay/{uuid}', 'score/ass-score-essay-id');
             });
-
+            // Input Nilai Assessment Sumatif Akhir
             Route::prefix('/asas')->group(function(){
                 Volt::route('/', 'score/asas-score-list');
                 Volt::route('/pg/{user_id}/{uuid}', 'score/ass-score-pg');
                 Volt::route('/essay/{id}/{uuid}', 'score/ass-score-essay');
                 Volt::route('/nilai-essay/{uuid}', 'score/ass-score-essay-id');
             });
-
             // Remedial
             Route::prefix('/remedial')->group(function(){
                 Route::prefix('/asts')->group(function(){
-                    Volt::route('/', AstsRemedialScoreList::class);
-                    Route::get('/pg/{user_id}/{uuid}', AshRemedialScorePg::class);
-                    Route::get('/essay/{id}/{uuid}', AshRemedialScoreEssay::class);
-                    Route::get('/nilai-essay/{uuid}', AshRemedialScoreEssayId::class);
+                    // Input Nilai remedial ASTS
+                    Volt::route('/', 'score/remedial/asts-score-list');
+                    Volt::route('/pg/{user_id}/{uuid}', 'score/remedial/ass-score-pg');
+                    Volt::route('/essay/{id}/{uuid}', 'score/remedial/ass-score-essay');
+                    Volt::route('/nilai-essay/{uuid}', 'score/remedial/ass-score-essay-id');
                 });
-
+                // Input Nilai remedial ASAS
                 Route::prefix('/asas')->group(function(){
-                    Route::get('/', AsasRemedialScoreList::class);
-                    Route::get('/pg/{user_id}/{uuid}', AshRemedialScorePg::class);
-                    Route::get('/essay/{id}/{uuid}', AshRemedialScoreEssay::class);
-                    Route::get('/nilai-essay/{uuid}', AshRemedialScoreEssayId::class);
+                    Volt::route('/', 'score/remedial/asas-score-list');
+                    Volt::route('/pg/{user_id}/{uuid}', 'score/remedial/ass-score-pg');
+                    Volt::route('/essay/{id}/{uuid}', 'score/remedial/ass-score-essay');
+                    Volt::route('/nilai-essay/{uuid}', 'score/remedial/ass-score-essay-id');
                 });
             });
         });
-
         // Rapor
         Route::prefix('/rapor')->group(function(){
             // Rapor Kelas X

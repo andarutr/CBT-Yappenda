@@ -1,4 +1,40 @@
-@section('title', 'Lihat Nilai')
+<?php
+
+use App\Models\{Exam, User, PGQuestion, PgRemedialAnswer};
+use function Livewire\Volt\{layout, title, state, mount};
+
+layout('components.layouts.dashboard');
+title('Lihat Nilai');
+
+state([
+    'uuid',
+    'exam',
+    'user',
+    'user_id',
+    'pgscore',
+    'pganswer',
+    'pgquestion',
+    'toEssayUrls',
+]);
+
+mount(function(){
+
+    $this->user_id = Request::segment(6);
+    $this->uuid = Request::segment(7);
+    $this->exam = Exam::where('uuid', $this->uuid)->first();
+    $this->user = User::where('id', $this->user_id)->first();
+    $this->pgquestion = PGQuestion::where('exam_id', $this->exam->id)->get();
+    $linktopgquest = PGQuestion::where('exam_id', $this->exam->id)->first();
+    $this->pganswer = PgRemedialAnswer::where(['user_id' => $this->user_id])->get();
+    $this->pgscore = PgRemedialAnswer::where(['user_id' => $this->user_id, 'correct' => true])->count();
+    $this->toEssayUrls = $linktopgquest->uuid;
+});
+
+$toEssayScore = function(){
+    return redirect('/guru/input-nilai/remedial/ash/essay/'.$this->user_id.'/'.$this->toEssayUrls);
+};
+
+?>
 
 <div class="content-body">
     <section class="app-user-view-account">

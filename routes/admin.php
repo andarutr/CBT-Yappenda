@@ -84,7 +84,7 @@ Route::middleware('isAdmin')->group(function(){
             // Remedial
             Route::prefix('/remedial')->group(function(){
                 Route::prefix('/asts')->group(function(){
-                    Route::get('/', AstsRemedialScoreList::class);
+                    Volt::route('/', AstsRemedialScoreList::class);
                     Route::get('/pg/{user_id}/{uuid}', AshRemedialScorePg::class);
                     Route::get('/essay/{id}/{uuid}', AshRemedialScoreEssay::class);
                     Route::get('/nilai-essay/{uuid}', AshRemedialScoreEssayId::class);
