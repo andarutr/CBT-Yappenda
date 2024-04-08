@@ -2,9 +2,7 @@
 
 use Livewire\Volt\Volt;
 use Illuminate\Support\Facades\Route;
-
 use App\Livewire\Guru\LessonList;
-use App\Livewire\Rapor\{RaporList, ShowRapor, CreateRapor, RaporCreate, RaporKelasX, RaporUpdate, RaporKelasXI, RaporKelasXII};
 
 // Route
 Route::middleware('isGuru')->group(function(){
@@ -99,22 +97,20 @@ Route::middleware('isGuru')->group(function(){
             Volt::route('/kelas/X/{user_id}/{uuid}/create', 'rapor/create-rapor-id');
             Volt::route('/kelas/X/{user_id}/{uuid}/edit', 'rapor/update-rapor-id');
             Volt::route('/kelas/X/{user_id}/{uuid}/show', 'rapor/show-rapor-id');
-
             // Rapor Kelas XI
-            // Route::get('/kelas/XI', RaporKelasXI::class);
-            // Route::get('/kelas/XI/create', CreateRapor::class);
-            // Route::get('/kelas/XI/{uuid}', RaporList::class);
-            // Route::get('/kelas/XI/{user_id}/{uuid}/create', RaporCreate::class);
-            // Route::get('/kelas/XI/{user_id}/{uuid}/edit', RaporUpdate::class);
-            // Route::get('/kelas/XI/{user_id}/{uuid}/show', ShowRapor::class);
-
+            Volt::route('/kelas/XI', 'rapor/kelas-xi');
+            Volt::route('/kelas/XI/create', 'rapor/create-rapor');
+            Volt::route('/kelas/XI/{uuid}', 'rapor/list');
+            Volt::route('/kelas/XI/{user_id}/{uuid}/create', 'rapor/create-rapor-id');
+            Volt::route('/kelas/XI/{user_id}/{uuid}/edit', 'rapor/update-rapor-id');
+            Volt::route('/kelas/XI/{user_id}/{uuid}/show', 'rapor/show-rapor-id');
             // Rapor Kelas XII
-            // Route::get('/kelas/XII', RaporKelasXII::class);
-            // Route::get('/kelas/XII/create', CreateRapor::class);
-            // Route::get('/kelas/XII/{uuid}', RaporList::class);
-            // Route::get('/kelas/XII/{user_id}/{uuid}/create', RaporCreate::class);
-            // Route::get('/kelas/XII/{user_id}/{uuid}/edit', RaporUpdate::class);
-            // Route::get('/kelas/XII/{user_id}/{uuid}/show', ShowRapor::class);
+            Volt::route('/kelas/XII', 'rapor/kelas-xii');
+            Volt::route('/kelas/XII/create', 'rapor/create-rapor');
+            Volt::route('/kelas/XII/{uuid}', 'rapor/list');
+            Volt::route('/kelas/XII/{user_id}/{uuid}/create', 'rapor/create-rapor-id');
+            Volt::route('/kelas/XII/{user_id}/{uuid}/edit', 'rapor/update-rapor-id');
+            Volt::route('/kelas/XII/{user_id}/{uuid}/show', 'rapor/show-rapor-id');
         });
     });
 });
