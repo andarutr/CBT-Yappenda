@@ -93,32 +93,28 @@ Route::middleware('isGuru')->group(function(){
         // Rapor
         Route::prefix('/rapor')->group(function(){
             // Rapor Kelas X
-            Route::get('/kelas/X', RaporKelasX::class);
-            Route::get('/kelas/X/create', CreateRapor::class);
-            Route::get('/kelas/X/{uuid}', RaporList::class);
-            Route::get('/kelas/X/{user_id}/{uuid}/create', RaporCreate::class);
-            Route::get('/kelas/X/{user_id}/{uuid}/edit', RaporUpdate::class);
-            Route::get('/kelas/X/{user_id}/{uuid}/show', ShowRapor::class);
+            Volt::route('/kelas/X', 'rapor/kelas-x');
+            Volt::route('/kelas/X/create', 'rapor/create-rapor');
+            Volt::route('/kelas/X/{uuid}', 'rapor/list');
+            Volt::route('/kelas/X/{user_id}/{uuid}/create', 'rapor/create-rapor-id');
+            Volt::route('/kelas/X/{user_id}/{uuid}/edit', 'rapor/update-rapor-id');
+            Volt::route('/kelas/X/{user_id}/{uuid}/show', 'rapor/show-rapor-id');
 
             // Rapor Kelas XI
-            Route::get('/kelas/XI', RaporKelasXI::class);
-            Route::get('/kelas/XI/create', CreateRapor::class);
-            Route::get('/kelas/XI/{uuid}', RaporList::class);
-            Route::get('/kelas/XI/{user_id}/{uuid}/create', RaporCreate::class);
-            Route::get('/kelas/XI/{user_id}/{uuid}/edit', RaporUpdate::class);
-            Route::get('/kelas/XI/{user_id}/{uuid}/show', ShowRapor::class);
+            // Route::get('/kelas/XI', RaporKelasXI::class);
+            // Route::get('/kelas/XI/create', CreateRapor::class);
+            // Route::get('/kelas/XI/{uuid}', RaporList::class);
+            // Route::get('/kelas/XI/{user_id}/{uuid}/create', RaporCreate::class);
+            // Route::get('/kelas/XI/{user_id}/{uuid}/edit', RaporUpdate::class);
+            // Route::get('/kelas/XI/{user_id}/{uuid}/show', ShowRapor::class);
 
             // Rapor Kelas XII
-            Route::get('/kelas/XII', RaporKelasXII::class);
-            Route::get('/kelas/XII/create', CreateRapor::class);
-            Route::get('/kelas/XII/{uuid}', RaporList::class);
-            Route::get('/kelas/XII/{user_id}/{uuid}/create', RaporCreate::class);
-            Route::get('/kelas/XII/{user_id}/{uuid}/edit', RaporUpdate::class);
-            Route::get('/kelas/XII/{user_id}/{uuid}/show', ShowRapor::class);
-
-            Route::get('/contoh', function(){
-                return view('contoh-rapor');
-            });
+            // Route::get('/kelas/XII', RaporKelasXII::class);
+            // Route::get('/kelas/XII/create', CreateRapor::class);
+            // Route::get('/kelas/XII/{uuid}', RaporList::class);
+            // Route::get('/kelas/XII/{user_id}/{uuid}/create', RaporCreate::class);
+            // Route::get('/kelas/XII/{user_id}/{uuid}/edit', RaporUpdate::class);
+            // Route::get('/kelas/XII/{user_id}/{uuid}/show', ShowRapor::class);
         });
     });
 });

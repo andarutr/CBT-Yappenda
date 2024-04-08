@@ -4,7 +4,7 @@ use Livewire\Volt\Volt;
 use Illuminate\Support\Facades\Route;
 
 use App\Livewire\User\Dashboard;
-use App\Livewire\Rapor\{ShowRapor, ShowRaporId};
+use App\Livewire\Rapor\{ShowRapor};
 use App\Livewire\Exam\{ShowAshResult, ShowExamResults, ShowRemedialResults};
 
 // Route
@@ -49,8 +49,8 @@ Route::middleware('isUser')->group(function(){
 
 		// Rapor
 		Route::prefix('/rapor')->group(function(){
-			Route::get('/', ShowRaporId::class);
-			Route::get('/kelas/{kelas}/{user_id}/{uuid}/show', ShowRapor::class);
+			Volt::route('/', 'rapor/show-rapor-id');
+			Volt::route('/kelas/{kelas}/{user_id}/{uuid}/show', 'rapor/show-rapor-id');
 		});
 	});
 });

@@ -12,7 +12,7 @@
             <div class="col-lg-4 mx-auto">
                 <div class="card shadow text-center">
                     <div class="card-body">
-                        <img src="{{ url('assets/images/logo.png') }}" class="img-fluid" width="150">
+                        <img src="{{ url('assets/images/logo.webp') }}" class="img-fluid" width="150">
                         <h5 class="mt-3">Halaman tidak ditemukan!</h5>
                         <p>Silahkan hubungi teknisi</p>
                     </div>

@@ -1,4 +1,51 @@
-@section('title', 'Tambah Rapor')
+<?php
+
+use Ramsey\Uuid\Uuid;
+use App\Models\{User, Rapor};
+use Illuminate\Support\Facades\Auth;
+use function Livewire\Volt\{layout, title, state, rules, mount};
+
+layout('components.layouts.dashboard');
+title('Buat rapor');
+
+state([
+    'users',
+    'kelas_id',
+    'user_id',
+    'exam_type',
+    'semester',
+    'th_ajaran',
+]);
+
+rules([
+    'kelas_id' => 'required',
+    'user_id' => 'required',
+    'exam_type' => 'required',
+    'semester' => 'required',
+    'th_ajaran' => 'required',
+]);
+
+mount(function(){
+    $this->kelas_id = Request::segment(4);
+    $this->users = User::where('role_id', 3)->get();
+});
+
+$store = function(){
+    $this->validate();
+    
+    Rapor::create([
+        'uuid' => Uuid::uuid4()->toString(),
+        'user_id' => $this->user_id,
+        'exam_type' => $this->exam_type,
+        'semester' => $this->semester,
+        'th_ajaran' => $this->th_ajaran,
+        'wali_kelas' => Auth::user()->name
+    ]);
+
+    return redirect('/'.strtolower(Auth::user()->role->role).'/rapor/kelas/'.$this->kelas_id)->with('success', 'Berhasil menambah rapor!');
+};
+
+?>
 
 <div class="content-body">
     <div class="row">

@@ -1,4 +1,30 @@
-@section('title', 'Show Rapor')
+<?php
+
+use App\Models\{Rapor, ContentRapor};
+use Illuminate\Database\Eloquent\Builder;
+use function Livewire\Volt\{layout, title, state, mount};
+
+layout('components.layouts.dashboard');
+title('Show Rapor');
+
+state([
+    'uuid',
+    'user_id',
+    'rapor',
+    'content',
+]);
+
+mount(function(){
+    $this->user_id = Request::segment(5);
+    $this->uuid = Request::segment(6);
+    $this->rapor = Rapor::where(['user_id' => $this->user_id, 'uuid' => $this->uuid])->first();
+    $this->content = ContentRapor::whereHas('rapor', function(Builder $query){
+        $query->where('uuid', $this->uuid);
+        $query->where('user_id', $this->user_id);
+    })->get();
+});
+
+?>
 
 <div class="content-body">
     <div class="row mt-2">

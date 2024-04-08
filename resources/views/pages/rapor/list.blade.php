@@ -1,4 +1,29 @@
-@section('title','Rapor Kelas '.Request::segment(4))
+<?php
+
+use App\Models\{Rapor, ContentRapor};
+use function Livewire\Volt\{layout, title, state, mount};
+
+layout('components.layouts.dashboard');
+title('Rapor');
+
+state([
+    'uuid',
+    'rapor',
+    'contents',
+]);
+
+mount(function(){
+    $this->uuid = Request::segment(5);
+    $this->rapor = Rapor::where('uuid', $this->uuid)->first();
+    $this->contents = ContentRapor::where('rapor_id', $this->rapor->id)->get();
+});
+
+$destroy = function($uuid){
+    ContentRapor::where('uuid', $uuid)->delete();
+    toastr()->success('Berhasil menghapus nilai!');
+};
+
+?>
 
 <div class="content-body">
     <div class="row">
