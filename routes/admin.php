@@ -3,10 +3,6 @@
 use Livewire\Volt\Volt;
 use Illuminate\Support\Facades\Route;
 
-use App\Livewire\Rapor\{RaporList, ShowRapor};
-use App\Livewire\Score\{AshRemedialScorePg, AsasRemedialScoreList, AshRemedialScoreEssay, AstsRemedialScoreList, AshRemedialScoreEssayId};
-use App\Livewire\Rapor\{CreateRapor, RaporCreate, RaporKelasX, RaporUpdate, RaporKelasXI, RaporKelasXII};
-
 // Routes
 Route::middleware('isAdmin')->group(function(){
     Route::prefix('/admin')->group(function(){
@@ -84,17 +80,17 @@ Route::middleware('isAdmin')->group(function(){
             // Remedial
             Route::prefix('/remedial')->group(function(){
                 Route::prefix('/asts')->group(function(){
-                    Volt::route('/', AstsRemedialScoreList::class);
-                    Route::get('/pg/{user_id}/{uuid}', AshRemedialScorePg::class);
-                    Route::get('/essay/{id}/{uuid}', AshRemedialScoreEssay::class);
-                    Route::get('/nilai-essay/{uuid}', AshRemedialScoreEssayId::class);
+                    Volt::route('/', 'score/remedial/asts-score-list');
+                    Volt::route('/pg/{user_id}/{uuid}', 'score/remedial/ass-score-pg');
+                    Volt::route('/essay/{id}/{uuid}', 'score/remedial/ass-score-essay');
+                    Volt::route('/nilai-essay/{uuid}', 'score/remedial/ass-score-essay-id');
                 });
 
                 Route::prefix('/asas')->group(function(){
-                    Route::get('/', AsasRemedialScoreList::class);
-                    Route::get('/pg/{user_id}/{uuid}', AshRemedialScorePg::class);
-                    Route::get('/essay/{id}/{uuid}', AshRemedialScoreEssay::class);
-                    Route::get('/nilai-essay/{uuid}', AshRemedialScoreEssayId::class);
+                    Volt::route('/', 'score/remedial/asas-score-list');
+                    Volt::route('/pg/{user_id}/{uuid}', 'score/remedial/ass-score-pg');
+                    Volt::route('/essay/{id}/{uuid}', 'score/remedial/ass-score-essay');
+                    Volt::route('/nilai-essay/{uuid}', 'score/remedial/ass-score-essay-id');
                 });
             });
         });
@@ -102,32 +98,26 @@ Route::middleware('isAdmin')->group(function(){
         // Rapor
         Route::prefix('/rapor')->group(function(){
             // Rapor Kelas X
-            Route::get('/kelas/X', RaporKelasX::class);
-            Route::get('/kelas/X/create', CreateRapor::class);
-            Route::get('/kelas/X/{uuid}', RaporList::class);
-            Route::get('/kelas/X/{user_id}/{uuid}/create', RaporCreate::class);
-            Route::get('/kelas/X/{user_id}/{uuid}/edit', RaporUpdate::class);
-            Route::get('/kelas/X/{user_id}/{uuid}/show', ShowRapor::class);
-
+            Volt::route('/kelas/X', 'rapor/kelas-x');
+            Volt::route('/kelas/X/create', 'rapor/create-rapor');
+            Volt::route('/kelas/X/{uuid}', 'rapor/list');
+            Volt::route('/kelas/X/{user_id}/{uuid}/create', 'rapor/create-rapor-id');
+            Volt::route('/kelas/X/{user_id}/{uuid}/edit', 'rapor/update-rapor-id');
+            Volt::route('/kelas/X/{user_id}/{uuid}/show', 'rapor/show-rapor-id');
             // Rapor Kelas XI
-            Route::get('/kelas/XI', RaporKelasXI::class);
-            Route::get('/kelas/XI/create', CreateRapor::class);
-            Route::get('/kelas/XI/{uuid}', RaporList::class);
-            Route::get('/kelas/XI/{user_id}/{uuid}/create', RaporCreate::class);
-            Route::get('/kelas/XI/{user_id}/{uuid}/edit', RaporUpdate::class);
-            Route::get('/kelas/XI/{user_id}/{uuid}/show', ShowRapor::class);
-
+            Volt::route('/kelas/XI', 'rapor/kelas-xi');
+            Volt::route('/kelas/XI/create', 'rapor/create-rapor');
+            Volt::route('/kelas/XI/{uuid}', 'rapor/list');
+            Volt::route('/kelas/XI/{user_id}/{uuid}/create', 'rapor/create-rapor-id');
+            Volt::route('/kelas/XI/{user_id}/{uuid}/edit', 'rapor/update-rapor-id');
+            Volt::route('/kelas/XI/{user_id}/{uuid}/show', 'rapor/show-rapor-id');
             // Rapor Kelas XII
-            Route::get('/kelas/XII', RaporKelasXII::class);
-            Route::get('/kelas/XII/create', CreateRapor::class);
-            Route::get('/kelas/XII/{uuid}', RaporList::class);
-            Route::get('/kelas/XII/{user_id}/{uuid}/create', RaporCreate::class);
-            Route::get('/kelas/XII/{user_id}/{uuid}/edit', RaporUpdate::class);
-            Route::get('/kelas/XII/{user_id}/{uuid}/show', ShowRapor::class);
-
-            Route::get('/contoh', function(){
-                return view('contoh-rapor');
-            });
+            Volt::route('/kelas/XII', 'rapor/kelas-xii');
+            Volt::route('/kelas/XII/create', 'rapor/create-rapor');
+            Volt::route('/kelas/XII/{uuid}', 'rapor/list');
+            Volt::route('/kelas/XII/{user_id}/{uuid}/create', 'rapor/create-rapor-id');
+            Volt::route('/kelas/XII/{user_id}/{uuid}/edit', 'rapor/update-rapor-id');
+            Volt::route('/kelas/XII/{user_id}/{uuid}/show', 'rapor/show-rapor-id');
         });
     });
 });

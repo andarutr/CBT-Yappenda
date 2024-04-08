@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 
 use App\Livewire\User\Dashboard;
 use App\Livewire\Rapor\{ShowRapor};
-use App\Livewire\Exam\{ShowAshResult, ShowExamResults, ShowRemedialResults};
 
 // Route
 Route::middleware('isUser')->group(function(){
@@ -26,27 +25,24 @@ Route::middleware('isUser')->group(function(){
 			Volt::route('/essay/{id}/{uuid}', 'exam/essay-exam-id');
 			Volt::route('/preview/{uuid}', 'exam/preview-exam');
 		});
-
 		// Remedial
 		Route::prefix('/remedial')->group(function(){
 			Volt::route('/asts', 'exam/remedial/list');
 			Volt::route('/asas', 'exam/remedial/list');
-
+			// Exam sess
 			Volt::route('/pg/{uuid}', 'exam/remedial/pg-remedial');
 			Volt::route('/pg/{id}/{uuid}', 'exam/remedial/pg-remedial-id');
 			Volt::route('/essay/{id}/{uuid}', 'exam/remedial/essay-remedial-id');
 			Volt::route('/preview/{uuid}', 'exam/remedial/preview-remedial');
 		});
-
 		// Hasil Ujian
 		Route::prefix('/hasil-ujian')->group(function(){
-			Route::get('/ash', ShowAshResult::class);
-			Route::get('/asts', ShowExamResults::class);
-			Route::get('/asas', ShowExamResults::class);
-			Route::get('/remedial/asts', ShowRemedialResults::class);
-			Route::get('/remedial/asas', ShowRemedialResults::class);
+			Volt::route('/ash', 'results/ash-result');
+			Volt::route('/asts', 'results/show-result');
+			Volt::route('/asas', 'results/show-result');
+			Volt::route('/remedial/asts', 'results/show-remedial-result');
+			Volt::route('/remedial/asas', 'results/show-remedial-result');
 		});
-
 		// Rapor
 		Route::prefix('/rapor')->group(function(){
 			Volt::route('/', 'rapor/show-rapor-id');

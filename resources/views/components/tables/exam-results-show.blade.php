@@ -10,7 +10,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($exam_results as $exam)
+            @foreach($this->exam_results as $exam)
             <tr>
                 <td>
                     {{ $exam->exam->user->name }}
